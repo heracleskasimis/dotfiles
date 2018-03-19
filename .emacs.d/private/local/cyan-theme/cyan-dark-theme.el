@@ -76,7 +76,7 @@ to 'auto, tags may not be properly aligned. "
         (cblk-ln-bg    "grey7")
         (cursor        "VioletRed2")
         (const         "cyan4")
-        (comment       "greyr45")
+        (comment       "grey45")
         (comment-light "grey45")
         (comment-bg    "grey7")
         (comp          "DarkOrchid2")
