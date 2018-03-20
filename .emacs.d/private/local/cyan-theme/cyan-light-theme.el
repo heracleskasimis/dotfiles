@@ -175,7 +175,11 @@ to 'auto, tags may not be properly aligned. "
 
 ;;;;; ahs
      `(ahs-face ((,class (:background ,highlight))))
-     `(ahs-plugin-whole-buffer-face ((,class (:background ,mat :foreground ,bg1))))
+     `(ahs-plugin-whole-buffer-face ((,class (:background ,mat))))
+     `(ahs-definition-face ((,class (:background ,green-bg))))
+     `(ahs-edit-mode-face ((,class (:background ,red-bg))))
+     `(ahs-plugin-bod-face ((,class (:background ,blue-bg))))
+     `(ahs-plugin-defalt-face ((,class (:background ,yellow-bg))))
 
 ;;;;; anzu-mode
      `(anzu-mode-line ((,class (:foreground ,yellow :inherit bold))))
