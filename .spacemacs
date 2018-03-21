@@ -60,7 +60,7 @@ values."
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '()
+   dotspacemacs-excluded-packages '(smartparens)
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
    ;; `used-only' installs only explicitly used packages and uninstall any
@@ -137,8 +137,7 @@ values."
    dotspacemacs-default-font '("Liberation Mono for Powerline"
                                :size 13
                                :weight normal
-                               :width normal
-                               :powerline-scale 1.1)
+                               :width normal)
    ;; The leader key
    dotspacemacs-leader-key "SPC"
    ;; The key used for Emacs commands (M-x) (after pressing on the leader key).
@@ -303,17 +302,17 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   (add-to-list 'custom-theme-load-path "~/.emacs.d/private/local/cyan-theme")
-  (setq spacemacs-evil-cursors '(("normal" "pink2" box)
+  (setq spacemacs-evil-cursors '(("normal" "orchid" box)
                                  ("insert" "cyan4" (bar . 2))
                                  ("emacs" "turquoise3" box)
                                  ("hybrid" "turquoise3" (bar . 2))
-                                 ("replace" "PaleVioletRed" (hbar . 2))
-                                 ("evilified" "RosyBrown2" box)
+                                 ("replace" "orchid" (hbar . 2))
+                                 ("evilified" "orchid" box)
                                  ("visual" "gray" (hbar . 2))
                                  ("motion" "plum3" box)
                                  ("lisp" "HotPink1" box)
                                  ("iedit" "IndianRed1" box)
-                                 ("iedit-insert" "PaleVioletRed" (bar . 2))))
+                                 ("iedit-insert" "PaleVioletRed1" (bar . 2))))
   )
 
 (defun dotspacemacs/user-config ()
@@ -323,7 +322,10 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (setq neo-theme 'arrow)
+  (setq neo-theme 'arrow
+        js2-strict-trailing-comma-warning nil
+        mouse-wheel-progressive-speed nil
+        scroll-preserve-screen-position nil)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
