@@ -63,7 +63,7 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(editorconfig add-node-modules-path)
+   dotspacemacs-additional-packages '(editorconfig add-node-modules-path rjsx-mode)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -467,6 +467,10 @@ you should place your code here."
         flycheck-check-syntax-automatically '(mode-enabled save)
         show-paren-delay 0)
   (show-paren-mode 1)
+  (with-eval-after-load 'rjsx-mode
+    (define-key rjsx-mode-map "<" nil)
+    (define-key rjsx-mode-map (kbd "C-d") nil)
+    (define-key rjsx-mode-map ">" nil))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
