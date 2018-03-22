@@ -69,7 +69,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(smartparens highlight-parentheses)
+   dotspacemacs-excluded-packages '(smartparens highlight-parentheses rainbow-delimiters)
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -460,7 +460,8 @@ you should place your code here."
   (setq-default neo-theme 'arrow
         js2-strict-trailing-comma-warning nil
         mouse-wheel-progressive-speed nil
-        scroll-preserve-screen-position nil)
+        scroll-preserve-screen-position nil
+        flycheck-check-syntax-automatically '(mode-enabled save))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
