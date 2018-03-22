@@ -69,7 +69,10 @@ This function should only modify configuration layer settings."
    dotspacemacs-frozen-packages '()
 
    ;; A list of packages that will not be installed and loaded.
-   dotspacemacs-excluded-packages '(smartparens highlight-parentheses rainbow-delimiters)
+   dotspacemacs-excluded-packages '(smartparens
+                                    highlight-parentheses
+                                    rainbow-delimiters
+                                    orgbtl-mode)
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -461,7 +464,9 @@ you should place your code here."
         js2-strict-trailing-comma-warning nil
         mouse-wheel-progressive-speed nil
         scroll-preserve-screen-position nil
-        flycheck-check-syntax-automatically '(mode-enabled save))
+        flycheck-check-syntax-automatically '(mode-enabled save)
+        show-paren-delay 0)
+  (show-paren-mode 1)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
