@@ -1,6 +1,6 @@
 set nocompatible
 
-let mapleader = ';'
+let mapleader = ' '
 
 set backspace=indent,eol,start
 set history=50
@@ -173,31 +173,25 @@ endfunction
 
 map <leader>t :tabe
 map <leader>d :tabclose<cr>
-map <leader>n :NERDTreeToggle<cr>
-map <leader>f :NERDTreeFind<cr>
-map <leader>p :b#<cr>
-" map <silent><leader>o :call BufferList()<cr>
-map <leader>o :CtrlPBuffer<cr>
-map <leader>, :bnext<cr>
-map <a-,> :bnext<cr>
-map <leader>. :bprevious<cr>
-map <a-.> :bprevious<cr>
-map <leader>e :lnext<cr>
-map <leader>E :lprevious<cr>
-map <leader>w <c-w>w
-map <leader>j <c-w>j
-map <leader>k <c-w>k
-map <leader>h <c-w>h
-map <leader>l <c-w>l
+map <leader>ft :NERDTreeToggle<cr>
+map <leader>0 :NERDTreeFind<cr>
+map <leader><Tab> :b#<cr>
+map <leader>bb :CtrlPBuffer<cr>
+map <leader>bn :bnext<cr>
+map <leader>bp :bprevious<cr>
+map <leader>en :lnext<cr>
+map <leader>ep :lprevious<cr>
+map <leader>ww <c-w>w
+map <leader>wj <c-w>j
+map <leader>wk <c-w>k
+map <leader>wh <c-w>h
+map <leader>wl <c-w>l
 map <c-Tab> <c-w>w
-" map <leader>i :TlistToggle<cr>
-map <leader>i :TagbarToggle<cr>
-map <leader>m :ToggleMatchParen<cr>
 map <leader>x :Hexmode<cr>
-"map <leader>g :Rgrep<cr>
+" map <leader>i :TagbarToggle<cr>
+" map <leader>g :Rgrep<cr>
 " map <leader><s-g> :Grep<cr>
-map <leader>g :silent noautocmd vimgrep <c-r>=expand("<cword>")<cr> <c-r>=getcwd()<cr>/**/*.<c-r>=expand("%:e")<cr> \| copen<home><c-right><c-right><c-right><c-right>
-map <leader>` :16split \| set noautochdir \| set nonu \| VimShellCreate<cr>
+map <leader>/ :silent noautocmd vimgrep <c-r>=expand("<cword>")<cr> <c-r>=getcwd()<cr>/**/*.<c-r>=expand("%:e")<cr> \| copen<home><c-right><c-right><c-right><c-right>
 
 map <down> gj
 map <up> gk
@@ -205,6 +199,5 @@ imap <down> <c-o>gj
 imap <up> <c-o>gk
 
 imap <insert> <esc>"*P']ji
-" inoremap <s-insert> <c-o>:set paste<cr><s-insert><c-o>:set nopaste<cr>
 
 cnoremap <C-g> <C-[>
