@@ -35,6 +35,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-configuration-layers
    '(vimscript
      javascript
+     itome-react
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -63,9 +64,7 @@ This function should only modify configuration layer settings."
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(editorconfig
-                                      add-node-modules-path
-                                      rjsx-mode
-                                      (itome-react :location local))
+                                      add-node-modules-path)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -441,7 +440,7 @@ executes.
  This function is mostly useful for variables that need to be set
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
-  (add-to-list 'custom-theme-load-path "~/.emacs.d/private/local/cyan-theme")
+  (add-to-list 'custom-theme-load-path "~/.spacemacs.d/themes")
   (setq spacemacs-evil-cursors '(("normal" "orchid" box)
                                  ("insert" "cyan4" (bar . 2))
                                  ("emacs" "turquoise3" box)
@@ -467,12 +466,14 @@ you should place your code here."
         mouse-wheel-progressive-speed nil
         scroll-preserve-screen-position nil
         flycheck-check-syntax-automatically '(mode-enabled save)
+        linum-format "%4d "
         show-paren-delay 0)
   (show-paren-mode 1)
   (eval-after-load 'js-mode
     '(add-hook 'js-mode-hook #'add-node-modules-path))
   (eval-after-load 'js2-mode
     '(add-hook 'js2-mode-hook #'add-node-modules-path))
+  (require 'rjsx-mode)
   (with-eval-after-load 'rjsx-mode
     (define-key rjsx-mode-map "<" nil)
     (define-key rjsx-mode-map (kbd "C-d") nil)
@@ -492,7 +493,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(add-node-modules-path js2-refactor projectile helm-core magit powerline org-plus-contrib yasnippet ws-butler winum which-key wgrep web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package toc-org tern symon string-inflection spaceline-all-the-icons smex smeargle rjsx-mode restart-emacs request popwin persp-mode pcre2el password-generator paradox overseer org-bullets open-junk-file neotree nameless multiple-cursors move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint json-mode js-doc ivy-xref ivy-purpose ivy-hydra indent-guide hungry-delete hl-todo highlight-numbers highlight-indentation helm-make google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-commit ghub gh-md font-lock+ flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu elisp-slime-nav editorconfig dumb-jump diminish define-word dactyl-mode counsel-projectile column-enforce-mode coffee-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link)))
+   '(web-mode tagedit slim-mode scss-mode sass-mode rjsx-mode pug-mode impatient-mode htmlize haml-mode emmet-mode counsel-css ws-butler winum which-key wgrep web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package toc-org tern symon string-inflection spaceline-all-the-icons smex smeargle restart-emacs request popwin persp-mode pcre2el password-generator paradox overseer org-plus-contrib org-bullets open-junk-file neotree nameless move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint json-mode js2-refactor js-doc ivy-xref ivy-purpose ivy-hydra indent-guide hungry-delete hl-todo highlight-numbers highlight-indentation helm-make google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md font-lock+ flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu elisp-slime-nav editorconfig dumb-jump diminish define-word dactyl-mode counsel-projectile column-enforce-mode coffee-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
