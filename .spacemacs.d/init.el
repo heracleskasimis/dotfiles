@@ -36,7 +36,6 @@ This function should only modify configuration layer settings."
    '(yaml
      vimscript
      javascript
-     itome-react
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -64,7 +63,8 @@ This function should only modify configuration layer settings."
    ;; To use a local version of a package, use the `:location' property:
    ;; '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '(editorconfig
+   dotspacemacs-additional-packages '(rjsx-mode
+                                      editorconfig
                                       add-node-modules-path)
 
    ;; A list of packages that cannot be updated.
@@ -463,6 +463,8 @@ This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
   (setq-default neo-theme 'arrow
+                neo-window-fixed-size nil
+                neo-window-width 24
                 js2-strict-trailing-comma-warning nil
                 mouse-wheel-progressive-speed nil
                 scroll-preserve-screen-position nil
