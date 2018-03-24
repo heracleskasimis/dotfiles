@@ -517,7 +517,7 @@ to 'auto, tags may not be properly aligned. "
        `(line-number ((,class (:foreground ,lnum :background ,lnum-bg)))))
 
 ;;;;; linum-relative
-     `(linum-relative-current-face ((,class (:foreground ,comp))))
+     `(linum-relative-current-face ((,class (:foreground ,lnum :background ,lnum-bg))))
 
 ;;;;; magit
      `(magit-blame-culprit ((,class :background ,yellow-bg :foreground ,yellow)))
