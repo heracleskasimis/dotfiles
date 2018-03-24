@@ -474,7 +474,6 @@ you should place your code here."
                 idle-highlight-idle-time 0.25
                 show-paren-delay 0)
   (show-paren-mode 1)
-  (require 'add-node-modules-path)
   (eval-after-load 'js-mode
     '(add-hook 'js-mode-hook #'add-node-modules-path))
   (eval-after-load 'js2-mode
