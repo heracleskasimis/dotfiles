@@ -115,14 +115,14 @@ to 'auto, tags may not be properly aligned. "
         (cyan          "turquoise")
         (red           "PaleVioletRed3")
         (red-bg        "LavenderBlush1")
-        (red-bg-s      "LavenderBlush2 ")
+        (red-bg-s      "LavenderBlush2")
         (blue          "deep sky blue")
         (blue-bg       "alice blue")
         (blue-bg-s     "LightBlue1")
         (magenta       "DarkOrchid2")
         (yellow        "khaki4")
-        (yellow-bg     "floral white")
-        (yellow-bg-s   "old lace")
+        (yellow-bg     "light yellow")
+        (yellow-bg-s   "light goldenrod yellow")
         )
 
         custom-colors-override
@@ -133,7 +133,7 @@ to 'auto, tags may not be properly aligned. "
 ;;;;; basics
      `(cursor ((,class (:background ,cursor))))
      `(custom-button ((,class :background ,bg2 :foreground ,base :box (:line-width 2 :style released-button))))
-     `(default ((,class (:background ,bg1 :foreground ,base))))
+     ;; `(default ((,class (:background ,bg1 :foreground ,base))))
      `(default-italic ((,class (:italic t))))
      `(error ((,class (:foreground ,err))))
      `(eval-sexp-fu-flash ((,class (:background ,suc :foreground ,bg1))))
@@ -157,6 +157,7 @@ to 'auto, tags may not be properly aligned. "
      `(hl-line ((,class (:background ,hlbg))))
      `(isearch ((,class (:background ,mat))))
      `(lazy-highlight ((,class (:background ,green-bg-s))))
+     `(idle-highlight ((,class (:background ,green-bg))))
      `(link ((,class (:foreground ,comment :underline t))))
      `(link-visited ((,class (:foreground ,comp :underline t))))
      `(match ((,class (:background ,highlight :foreground ,mat))))
@@ -854,7 +855,8 @@ to 'auto, tags may not be properly aligned. "
      `(undo-tree-visualizer-current-face ((,class :foreground ,keyword)))
      `(undo-tree-visualizer-default-face ((,class :foreground ,base)))
      `(undo-tree-visualizer-register-face ((,class :foreground ,comp)))
-     `(undo-tree-visualizer-unmodified-face ((,class :foreground ,var))))
+     `(undo-tree-visualizer-unmodified-face ((,class :foreground ,var)))
+     `(vimrc-number ((,class :foreground ,blue))))
 
     (custom-theme-set-variables
      theme-name
