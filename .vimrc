@@ -9,8 +9,8 @@ set showcmd
 set incsearch
 set encoding=utf-8
 set guioptions=a
-set guifont=Liberation\ Mono\ for\ Powerline:h11
-set linespace=2
+set guifont=Liberation\ Mono\ for\ Powerline:h13
+set linespace=1
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set mouse=a
 set visualbell
