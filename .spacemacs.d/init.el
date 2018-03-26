@@ -33,7 +33,8 @@ This function should only modify configuration layer settings."
 
    ;; List of configuration layers to load.
    dotspacemacs-configuration-layers
-   '(yaml
+   '(html
+     yaml
      vimscript
      javascript
      ;; ----------------------------------------------------------------
@@ -41,7 +42,7 @@ This function should only modify configuration layer settings."
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
      ;; `M-m f e R' (Emacs style) to install them.
      ;; ----------------------------------------------------------------
-     ivy
+     helm
      ;; auto-completion
      ;; better-defaults
      emacs-lisp
@@ -497,9 +498,8 @@ This function is called at the very end of Spacemacs initialization."
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(evil-want-Y-yank-to-eol nil)
  '(package-selected-packages
-   '(highlight-symbol idle-highlight-mode web-mode tagedit slim-mode scss-mode sass-mode rjsx-mode pug-mode impatient-mode htmlize haml-mode emmet-mode counsel-css ws-butler winum which-key wgrep web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package toc-org tern symon string-inflection spaceline-all-the-icons smex smeargle restart-emacs request popwin persp-mode pcre2el password-generator paradox overseer org-plus-contrib org-bullets open-junk-file neotree nameless move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint json-mode js2-refactor js-doc ivy-xref ivy-purpose ivy-hydra indent-guide hungry-delete hl-todo highlight-numbers highlight-indentation helm-make google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md font-lock+ flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu elisp-slime-nav editorconfig dumb-jump diminish define-word dactyl-mode counsel-projectile column-enforce-mode coffee-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link)))
+   '(helm-xref helm-themes helm-swoop helm-purpose helm-projectile helm-mode-manager helm-gitignore helm-flx helm-descbinds helm-css-scss helm-ag ace-jump-helm-line yaml-mode ws-butler winum which-key wgrep web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package toc-org tern tagedit symon string-inflection spaceline-all-the-icons smex smeargle slim-mode scss-mode sass-mode rjsx-mode restart-emacs request pug-mode popwin persp-mode pcre2el password-generator paradox overseer org-plus-contrib org-bullets open-junk-file neotree nameless move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode linum-relative link-hint json-mode js2-refactor js-doc ivy-xref ivy-purpose ivy-hydra indent-guide impatient-mode idle-highlight-mode hungry-delete hl-todo highlight-numbers highlight-indentation helm-make google-translate golden-ratio gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md font-lock+ flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav editorconfig dumb-jump diminish define-word dactyl-mode counsel-projectile counsel-css column-enforce-mode coffee-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile aggressive-indent adaptive-wrap ace-window ace-link)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.

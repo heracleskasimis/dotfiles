@@ -443,6 +443,11 @@ to 'auto, tags may not be properly aligned. "
      `(helm-time-zone-current ((,class (:foreground ,keyword :background ,bg1))))
      `(helm-time-zone-home ((,class (:foreground ,comp :background ,bg1))))
      `(helm-visible-mark ((,class (:foreground ,keyword :background ,bg3))))
+     `(helm-M-x-key ((,class (:foreground ,const :underline t))))
+     `(helm-locate-finish ((,class (:foreground ,green))))
+     `(helm-resume-need-update ((,class (:background ,red-bg-s))))
+     `(helm-lisp-show-completion ((,class (:background ,green-bg-s))))
+     `(helm-prefarg ((,class (:foreground ,red))))
 
 ;;;;; helm-swoop
      `(helm-swoop-target-line-block-face ((,class (:foreground ,base :background ,highlight))))
