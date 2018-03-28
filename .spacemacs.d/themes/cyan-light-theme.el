@@ -734,7 +734,7 @@ to 'auto, tags may not be properly aligned. "
      `(shm-quarantine-face ((,class (:background ,red-bg-s))))
 
 ;;;;; show-paren
-     `(show-paren-match ((,class (:inherit bold :underline t))))
+     `(show-paren-match ((,class (:inherit bold :underline (:color ,cursor)))))
      `(show-paren-mismatch ((,class (:foreground ,red :background ,red-bg-s :inherit bold))))
 
 ;;;;; smartparens
@@ -810,6 +810,10 @@ to 'auto, tags may not be properly aligned. "
      `(web-mode-symbol-face ((,class (:foreground ,type))))
      `(web-mode-type-face ((,class (:inherit ,font-lock-type-face))))
      `(web-mode-warning-face ((,class (:inherit ,font-lock-warning-face))))
+
+;;;;; rjsx-mode
+     `(rjsx-tag ((,class (:foreground ,keyword :inherit bold))))
+     `(rjsx-tag-bracket-face ((,class (:foreground ,keyword :inherit bold))))
 
 ;;;;; which-key
      `(which-key-command-description-face ((,class (:foreground ,base))))
