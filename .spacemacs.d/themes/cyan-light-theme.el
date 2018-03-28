@@ -834,7 +834,7 @@ to 'auto, tags may not be properly aligned. "
      `(whitespace-space-after-tab ((,class (:background nil :foreground ,yellow))))
      `(whitespace-space-before-tab ((,class (:background nil :foreground ,yellow))))
      `(whitespace-tab ((,class (:background nil :foreground ,act2))))
-     `(whitespace-trailing ((,class (:background ,err :foreground ,war))))
+     `(whitespace-trailing ((,class (:background ,red-bg :foreground ,war))))
 
 ;;;;; other, need more work
      `(ac-completion-face ((,class (:underline t :foreground ,keyword))))
@@ -860,7 +860,7 @@ to 'auto, tags may not be properly aligned. "
      `(js3-jsdoc-tag-face ((,class (:foreground ,keyword))))
      `(js3-warning-face ((,class (:underline ,keyword))))
      `(slime-repl-inputed-output-face ((,class (:foreground ,comp))))
-     `(trailing-whitespace ((,class :foreground nil :background ,err)))
+     `(trailing-whitespace ((,class :foreground nil :background ,red-bg)))
      `(undo-tree-visualizer-current-face ((,class :foreground ,keyword)))
      `(undo-tree-visualizer-default-face ((,class :foreground ,base)))
      `(undo-tree-visualizer-register-face ((,class :foreground ,comp)))
