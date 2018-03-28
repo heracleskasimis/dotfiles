@@ -471,7 +471,8 @@ you should place your code here."
                 mouse-wheel-progressive-speed nil
                 scroll-preserve-screen-position nil
                 flycheck-check-syntax-automatically '(mode-enabled save)
-                linum-format "%4d "
+                linum-format "%3d "
+                linum-relative-format " %3s "
                 idle-highlight-idle-time 0.25
                 show-paren-delay 0)
   (show-paren-mode 1)
