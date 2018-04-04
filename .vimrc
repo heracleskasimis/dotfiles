@@ -20,7 +20,7 @@ set noerrorbells
 set langmap=ΑA,ΒB,ΨC,ΔD,ΕE,ΦF,ΓG,ΗH,ΙI,ΞJ,ΚK,ΛL,ΜM,ΝN,ΟO,ΠP,ΡR,ΣS,ΤT,ΘU,ΩV,ΧX,ΖY,ΥZ,αa,βb,ψc,δd,εe,φf,γg,ηh,ιi,ξj,κk,λl,μm,νn,οo,πp,qq,ρr,σs,τt,θu,ωv,ςw,χx,ζz,υy
 
 set autochdir
-set nu
+set number relativenumber
 set hidden
 set ignorecase
 set smartcase
