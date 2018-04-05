@@ -37,6 +37,7 @@ This function should only modify configuration layer settings."
      html
      yaml
      vimscript
+     common-lisp
      (javascript :variables node-add-modules-path t)
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
@@ -49,7 +50,7 @@ This function should only modify configuration layer settings."
      emacs-lisp
      git
      markdown
-     ;; org
+     (org :variables org-enable-bootstrap-support t)
      ;; (shell :variables
      ;;        shell-default-height 30
      ;;        shell-default-position 'bottom)
@@ -67,7 +68,8 @@ This function should only modify configuration layer settings."
    ;; Also include the dependencies as they will not be resolved automatically.
    dotspacemacs-additional-packages '(rjsx-mode
                                       editorconfig
-                                      idle-highlight-mode)
+                                      idle-highlight-mode
+                                      nodejs-repl)
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -76,7 +78,7 @@ This function should only modify configuration layer settings."
    dotspacemacs-excluded-packages '(smartparens
                                     highlight-parentheses
                                     rainbow-delimiters
-                                    orgbtl-mode)
+                                    org-bullets)
 
    ;; Defines the behaviour of Spacemacs when installing packages.
    ;; Possible values are `used-only', `used-but-keep-unused' and `all'.
@@ -476,11 +478,19 @@ you should place your code here."
                 idle-highlight-idle-time 0.25
                 show-paren-delay 0)
   (show-paren-mode 1)
+  (spaceline-toggle-hud-off)
   (use-package rjsx-mode
     :config
     (define-key rjsx-mode-map "<" nil)
     (define-key rjsx-mode-map (kbd "C-d") nil)
     (define-key rjsx-mode-map ">" nil))
+  ;; nodejs-repl
+  (spacemacs/set-leader-keys-for-major-mode 'js2-mode "ne" 'nodejs-repl-send-last-expression)
+  (spacemacs/set-leader-keys-for-major-mode 'js2-mode "nj" 'nodejs-repl-send-line)
+  (spacemacs/set-leader-keys-for-major-mode 'js2-mode "nr" 'nodejs-repl-send-region)
+  (spacemacs/set-leader-keys-for-major-mode 'js2-mode "nl" 'nodejs-repl-load-file)
+  (spacemacs/set-leader-keys-for-major-mode 'js2-mode "n'" 'nodejs-repl-switch-to-repl)
+  (spacemacs/set-leader-keys-for-major-mode 'js2-mode "ns" 'nodejs-repl-switch-to-repl)
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
@@ -496,7 +506,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(add-node-modules-path yapfify yaml-mode ws-butler winum which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package toc-org tern tagedit symon string-inflection spaceline-all-the-icons smeargle slim-mode scss-mode sass-mode rjsx-mode restart-emacs pyvenv pytest pyenv-mode py-isort pug-mode popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox overseer org-plus-contrib org-bullets open-junk-file neotree nameless move-text mmm-mode markdown-toc magit-gitflow macrostep lorem-ipsum livid-mode live-py-mode linum-relative link-hint json-mode js2-refactor js-doc indent-guide importmagic impatient-mode idle-highlight-mode hy-mode hungry-delete hl-todo highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-ag google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md font-lock+ flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav editorconfig dumb-jump diminish define-word dactyl-mode cython-mode counsel-projectile column-enforce-mode coffee-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile anaconda-mode aggressive-indent adaptive-wrap ace-window ace-link ace-jump-helm-line)))
+   '(nodejs-repl ox-gfm ox-twbs orgit magit-popup git-commit ghub org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-download org-brain gnuplot evil-org yapfify yaml-mode ws-butler winum which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package toc-org tern tagedit symon string-inflection spaceline-all-the-icons smeargle slime slim-mode scss-mode sass-mode rjsx-mode restart-emacs pyvenv pytest pyenv-mode py-isort pug-mode popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox overseer org-plus-contrib org-bullets open-junk-file neotree nameless move-text mmm-mode markdown-toc magit-gitflow lorem-ipsum livid-mode live-py-mode linum-relative link-hint json-mode js2-refactor js-doc indent-guide importmagic impatient-mode idle-highlight-mode hy-mode hungry-delete hl-todo highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-ag google-translate golden-ratio gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md font-lock+ flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav editorconfig dumb-jump diminish define-word dactyl-mode cython-mode counsel-projectile column-enforce-mode coffee-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile anaconda-mode aggressive-indent add-node-modules-path adaptive-wrap ace-window ace-link ace-jump-helm-line)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
