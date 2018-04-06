@@ -517,14 +517,14 @@ to 'auto, tags may not be properly aligned. "
      `(ledger-occur-xact-face ((,class (:background ,bg2))))
 
 ;;;;; linum-mode
-     `(linum ((,class (:foreground ,bg4 :inverse-video t))))
+     `(linum ((,class (:foreground ,bg4 :inverse-video t :underline nil))))
 
 ;;;;; line-numbers-mode (Emacs 26+)
      (when (>= emacs-major-version 26)
-       `(line-number ((,class (:foreground ,bg4 :inverse-video t)))))
+       `(line-number ((,class (:foreground ,bg4 :inverse-video t :underline nil)))))
 
 ;;;;; linum-relative
-     `(linum-relative-current-face ((,class (:foreground ,bg4 :inverse-video t))))
+     `(linum-relative-current-face ((,class (:foreground ,bg4 :inverse-video t :underline nil))))
 
 ;;;;; magit
      `(magit-blame-culprit ((,class :background ,yellow-bg :foreground ,yellow)))
