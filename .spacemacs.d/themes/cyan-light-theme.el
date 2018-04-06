@@ -519,14 +519,14 @@ to 'auto, tags may not be properly aligned. "
      `(ledger-occur-xact-face ((,class (:background ,bg2))))
 
 ;;;;; linum-mode
-     `(linum ((,class (:foreground ,lnum :background ,lnum-bg :inherit default))))
+     `(linum ((,class (:foreground ,lnum-bg :inverse-video t))))
 
 ;;;;; line-numbers-mode (Emacs 26+)
      (when (>= emacs-major-version 26)
-       `(line-number ((,class (:foreground ,lnum :background ,lnum-bg)))))
+       `(line-number ((,class (:foreground ,lnum-bg :inverse-video t)))))
 
 ;;;;; linum-relative
-     `(linum-relative-current-face ((,class (:foreground ,lnum :background ,lnum-bg))))
+     `(linum-relative-current-face ((,class (:foreground ,lnum-bg :inverse-video t))))
 
 ;;;;; magit
      `(magit-blame-culprit ((,class :background ,yellow-bg :foreground ,yellow)))
@@ -867,7 +867,6 @@ to 'auto, tags may not be properly aligned. "
      `(neo-vc-conflict-face ((,class (:foreground ,red))))
      `(neo-vc-unlocked-changes-face ((,class (:foreground ,red :background ,blue))))
      `(neo-vc-user-face ((,class (:slant italic :foreground ,red))))
-
 
 ;;;;; other, need more work
      `(ac-completion-face ((,class (:underline t :foreground ,keyword))))
