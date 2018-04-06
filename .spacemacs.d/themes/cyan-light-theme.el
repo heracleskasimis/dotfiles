@@ -156,6 +156,7 @@ to 'auto, tags may not be properly aligned. "
      `(highlight ((,class (:foreground ,base :background ,highlight))))
      `(hl-line ((,class (:background ,hlbg))))
      `(isearch ((,class (:background ,mat))))
+     `(isearch-fail ((,class (:background ,red-bg-s))))
      `(lazy-highlight ((,class (:background ,green-bg-s))))
      `(idle-highlight ((,class (:background ,green-bg))))
      `(link ((,class (:foreground ,comment :underline t))))
@@ -333,6 +334,7 @@ to 'auto, tags may not be properly aligned. "
 ;;;;; evil
      `(evil-ex-substitute-matches ((,class (:background ,red-bg :foreground ,red))))
      `(evil-ex-substitute-replacement ((,class (:background ,green-bg :foreground ,green))))
+     `(evil-ex-info ((,class (:foreground ,red :slant italic))))
 
 ;;;;; flycheck
      `(flycheck-error
@@ -449,6 +451,7 @@ to 'auto, tags may not be properly aligned. "
      `(helm-resume-need-update ((,class (:background ,red-bg-s))))
      `(helm-lisp-show-completion ((,class (:background ,green-bg-s))))
      `(helm-prefarg ((,class (:foreground ,red))))
+     `(helm-buffer-archive ((,class (:inherit bold :foreground ,yellow))))
 
 ;;;;; helm-swoop
      `(helm-swoop-target-line-block-face ((,class (:foreground ,base :background ,highlight))))
@@ -690,9 +693,11 @@ to 'auto, tags may not be properly aligned. "
      `(org-verbatim ((,class (:foreground ,keyword))))
      `(org-verse ((,class (:inherit org-block :slant italic))))
      `(org-warning ((,class (:foreground ,err))))
+     `(org-formula ((,class (:foreground ,red))))
 
 ;;;;; perspective
      `(persp-selected-face ((,class (:inherit bold :foreground ,func))))
+     `(persp-face-lighter-buffer-not-in-persp ((,class (:inherit bold :foreground ,red-bg :background ,red))))
 
 ;;;;; popup
      `(popup-enu-selection-face ((,class (:background ,ttip-sl :foreground ,base))))
@@ -741,6 +746,8 @@ to 'auto, tags may not be properly aligned. "
 ;;;;; smartparens
      `(sp-pair-overlay-face ((,class (:background ,highlight :foreground nil))))
      `(sp-show-pair-match-face ((,class (:weight bold :underline t))))
+     `(sp-wrap-overlay-closing-pair ((,class (:weight bold :foreground ,red))))
+     `(sp-wrap-overlay-opening-pair ((,class (:weight bold :foreground ,green))))
 
 ;;;;; smerge
      `(smerge-base ((,class (:background ,yellow-bg))))
@@ -756,6 +763,13 @@ to 'auto, tags may not be properly aligned. "
      `(spaceline-flycheck-info   ((,class (:foreground ,keyword))))
      `(spaceline-flycheck-warning((,class (:foreground ,war))))
      `(spaceline-python-venv ((,class (:foreground ,comp))))
+     `(spaceline-evil-emacs ((,class (:background ,blue))))
+     `(spaceline-evil-insert ((,class (:background ,green))))
+     `(spaceline-evil-motion ((,class (:background ,yellow))))
+     `(spaceline-evil-normal ((,class (:background ,magenta))))
+     `(spaceline-unmodified ((,class (:background ,magenta))))
+     `(spaceline-evil-replace ((,class (:background ,red))))
+     `(spaceline-highlight-face ((,class (:background ,yellow))))
 
 ;;;;; spacemacs-specific
      `(spacemacs-transient-state-title-face ((,class (:background nil :foreground ,comp :box nil :inherit bold))))
@@ -837,6 +851,24 @@ to 'auto, tags may not be properly aligned. "
      `(whitespace-tab ((,class (:background nil :foreground ,act2))))
      `(whitespace-trailing ((,class (:background ,red-bg :foreground ,war))))
 
+;;;; compilation
+     `(compilation-column-number ((,class (:foreground ,green))))
+     `(compilation-error ((,class (:foreground ,red))))
+     `(compilation-info ((,class (:foreground ,blue))))
+     `(compilation-line-number ((,class (:inherit bold))))
+     `(compilation-mode-line-exit ((,class (:inherit bold :foreground ,green))))
+     `(compilation-mode-line-fail ((,class (:inherit bold :foreground ,green))))
+
+;;;;; neotree
+     `(neo-vc-added-face ((,class (:foreground ,green))))
+     `(neo-vc-edited-face ((,class (:foreground ,magenta))))
+     `(neo-vc-missing-face ((,class (:foreground ,red))))
+     `(neo-vc-needs-merge-face ((,class (:foreground ,red))))
+     `(neo-vc-conflict-face ((,class (:foreground ,red))))
+     `(neo-vc-unlocked-changes-face ((,class (:foreground ,red :background ,blue))))
+     `(neo-vc-user-face ((,class (:slant italic :foreground ,red))))
+
+
 ;;;;; other, need more work
      `(ac-completion-face ((,class (:underline t :foreground ,keyword))))
      `(ffap ((,class (:foreground ,base))))
@@ -869,7 +901,13 @@ to 'auto, tags may not be properly aligned. "
      `(undo-tree-visualizer-default-face ((,class :foreground ,base)))
      `(undo-tree-visualizer-register-face ((,class :foreground ,comp)))
      `(undo-tree-visualizer-unmodified-face ((,class :foreground ,var)))
-     `(vimrc-number ((,class :foreground ,blue))))
+     `(vimrc-number ((,class :foreground ,blue)))
+     `(skewer-error-face ((,class :foreground ,err)))
+     `(table-cell ((,class :background ,blue :foreground ,bg1)))
+     `(tty-menu-disabled-face ((,class :background ,blue :foreground ,blue-bg-s)))
+     `(tty-menu-enabled-face ((,class :inherit bold :background ,blue :foreground ,bg1)))
+     `(tty-menu-selected-face ((,class :inherit bold :background ,green :foreground ,bg1)))
+     )
 
     (custom-theme-set-variables
      theme-name
