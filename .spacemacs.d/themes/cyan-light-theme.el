@@ -68,7 +68,7 @@ to 'auto, tags may not be properly aligned. "
         (bg2           "grey95")
         (hlbg          "LavenderBlush1")
         (bg3           "grey90")
-        (bg4           "grey75")
+        (bg4           "grey80")
         (border        "grey80")
         (cblk          "black")
         (cblk-bg       "grey92")
@@ -93,8 +93,6 @@ to 'auto, tags may not be properly aligned. "
         (highlight     "LightCyan1")
         (highlight-dim "light cyan")
         (keyword       "black")
-        (lnum          "white")
-        (lnum-bg       "grey80")
         (mat           "CadetBlue1")
         (meta          "turquoise4")
         (str           "cyan4")
@@ -519,14 +517,14 @@ to 'auto, tags may not be properly aligned. "
      `(ledger-occur-xact-face ((,class (:background ,bg2))))
 
 ;;;;; linum-mode
-     `(linum ((,class (:foreground ,lnum-bg :inverse-video t))))
+     `(linum ((,class (:foreground ,bg4 :inverse-video t))))
 
 ;;;;; line-numbers-mode (Emacs 26+)
      (when (>= emacs-major-version 26)
-       `(line-number ((,class (:foreground ,lnum-bg :inverse-video t)))))
+       `(line-number ((,class (:foreground ,bg4 :inverse-video t)))))
 
 ;;;;; linum-relative
-     `(linum-relative-current-face ((,class (:foreground ,lnum-bg :inverse-video t))))
+     `(linum-relative-current-face ((,class (:foreground ,bg4 :inverse-video t))))
 
 ;;;;; magit
      `(magit-blame-culprit ((,class :background ,yellow-bg :foreground ,yellow)))
