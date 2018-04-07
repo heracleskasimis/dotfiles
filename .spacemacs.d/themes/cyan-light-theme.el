@@ -482,11 +482,21 @@ to 'auto, tags may not be properly aligned. "
      `(info-node ((,class (:foreground ,func :inherit bold))))
      `(info-quoted-name ((,class (:foreground ,keyword))))
      `(info-reference-item ((,class (:background nil :underline t :inherit bold))))
+     `(info-command-ref-item ((,class (:foreground ,func :underline t :inherit bold))))
+     `(info-constant-ref-item ((,class (:foreground ,const :underline t :inherit bold))))
+     `(info-function-ref-item ((,class (:foreground ,func :underline t))))
+     `(info-variable-ref-item ((,class (:foreground ,var :underline t))))
+     `(info-user-option-ref-item ((,class (:foreground ,var :underline t))))
+     `(info-syntax-class-item ((,class (:foreground ,func :inherit bold))))
      `(info-string ((,class (:foreground ,str))))
+     `(info-double-quoted-name ((,class (:foreground ,str))))
      `(info-title-1 ((,class (:height 1.4 :inherit bold))))
      `(info-title-2 ((,class (:height 1.3 :inherit bold))))
      `(info-title-3 ((,class (:height 1.3))))
      `(info-title-4 ((,class (:height 1.2))))
+     `(info-file ((,class (:foreground ,str :underline t))))
+     `(info-menu-star ((,class (:foreground ,blue))))
+     `(info-index-match ((,class (:background ,highlight))))
 
 ;;;;; ivy
      `(ivy-current-match ((,class (:background ,highlight :inherit bold))))
@@ -518,13 +528,8 @@ to 'auto, tags may not be properly aligned. "
 
 ;;;;; linum-mode
      `(linum ((,class (:foreground ,bg4 :inverse-video t :underline nil))))
-
-;;;;; line-numbers-mode (Emacs 26+)
-     (when (>= emacs-major-version 26)
-       `(line-number ((,class (:foreground ,bg4 :inverse-video t :underline nil)))))
-
-;;;;; linum-relative
      `(linum-relative-current-face ((,class (:foreground ,bg4 :inverse-video t :underline nil))))
+     `(line-number ((,class (:foreground ,bg4 :inverse-video t :underline nil))))
 
 ;;;;; magit
      `(magit-blame-culprit ((,class :background ,yellow-bg :foreground ,yellow)))
