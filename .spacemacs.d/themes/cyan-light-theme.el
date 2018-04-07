@@ -527,9 +527,9 @@ to 'auto, tags may not be properly aligned. "
      `(ledger-occur-xact-face ((,class (:background ,bg2))))
 
 ;;;;; linum-mode
-     `(linum ((,class (:foreground ,border :inverse-video t :underline nil))))
-     `(linum-relative-current-face ((,class (:foreground ,border :inverse-video t :underline nil))))
-     `(line-number ((,class (:foreground ,border :inverse-video t :underline nil))))
+     `(linum ((,class (:foreground ,border :inverse-video t :underline nil :height 1))))
+     `(linum-relative-current-face ((,class (:foreground ,border :inverse-video t :underline nil :height 1))))
+     `(line-number ((,class (:foreground ,border :inverse-video t :underline nil :height 1))))
 
 ;;;;; magit
      `(magit-blame-culprit ((,class :background ,yellow-bg :foreground ,yellow)))
