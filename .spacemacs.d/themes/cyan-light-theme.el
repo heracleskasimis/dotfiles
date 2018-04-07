@@ -60,7 +60,7 @@ to 'auto, tags may not be properly aligned. "
 (defun create-spacemacs-theme (variant theme-name)
   (dyn-let ((class '((class color) (min-colors 89)))
         ;; generic
-        (act1          "grey91")
+        (act1          "grey94")
         (act2          "grey80")
         (base          "grey20")
         (base-dim      "grey50")
@@ -68,12 +68,12 @@ to 'auto, tags may not be properly aligned. "
         (bg2           "grey95")
         (hlbg          "LavenderBlush1")
         (bg3           "grey90")
-        (bg4           "grey80")
+        (bg4           "grey86")
         (border        "grey80")
         (cblk          "black")
-        (cblk-bg       "grey92")
+        (cblk-bg       "grey97")
         (cblk-ln       "grey40")
-        (cblk-ln-bg    "grey93")
+        (cblk-ln-bg    "grey94")
         (cursor        "orchid")
         (const         "black")
         (comment       "grey55")
@@ -527,9 +527,9 @@ to 'auto, tags may not be properly aligned. "
      `(ledger-occur-xact-face ((,class (:background ,bg2))))
 
 ;;;;; linum-mode
-     `(linum ((,class (:foreground ,bg4 :inverse-video t :underline nil))))
-     `(linum-relative-current-face ((,class (:foreground ,bg4 :inverse-video t :underline nil))))
-     `(line-number ((,class (:foreground ,bg4 :inverse-video t :underline nil))))
+     `(linum ((,class (:foreground ,border :inverse-video t :underline nil))))
+     `(linum-relative-current-face ((,class (:foreground ,border :inverse-video t :underline nil))))
+     `(line-number ((,class (:foreground ,border :inverse-video t :underline nil))))
 
 ;;;;; magit
      `(magit-blame-culprit ((,class :background ,yellow-bg :foreground ,yellow)))
