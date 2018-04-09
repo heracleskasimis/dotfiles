@@ -591,7 +591,7 @@ to 'auto, tags may not be properly aligned. "
      `(magit-diff-our ((,class (:background ,red-bg :foreground ,red :inherit bold))))
      `(magit-diff-our-highlight ((,class (:background ,red-bg-s :foreground ,red :inherit bold))))
      `(magit-diff-lines-boundary ((,class (:background ,bg4))))
-     `(magit-diff-lines-boundary ((,class (:background ,bg4))))
+     `(magit-diff-lines-heading ((,class (:background ,ttip-sl))))
      `(magit-diffstat-added ((,class (:foreground ,green))))
      `(magit-signature-bad ((,class (:foreground ,err))))
      `(magit-signature-error ((,class (:foreground ,err))))
