@@ -50,6 +50,7 @@ This function should only modify configuration layer settings."
      emacs-lisp
      git
      markdown
+     neotree
      (org :variables org-enable-bootstrap-support t)
      ;; (shell :variables
      ;;        shell-default-height 30
@@ -167,7 +168,7 @@ It should only modify the values of Spacemacs settings."
    dotspacemacs-startup-buffer-responsive t
 
    ;; Default major mode of the scratch buffer (default `text-mode')
-   dotspacemacs-scratch-mode 'text-mode
+   dotspacemacs-scratch-mode 'org-mode
 
    ;; Initial message in the scratch buffer, such as "Welcome to Spacemacs!"
    ;; (default nil)
@@ -446,6 +447,9 @@ executes.
 before packages are loaded. If you are unsure, you should try in setting them in
 `dotspacemacs/user-config' first."
   (add-to-list 'custom-theme-load-path "~/.spacemacs.d/themes")
+  (setq configuration-layer-elpa-archives '(("melpa" . "melpa.org/packages/")
+                                            ("org" . "orgmode.org/elpa/")
+                                            ("gnu" . "elpa.gnu.org/packages/")))
   (setq spacemacs-evil-cursors '(("normal" "orchid" box)
                                  ("insert" "cyan4" (bar . 2))
                                  ("emacs" "turquoise3" box)
@@ -466,7 +470,7 @@ layers configuration.
 This is the place where most of your configurations should be done. Unless it is
 explicitly specified that a variable should be set before a package is loaded,
 you should place your code here."
-  (setq-default neo-theme 'arrow
+  (setq-default neo-theme 'ascii
                 neo-window-fixed-size nil
                 neo-window-width 24
                 js2-strict-trailing-comma-warning nil
@@ -476,7 +480,9 @@ you should place your code here."
                 linum-format "%3d "
                 linum-relative-format " %3s "
                 idle-highlight-idle-time 0.25
-                show-paren-delay 0)
+                show-paren-delay 0
+                split-height-threshold 16
+                js2-basic-offset 2)
   (show-paren-mode 1)
   (spaceline-toggle-hud-off)
   (use-package rjsx-mode
@@ -491,6 +497,8 @@ you should place your code here."
   (spacemacs/set-leader-keys-for-major-mode 'js2-mode "nl" 'nodejs-repl-load-file)
   (spacemacs/set-leader-keys-for-major-mode 'js2-mode "n'" 'nodejs-repl-switch-to-repl)
   (spacemacs/set-leader-keys-for-major-mode 'js2-mode "ns" 'nodejs-repl-switch-to-repl)
+  (org-babel-do-load-languages
+   'org-babel-load-languages '((js . t)))
   )
 
 ;; Do not write anything past this comment. This is where Emacs will
