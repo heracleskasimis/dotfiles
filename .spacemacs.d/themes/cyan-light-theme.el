@@ -183,6 +183,11 @@ to 'auto, tags may not be properly aligned. "
 
 ;;;;; anzu-mode
      `(anzu-mode-line ((,class (:foreground ,yellow :inherit bold))))
+     `(anzu-mode-line-no-match ((,class (:foreground ,red :inherit bold))))
+     `(anzu-match-1 ((,class (:background ,cyan))))
+     `(anzu-match-2 ((,class (:background ,blue-bg-s))))
+     `(anzu-match-3 ((,class (:background ,green-bg-s))))
+     `(anzu-replace-to ((,class (:foreground ,red))))
 
 ;;;;; auto-complete
      `(ac-completion-face ((,class (:background ,ttip-bg :foreground ,ttip))))
@@ -549,6 +554,7 @@ to 'auto, tags may not be properly aligned. "
      `(magit-diff-context-highlight ((,class (:background ,bg2 :foreground ,base))))
      `(magit-diff-hunk-heading ((,class (:background ,ttip-bg :foreground ,ttip))))
      `(magit-diff-hunk-heading-highlight ((,class (:background ,ttip-sl :foreground ,base))))
+     `(magit-diff-hunk-heading-selection ((,class (:background ,ttip-sl :foreground ,base :inherit bold))))
      `(magit-hash ((,class (:foreground ,var))))
      `(magit-hunk-heading           ((,class (:background ,bg3))))
      `(magit-hunk-heading-highlight ((,class (:background ,bg3))))
@@ -584,6 +590,16 @@ to 'auto, tags may not be properly aligned. "
      `(magit-diff-their-highlight ((,class (:background ,green-bg-s :foreground ,green :inherit bold))))
      `(magit-diff-our ((,class (:background ,red-bg :foreground ,red :inherit bold))))
      `(magit-diff-our-highlight ((,class (:background ,red-bg-s :foreground ,red :inherit bold))))
+     `(magit-diff-lines-boundary ((,class (:background ,bg4))))
+     `(magit-diff-lines-boundary ((,class (:background ,bg4))))
+     `(magit-diffstat-added ((,class (:foreground ,green))))
+     `(magit-signature-bad ((,class (:foreground ,err))))
+     `(magit-signature-error ((,class (:foreground ,err))))
+     `(magit-signature-good ((,class (:foreground ,green))))
+     `(magit-signature-revoked ((,class (:foreground ,war))))
+     `(magit-signature-untrusted ((,class (:foreground ,war))))
+     `(magit-signature-expired ((,class (:foreground ,war))))
+     `(magit-signature-expired-key ((,class (:foreground ,war))))
 
 ;;;;; man
      `(Man-overstrike ((,class (:foreground ,head1 :inherit bold))))
@@ -870,6 +886,17 @@ to 'auto, tags may not be properly aligned. "
      `(neo-vc-conflict-face ((,class (:foreground ,red))))
      `(neo-vc-unlocked-changes-face ((,class (:foreground ,red :background ,blue))))
      `(neo-vc-user-face ((,class (:slant italic :foreground ,red))))
+
+;;;; message
+     `(message-cited-text ((,class (:foreground ,red))))
+     `(message-header-cc ((,class (:foreground ,base))))
+     `(message-header-name ((,class (:foreground ,blue))))
+     `(message-header-other ((,class (:foreground ,green))))
+     `(message-header-xheader ((,class (:foreground ,blue))))
+     `(message-mml ((,class (:foreground ,green))))
+     `(message-separator ((,class (:foreground ,base-dim))))
+     `(mm-command-output ((,class (:foreground ,red))))
+
 
 ;;;;; other, need more work
      `(ac-completion-face ((,class (:underline t :foreground ,keyword))))
