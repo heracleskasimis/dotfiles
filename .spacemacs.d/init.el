@@ -450,14 +450,14 @@ before packages are loaded. If you are unsure, you should try in setting them in
   (setq configuration-layer-elpa-archives '(("melpa" . "melpa.org/packages/")
                                             ("org" . "orgmode.org/elpa/")
                                             ("gnu" . "elpa.gnu.org/packages/")))
-  (setq spacemacs-evil-cursors '(("normal" "orchid" box)
-                                 ("insert" "cyan4" (bar . 2))
+  (setq spacemacs-evil-cursors '(("normal" "cyan4" box)
+                                 ("insert" "orchid" (bar . 2))
                                  ("emacs" "turquoise3" box)
                                  ("hybrid" "turquoise3" (bar . 2))
-                                 ("replace" "orchid" (hbar . 2))
-                                 ("evilified" "orchid" box)
-                                 ("visual" "gray" (hbar . 2))
-                                 ("motion" "plum3" box)
+                                 ("replace" "cyan4" (hbar . 2))
+                                 ("evilified" "cyan4" box)
+                                 ("visual" "turquoise4" (hbar . 2))
+                                 ("motion" "cyan4" box)
                                  ("lisp" "HotPink1" box)
                                  ("iedit" "IndianRed1" box)
                                  ("iedit-insert" "PaleVioletRed1" (bar . 2))))
@@ -514,7 +514,7 @@ This function is called at the very end of Spacemacs initialization."
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(package-selected-packages
-   '(nodejs-repl yapfify yaml-mode ws-butler winum which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package toc-org tagedit symon string-inflection spaceline-all-the-icons smeargle slime slim-mode scss-mode sass-mode rjsx-mode restart-emacs pyvenv pytest pyenv-mode py-isort pug-mode popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox ox-twbs overseer orgit org-projectile org-present org-pomodoro org-mime org-download org-brain open-junk-file neotree nameless move-text mmm-mode markdown-toc magit-gitflow lorem-ipsum livid-mode live-py-mode linum-relative link-hint json-mode js2-refactor js-doc indium indent-guide importmagic impatient-mode idle-highlight-mode hy-mode hungry-delete hl-todo highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md font-lock+ flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav editorconfig dumb-jump diminish define-word dactyl-mode cython-mode counsel-projectile column-enforce-mode coffee-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile anaconda-mode aggressive-indent add-node-modules-path adaptive-wrap ace-window ace-link ace-jump-helm-line)))
+   '(tern yapfify yaml-mode ws-butler winum which-key web-mode web-beautify volatile-highlights vimrc-mode vi-tilde-fringe uuidgen use-package toc-org tagedit symon string-inflection spaceline-all-the-icons smeargle slime slim-mode scss-mode sass-mode rjsx-mode restart-emacs pyvenv pytest pyenv-mode py-isort pug-mode popwin pippel pipenv pip-requirements persp-mode pcre2el password-generator paradox ox-twbs overseer orgit org-projectile org-present org-pomodoro org-mime org-download org-brain open-junk-file nodejs-repl neotree nameless move-text mmm-mode markdown-toc magit-gitflow lorem-ipsum livid-mode live-py-mode linum-relative link-hint json-mode js2-refactor js-doc indent-guide importmagic impatient-mode idle-highlight-mode hy-mode hungry-delete hl-todo highlight-numbers highlight-indentation helm-xref helm-themes helm-swoop helm-pydoc helm-purpose helm-projectile helm-mode-manager helm-make helm-gitignore helm-flx helm-descbinds helm-css-scss helm-ag google-translate golden-ratio gnuplot gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link gh-md font-lock+ flycheck-pos-tip flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-nerd-commenter evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-cleverparens evil-args evil-anzu eval-sexp-fu emmet-mode elisp-slime-nav editorconfig dumb-jump diminish define-word dactyl-mode cython-mode counsel-projectile column-enforce-mode coffee-mode clean-aindent-mode centered-cursor-mode auto-highlight-symbol auto-compile anaconda-mode aggressive-indent add-node-modules-path adaptive-wrap ace-window ace-link ace-jump-helm-line)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
