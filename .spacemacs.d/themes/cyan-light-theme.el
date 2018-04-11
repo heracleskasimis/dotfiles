@@ -932,6 +932,7 @@ to 'auto, tags may not be properly aligned. "
      `(undo-tree-visualizer-unmodified-face ((,class :foreground ,var)))
      `(vimrc-number ((,class :foreground ,blue)))
      `(skewer-error-face ((,class :foreground ,err)))
+     `(skewer-repl-log-face ((,class :foreground ,str)))
      `(table-cell ((,class :background ,blue :foreground ,bg1)))
      `(tty-menu-disabled-face ((,class :background ,blue :foreground ,blue-bg-s)))
      `(tty-menu-enabled-face ((,class :inherit bold :background ,blue :foreground ,bg1)))
