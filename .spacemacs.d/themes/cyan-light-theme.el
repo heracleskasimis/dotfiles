@@ -69,7 +69,8 @@ to 'auto, tags may not be properly aligned. "
         (hlbg          "azure")
         (bg3           "grey90")
         (bg4           "grey86")
-        (border        "grey80")
+        (border        "grey95")
+        (border-s      "grey80")
         (cblk          "black")
         (cblk-bg       "grey97")
         (cblk-ln       "grey40")
@@ -98,8 +99,8 @@ to 'auto, tags may not be properly aligned. "
         (str           "cyan4")
         (suc           "turquoise4")
         (ttip          "grey50")
-        (ttip-sl       "grey80")
-        (ttip-bg       "grey90")
+        (ttip-sl       "grey90")
+        (ttip-bg       "grey95")
         (type          "black")
         (var           "black")
         (war           "orchid")
@@ -111,7 +112,7 @@ to 'auto, tags may not be properly aligned. "
         (green-bg      "azure")
         (green-bg-s    "LightCyan1")
         (cyan          "turquoise")
-        (red           "PaleVioletRed3")
+        (red           "VioletRed3")
         (red-bg        "LavenderBlush1")
         (red-bg-s      "LavenderBlush2")
         (blue          "deep sky blue")
@@ -532,9 +533,9 @@ to 'auto, tags may not be properly aligned. "
      `(ledger-occur-xact-face ((,class (:background ,bg2))))
 
 ;;;;; linum-mode
-     `(linum ((,class (:foreground ,border :inverse-video t :underline nil :height 1))))
-     `(linum-relative-current-face ((,class (:foreground ,border :inverse-video t :underline nil :height 1))))
-     `(line-number ((,class (:foreground ,border :inverse-video t :underline nil :height 1))))
+     `(linum ((,class (:slant italic :foreground ,border-s :inverse-video t :underline nil :height 1))))
+     `(linum-relative-current-face ((,class (:slant italic :foreground ,border-s :inverse-video t :underline nil :height 1))))
+     `(line-number ((,class (:slant italic :foreground ,border-s :inverse-video t :underline nil :height 1))))
 
 ;;;;; magit
      `(magit-blame-culprit ((,class :background ,yellow-bg :foreground ,yellow)))
@@ -617,9 +618,9 @@ to 'auto, tags may not be properly aligned. "
      `(markdown-code-face ((,class (:italic t))))
 
 ;;;;; mode-line
-     `(mode-line           ((,class (:foreground ,base :background ,act1 :box (:color ,border :line-width 1)))))
+     `(mode-line           ((,class (:foreground ,base :background ,act1 :box nil))))
      `(mode-line-buffer-id ((,class (:inherit bold :foreground ,func))))
-     `(mode-line-inactive  ((,class (:foreground ,base :background ,bg1  :box (:color ,border :line-width 1)))))
+     `(mode-line-inactive  ((,class (:foreground ,base :background ,bg1  :box nil))))
 
 ;;;;; mu4e
      `(mu4e-attach-number-face ((,class (:foreground ,var))))
