@@ -58,7 +58,7 @@ hi String             cterm=NONE            ctermfg=4
 
 hi Cursorline         gui=NONE              guifg=NONE        guibg=#ebebeb
 " hi Cursorline         gui=bold              guifg=NONE      guibg=#e0ffff
-hi CursorlineNr       gui=italic              guifg=#e0e0e0    guibg=#bbbbbb
+hi CursorlineNr       gui=italic              guifg=#e0e0e0    guibg=#bbbbbb    ctermbg=NONE   ctermfg=7
 hi Cursor             gui=NONE              guifg=white        guibg=#ff0044
 hi SpecialKey         gui=bold              guifg=NONE
 hi NonText            gui=bold              guifg=#e0e0e0        guibg=NONE
