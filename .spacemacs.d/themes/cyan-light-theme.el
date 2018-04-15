@@ -390,10 +390,23 @@ to 'auto, tags may not be properly aligned. "
      `(jabber-roster-user-online ((,class (:inherit bold :foreground ,green))))
      `(jabber-roster-user-xa ((,class (:foreground ,aqua))))
 
-;;;;; git-gutter-fr
+;;;;; git-gutter
+     `(git-gutter:added ((,class (:foreground ,green :inherit bold))))
+     `(git-gutter:deleted ((,class (:foreground ,red :inherit bold))))
+     `(git-gutter:modified ((,class (:foreground ,war :inherit bold))))
+     `(git-gutter:unchanged ((,class (:background ,yellow-s))))
+     `(git-gutter+-added ((,class (:foreground ,green :inherit bold))))
+     `(git-gutter+-deleted ((,class (:foreground ,red :inherit bold))))
+     `(git-gutter+-modified ((,class (:foreground ,war :inherit bold))))
+     `(git-gutter+-unchanged ((,class (:background ,yellow-s))))
+     `(git-gutter-fr+-added ((,class (:foreground ,green :inherit bold))))
+     `(git-gutter-fr+-deleted ((,class (:foreground ,red :inherit bold))))
+     `(git-gutter-fr+-modified ((,class (:foreground ,war :inherit bold))))
+     `(git-gutter-fr+-unchanged ((,class (:background ,yellow-s))))
      `(git-gutter-fr:added ((,class (:foreground ,green :inherit bold))))
-     `(git-gutter-fr:deleted ((,class (:foreground ,war :inherit bold))))
-     `(git-gutter-fr:modified ((,class (:foreground ,keyword :inherit bold))))
+     `(git-gutter-fr:deleted ((,class (:foreground ,red :inherit bold))))
+     `(git-gutter-fr:modified ((,class (:foreground ,war :inherit bold))))
+     `(git-gutter-fr:unchanged ((,class (:background ,yellow-s))))
 
 ;;;;; git-timemachine
      `(git-timemachine-minibuffer-detail-face ((,class (:foreground ,blue :inherit bold :background ,blue-bg))))
