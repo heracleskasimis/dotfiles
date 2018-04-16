@@ -487,7 +487,8 @@ you should place your code here."
                 split-height-threshold 16
                 js2-basic-offset 2)
   (show-paren-mode 1)
-  (menu-bar-mode 1)
+  (if (display-graphic-p)
+    (menu-bar-mode 1))
   (global-visual-line-mode t)
   (spaceline-toggle-hud-off)
   (use-package rjsx-mode
