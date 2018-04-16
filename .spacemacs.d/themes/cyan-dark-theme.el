@@ -924,7 +924,7 @@ to 'auto, tags may not be properly aligned. "
      `(js2-warning
        ((,(append '((supports :underline (:style wave))) class)
          (:underline (:style wave :color ,war)))
-        (,class (:foreground ,base :background ,war :inherit bold :underline t))))
+        (,class (:foreground ,war :inherit bold :underline t))))
      `(js2-external-variable ((,class (:foreground ,comp))))
      `(js2-function-param ((,class (:foreground ,const))))
      `(js2-jsdoc-html-tag-delimiter ((,class (:foreground ,str))))
@@ -939,9 +939,15 @@ to 'auto, tags may not be properly aligned. "
      `(js3-jsdoc-tag-face ((,class (:foreground ,keyword))))
      `(js3-warning-face ((,class (:underline ,keyword))))
      `(slime-repl-inputed-output-face ((,class (:foreground ,comp))))
-     `(slime-error-face ((,class (:underline (:style wave :color ,err)))))
+     `(slime-error-face
+       ((,(append '((supports :underline (:style wave))) class)
+         (:underline (:style wave :color ,err)))
+        (,class (:foreground ,err :inherit bold :underline t))))
      `(slime-warning-face ((,class (:underline (:style wave :color ,war)))))
-     `(slime-style-warning-face ((,class (:underline (:style wave :color ,war)))))
+     `(slime-style-warning-face
+       ((,(append '((supports :underline (:style wave))) class)
+         (:underline (:style wave :color ,war)))
+        (,class (:foreground ,war :inherit bold :underline t))))
      `(trailing-whitespace ((,class :foreground nil :background ,red-bg)))
      `(undo-tree-visualizer-current-face ((,class :foreground ,keyword)))
      `(undo-tree-visualizer-default-face ((,class :foreground ,base)))
