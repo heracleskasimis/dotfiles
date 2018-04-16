@@ -547,6 +547,8 @@ to 'auto, tags may not be properly aligned. "
      `(linum ((,class (:slant italic :foreground ,border-s :inverse-video t :underline nil :height 1))))
      `(linum-relative-current-face ((,class (:slant italic :foreground ,border-s :inverse-video t :underline nil :height 1))))
      `(line-number ((,class (:slant italic :foreground ,border-s :inverse-video t :underline nil :height 1))))
+     `(nlinum-current-line ((,class (:slant italic :foreground ,border-s :inverse-video t :underline nil :height 1))))
+     `(nlinum-relative-current-face ((,class (:slant italic :foreground ,border-s :inverse-video t :underline nil :height 1))))
 
 ;;;;; magit
      `(magit-blame-culprit ((,class :background ,yellow-bg :foreground ,yellow)))
