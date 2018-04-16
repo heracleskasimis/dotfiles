@@ -178,7 +178,7 @@ to 'auto, tags may not be properly aligned. "
 
 ;;;;; ahs
      `(ahs-face ((,class (:background ,highlight))))
-     `(ahs-plugin-whole-buffer-face ((,class (:background ,mat))))
+     `(ahs-plugin-whole-buffer-face ((,class (:background ,mat :foreground ,bg1))))
      `(ahs-definition-face ((,class (:background ,green-bg))))
      `(ahs-edit-mode-face ((,class (:background ,red-bg))))
      `(ahs-plugin-bod-face ((,class (:background ,blue-bg))))
@@ -187,10 +187,11 @@ to 'auto, tags may not be properly aligned. "
 ;;;;; anzu-mode
      `(anzu-mode-line ((,class (:foreground ,yellow :inherit bold))))
      `(anzu-mode-line-no-match ((,class (:foreground ,red :inherit bold))))
-     `(anzu-match-1 ((,class (:background ,cyan))))
+     `(anzu-match-1 ((,class (:background ,cyan :foreground ,bg1))))
      `(anzu-match-2 ((,class (:background ,blue-bg-s))))
      `(anzu-match-3 ((,class (:background ,green-bg-s))))
      `(anzu-replace-to ((,class (:foreground ,red))))
+     `(anzu-replace-highlight ((,class (:foreground ,bg1 :background ,cyan))))
 
 ;;;;; auto-complete
      `(ac-completion-face ((,class (:background ,ttip-bg :foreground ,ttip))))
@@ -346,7 +347,7 @@ to 'auto, tags may not be properly aligned. "
      `(flycheck-error
        ((,(append '((supports :underline (:style wave))) class)
          (:underline (:style wave :color ,err)))
-        (,class (:foreground ,base :background ,err :inherit bold :underline t))))
+        (,class (:foreground ,err :inherit bold :underline t))))
      `(flycheck-error-list-checker-name ((,class (:foreground ,keyword))))
      `(flycheck-fringe-error ((,class (:foreground ,err :inherit bold))))
      `(flycheck-fringe-info ((,class (:foreground ,keyword :inherit bold))))
@@ -358,7 +359,7 @@ to 'auto, tags may not be properly aligned. "
      `(flycheck-warning
        ((,(append '((supports :underline (:style wave))) class)
          (:underline (:style wave :color ,war)))
-        (,class (:foreground ,base :background ,war :inherit bold :underline t))))
+        (,class (:foreground ,war :inherit bold :underline t))))
      `(flyspell-duplicate ((t (:underline (:color ,war :style wave)))))
      `(flyspell-incorrect ((t (:underline (:color ,err :style wave)))))
 
