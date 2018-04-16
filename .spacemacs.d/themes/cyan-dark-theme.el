@@ -98,7 +98,7 @@ to 'auto, tags may not be properly aligned. "
         (lnum-bg       "grey30")
         (mat           "CadetBlue1")
         (meta          "grey45")
-        (str           "dark cyan")
+        (str           "cyan3")
         (suc           "dark turquoise")
         (ttip          "grey50")
         (ttip-sl       "grey30")
