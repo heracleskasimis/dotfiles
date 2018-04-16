@@ -95,7 +95,7 @@ to 'auto, tags may not be properly aligned. "
         (highlight-dim "light cyan")
         (keyword       "black")
         (mat           "CadetBlue1")
-        (meta          "turquoise4")
+        (meta          "grey55")
         (str           "cyan4")
         (suc           "turquoise4")
         (ttip          "grey50")
