@@ -14,7 +14,7 @@
   "Spacemacs-theme options."
   :group 'faces)
 
-(defcustom spacemacs-theme-comment-bg t
+(defcustom spacemacs-theme-comment-bg nil
   "Use a background for comment lines."
   :type 'boolean
   :group 'spacemacs-theme)
@@ -76,7 +76,7 @@ to 'auto, tags may not be properly aligned. "
         (cblk-ln       "grey20")
         (cblk-ln-bg    "grey7")
         (cursor        "VioletRed2")
-        (const         "cyan4")
+        (const         "white")
         (comment       "grey45")
         (comment-light "grey45")
         (comment-bg    "grey7")
