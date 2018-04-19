@@ -30,31 +30,31 @@ determine the exact padding."
 
 ;;
 (def-doom-theme cyan-light
-  "A dark theme inspired by Atom One"
+  "A light theme based on doom-one-light"
 
   ;; name        default   256       16
   ((bg         '("#fafafa" nil       nil            ))
    (bg-alt     '("#f0f0f0" nil       nil            ))
    (base0      '("#f0f0f0" "#f0f0f0" "white"        ))
    (base1      '("#e7e7e7" "#e7e7e7" "brightblack"  ))
-   (base2      '("grey93" "#dfdfdf" "brightblack"  ))
-   (base3      '("#c6c7c7" "#c6c7c7" "brightblack"  ))
-   (base4      '("grey50" "#9ca0a4" "brightblack"  ))
-   (base5      '("#383a42" "#424242" "brightblack"  ))
-   (base6      '("#202328" "#2e2e2e" "brightblack"  ))
+   (base2      '("#fcfcfc" "#dfdfdf" "brightblack"  ))
+   (base3      '("#c4c4c4" "#c6c7c7" "brightblack"  ))
+   (base4      '("#949494" "#9ca0a4" "brightblack"  ))
+   (base5      '("#303030" "#424242" "brightblack"  ))
+   (base6      '("#202020" "#2e2e2e" "brightblack"  ))
    (base7      '("#1c1f24" "#1e1e1e" "brightblack"  ))
-   (base8      '("#1b2229" "black"   "black"        ))
-   (fg         '("#383a42" "#424242" "black"        ))
-   (fg-alt     '("#c6c7c7" "#c7c7c7" "brightblack"  ))
+   (base8      '("#2b2b2b" "black"   "black"        ))
+   (fg         '("#303030" "#424242" "black"        ))
+   (fg-alt     '("#c2c2c2" "#c7c7c7" "brightblack"  ))
 
    (grey       base4)
-   (red        '("#cd3278"   "#ff6655" "red"          ))
+   (red        '("#ee7ae9"   "#ff6655" "red"          ))
    (orange     '("#ee3a8c"   "#dd8844" "brightred"    ))
    (green      '("#00868b"   "#99bb66" "green"        ))
    (teal       '("#00cdcd"   "#44b9b1" "brightgreen"  ))
    (yellow     '("#8b864e"   "#ECBE7B" "yellow"       ))
-   (blue       '("#00bfff"   "#51afef" "brightblue"   ))
-   (dark-blue  '("#f0ffff"   "#2257A0" "blue"         ))
+   (blue       '("#96cdcd"   "#51afef" "brightblue"   ))
+   (dark-blue  '("#aeeeee"   "#2257A0" "blue"         ))
    (magenta    '("#bf3eff"   "#c678dd" "magenta"      ))
    (violet     '("#ff83fa"   "#a9a1e1" "brightmagenta"))
    (cyan       '("#00eeee"   "#46D9FF" "brightcyan"   ))
@@ -113,7 +113,7 @@ determine the exact padding."
     :foreground doc-comments
     :slant 'italic)
 
-   ((line-number &override) :foreground (doom-lighten base4 0.45))
+   ((line-number &override) :foreground (doom-darken base2 0.15))
    ((line-number-current-line &override) :foreground base8)
 
    (solaire-hl-line-face :inherit 'hl-line :background base0)
@@ -151,7 +151,7 @@ determine the exact padding."
 
    ;; markdown-mode
    (markdown-markup-face     :foreground base5)
-   (markdown-header-face     :inherit 'bold :foreground red)
+   (markdown-header-face     :inherit 'bold :foreground fg)
    (markdown-code-face       :background base1)
    (mmm-default-submode-face :background base1)
 
