@@ -54,7 +54,7 @@ determine the exact padding."
    (teal       '("cyan3"        "#44b9b1" "brightgreen"  ))
    (yellow     '("khaki4"       "#ECBE7B" "yellow"       ))
    (blue       '("DeepSkyBlue1" "#51afef" "brightblue"   ))
-   (dark-blue  '("DeepSkyBlue3" "#2257A0" "blue"         ))
+   (dark-blue  '("azure"        "#2257A0" "blue"         ))
    (magenta    '("DarkOrchid2"  "#c678dd" "magenta"      ))
    (violet     '("orchid"       "#a9a1e1" "brightmagenta"))
    (cyan       '("cyan2"        "#46D9FF" "brightcyan"   ))
@@ -63,24 +63,24 @@ determine the exact padding."
    ;; face categories -- required for all themes
    (highlight      green)
    (vertical-bar   (doom-darken base2 0.1))
-   (selection      dark-blue)
+   (selection      cyan)
    (builtin        magenta)
    (comments       (if cyan-light-brighter-comments cyan base4))
    (doc-comments   (doom-darken comments 0.15))
    (constants      violet)
    (functions      magenta)
-   (keywords       red)
-   (methods        cyan)
+   (keywords       grey)
+   (methods        grey)
    (operators      blue)
    (type           grey)
    (strings        green)
    (variables      (doom-darken magenta 0.36))
-   (numbers        orange)
+   (numbers        teal)
    (region         `(,(doom-darken (car bg-alt) 0.1) ,@(doom-darken (cdr base0) 0.3)))
    (error          red)
    (warning        yellow)
    (success        green)
-   (vc-modified    orange)
+   (vc-modified    teal)
    (vc-added       green)
    (vc-deleted     red)
 
@@ -168,7 +168,7 @@ determine the exact padding."
    (helm-candidate-number :background blue :foreground bg)
 
    ;; web-mode
-   (web-mode-current-element-highlight-face :background dark-blue :foreground bg)
+   (web-mode-current-element-highlight-face :background blue :foreground bg)
 
    ;; wgrep
    (wgrep-face :background base1)
