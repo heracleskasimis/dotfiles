@@ -39,7 +39,7 @@ determine the exact padding."
    (base1      '("#e7e7e7" "#e7e7e7" "brightblack"  ))
    (base2      '("grey93" "#dfdfdf" "brightblack"  ))
    (base3      '("#c6c7c7" "#c6c7c7" "brightblack"  ))
-   (base4      '("grey80" "#9ca0a4" "brightblack"  ))
+   (base4      '("grey50" "#9ca0a4" "brightblack"  ))
    (base5      '("#383a42" "#424242" "brightblack"  ))
    (base6      '("#202328" "#2e2e2e" "brightblack"  ))
    (base7      '("#1c1f24" "#1e1e1e" "brightblack"  ))
@@ -48,17 +48,17 @@ determine the exact padding."
    (fg-alt     '("#c6c7c7" "#c7c7c7" "brightblack"  ))
 
    (grey       base4)
-   (red        '("VioletRed3"   "#ff6655" "red"          ))
-   (orange     '("VioletRed2"   "#dd8844" "brightred"    ))
-   (green      '("turquoise4"   "#99bb66" "green"        ))
-   (teal       '("cyan3"        "#44b9b1" "brightgreen"  ))
-   (yellow     '("khaki4"       "#ECBE7B" "yellow"       ))
-   (blue       '("DeepSkyBlue1" "#51afef" "brightblue"   ))
-   (dark-blue  '("azure"        "#2257A0" "blue"         ))
-   (magenta    '("DarkOrchid2"  "#c678dd" "magenta"      ))
-   (violet     '("orchid"       "#a9a1e1" "brightmagenta"))
-   (cyan       '("cyan2"        "#46D9FF" "brightcyan"   ))
-   (dark-cyan  '("cyan4"        "#5699AF" "cyan"         ))
+   (red        '("#cd3278"   "#ff6655" "red"          ))
+   (orange     '("#ee3a8c"   "#dd8844" "brightred"    ))
+   (green      '("#00868b"   "#99bb66" "green"        ))
+   (teal       '("#00cdcd"   "#44b9b1" "brightgreen"  ))
+   (yellow     '("#8b864e"   "#ECBE7B" "yellow"       ))
+   (blue       '("#00bfff"   "#51afef" "brightblue"   ))
+   (dark-blue  '("#f0ffff"   "#2257A0" "blue"         ))
+   (magenta    '("#bf3eff"   "#c678dd" "magenta"      ))
+   (violet     '("#ff83fa"   "#a9a1e1" "brightmagenta"))
+   (cyan       '("#00eeee"   "#46D9FF" "brightcyan"   ))
+   (dark-cyan  '("#008b8b"   "#5699AF" "cyan"         ))
 
    ;; face categories -- required for all themes
    (highlight      green)
@@ -113,7 +113,7 @@ determine the exact padding."
     :foreground doc-comments
     :slant 'italic)
 
-   ((line-number &override) :foreground (doom-lighten base4 0.15))
+   ((line-number &override) :foreground (doom-lighten base4 0.45))
    ((line-number-current-line &override) :foreground base8)
 
    (solaire-hl-line-face :inherit 'hl-line :background base0)
