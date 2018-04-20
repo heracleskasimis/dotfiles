@@ -5,6 +5,7 @@
 (setq-default mouse-wheel-progressive-speed nil
               scroll-preserve-screen-position nil
               doom-theme 'cyan-light)
+(if (display-graphic-p) (menu-bar-mode 1))
 
 (doom! :feature
        (popup            ; tame sudden yet inevitable temporary windows
