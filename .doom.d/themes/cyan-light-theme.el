@@ -6,7 +6,7 @@
   "Options for doom-themes"
   :group 'doom-themes)
 
-(defcustom cyan-light-brighter-modeline nil
+(defcustom cyan-light-brighter-modeline t
   "If non-nil, more vivid colors will be used to style the mode-line."
   :group 'cyan-light-theme
   :type 'boolean)
@@ -36,15 +36,15 @@ determine the exact padding."
   ((bg         '("#ffffff" nil       nil            ))
    (bg-alt     '("#f5f5f5" nil       nil            ))
    (base0      '("#f0f0f0" "#f0f0f0" "white"        ))
-   (base1      '("#e7e7e7" "#e7e7e7" "brightblack"  ))
+   (base1      '("#f5f5f5" "#f5f5f5" "brightblack"  ))
    (base2      '("#fcfcfc" "#fcfcfc" "brightblack"  ))
    (base3      '("#c4c4c4" "#c4c4c4" "brightblack"  ))
    (base4      '("#a8a8a8" "#a8a8a8" "brightblack"  ))
    (base5      '("#303030" "#303030" "brightblack"  ))
    (base6      '("#202020" "#202020" "brightblack"  ))
    (base7      '("#1e1e1e" "#1e1e1e" "brightblack"  ))
-   (base8      '("#2b2b2b" "2b2b2b"   "black"        ))
-   (fg         '("#303030" "#303030" "black"        ))
+   (base8      '("#008b8b" "#008b8b" "black"        ))
+   (fg         '("#2b2b2b" "#2b2b2b" "black"        ))
    (fg-alt     '("#c2c2c2" "#c2c2c2" "brightblack"  ))
 
    (grey       base4)
@@ -95,11 +95,11 @@ determine the exact padding."
 
    (modeline-bg
     (if -modeline-bright
-        (doom-darken base2 0.05)
+        (doom-darken base2 0.1)
       base1))
    (modeline-bg-l
     (if -modeline-bright
-        (doom-darken base2 0.1)
+        (doom-darken base2 0.2)
       base2))
    (modeline-bg-inactive (doom-darken bg 0.1))
    (modeline-bg-inactive-l `(,(doom-darken (car bg-alt) 0.05) ,@(cdr base1))))
@@ -181,6 +181,11 @@ determine the exact padding."
 
    ;; tooltip
    (tooltip :background base1 :foreground fg)
+
+   ;; dired
+   (dired-k-modified :foreground red)
+   (dired-k-untracked :foreground magenta)
+   (dired-k-commited :foreground blue)
    )
 
   ;; --- extra variables ---------------------
