@@ -1,12 +1,6 @@
 ;;; init.el -*- lexical-binding: t; -*-
 ;; Copy me to ~/.doom.d/init.el or ~/.config/doom/init.el, then edit me!
 
-(add-to-list 'custom-theme-load-path "~/.doom.d/themes")
-(setq-default mouse-wheel-progressive-speed nil
-              scroll-preserve-screen-position nil
-              doom-theme 'cyan-light)
-(if (display-graphic-p) (menu-bar-mode 1))
-
 (doom! :feature
        (popup            ; tame sudden yet inevitable temporary windows
         +all             ; catch all popups that start with an asterix
@@ -127,5 +121,6 @@
        ;; a Spacemacs-inspired keybinding scheme, a custom yasnippet library,
        ;; and additional ex commands for evil-mode. Use it as a reference for
        ;; your own modules.
-       (default +bindings +snippets +evil-commands))
+       (default +bindings +snippets +evil-commands)
+       idk)
 
