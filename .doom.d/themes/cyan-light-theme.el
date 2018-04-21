@@ -36,14 +36,14 @@ determine the exact padding."
   ((bg         '("#ffffff" nil       nil            ))
    (bg-alt     '("#f5f5f5" nil       nil            ))
    (base0      '("#f0f0f0" "#f0f0f0" "white"        ))
-   (base1      '("#f5f5f5" "#f5f5f5" "brightblack"  ))
-   (base2      '("#fcfcfc" "#fcfcfc" "brightblack"  ))
-   (base3      '("#c4c4c4" "#c4c4c4" "brightblack"  ))
-   (base4      '("#a8a8a8" "#a8a8a8" "brightblack"  ))
+   (base1      '("#f5f5f5" "#f5f5f5" "brightwhite"  ))
+   (base2      '("#fcfcfc" "#fcfcfc" "brightwhite"  ))
+   (base3      '("#c4c4c4" "#c4c4c4" "brightwhite"  ))
+   (base4      '("#a8a8a8" "#a8a8a8" "black"  ))
    (base5      '("#303030" "#303030" "brightblack"  ))
    (base6      '("#202020" "#202020" "brightblack"  ))
    (base7      '("#1e1e1e" "#1e1e1e" "brightblack"  ))
-   (base8      '("#8b864e" "#008b8b" "black"        ))
+   (base8      '("#8b864e" "#8b864e" "black"        ))
    (fg         '("#2b2b2b" "#2b2b2b" "black"        ))
    (fg-alt     '("#c2c2c2" "#c2c2c2" "brightblack"  ))
 
@@ -75,7 +75,7 @@ determine the exact padding."
    (type           magenta)
    (strings        green)
    (variables      (doom-darken magenta 0.36))
-   (numbers        teal)
+   (numbers        violet)
    (region         `(,(doom-darken (car bg-alt) 0.1) ,@(doom-darken (cdr base0) 0.3)))
    (error          red)
    (warning        yellow)
@@ -186,6 +186,12 @@ determine the exact padding."
    (dired-k-modified :foreground red)
    (dired-k-untracked :foreground magenta)
    (dired-k-commited :foreground blue)
+
+   ;; evil
+   (evil-ex-lazy-highlight :background (doom-lighten blue 0.7))
+
+   ;; highlight numbers
+   (highlight-numbers-number :foreground constants)
    )
 
   ;; --- extra variables ---------------------
