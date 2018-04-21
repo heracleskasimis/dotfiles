@@ -151,7 +151,9 @@ determine the exact padding."
 
    ;; markdown-mode
    (markdown-markup-face     :foreground base5)
+   (markdown-list-face       :foreground fg)
    (markdown-header-face     :inherit 'bold :foreground fg)
+   (markdown-link-face       :foreground green)
    (markdown-code-face       :background base1)
    (markdown-header-face-1   :weight 'ultra-bold :height 1.2)
    (markdown-header-face-2   :weight 'extra-bold :height 1.1)
