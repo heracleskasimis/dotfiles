@@ -28,6 +28,11 @@ determine the exact padding."
   :group 'cyan-light-theme
   :type '(or integer boolean))
 
+(defcustom cyan-light-yellow-highlight nil
+  "If non-nil, uses yellow color for lazy highlight"
+  :group 'cyan-light-theme
+  :type 'boolean)
+
 ;;
 (def-doom-theme cyan-light
   "A light theme based on doom-one-light"
@@ -200,12 +205,14 @@ determine the exact padding."
    (dired-k-commited :foreground blue)
 
    ;; evil
-   (evil-ex-lazy-highlight :background (doom-lighten teal 0.75))
-   ;; (evil-ex-lazy-highlight :background light-yellow)
+   (evil-ex-lazy-highlight
+    :background (if cyan-light-yellow-highlight
+                    light-yellow
+                  (doom-lighten teal 0.75)))
 
-   ;; highlight numbers
-   (highlight-numbers-number :foreground constants)
-   )
+    ;; highlight numbers
+    (highlight-numbers-number :foreground constants)
+    )
 
   ;; --- extra variables ---------------------
   ;; ()

@@ -12,7 +12,7 @@
 (if (display-graphic-p) (menu-bar-mode 1))
 
 ;; magit
-(defun +magit/quit () (interactive) (magit-mode-bury-buffer))
+(defun +magit/quit () (interactive) (magit-mode-bury-buffer t))
 
 ;; org-mode
 (defadvice org-babel-execute-src-block (around load-language nil activate)
