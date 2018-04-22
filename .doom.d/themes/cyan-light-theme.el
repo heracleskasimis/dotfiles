@@ -200,8 +200,8 @@ determine the exact padding."
    (dired-k-commited :foreground blue)
 
    ;; evil
-   ;; (evil-ex-lazy-highlight :background (doom-lighten teal 0.7))
-   (evil-ex-lazy-highlight :background light-yellow)
+   (evil-ex-lazy-highlight :background (doom-lighten teal 0.75))
+   ;; (evil-ex-lazy-highlight :background light-yellow)
 
    ;; highlight numbers
    (highlight-numbers-number :foreground constants)
