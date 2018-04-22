@@ -33,35 +33,36 @@ determine the exact padding."
   "A light theme based on doom-one-light"
 
   ;; name        default   256       16
-  ((bg         '("#ffffff" nil       nil            ))
-   (bg-alt     '("#f5f5f5" nil       nil            ))
-   (base0      '("#f0f0f0" "#f0f0f0" "white"        ))
-   (base1      '("#f5f5f5" "#f5f5f5" "brightwhite"  ))
-   (base2      '("#fcfcfc" "#fcfcfc" "brightwhite"  ))
-   (base3      '("#c4c4c4" "#c4c4c4" "brightwhite"  ))
-   (base4      '("#a8a8a8" "#a8a8a8" "black"  ))
-   (base5      '("#303030" "#303030" "brightblack"  ))
-   (base6      '("#202020" "#202020" "brightblack"  ))
-   (base7      '("#1e1e1e" "#1e1e1e" "brightblack"  ))
-   (base8      '("#8b864e" "#8b864e" "black"        ))
-   (fg         '("#2b2b2b" "#2b2b2b" "black"        ))
-   (fg-alt     '("#c2c2c2" "#c2c2c2" "brightblack"  ))
+  ((bg           '("#ffffff" nil       nil            ))
+   (bg-alt       '("#f5f5f5" nil       nil            ))
+   (base0        '("#f0f0f0" "#f0f0f0" "white"        ))
+   (base1        '("#f5f5f5" "#f5f5f5" "brightwhite"  ))
+   (base2        '("#fcfcfc" "#fcfcfc" "brightwhite"  ))
+   (base3        '("#c4c4c4" "#c4c4c4" "brightwhite"  ))
+   (base4        '("#a8a8a8" "#a8a8a8" "black"  ))
+   (base5        '("#303030" "#303030" "brightblack"  ))
+   (base6        '("#202020" "#202020" "brightblack"  ))
+   (base7        '("#1e1e1e" "#1e1e1e" "brightblack"  ))
+   (base8        '("#8b864e" "#8b864e" "black"        ))
+   (fg           '("#2b2b2b" "#2b2b2b" "black"        ))
+   (fg-alt       '("#c2c2c2" "#c2c2c2" "brightblack"  ))
 
-   (grey       base4)
-   (red        '("#ee7ae9"   "#ee7ae9" "red"          ))
-   (orange     '("#ee3a8c"   "#ee3a8c" "brightred"    ))
-   (green      '("#00868b"   "#00868b" "green"        ))
-   (teal       '("#00cdcd"   "#00cdcd" "brightgreen"  ))
-   (yellow     '("#8b864e"   "#8b864e" "yellow"       ))
-   (blue       '("#00cdcd"   "#00cdcd" "brightblue"   ))
-   (dark-blue  '("#5fffff"   "#5fffff" "blue"         ))
-   (magenta    '("#bf3eff"   "#bf3eff" "magenta"      ))
-   (violet     '("#ff83fa"   "#ff83fa" "brightmagenta"))
-   (cyan       '("#00eeee"   "#00eeee" "brightcyan"   ))
-   (dark-cyan  '("#008b8b"   "#008b8b" "cyan"         ))
+   (grey         base4)
+   (red          '("#ee7ae9"   "#ee7ae9" "red"          ))
+   (orange       '("#ee3a8c"   "#ee3a8c" "brightred"    ))
+   (green        '("#00afaf"   "#00868b" "green"        ))
+   (teal         '("#00d7d7"   "#00d7d7" "brightgreen"  ))
+   (yellow       '("#8b864e"   "#8b864e" "yellow"       ))
+   (light-yellow '("#ffff5f"   "#ffff5f" "brightyellow" ))
+   (blue         '("#00868b"   "#00cdcd" "brightblue"   ))
+   (dark-blue    '("#005f5f"   "#5fffff" "blue"         ))
+   (magenta      '("#bf3eff"   "#bf3eff" "magenta"      ))
+   (violet       '("#ff83fa"   "#ff83fa" "brightmagenta"))
+   (cyan         '("#00eeee"   "#00eeee" "brightcyan"   ))
+   (dark-cyan    '("#008b8b"   "#008b8b" "cyan"         ))
 
    ;; face categories -- required for all themes
-   (highlight      green)
+   (highlight      blue)
    (vertical-bar   (doom-darken base2 0.1))
    (selection      cyan)
    (builtin        magenta)
@@ -71,9 +72,9 @@ determine the exact padding."
    (functions      magenta)
    (keywords       magenta)
    (methods        magenta)
-   (operators      blue)
+   (operators      yellow)
    (type           magenta)
-   (strings        green)
+   (strings        blue)
    (variables      (doom-darken magenta 0.36))
    (numbers        violet)
    (region         `(,(doom-darken (car bg-alt) 0.1) ,@(doom-darken (cdr base0) 0.3)))
@@ -139,9 +140,16 @@ determine the exact padding."
     :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg-inactive-l)))
 
    ;; magit
+   (magit-diff-hunk-heading :background (doom-lighten base3 0.2))
+   (magit-diff-hunk-heading-highlight :background base3)
    (magit-blame-heading     :foreground orange :background bg-alt)
    (magit-diff-removed :foreground (doom-darken red 0.2) :background (doom-blend red bg 0.1))
    (magit-diff-removed-highlight :foreground red :background (doom-blend red bg 0.2) :bold bold)
+   (magit-header-line
+    :foreground fg
+    :bold 'bold
+    :background base0
+    :box `(:line-width 3 :color ,base0))
 
    ;; --- major-mode faces -------------------
    ;; css-mode / scss-mode
@@ -193,7 +201,8 @@ determine the exact padding."
    (dired-k-commited :foreground blue)
 
    ;; evil
-   (evil-ex-lazy-highlight :background (doom-lighten blue 0.7))
+   ;; (evil-ex-lazy-highlight :background (doom-lighten teal 0.7))
+   (evil-ex-lazy-highlight :background light-yellow)
 
    ;; highlight numbers
    (highlight-numbers-number :foreground constants)
