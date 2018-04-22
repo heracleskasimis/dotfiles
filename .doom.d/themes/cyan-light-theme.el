@@ -6,7 +6,7 @@
   "Options for doom-themes"
   :group 'doom-themes)
 
-(defcustom cyan-light-brighter-modeline t
+(defcustom cyan-light-brighter-modeline nil
   "If non-nil, more vivid colors will be used to style the mode-line."
   :group 'cyan-light-theme
   :type 'boolean)
@@ -16,7 +16,7 @@
   :group 'cyan-light-theme
   :type 'boolean)
 
-(defcustom cyan-light-comment-bg cyan-light-brighter-comments
+(defcustom cyan-light-comment-bg nil
   "If non-nil, comments will have a subtle, darker background. Enhancing their
 legibility."
   :group 'cyan-light-theme
@@ -35,17 +35,17 @@ determine the exact padding."
   ;; name        default   256       16
   ((bg           '("#ffffff" nil       nil            ))
    (bg-alt       '("#f5f5f5" nil       nil            ))
-   (base0        '("#f0f0f0" "#f0f0f0" "white"        ))
-   (base1        '("#f5f5f5" "#f5f5f5" "brightwhite"  ))
-   (base2        '("#fcfcfc" "#fcfcfc" "brightwhite"  ))
-   (base3        '("#c4c4c4" "#c4c4c4" "brightwhite"  ))
-   (base4        '("#a8a8a8" "#a8a8a8" "black"  ))
-   (base5        '("#303030" "#303030" "brightblack"  ))
-   (base6        '("#202020" "#202020" "brightblack"  ))
-   (base7        '("#1e1e1e" "#1e1e1e" "brightblack"  ))
-   (base8        '("#87875f" "#87875f" "black"        ))
-   (fg           '("#2b2b2b" "#2b2b2b" "black"        ))
-   (fg-alt       '("#c2c2c2" "#c2c2c2" "brightblack"  ))
+   (base0        '("#fcfcfc" "#f0f0f0" "white"        ))
+   (base1        '("#fafafa" "#f5f5f5" "brightwhite"  ))
+   (base2        '("#f7f7f7" "#fcfcfc" "brightwhite"  ))
+   (base3        '("#c6c6c6" "#c6c6c6" "brightwhite"  ))
+   (base4        '("#a8a8a8" "#a8a8a8" "brightblack"  ))
+   (base5        '("#3a3a3a" "#3a3a3a" "brightblack"  ))
+   (base6        '("#262626" "#262626" "brightblack"  ))
+   (base7        '("#1c1c1c" "#1c1c1c" "black"        ))
+   (base8        '("#87875f" "#87875f" "brightblack"  ))
+   (fg           '("#262626" "#262626" "black"        ))
+   (fg-alt       '("#bcbcbc" "#bcbcbc" "white"        ))
 
    (grey         base4)
    (red          '("#ff5faf"   "#ff5faf" "red"          ))
@@ -92,14 +92,14 @@ determine the exact padding."
       (if (integerp cyan-light-padded-modeline) cyan-light-padded-modeline 4)))
 
    (modeline-fg     nil)
-   (modeline-fg-alt (doom-blend violet base4 (if -modeline-bright 0.5 0.2)))
+   (modeline-fg-alt (doom-blend violet base4 (if (not -modeline-bright) 0.5 0.2)))
 
    (modeline-bg
-    (if -modeline-bright
+    (if (not -modeline-bright)
         (doom-darken base2 0.1)
       base1))
    (modeline-bg-l
-    (if -modeline-bright
+    (if (not -modeline-bright)
         (doom-darken base2 0.2)
       base2))
    (modeline-bg-inactive (doom-darken bg 0.1))
