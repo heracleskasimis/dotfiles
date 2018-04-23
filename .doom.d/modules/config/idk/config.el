@@ -4,6 +4,10 @@
 (add-to-list 'custom-theme-load-path "~/.doom.d/themes")
 (setq-default doom-theme 'yellow-light)
 
+;; line wrap
+(add-hook 'visual-line-mode-hook #'adaptive-wrap-prefix-mode)
+(global-visual-line-mode +1)
+
 ;; scrolling
 (setq-default mouse-wheel-progressive-speed nil
               scroll-preserve-screen-position nil)
