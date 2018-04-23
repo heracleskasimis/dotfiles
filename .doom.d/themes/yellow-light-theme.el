@@ -68,7 +68,7 @@ determine the exact padding."
 
    ;; face categories -- required for all themes
    (highlight      dark-blue)
-   (vertical-bar   (doom-darken bg 0.1))
+   (vertical-bar   (doom-darken bg-alt 0.05))
    (selection      cyan)
    (builtin        magenta)
    (comments       (if yellow-light-brighter-comments cyan base4))
