@@ -1,54 +1,54 @@
-;;; cyan-light-theme.el --- inspired by Atom One Light
+;;; yellow-light-theme.el --- inspired by Atom One Light
 (require 'doom-themes)
 
 ;;
-(defgroup cyan-light-theme nil
+(defgroup yellow-light-theme nil
   "Options for doom-themes"
   :group 'doom-themes)
 
-(defcustom cyan-light-brighter-modeline nil
+(defcustom yellow-light-brighter-modeline nil
   "If non-nil, more vivid colors will be used to style the mode-line."
-  :group 'cyan-light-theme
+  :group 'yellow-light-theme
   :type 'boolean)
 
-(defcustom cyan-light-brighter-comments nil
+(defcustom yellow-light-brighter-comments nil
   "If non-nil, comments will be highlighted in more vivid colors."
-  :group 'cyan-light-theme
+  :group 'yellow-light-theme
   :type 'boolean)
 
-(defcustom cyan-light-comment-bg nil
+(defcustom yellow-light-comment-bg nil
   "If non-nil, comments will have a subtle, darker background. Enhancing their
 legibility."
-  :group 'cyan-light-theme
+  :group 'yellow-light-theme
   :type 'boolean)
 
-(defcustom cyan-light-padded-modeline nil
+(defcustom yellow-light-padded-modeline nil
   "If non-nil, adds a 4px padding to the mode-line. Can be an integer to
 determine the exact padding."
-  :group 'cyan-light-theme
+  :group 'yellow-light-theme
   :type '(or integer boolean))
 
-(defcustom cyan-light-yellow-highlight nil
+(defcustom yellow-light-yellow-highlight nil
   "If non-nil, uses yellow color for lazy highlight"
-  :group 'cyan-light-theme
+  :group 'yellow-light-theme
   :type 'boolean)
 
 ;;
-(def-doom-theme cyan-light
+(def-doom-theme yellow-light
   "A light theme based on doom-one-light"
 
   ;; name        default   256       16
   ((bg           '("#ffffff" nil       nil            ))
    (bg-alt       '("#f5f5f5" nil       nil            ))
-   (base0        '("#fcfcfc" "#f0f0f0" "white"        ))
-   (base1        '("#fafafa" "#f5f5f5" "brightwhite"  ))
-   (base2        '("#f7f7f7" "#fcfcfc" "brightwhite"  ))
+   (base0        '("#fcfcfc" "#fcfcfc" "white"        ))
+   (base1        '("#fafafa" "#fafafa" "brightwhite"  ))
+   (base2        '("#f7f7f7" "#f7f7f7" "brightwhite"  ))
    (base3        '("#c6c6c6" "#c6c6c6" "brightwhite"  ))
    (base4        '("#a8a8a8" "#a8a8a8" "brightblack"  ))
    (base5        '("#3a3a3a" "#3a3a3a" "brightblack"  ))
    (base6        '("#262626" "#262626" "brightblack"  ))
    (base7        '("#1c1c1c" "#1c1c1c" "black"        ))
-   (base8        '("#8a8a8a" "#8a8a8a" "brightblack"  ))
+   (base8        '("#87875f" "#87875f" "brightblack"  ))
    (fg           '("#262626" "#262626" "black"        ))
    (fg-alt       '("#bcbcbc" "#bcbcbc" "white"        ))
 
@@ -56,22 +56,22 @@ determine the exact padding."
    (red          '("#ff5faf"   "#ff5faf" "red"          ))
    (orange       '("#ff00af"   "#ff00af" "brightred"    ))
    (green        '("#5f5f00"   "#5f5f00" "green"        ))
-   (teal         '("#00d7d7"   "#00d7d7" "brightgreen"  ))
+   (teal         '("#dfdf00"   "#dfdf00" "brightgreen"  ))
    (yellow       '("#8b864e"   "#8b864e" "yellow"       ))
    (light-yellow '("#ffff5f"   "#ffff5f" "brightyellow" ))
-   (blue         '("#008787"   "#008787" "brightblue"   ))
-   (dark-blue    '("#005f5f"   "#005f5f" "blue"         ))
-   (magenta      '("#af5fff"   "#af5fff" "magenta"      ))
+   (blue         '("#afaf5f"   "#afaf5f" "brightblue"   ))
+   (dark-blue    '("#87875f"   "#87875f" "blue"         ))
+   (magenta      '("#ff87df"   "#ff87df" "magenta"      ))
    (violet       '("#ff87ff"   "#ff87ff" "brightmagenta"))
-   (cyan         '("#87ffff"   "#00eeee" "brightcyan"   ))
-   (dark-cyan    '("#008b8b"   "#008b8b" "cyan"         ))
+   (cyan         '("#ffff00"   "#ffff00" "brightcyan"   ))
+   (dark-cyan    '("#ffdf00"   "#ffdf00" "cyan"         ))
 
    ;; face categories -- required for all themes
-   (highlight      blue)
+   (highlight      dark-blue)
    (vertical-bar   (doom-darken base2 0.1))
    (selection      cyan)
    (builtin        magenta)
-   (comments       (if cyan-light-brighter-comments cyan base4))
+   (comments       (if yellow-light-brighter-comments cyan base4))
    (doc-comments   (doom-darken comments 0.15))
    (constants      violet)
    (functions      fg)
@@ -91,10 +91,10 @@ determine the exact padding."
    (vc-deleted     red)
 
    ;; custom categories
-   (-modeline-bright cyan-light-brighter-modeline)
+   (-modeline-bright yellow-light-brighter-modeline)
    (-modeline-pad
-    (when cyan-light-padded-modeline
-      (if (integerp cyan-light-padded-modeline) cyan-light-padded-modeline 4)))
+    (when yellow-light-padded-modeline
+      (if (integerp yellow-light-padded-modeline) cyan-light-padded-modeline 4)))
 
    (modeline-fg     nil)
    (modeline-fg-alt (doom-blend violet base4 (if (not -modeline-bright) 0.5 0.2)))
@@ -113,7 +113,7 @@ determine the exact padding."
   ;; --- extra faces ------------------------
   ((font-lock-comment-face
     :foreground comments
-    :background (if cyan-light-comment-bg base0))
+    :background (if yellow-light-comment-bg base0))
    (font-lock-doc-face
     :inherit 'font-lock-comment-face
     :foreground doc-comments
@@ -206,7 +206,7 @@ determine the exact padding."
 
    ;; evil
    (evil-ex-lazy-highlight
-    :background (if cyan-light-yellow-highlight
+    :background (if yellow-light-yellow-highlight
                     light-yellow
                   (doom-lighten teal 0.75)))
 
@@ -218,4 +218,4 @@ determine the exact padding."
   ;; ()
   )
 
-;;; cyan-light-theme.el ends here
+;;; yellow-light-theme.el ends here

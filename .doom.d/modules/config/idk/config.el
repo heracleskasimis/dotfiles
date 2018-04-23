@@ -2,7 +2,7 @@
 
 ;; theme
 (add-to-list 'custom-theme-load-path "~/.doom.d/themes")
-(setq-default doom-theme 'cyan-light)
+(setq-default doom-theme 'yellow-light)
 
 ;; scrolling
 (setq-default mouse-wheel-progressive-speed nil
