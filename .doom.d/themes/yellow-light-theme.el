@@ -68,7 +68,7 @@ determine the exact padding."
 
    ;; face categories -- required for all themes
    (highlight      dark-blue)
-   (vertical-bar   (doom-darken base2 0.1))
+   (vertical-bar   (doom-darken bg 0.1))
    (selection      cyan)
    (builtin        magenta)
    (comments       (if yellow-light-brighter-comments cyan base4))
@@ -119,8 +119,12 @@ determine the exact padding."
     :foreground doc-comments
     :slant 'italic)
 
-   ((line-number &override) :foreground (doom-darken base2 0.15))
-   ((line-number-current-line &override) :foreground base8)
+   ((line-number &override)
+    :foreground (doom-darken base2 0.15)
+    :slant 'italic)
+   ((line-number-current-line &override)
+    :foreground base8
+    :slant 'italic)
 
    (solaire-hl-line-face :inherit 'hl-line :background base0)
 
