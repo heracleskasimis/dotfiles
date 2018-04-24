@@ -61,10 +61,10 @@ determine the exact padding."
    (light-yellow '("#ffff5f"   "#ffff5f" "brightyellow" ))
    (blue         '("#afaf5f"   "#afaf5f" "brightblue"   ))
    (dark-blue    '("#87875f"   "#87875f" "blue"         ))
-   (magenta      '("#ff87df"   "#ff87df" "magenta"      ))
+   (magenta      '("#d75fd7"   "#d75fd7" "magenta"      ))
    (violet       '("#ff87ff"   "#ff87ff" "brightmagenta"))
-   (cyan         '("#ffff00"   "#ffff00" "brightcyan"   ))
-   (dark-cyan    '("#ffdf00"   "#ffdf00" "cyan"         ))
+   (cyan         '("#dfdf00"   "#dfdf00" "brightcyan"   ))
+   (dark-cyan    '("#afaf00"   "#afaf00" "cyan"         ))
 
    ;; face categories -- required for all themes
    (highlight      dark-blue)
@@ -118,6 +118,8 @@ determine the exact padding."
     :inherit 'font-lock-comment-face
     :foreground doc-comments
     :slant 'italic)
+   ; (font-lock-keyword-face :foreground fg :bold bold)
+   ; (font-lock-builtin-face :foreground fg :bold bold)
 
    ((line-number &override)
     :foreground (doom-darken base2 0.15)
@@ -156,7 +158,7 @@ determine the exact padding."
    (magit-diff-removed-highlight :foreground red :background (doom-blend red bg 0.2) :bold bold)
    (magit-header-line
     :foreground fg
-    :bold 'bold
+    :bold bold
     :background base0
     :box `(:line-width 3 :color ,base0))
 
@@ -216,6 +218,14 @@ determine the exact padding."
 
     ;; highlight numbers
     (highlight-numbers-number :foreground constants)
+
+    ;; js2
+    (js2-jsdoc-type :foreground green :bold bold)
+    (js2-object-property-access :foreground fg)
+    (js2-object-property :foreground fg)
+    (rjsx-tag :foreground violet)
+    (rjsx-tag-bracket-face :foreground violet)
+
     )
 
   ;; --- extra variables ---------------------
