@@ -208,7 +208,7 @@ determine the exact padding."
    (evil-ex-lazy-highlight
     :background (if cyan-light-yellow-highlight
                     light-yellow
-                  (doom-lighten teal 0.75)))
+                  (doom-lighten teal 0.85)))
 
     ;; highlight numbers
     (highlight-numbers-number :foreground constants)
