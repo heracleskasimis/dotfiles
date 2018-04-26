@@ -68,7 +68,7 @@ determine the exact padding."
 
    ;; face categories -- required for all themes
    (highlight      blue)
-   (vertical-bar   (doom-darken bg 0.07))
+   (vertical-bar   (doom-darken bg 0.1))
    (selection      cyan)
    (builtin        magenta)
    (comments       (if cyan-light-brighter-comments cyan base4))
@@ -107,7 +107,7 @@ determine the exact padding."
     (if (not -modeline-bright)
         (doom-darken base2 0.2)
       base2))
-   (modeline-bg-inactive (doom-darken bg 0.07))
+   (modeline-bg-inactive (doom-darken bg 0.1))
    (modeline-bg-inactive-l `(,(doom-darken (car bg-alt) 0.05) ,@(cdr base1))))
 
   ;; --- extra faces ------------------------
@@ -122,7 +122,7 @@ determine the exact padding."
    ((line-number &override) :foreground (doom-darken base2 0.15) :background bg)
    ((line-number-current-line &override) :background base8 :foreground bg)
 
-   (solaire-default-face :background (doom-darken bg 0.045))
+   (solaire-default-face :background (doom-darken bg 0.05))
    (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg 0.09))
 
    (doom-modeline-bar :background (if -modeline-bright modeline-bg highlight))
@@ -213,6 +213,12 @@ determine the exact padding."
 
     ;; highlight numbers
     (highlight-numbers-number :foreground constants)
+
+    ;; neo-tree
+    (neo-root-dir-face
+     :foreground modeline-fg-alt
+     :background modeline-bg-inactive
+     :box `(:line-width 3 :color ,modeline-bg-inactive))
     )
 
   ;; --- extra variables ---------------------
