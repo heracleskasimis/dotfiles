@@ -44,7 +44,7 @@ determine the exact padding."
    (base1        '("#fafafa" "#f5f5f5" "brightwhite"  ))
    (base2        '("#f7f7f7" "#fcfcfc" "brightwhite"  ))
    (base3        '("#c6c6c6" "#c6c6c6" "brightwhite"  ))
-   (base4        '("#a8a8a8" "#a8a8a8" "brightblack"  ))
+   (base4        '("#9e9e9e" "#9e9e9e" "brightblack"  ))
    (base5        '("#3a3a3a" "#3a3a3a" "brightblack"  ))
    (base6        '("#262626" "#262626" "brightblack"  ))
    (base7        '("#1c1c1c" "#1c1c1c" "black"        ))
@@ -68,7 +68,7 @@ determine the exact padding."
 
    ;; face categories -- required for all themes
    (highlight      blue)
-   (vertical-bar   (doom-darken base2 0.1))
+   (vertical-bar   (doom-darken bg 0.07))
    (selection      cyan)
    (builtin        magenta)
    (comments       (if cyan-light-brighter-comments cyan base4))
@@ -107,7 +107,7 @@ determine the exact padding."
     (if (not -modeline-bright)
         (doom-darken base2 0.2)
       base2))
-   (modeline-bg-inactive (doom-darken bg 0.1))
+   (modeline-bg-inactive (doom-darken bg 0.07))
    (modeline-bg-inactive-l `(,(doom-darken (car bg-alt) 0.05) ,@(cdr base1))))
 
   ;; --- extra faces ------------------------
@@ -119,10 +119,11 @@ determine the exact padding."
     :foreground doc-comments
     :slant 'italic)
 
-   ((line-number &override) :foreground (doom-darken base2 0.15))
-   ((line-number-current-line &override) :foreground base8)
+   ((line-number &override) :foreground (doom-darken base2 0.15) :background bg)
+   ((line-number-current-line &override) :background base8 :foreground bg)
 
-   (solaire-hl-line-face :inherit 'hl-line :background base0)
+   (solaire-default-face :background (doom-darken bg 0.045))
+   (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg 0.09))
 
    (doom-modeline-bar :background (if -modeline-bright modeline-bg highlight))
 
@@ -153,8 +154,8 @@ determine the exact padding."
    (magit-header-line
     :foreground fg
     :bold 'bold
-    :background base0
-    :box `(:line-width 3 :color ,base0))
+    :background (doom-darken base2 0.1)
+    :box `(:line-width 3 :color ,(doom-darken base2 0.1)))
 
    ;; --- major-mode faces -------------------
    ;; css-mode / scss-mode

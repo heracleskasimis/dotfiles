@@ -3,6 +3,10 @@
 ;; theme
 (add-to-list 'custom-theme-load-path "~/.doom.d/themes")
 (setq-default doom-theme 'cyan-light)
+(setq-default solaire-mode-remap-modeline nil)
+(add-to-list '+doom-solaire-themes '(cyan-light . t))
+(setq-default dired-k-size-colors nil
+              dired-k-date-colors nil)
 
 ;; line wrap
 (add-hook 'visual-line-mode-hook #'adaptive-wrap-prefix-mode)
@@ -14,9 +18,6 @@
 
 ;; menu bar
 (if (display-graphic-p) (menu-bar-mode 1))
-
-;; magit
-(defun +magit/quit () (interactive) (magit-mode-bury-buffer t))
 
 ;; org-mode
 (defadvice org-babel-execute-src-block (around load-language nil activate)
