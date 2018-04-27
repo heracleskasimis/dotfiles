@@ -68,7 +68,7 @@ determine the exact padding."
 
    ;; face categories -- required for all themes
    (highlight      blue)
-   (vertical-bar   (doom-darken bg 0.1))
+   (vertical-bar   (doom-darken bg 0.06))
    (selection      cyan)
    (builtin        magenta)
    (comments       (if cyan-light-brighter-comments cyan base4))
@@ -122,7 +122,7 @@ determine the exact padding."
    ((line-number &override) :foreground (doom-darken base2 0.15) :background bg)
    ((line-number-current-line &override) :background base8 :foreground bg)
 
-   (solaire-default-face :background (doom-darken bg 0.05))
+   (solaire-default-face :background (doom-darken bg 0.02))
    (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg 0.09))
 
    (doom-modeline-bar :background (if -modeline-bright modeline-bg highlight))
@@ -181,6 +181,7 @@ determine the exact padding."
    (org-level-3          :bold bold          :height 1.1)
    (org-ellipsis         :underline nil :background bg     :foreground red)
    (org-quote            :background base1)
+   (org-formula          :foreground magenta);
 
    ;; helm
    (helm-candidate-number :background blue :foreground bg)
@@ -217,8 +218,9 @@ determine the exact padding."
     ;; neo-tree
     (neo-root-dir-face
      :foreground modeline-fg-alt
-     :background modeline-bg-inactive
-     :box `(:line-width 3 :color ,modeline-bg-inactive))
+     :background vertical-bar
+     :bold bold
+     :box `(:line-width 3 :color ,vertical-bar))
     )
 
   ;; --- extra variables ---------------------
