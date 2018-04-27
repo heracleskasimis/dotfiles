@@ -119,7 +119,7 @@ determine the exact padding."
     :foreground doc-comments
     :slant 'italic)
 
-   ((line-number &override) :foreground (doom-darken base2 0.15) :background bg)
+   ((line-number &override) :foreground (doom-darken base2 0.2) :background bg)
    ((line-number-current-line &override) :background base8 :foreground bg)
 
    (solaire-default-face :background (doom-darken bg 0.02))
