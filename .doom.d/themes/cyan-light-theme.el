@@ -68,7 +68,7 @@ determine the exact padding."
 
    ;; face categories -- required for all themes
    (highlight      blue)
-   (vertical-bar   (doom-darken bg 0.06))
+   (vertical-bar   (doom-darken bg 0.07))
    (selection      cyan)
    (builtin        magenta)
    (comments       (if cyan-light-brighter-comments cyan base4))
@@ -123,7 +123,8 @@ determine the exact padding."
    ((line-number-current-line &override) :background base8 :foreground bg)
 
    (solaire-default-face :background (doom-darken bg 0.02))
-   (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg 0.09))
+   (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg 0.04))
+   (solaire-minibuffer-face :background bg);
 
    (doom-modeline-bar :background (if -modeline-bright modeline-bg highlight))
 
