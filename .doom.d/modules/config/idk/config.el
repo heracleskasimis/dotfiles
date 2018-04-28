@@ -4,6 +4,7 @@
 (add-to-list 'custom-theme-load-path "~/.doom.d/themes")
 (setq-default doom-theme 'cyan-light)
 (setq-default solaire-mode-remap-modeline nil)
+(add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer)
 (add-to-list '+doom-solaire-themes '(cyan-light . t))
 (setq-default dired-k-size-colors nil
               dired-k-date-colors nil)
@@ -11,6 +12,8 @@
 ;; line wrap
 (add-hook 'visual-line-mode-hook #'adaptive-wrap-prefix-mode)
 ; (global-visual-line-mode +1)
+
+;; test
 
 ;; scrolling
 (setq-default mouse-wheel-progressive-speed nil
