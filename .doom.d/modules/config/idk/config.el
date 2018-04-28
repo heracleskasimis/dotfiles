@@ -16,6 +16,11 @@
 ;; which key
 (setq-default which-key-idle-delay 0.5)
 
+;; magit
+(with-eval-after-load 'magit
+  (define-key magit-mode-map (kbd doom-leader-key) nil)
+  (define-key magit-diff-mode-map (kbd doom-leader-key) nil))
+
 ;; scrolling
 (setq-default mouse-wheel-progressive-speed nil
               scroll-preserve-screen-position nil)
