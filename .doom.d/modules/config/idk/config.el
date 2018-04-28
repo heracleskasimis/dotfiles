@@ -13,7 +13,8 @@
 (add-hook 'visual-line-mode-hook #'adaptive-wrap-prefix-mode)
 ; (global-visual-line-mode +1)
 
-;; test
+;; which key
+(setq-default which-key-idle-delay 0.5)
 
 ;; scrolling
 (setq-default mouse-wheel-progressive-speed nil
