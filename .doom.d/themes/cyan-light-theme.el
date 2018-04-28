@@ -96,18 +96,21 @@ determine the exact padding."
     (when cyan-light-padded-modeline
       (if (integerp cyan-light-padded-modeline) cyan-light-padded-modeline 4)))
 
-   (modeline-fg     nil)
-   (modeline-fg-alt (doom-blend violet base4 (if (not -modeline-bright) 0.5 0.2)))
+   (modeline-fg     (if -modeline-bright bg nil))
+   (modeline-fg-alt (doom-blend violet base4 0.5))
 
    (modeline-bg
-    (if (not -modeline-bright)
-        (doom-darken base2 0.1)
-      base1))
+    (if -modeline-bright
+        fg
+      (doom-darken base2 0.1)))
    (modeline-bg-l
-    (if (not -modeline-bright)
-        (doom-darken base2 0.2)
-      base2))
-   (modeline-bg-inactive (doom-darken bg 0.1))
+    (if -modeline-bright
+        fg
+      (doom-darken base2 0.2)))
+   (modeline-bg-inactive
+    (if -modeline-bright
+        (doom-lighten fg 0.2)
+    (doom-darken bg 0.1)))
    (modeline-bg-inactive-l `(,(doom-darken (car bg-alt) 0.05) ,@(cdr base1))))
 
   ;; --- extra faces ------------------------
@@ -123,7 +126,7 @@ determine the exact padding."
    ((line-number-current-line &override) :background base8 :foreground bg)
 
    (solaire-default-face :background (doom-darken bg 0.02))
-   (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg 0.04))
+   (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg 0.05))
    (solaire-minibuffer-face :background bg);
 
    (doom-modeline-bar :background (if -modeline-bright modeline-bg highlight))
