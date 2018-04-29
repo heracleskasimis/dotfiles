@@ -40,9 +40,9 @@ determine the exact padding."
   ;; name        default   256       16
   ((bg           '("#ffffff" nil       nil            ))
    (bg-alt       '("#f5f5f5" nil       nil            ))
-   (base0        '("#fcfcfc" "#f0f0f0" "white"        ))
-   (base1        '("#fafafa" "#f5f5f5" "brightwhite"  ))
-   (base2        '("#f7f7f7" "#fcfcfc" "brightwhite"  ))
+   (base0        '("#fcfcfc" "#fcfcfc" "white"        ))
+   (base1        '("#fafafa" "#fafafa" "brightwhite"  ))
+   (base2        '("#f7f7f7" "#f7f7f7" "brightwhite"  ))
    (base3        '("#c6c6c6" "#c6c6c6" "brightwhite"  ))
    (base4        '("#9e9e9e" "#9e9e9e" "brightblack"  ))
    (base5        '("#3a3a3a" "#3a3a3a" "brightblack"  ))
@@ -56,19 +56,19 @@ determine the exact padding."
    (red          '("#ff5faf"   "#ff5faf" "red"          ))
    (orange       '("#ff00af"   "#ff00af" "brightred"    ))
    (green        '("#5f5f00"   "#5f5f00" "green"        ))
-   (teal         '("#00d7d7"   "#00d7d7" "brightgreen"  ))
-   (yellow       '("#8b864e"   "#8b864e" "yellow"       ))
+   (teal         '("#00afaf"   "#00afaf" "brightgreen"  ))
+   (yellow       '("#87875f"   "#87875f" "yellow"       ))
    (light-yellow '("#ffff5f"   "#ffff5f" "brightyellow" ))
    (blue         '("#008787"   "#008787" "brightblue"   ))
    (dark-blue    '("#005f5f"   "#005f5f" "blue"         ))
    (magenta      '("#d75fd7"   "#d75fd7" "magenta"      ))
    (violet       '("#ff87ff"   "#ff87ff" "brightmagenta"))
-   (cyan         '("#87ffff"   "#00eeee" "brightcyan"   ))
+   (cyan         '("#87ffff"   "#87ffff" "brightcyan"   ))
    (dark-cyan    '("#008b8b"   "#008b8b" "cyan"         ))
 
    ;; face categories -- required for all themes
    (highlight      blue)
-   (vertical-bar   (doom-darken bg 0.02))
+   (vertical-bar   (doom-darken bg 0.08))
    (selection      cyan)
    (builtin        magenta)
    (comments       (if cyan-light-brighter-comments cyan base4))
@@ -116,7 +116,7 @@ determine the exact padding."
    ((line-number &override) :foreground (doom-darken base2 0.2) :background nil)
    ((line-number-current-line &override) :background base8 :foreground base0)
 
-   (solaire-default-face :background (doom-darken bg 0.02))
+   (solaire-default-face :background (doom-darken bg 0.04))
    (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg 0.05))
    (solaire-minibuffer-face :background bg);
 
