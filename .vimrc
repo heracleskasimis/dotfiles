@@ -171,27 +171,35 @@ function! Multiple_cursors_after()
     exe 'NeoCompleteUnlock'
 endfunction
 
-map <leader>t :tabe
-map <leader>d :tabclose<cr>
-map <leader>ft :NERDTreeToggle<cr>
+map <leader><Tab>n :tabe<cr>
+map <leader><Tab>d :tabclose<cr>
+map <leader><Tab>[ :tabprevious<cr>
+map <leader><Tab>] :tabnext<cr>
+
+map <leader>on :NERDTreeToggle<cr>
 map <leader>0 :NERDTreeFind<cr>
-map <leader><Tab> :b#<cr>
+
 map <leader>bb :CtrlPBuffer<cr>
-map <leader>bn :bnext<cr>
-map <leader>bp :bprevious<cr>
-map <leader>en :lnext<cr>
-map <leader>ep :lprevious<cr>
+map <leader>b] :bnext<cr>
+map <leader>b[ :bprevious<cr>
+map <leader>< :CtrlPBuffer<cr>
+
 map <leader>ww <c-w>w
 map <leader>wj <c-w>j
 map <leader>wk <c-w>k
 map <leader>wh <c-w>h
 map <leader>wl <c-w>l
 map <c-Tab> <c-w>w
-map <leader>x :Hexmode<cr>
 " map <leader>i :TagbarToggle<cr>
 " map <leader>g :Rgrep<cr>
 " map <leader><s-g> :Grep<cr>
-map <leader>/ :silent noautocmd vimgrep <c-r>=expand("<cword>")<cr> <c-r>=getcwd()<cr>/**/*.<c-r>=expand("%:e")<cr> \| copen<home><c-right><c-right><c-right><c-right>
+map <leader>f/ :CtrlP<cr>
+map <leader>/p :silent noautocmd vimgrep <c-r>=expand("<cword>")<cr> <c-r>=getcwd()<cr>/**/*.<c-r>=expand("%:e")<cr> \| copen<home><c-right><c-right><c-right><c-right>
+map <leader>p/ :silent noautocmd vimgrep <c-r>=expand("<cword>")<cr> <c-r>=getcwd()<cr>/**/*.<c-r>=expand("%:e")<cr> \| copen<home><c-right><c-right><c-right><c-right>
+map <leader>/d :silent noautocmd vimgrep <c-r>=expand("<cword>")<cr> <c-r>=getcwd()<cr>/**/*.<c-r>=expand("%:e")<cr> \| copen<home><c-right><c-right><c-right><c-right>
+
+map <leader>]e :lnext<cr>
+map <leader>[e :lprevious<cr>
 
 map <down> gj
 map <up> gk
