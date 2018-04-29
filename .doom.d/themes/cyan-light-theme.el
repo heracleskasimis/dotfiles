@@ -68,7 +68,7 @@ determine the exact padding."
 
    ;; face categories -- required for all themes
    (highlight      blue)
-   (vertical-bar   (doom-darken bg 0.07))
+   (vertical-bar   (doom-darken bg 0.02))
    (selection      cyan)
    (builtin        magenta)
    (comments       (if cyan-light-brighter-comments cyan base4))
@@ -99,18 +99,9 @@ determine the exact padding."
    (modeline-fg     (if -modeline-bright bg nil))
    (modeline-fg-alt (doom-blend violet base4 0.5))
 
-   (modeline-bg
-    (if -modeline-bright
-        fg
-      (doom-darken base2 0.1)))
-   (modeline-bg-l
-    (if -modeline-bright
-        fg
-      (doom-darken base2 0.2)))
-   (modeline-bg-inactive
-    (if -modeline-bright
-        (doom-lighten fg 0.2)
-    (doom-darken bg 0.1)))
+   (modeline-bg (if -modeline-bright fg (doom-darken base2 0.1)))
+   (modeline-bg-l (if -modeline-bright fg (doom-darken base2 0.2)))
+   (modeline-bg-inactive (if -modeline-bright (doom-lighten fg 0.2) (doom-darken base1 0.1)))
    (modeline-bg-inactive-l `(,(doom-darken (car bg-alt) 0.05) ,@(cdr base1))))
 
   ;; --- extra faces ------------------------
@@ -122,8 +113,8 @@ determine the exact padding."
     :foreground doc-comments
     :slant 'italic)
 
-   ((line-number &override) :foreground (doom-darken base2 0.2) :background bg)
-   ((line-number-current-line &override) :background base8 :foreground bg)
+   ((line-number &override) :foreground (doom-darken base2 0.2) :background nil)
+   ((line-number-current-line &override) :background base8 :foreground base0)
 
    (solaire-default-face :background (doom-darken bg 0.02))
    (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg 0.05))
