@@ -14,7 +14,8 @@
 ; (global-visual-line-mode +1)
 
 ;; which key
-(setq-default which-key-idle-delay 0.5)
+(setq-default which-key-idle-delay 0.25)
+(setq-default which-key-idle-secondary-delay 0)
 
 ;; magit
 (with-eval-after-load 'magit
