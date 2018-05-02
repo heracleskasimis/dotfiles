@@ -55,9 +55,9 @@ determine the exact padding."
    (grey         base4)
    (red          '("#ff5faf"   "#ff5faf" "red"          ))
    (orange       '("#ff00af"   "#ff00af" "brightred"    ))
-   (green        '("#626262"   "#626262" "green"        ))
+   (green        '("#00d7af"   "#00d7af" "green"        ))
    (teal         '("#00afaf"   "#00afaf" "brightgreen"  ))
-   (yellow       '("#9e9e9e"   "#9e9e9e" "yellow"       ))
+   (yellow       '("#5f5f00"   "#5f5f00" "yellow"       ))
    (light-yellow '("#ffff5f"   "#ffff5f" "brightyellow" ))
    (blue         '("#008787"   "#008787" "brightblue"   ))
    (dark-blue    '("#005f5f"   "#005f5f" "blue"         ))
@@ -70,24 +70,24 @@ determine the exact padding."
    (highlight      blue)
    (vertical-bar   (doom-darken bg 0.08))
    (selection      cyan)
-   (builtin        magenta)
+   (builtin        dark-blue)
    (comments       (if cyan-light-brighter-comments cyan base4))
    (doc-comments   (doom-darken comments 0.15))
-   (constants      violet)
+   (constants      teal)
    (functions      fg)
-   (keywords       magenta)
+   (keywords       dark-blue)
    (methods        fg)
    (operators      yellow)
-   (type           magenta)
+   (type           dark-blue)
    (strings        blue)
    (variables      fg)
-   (numbers        violet)
+   (numbers        teal)
    (region         `(,(doom-darken (car bg-alt) 0.1) ,@(doom-darken (cdr base0) 0.3)))
    (error          red)
    (warning        yellow)
    (success        green)
-   (vc-modified    teal)
-   (vc-added       green)
+   (vc-modified    grey)
+   (vc-added       teal)
    (vc-deleted     red)
 
    ;; custom categories
@@ -97,7 +97,7 @@ determine the exact padding."
       (if (integerp cyan-light-padded-modeline) cyan-light-padded-modeline 4)))
 
    (modeline-fg     (if -modeline-bright bg nil))
-   (modeline-fg-alt (doom-blend violet base4 0.5))
+   (modeline-fg-alt (doom-blend teal base4 0.5))
 
    (modeline-bg (if -modeline-bright fg (doom-darken base2 0.1)))
    (modeline-bg-l (if -modeline-bright fg (doom-darken base2 0.2)))
@@ -151,12 +151,15 @@ determine the exact padding."
     :bold 'bold
     :background (doom-darken base2 0.1)
     :box `(:line-width 3 :color ,(doom-darken base2 0.1)))
+    (magit-diff-added             :foreground (doom-darken yellow 0.2)  :background (doom-blend yellow bg 0.1))
+    (magit-diff-added-highlight   :foreground yellow                    :background (doom-blend yellow bg 0.2) :weight 'bold)
+    (magit-diffstat-added         :foreground yellow)
 
    ;; --- major-mode faces -------------------
    ;; css-mode / scss-mode
    (css-proprietary-property :foreground orange)
-   (css-property             :foreground green)
-   (css-selector             :foreground blue)
+   (css-property             :foreground builtin)
+   (css-selector             :foreground dark-blue)
 
    ;; markdown-mode
    (markdown-markup-face     :foreground base5)
@@ -176,10 +179,14 @@ determine the exact padding."
    (org-level-3          :bold bold          :height 1.1)
    (org-ellipsis         :underline nil :background bg     :foreground red)
    (org-quote            :background base1)
-   (org-formula          :foreground magenta);
+   (org-formula          :foreground builtin);
 
    ;; helm
    (helm-candidate-number :background blue :foreground bg)
+
+   ;; which key
+   (which-key-group-description-face     :foreground fg)
+   (which-key-local-map-description-face :foreground fg)
 
    ;; web-mode
    (web-mode-current-element-highlight-face :background blue :foreground bg)
@@ -188,17 +195,17 @@ determine the exact padding."
    (wgrep-face :background base1)
 
    ;; ediff
-   (ediff-current-diff-A        :foreground red   :background (doom-lighten red 0.8))
-   (ediff-current-diff-B        :foreground green :background (doom-lighten green 0.8))
-   (ediff-current-diff-C        :foreground blue  :background (doom-lighten blue 0.8))
-   (ediff-current-diff-Ancestor :foreground teal  :background (doom-lighten teal 0.8))
+   (ediff-current-diff-A        :foreground red    :background (doom-lighten red 0.8))
+   (ediff-current-diff-B        :foreground yellow :background (doom-lighten yellow 0.8))
+   (ediff-current-diff-C        :foreground blue   :background (doom-lighten blue 0.8))
+   (ediff-current-diff-Ancestor :foreground teal   :background (doom-lighten teal 0.8))
 
    ;; tooltip
    (tooltip :background base1 :foreground fg)
 
    ;; dired
    (dired-k-modified :foreground red)
-   (dired-k-untracked :foreground magenta)
+   (dired-k-untracked :foreground grey)
    (dired-k-commited :foreground blue)
 
    ;; evil
@@ -210,9 +217,18 @@ determine the exact padding."
     ;; highlight numbers
     (highlight-numbers-number :foreground constants)
 
+    ;; rainbow-delimiters
+    (rainbow-delimiters-depth-1-face :foreground fg)
+    (rainbow-delimiters-depth-2-face :foreground dark-blue)
+    (rainbow-delimiters-depth-3-face :foreground blue)
+    (rainbow-delimiters-depth-4-face :foreground yellow)
+    (rainbow-delimiters-depth-5-face :foreground green)
+    (rainbow-delimiters-depth-6-face :foreground teal)
+    (rainbow-delimiters-depth-7-face :foreground violet)
+
     ;; neo-tree
     (neo-root-dir-face
-     :foreground modeline-fg-alt
+     :foreground dark-cyan
      :background vertical-bar
      :bold bold
      :box `(:line-width 3 :color ,vertical-bar))
