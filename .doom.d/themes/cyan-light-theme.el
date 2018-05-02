@@ -37,7 +37,7 @@ determine the exact padding."
 (def-doom-theme cyan-light
   "A light theme based on doom-one-light"
 
-  ;; name        default   256       16
+  ;; name        default     256       16
   ((bg           '("#ffffff" nil       nil            ))
    (bg-alt       '("#f5f5f5" nil       nil            ))
    (base0        '("#fcfcfc" "#fcfcfc" "white"        ))
@@ -53,18 +53,18 @@ determine the exact padding."
    (fg-alt       '("#bcbcbc" "#bcbcbc" "white"        ))
 
    (grey         base4)
-   (red          '("#ff5faf"   "#ff5faf" "red"          ))
-   (orange       '("#ff00af"   "#ff00af" "brightred"    ))
-   (green        '("#00d7af"   "#00d7af" "green"        ))
-   (teal         '("#00afaf"   "#00afaf" "brightgreen"  ))
-   (yellow       '("#5f5f00"   "#5f5f00" "yellow"       ))
-   (light-yellow '("#ffff5f"   "#ffff5f" "brightyellow" ))
-   (blue         '("#008787"   "#008787" "brightblue"   ))
-   (dark-blue    '("#005f5f"   "#005f5f" "blue"         ))
-   (magenta      '("#d75fd7"   "#d75fd7" "magenta"      ))
-   (violet       '("#ff87ff"   "#ff87ff" "brightmagenta"))
-   (cyan         '("#87ffff"   "#87ffff" "brightcyan"   ))
-   (dark-cyan    '("#008b8b"   "#008b8b" "cyan"         ))
+   (red          '("#ff5faf" "#ff5faf" "red"          ))
+   (orange       '("#ff00af" "#ff00af" "brightred"    ))
+   (green        '("#00d7af" "#00d7af" "green"        ))
+   (teal         '("#00afaf" "#00afaf" "brightgreen"  ))
+   (yellow       '("#5f5f00" "#5f5f00" "yellow"       ))
+   (light-yellow '("#ffff5f" "#ffff5f" "brightyellow" ))
+   (blue         '("#008787" "#008787" "brightblue"   ))
+   (dark-blue    '("#005f5f" "#005f5f" "blue"         ))
+   (magenta      '("#d75fd7" "#d75fd7" "magenta"      ))
+   (violet       '("#ff87ff" "#ff87ff" "brightmagenta"))
+   (cyan         '("#87ffff" "#87ffff" "brightcyan"   ))
+   (dark-cyan    '("#008b8b" "#008b8b" "cyan"         ))
 
    ;; face categories -- required for all themes
    (highlight      blue)
@@ -86,8 +86,8 @@ determine the exact padding."
    (error          red)
    (warning        yellow)
    (success        green)
-   (vc-modified    grey)
-   (vc-added       teal)
+   (vc-modified    blue)
+   (vc-added       green)
    (vc-deleted     red)
 
    ;; custom categories
