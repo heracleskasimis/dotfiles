@@ -216,6 +216,10 @@ determine the exact padding."
      :background vertical-bar
      :bold bold
      :box `(:line-width 3 :color ,vertical-bar))
+
+    ;; js2
+    (js2-object-property :foreground fg)
+    (js2-object-property-access :foreground fg)
     )
 
   ;; --- extra variables ---------------------
