@@ -8,6 +8,9 @@
 (add-hook 'minibuffer-setup-hook #'solaire-mode-in-minibuffer)
 (add-hook 'magit-mode-hook #'solaire-mode)
 (add-hook 'shell-mode-hook #'solaire-mode)
+(add-hook 'eshell-mode-hook #'solaire-mode)
+(add-hook 'term-mode-hook #'solaire-mode)
+(add-hook 'which-key-init-buffer-hook #'solaire-mode)
 (setq-default dired-k-size-colors nil
               dired-k-date-colors nil)
 
