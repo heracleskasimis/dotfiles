@@ -40,16 +40,16 @@ determine the exact padding."
   ;; name        default     256       16
   ((bg           '("#ffffff" nil       nil            ))
    (bg-alt       '("#f5f5f5" nil       nil            ))
-   (base0        '("#fcfcfc" "#fcfcfc" "white"        ))
+   (base0        '("#eeeeee" "#eeeeee" "white"        ))
    (base1        '("#fafafa" "#fafafa" "brightwhite"  ))
    (base2        '("#f7f7f7" "#f7f7f7" "brightwhite"  ))
    (base3        '("#c6c6c6" "#c6c6c6" "brightwhite"  ))
    (base4        '("#9e9e9e" "#9e9e9e" "brightblack"  ))
-   (base5        '("#3a3a3a" "#3a3a3a" "brightblack"  ))
-   (base6        '("#262626" "#262626" "brightblack"  ))
-   (base7        '("#1c1c1c" "#1c1c1c" "black"        ))
-   (base8        '("#008b8b" "#008b8b" "cyan"         ))
-   (fg           '("#262626" "#262626" "black"        ))
+   (base5        '("#808080" "#808080" "brightblack"  ))
+   (base6        '("#6c6c6c" "#6c6c6c" "brightblack"  ))
+   (base7        '("#4e4e4e" "#4e4e4e" "black"        ))
+   (base8        '("#3a3a3a" "#3a3a3a" "black"        ))
+   (fg           '("#000000" "#000000" "black"        ))
    (fg-alt       '("#bcbcbc" "#bcbcbc" "white"        ))
 
    (grey         base4)
@@ -86,7 +86,7 @@ determine the exact padding."
    (error          red)
    (warning        yellow)
    (success        green)
-   (vc-modified    blue)
+   (vc-modified    dark-blue)
    (vc-added       green)
    (vc-deleted     red)
 
@@ -114,7 +114,7 @@ determine the exact padding."
     :slant 'italic)
 
    ((line-number &override) :foreground (doom-darken base2 0.2) :background nil)
-   ((line-number-current-line &override) :background base8 :foreground base0)
+   ((line-number-current-line &override) :background highlight :foreground base0)
 
    (solaire-default-face :background (doom-darken bg 0.04))
    (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg 0.07))
