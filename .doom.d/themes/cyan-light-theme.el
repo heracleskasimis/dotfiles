@@ -151,9 +151,9 @@ determine the exact padding."
     :bold 'bold
     :background (doom-darken base2 0.1)
     :box `(:line-width 3 :color ,(doom-darken base2 0.1)))
-    (magit-diff-added             :foreground (doom-darken yellow 0.2)  :background (doom-blend yellow bg 0.1))
-    (magit-diff-added-highlight   :foreground yellow                    :background (doom-blend yellow bg 0.2) :weight 'bold)
-    (magit-diffstat-added         :foreground yellow)
+   (magit-diff-added             :foreground (doom-darken yellow 0.2)  :background (doom-blend yellow bg 0.1))
+   (magit-diff-added-highlight   :foreground yellow                    :background (doom-blend yellow bg 0.2) :weight 'bold)
+   (magit-diffstat-added         :foreground yellow)
 
    ;; --- major-mode faces -------------------
    ;; css-mode / scss-mode
@@ -214,29 +214,32 @@ determine the exact padding."
                     light-yellow
                   (doom-lighten teal 0.85)))
 
-    ;; highlight numbers
-    (highlight-numbers-number :foreground constants)
+   ;; vim
+   (vimrc-number :foreground strings)
 
-    ;; rainbow-delimiters
-    (rainbow-delimiters-depth-1-face :foreground fg)
-    (rainbow-delimiters-depth-2-face :foreground dark-blue)
-    (rainbow-delimiters-depth-3-face :foreground blue)
-    (rainbow-delimiters-depth-4-face :foreground yellow)
-    (rainbow-delimiters-depth-5-face :foreground green)
-    (rainbow-delimiters-depth-6-face :foreground teal)
-    (rainbow-delimiters-depth-7-face :foreground violet)
+   ;; highlight numbers
+   (highlight-numbers-number :foreground constants)
 
-    ;; neo-tree
-    (neo-root-dir-face
-     :foreground dark-cyan
-     :background vertical-bar
-     :bold bold
-     :box `(:line-width 3 :color ,vertical-bar))
+   ;; rainbow-delimiters
+   (rainbow-delimiters-depth-1-face :foreground fg)
+   (rainbow-delimiters-depth-2-face :foreground dark-blue)
+   (rainbow-delimiters-depth-3-face :foreground blue)
+   (rainbow-delimiters-depth-4-face :foreground yellow)
+   (rainbow-delimiters-depth-5-face :foreground green)
+   (rainbow-delimiters-depth-6-face :foreground teal)
+   (rainbow-delimiters-depth-7-face :foreground violet)
 
-    ;; js2
-    (js2-object-property :foreground fg)
-    (js2-object-property-access :foreground fg)
-    )
+   ;; neo-tree
+   (neo-root-dir-face
+    :foreground dark-cyan
+    :background vertical-bar
+    :bold bold
+    :box `(:line-width 3 :color ,vertical-bar))
+
+   ;; js2
+   (js2-object-property :foreground fg)
+   (js2-object-property-access :foreground fg)
+   )
 
   ;; --- extra variables ---------------------
   ;; ()
