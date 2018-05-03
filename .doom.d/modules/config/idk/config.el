@@ -11,6 +11,7 @@
 (add-hook 'eshell-mode-hook #'solaire-mode)
 (add-hook 'term-mode-hook #'solaire-mode)
 (add-hook 'which-key-init-buffer-hook #'solaire-mode)
+(add-hook 'magit-refresh-popup-buffer-hook #'solaire-mode)
 (setq-default dired-k-size-colors nil
               dired-k-date-colors nil)
 
