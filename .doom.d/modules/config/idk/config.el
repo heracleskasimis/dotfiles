@@ -1,6 +1,8 @@
 ;;; config/idk/config.el -*- lexical-binding: t; -*-
 
 ;; theme
+(set-frame-font "Liberation Mono for Powerline 13" nil t)
+(set-frame-font "Liberation Mono 12" nil t)
 (add-to-list 'custom-theme-load-path "~/.doom.d/themes")
 (add-to-list '+doom-solaire-themes '(cyan-light . t))
 (setq-default doom-theme 'cyan-light)
