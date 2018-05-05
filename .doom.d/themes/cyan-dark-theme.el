@@ -39,7 +39,7 @@ determine the exact padding."
 
   ;; name        default     256       16
   ((bg           '("#121212" nil       nil            ))
-   (bg-alt       '("#1c1c1c" nil       nil            ))
+   (bg-alt       '("#000000" "#000000" nil            ))
    (base0        '("#262626" "#262626" "black"        ))
    (base1        '("#303030" "#303030" "brightblack"  ))
    (base2        '("#3a3a3a" "#3a3a3a" "brightblack"  ))
@@ -48,45 +48,45 @@ determine the exact padding."
    (base5        '("#808080" "#808080" "brightwhite"  ))
    (base6        '("#9e9e9e" "#9e9e9e" "brightwhite"  ))
    (base7        '("#c6c6c6" "#c6c6c6" "white"        ))
-   (base8        '("#eeeeee" "#eeeeee" "white"        ))
+   (base8        '("#feeeee" "#eeeeee" "white"        ))
    (fg           '("#ffffff" nil        nil           ))
    (fg-alt       '("#3a3a3a" "#3a3a3a"  nil           ))
 
    (grey         base4)
    (red          '("#ff5faf" "#ff5faf" "red"          ))
-   (orange       '("#ff00af" "#ff00af" "brightred"    ))
+   (orange       '("#870087" "#870087" "brightred"    ))
    (green        '("#5f5f00" "#5f5f00" "green"        ))
-   (teal         '("#00d7d7" "#00d7d7" "brightgreen"  ))
+   (teal         '("#afffff" "#afffff" "brightgreen"  ))
    (yellow       '("#878700" "#878700" "yellow"       ))
    (light-yellow '("#ffff5f" "#ffff5f" "brightyellow" ))
-   (blue         '("#00afaf" "#00afaf" "brightblue"   ))
-   (dark-blue    '("#008787" "#008787" "blue"         ))
+   (blue         '("#00ffff" "#00ffff" "brightblue"   ))
+   (dark-blue    '("#00afaf" "#00afaf" "blue"         ))
    (magenta      '("#d75fd7" "#d75fd7" "magenta"      ))
    (violet       '("#ff87ff" "#ff87ff" "brightmagenta"))
-   (cyan         '("#00ffff" "#00ffff" "brightcyan"   ))
+   (cyan         '("#87ffff" "#87ffff" "brightcyan"   ))
    (dark-cyan    '("#008b8b" "#008b8b" "cyan"         ))
 
    ;; face categories -- required for all themes
-   (highlight      magenta)
-   (vertical-bar   (doom-darken bg 0.08))
+   (highlight      red)
+   (vertical-bar   bg-alt)
    (selection      cyan)
-   (builtin        dark-blue)
+   (builtin        cyan)
    (comments       (if cyan-dark-brighter-comments cyan base4))
    (doc-comments   (doom-darken comments 0.15))
    (constants      teal)
    (functions      fg)
-   (keywords       dark-blue)
+   (keywords       cyan)
    (methods        fg)
    (operators      yellow)
-   (type           dark-blue)
-   (strings        blue)
+   (type           cyan)
+   (strings        dark-blue)
    (variables      fg)
    (numbers        teal)
    (region         `(,(doom-darken (car bg-alt) 0.1) ,@(doom-darken (cdr base0) 0.3)))
    (error          red)
    (warning        yellow)
    (success        green)
-   (vc-modified    dark-blue)
+   (vc-modified    cyan)
    (vc-added       green)
    (vc-deleted     red)
 
@@ -99,10 +99,10 @@ determine the exact padding."
    (modeline-fg     (if -modeline-bright bg nil))
    (modeline-fg-alt (doom-blend teal base4 0.5))
 
-   (modeline-bg (if -modeline-bright fg (doom-darken base2 0.1)))
-   (modeline-bg-l (if -modeline-bright fg (doom-darken base2 0.2)))
-   (modeline-bg-inactive (if -modeline-bright (doom-lighten fg 0.2) (doom-darken base1 0.1)))
-   (modeline-bg-inactive-l `(,(doom-darken (car bg-alt) 0.05) ,@(cdr base1))))
+   (modeline-bg (if -modeline-bright fg bg-alt))
+   (modeline-bg-l (if -modeline-bright fg bg-alt))
+   (modeline-bg-inactive (if -modeline-bright (doom-lighten fg 0.2) bg-alt))
+   (modeline-bg-inactive-l `(,(doom-darken (car bg-alt) 0.05) ,@(cdr base0))))
 
   ;; --- extra faces ------------------------
   ((font-lock-comment-face
@@ -114,7 +114,7 @@ determine the exact padding."
     :slant 'italic)
 
    ((line-number &override) :foreground (doom-darken base2 0.2) :background nil)
-   ((line-number-current-line &override) :background (doom-darken highlight 0.4) :foreground base0)
+   ((line-number-current-line &override) :foreground (doom-darken base2 0.2) :background bg-alt)
 
    (solaire-default-face :background (doom-darken bg 0.04))
    (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg 0.07))
@@ -210,9 +210,7 @@ determine the exact padding."
 
    ;; evil
    (evil-ex-lazy-highlight
-    :background (if cyan-dark-yellow-highlight
-                    light-yellow
-                  (doom-darken teal 0.65)))
+    :background (if cyan-dark-yellow-highlight light-yellow orange))
 
    ;; vim
    (vimrc-number :foreground strings)
@@ -223,15 +221,15 @@ determine the exact padding."
    ;; rainbow-delimiters
    (rainbow-delimiters-depth-1-face :foreground fg)
    (rainbow-delimiters-depth-2-face :foreground dark-blue)
-   (rainbow-delimiters-depth-3-face :foreground blue)
+   (rainbow-delimiters-depth-3-face :foreground base6)
    (rainbow-delimiters-depth-4-face :foreground yellow)
-   (rainbow-delimiters-depth-5-face :foreground green)
+   (rainbow-delimiters-depth-5-face :foreground blue)
    (rainbow-delimiters-depth-6-face :foreground teal)
    (rainbow-delimiters-depth-7-face :foreground violet)
 
    ;; neo-tree
    (neo-root-dir-face
-    :foreground dark-cyan
+    :foreground cyan
     :background vertical-bar
     :bold bold
     :box `(:line-width 3 :color ,vertical-bar))
