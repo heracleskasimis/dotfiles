@@ -38,7 +38,7 @@ determine the exact padding."
   "A light theme based on doom-one-light"
 
   ;; name        default     256       16
-  ((bg           '("#121212" nil       nil            ))
+  ((bg           '("#1c1c1c" nil       nil            ))
    (bg-alt       '("#000000" "#000000" nil            ))
    (base0        '("#262626" "#262626" "black"        ))
    (base1        '("#303030" "#303030" "brightblack"  ))
@@ -113,11 +113,11 @@ determine the exact padding."
     :foreground doc-comments
     :slant 'italic)
 
-   ((line-number &override) :foreground (doom-darken base2 0.2) :background nil)
-   ((line-number-current-line &override) :foreground (doom-darken base2 0.2) :background bg-alt)
+   ((line-number &override) :foreground (doom-darken base2 0.1) :background nil)
+   ((line-number-current-line &override) :foreground (doom-darken base2 0.1) :background bg-alt)
 
-   (solaire-default-face :background (doom-darken bg 0.04))
-   (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg 0.07))
+   (solaire-default-face :background (doom-darken bg 0.4))
+   (solaire-hl-line-face :inherit 'hl-line :background bg-alt)
    (solaire-minibuffer-face :background bg);
 
    (doom-modeline-bar :background (if -modeline-bright modeline-bg highlight))
