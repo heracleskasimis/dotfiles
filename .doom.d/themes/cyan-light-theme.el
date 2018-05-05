@@ -55,7 +55,7 @@ determine the exact padding."
    (grey         base4)
    (red          '("#ff5faf" "#ff5faf" "red"          ))
    (orange       '("#ff00af" "#ff00af" "brightred"    ))
-   (green        '("#00d7af" "#00d7af" "green"        ))
+   (green        '("#5fd7d7" "#5fd7d7" "green"        ))
    (teal         '("#00afaf" "#00afaf" "brightgreen"  ))
    (yellow       '("#5f5f00" "#5f5f00" "yellow"       ))
    (light-yellow '("#ffff5f" "#ffff5f" "brightyellow" ))
@@ -236,9 +236,11 @@ determine the exact padding."
     :bold bold
     :box `(:line-width 3 :color ,vertical-bar))
 
-   ;; js2
+   ;; js2 & rjsx
    (js2-object-property :foreground fg)
    (js2-object-property-access :foreground fg)
+   (rjsx-tag :foreground builtin)
+   (rjsx-tag-bracket-face :foreground builtin)
    )
 
   ;; --- extra variables ---------------------
