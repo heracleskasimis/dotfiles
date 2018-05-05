@@ -48,14 +48,14 @@ determine the exact padding."
    (base5        '("#808080" "#808080" "brightwhite"  ))
    (base6        '("#9e9e9e" "#9e9e9e" "brightwhite"  ))
    (base7        '("#c6c6c6" "#c6c6c6" "white"        ))
-   (base8        '("#feeeee" "#eeeeee" "white"        ))
+   (base8        '("#eeeeee" "#feeeee" "white"        ))
    (fg           '("#ffffff" nil        nil           ))
    (fg-alt       '("#3a3a3a" "#3a3a3a"  nil           ))
 
    (grey         base4)
    (red          '("#ff5faf" "#ff5faf" "red"          ))
    (orange       '("#870087" "#870087" "brightred"    ))
-   (green        '("#5f5f00" "#5f5f00" "green"        ))
+   (green        '("#005f5f" "#005f5f" "green"        ))
    (teal         '("#afffff" "#afffff" "brightgreen"  ))
    (yellow       '("#878700" "#878700" "yellow"       ))
    (light-yellow '("#ffff5f" "#ffff5f" "brightyellow" ))
@@ -237,6 +237,9 @@ determine the exact padding."
    ;; js2
    (js2-object-property :foreground fg)
    (js2-object-property-access :foreground fg)
+
+   ;; nav-flash
+   (nav-flash-face :background base0 :foreground teal :weight 'bold)
    )
 
   ;; --- extra variables ---------------------
