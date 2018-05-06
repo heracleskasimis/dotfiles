@@ -107,7 +107,7 @@ determine the exact padding."
     :slant 'italic)
 
    ((line-number &override) :foreground base2 :background nil)
-   ((line-number-current-line &override) :foreground base4 :background bg-alt)
+   ((line-number-current-line &override) :foreground blue :background base0)
 
    (solaire-default-face :background (doom-darken bg 0.4))
    (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg-alt 0.4))
@@ -195,6 +195,7 @@ determine the exact padding."
 
    ;; tooltip
    (tooltip :background base1 :foreground fg)
+   (company-tooltip-selection :background cyan :foreground base0 :weight 'bold)
 
    ;; dired
    (dired-k-modified :foreground red)
