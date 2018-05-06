@@ -39,9 +39,9 @@ determine the exact padding."
 
   ;; name        default     256       16
   ((bg           '("#1c1c1c" nil       nil            ))
-   (bg-alt       '("#000000" "#000000" nil            ))
-   (base0        '("#262626" "#262626" "black"        ))
-   (base1        '("#303030" "#303030" "brightblack"  ))
+   (bg-alt       '("#121212" "#121212" nil            ))
+   (base0        '("#000000" "#000000" "black"        ))
+   (base1        '("#262626" "#262626" "brightblack"  ))
    (base2        '("#3a3a3a" "#3a3a3a" "brightblack"  ))
    (base3        '("#444444" "#444444" "brightblack"  ))
    (base4        '("#767676" "#767676" "brightwhite"  ))
@@ -68,7 +68,7 @@ determine the exact padding."
 
    ;; face categories -- required for all themes
    (highlight      blue)
-   (vertical-bar   bg-alt)
+   (vertical-bar   base0)
    (selection      cyan)
    (builtin        cyan)
    (comments       (if cyan-dark-brighter-comments cyan base4))
@@ -99,10 +99,10 @@ determine the exact padding."
    (modeline-fg     (if -modeline-bright bg nil))
    (modeline-fg-alt (doom-blend teal base4 0.5))
 
-   (modeline-bg (if -modeline-bright fg bg-alt))
-   (modeline-bg-l (if -modeline-bright fg bg-alt))
-   (modeline-bg-inactive (if -modeline-bright (doom-lighten fg 0.2) bg-alt))
-   (modeline-bg-inactive-l `(,(doom-darken (car bg-alt) 0.05) ,@(cdr base0))))
+   (modeline-bg (if -modeline-bright fg base0))
+   (modeline-bg-l (if -modeline-bright fg base0))
+   (modeline-bg-inactive (if -modeline-bright (doom-lighten fg 0.2) base0))
+   (modeline-bg-inactive-l `(,(doom-darken (car base0) 0.05) ,@(cdr base0))))
 
   ;; --- extra faces ------------------------
   ((font-lock-comment-face
@@ -113,11 +113,11 @@ determine the exact padding."
     :foreground doc-comments
     :slant 'italic)
 
-   ((line-number &override) :foreground (doom-darken base2 0.1) :background nil)
-   ((line-number-current-line &override) :foreground (doom-darken base2 0.1) :background bg-alt)
+   ((line-number &override) :foreground base2 :background nil)
+   ((line-number-current-line &override) :foreground base2 :background bg-alt)
 
    (solaire-default-face :background (doom-darken bg 0.4))
-   (solaire-hl-line-face :inherit 'hl-line :background bg-alt)
+   (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg-alt 0.4))
    (solaire-minibuffer-face :background bg);
 
    (doom-modeline-bar :background (if -modeline-bright modeline-bg highlight))
