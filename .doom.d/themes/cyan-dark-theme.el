@@ -67,7 +67,7 @@ determine the exact padding."
    (dark-cyan    '("#008b8b" "#008b8b" "cyan"         ))
 
    ;; face categories -- required for all themes
-   (highlight      red)
+   (highlight      blue)
    (vertical-bar   bg-alt)
    (selection      cyan)
    (builtin        cyan)
