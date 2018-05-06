@@ -48,9 +48,9 @@ determine the exact padding."
    (base5        '("#808080" "#808080" "brightwhite"  ))
    (base6        '("#9e9e9e" "#9e9e9e" "brightwhite"  ))
    (base7        '("#c6c6c6" "#c6c6c6" "white"        ))
-   (base8        '("#eeeeee" "#feeeee" "white"        ))
-   (fg           '("#ffffff" nil        nil           ))
-   (fg-alt       '("#3a3a3a" "#3a3a3a"  nil           ))
+   (base8        '("#eeeeee" "#eeeeee" "white"        ))
+   (fg           '("#ffffff" nil       nil            ))
+   (fg-alt       '("#3a3a3a" "#3a3a3a" nil            ))
 
    (grey         base4)
    (red          '("#ff5faf" "#ff5faf" "red"          ))
@@ -114,7 +114,7 @@ determine the exact padding."
     :slant 'italic)
 
    ((line-number &override) :foreground base2 :background nil)
-   ((line-number-current-line &override) :foreground base2 :background bg-alt)
+   ((line-number-current-line &override) :foreground base4 :background bg-alt)
 
    (solaire-default-face :background (doom-darken bg 0.4))
    (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg-alt 0.4))
