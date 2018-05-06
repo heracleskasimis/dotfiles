@@ -28,12 +28,6 @@ determine the exact padding."
   :group 'cyan-dark-theme
   :type '(or integer boolean))
 
-(defcustom cyan-dark-yellow-highlight nil
-  "If non-nil, uses yellow color for lazy highlight"
-  :group 'cyan-dark-theme
-  :type 'boolean)
-
-;;
 (def-doom-theme cyan-dark
   "A light theme based on doom-one-light"
 
@@ -58,7 +52,6 @@ determine the exact padding."
    (green        '("#005f5f" "#005f5f" "green"        ))
    (teal         '("#afffff" "#afffff" "brightgreen"  ))
    (yellow       '("#878700" "#878700" "yellow"       ))
-   (light-yellow '("#ffff5f" "#ffff5f" "brightyellow" ))
    (blue         '("#00ffff" "#00ffff" "brightblue"   ))
    (dark-blue    '("#00afaf" "#00afaf" "blue"         ))
    (magenta      '("#d75fd7" "#d75fd7" "magenta"      ))
@@ -209,8 +202,7 @@ determine the exact padding."
    (dired-k-commited :foreground blue)
 
    ;; evil
-   (evil-ex-lazy-highlight
-    :background (if cyan-dark-yellow-highlight light-yellow orange))
+   (evil-ex-lazy-highlight :background orange)
 
    ;; vim
    (vimrc-number :foreground strings)
