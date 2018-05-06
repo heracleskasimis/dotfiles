@@ -141,9 +141,9 @@ determine the exact padding."
     :box (if -modeline-pad `(:line-width ,-modeline-pad :color ,modeline-bg-inactive-l)))
 
    ;; magit
-   (magit-diff-hunk-heading :background (doom-lighten base3 0.2))
-   (magit-diff-hunk-heading-highlight :background base3)
-   (magit-blame-heading     :foreground orange :background bg-alt)
+   (magit-diff-hunk-heading :background (doom-darken base2 0.2))
+   (magit-diff-hunk-heading-highlight :background base2)
+   (magit-blame-heading :foreground orange :background bg-alt)
    (magit-diff-removed :foreground (doom-darken red 0.2) :background (doom-blend red bg 0.1))
    (magit-diff-removed-highlight :foreground red :background (doom-blend red bg 0.2) :bold bold)
    (magit-header-line
