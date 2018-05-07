@@ -39,17 +39,17 @@ determine the exact padding."
 
   ;; name        default     256       16
   ((bg           '("#ffffff" nil       nil            ))
-   (bg-alt       '("#f5f5f5" nil       nil            ))
+   (bg-alt       '("#f5f5f5" "#f5f5f5" "brightwhite"  ))
    (base0        '("#eeeeee" "#eeeeee" "white"        ))
    (base1        '("#fafafa" "#fafafa" "brightwhite"  ))
    (base2        '("#f7f7f7" "#f7f7f7" "brightwhite"  ))
    (base3        '("#c6c6c6" "#c6c6c6" "brightwhite"  ))
-   (base4        '("#9e9e9e" "#9e9e9e" "brightblack"  ))
-   (base5        '("#808080" "#808080" "brightblack"  ))
-   (base6        '("#6c6c6c" "#6c6c6c" "brightblack"  ))
-   (base7        '("#4e4e4e" "#4e4e4e" "black"        ))
-   (base8        '("#3a3a3a" "#3a3a3a" "black"        ))
-   (fg           '("#000000" "#000000" "black"        ))
+   (base4        '("#9e9e9e" "#9e9e9e" "white"        ))
+   (base5        '("#808080" "#808080" "white"        ))
+   (base6        '("#6c6c6c" "#6c6c6c" "white"        ))
+   (base7        '("#4e4e4e" "#4e4e4e" "brightblack"  ))
+   (base8        '("#3a3a3a" "#3a3a3a" "brightblack"  ))
+   (fg           '("#000000" nil       nil            ))
    (fg-alt       '("#bcbcbc" "#bcbcbc" "white"        ))
 
    (grey         base4)
@@ -68,7 +68,7 @@ determine the exact padding."
 
    ;; face categories -- required for all themes
    (highlight      blue)
-   (vertical-bar   (doom-darken bg 0.08))
+   (vertical-bar   (doom-darken bg 0.1))
    (selection      cyan)
    (builtin        dark-blue)
    (comments       (if cyan-light-brighter-comments cyan base4))
@@ -232,9 +232,9 @@ determine the exact padding."
    ;; neo-tree
    (neo-root-dir-face
     :foreground dark-cyan
-    :background vertical-bar
+    :background bg
     :bold bold
-    :box `(:line-width 3 :color ,vertical-bar))
+    :box `(:line-width 3 :color ,bg))
 
    ;; js2 & rjsx
    (js2-object-property :foreground fg)
