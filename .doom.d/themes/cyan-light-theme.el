@@ -1,7 +1,6 @@
-;;; cyan-light-theme.el --- inspired by Atom One Light
+;;; cyan-light-theme.el --- inspired by Doom One Light
 (require 'doom-themes)
 
-;;
 (defgroup cyan-light-theme nil
   "Options for doom-themes"
   :group 'doom-themes)

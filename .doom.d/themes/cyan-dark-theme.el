@@ -1,7 +1,6 @@
-;;; cyan-dark-theme.el --- inspired by Atom One Light
+;;; cyan-dark-theme.el --- inspired by Doom One
 (require 'doom-themes)
 
-;;
 (defgroup cyan-dark-theme nil
   "Options for doom-themes"
   :group 'doom-themes)
@@ -29,7 +28,7 @@ determine the exact padding."
   :type '(or integer boolean))
 
 (def-doom-theme cyan-dark
-  "A light theme based on doom-one-light"
+  "A dark theme based on doom-one"
 
   ;; name        default     256       16
   ((bg           '("#1c1c1c" nil       nil            ))
