@@ -2,7 +2,7 @@
 
 ;; theme
 (set-frame-font "Liberation Mono for Powerline 13" nil t)
-(set-frame-font "Liberation Mono 12" nil t)
+; (set-frame-font "Liberation Mono 12" nil t)
 (add-to-list 'custom-theme-load-path "~/.doom.d/themes")
 (add-to-list '+doom-solaire-themes '(cyan-light . t))
 (setq-default doom-theme 'cyan-light)
@@ -16,6 +16,9 @@
 (add-hook 'magit-refresh-popup-buffer-hook #'solaire-mode)
 (setq-default dired-k-size-colors nil
               dired-k-date-colors nil)
+
+; flycheck
+(setq flycheck-check-syntax-automatically '(mode-enabled save))
 
 ;; line wrap
 (add-hook 'visual-line-mode-hook #'adaptive-wrap-prefix-mode)
