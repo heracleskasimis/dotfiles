@@ -17,7 +17,10 @@
 (setq-default dired-k-size-colors nil
               dired-k-date-colors nil)
 
-; flycheck
+;; neo-tree
+(setq-default neo-window-fixed-size nil)
+
+;; flycheck
 (setq flycheck-check-syntax-automatically '(mode-enabled save))
 
 ;; line wrap
@@ -48,3 +51,9 @@
       (add-to-list 'org-babel-load-languages (cons (intern language) t))
       (org-babel-do-load-languages 'org-babel-load-languages org-babel-load-languages))
     ad-do-it))
+
+;; rjsx
+(with-eval-after-load 'rjsx-mode
+  (define-key rjsx-mode-map "<" nil)
+  (define-key rjsx-mode-map (kbd "C-d") nil)
+  (define-key rjsx-mode-map ">" nil))
