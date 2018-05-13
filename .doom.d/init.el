@@ -26,8 +26,7 @@
         +childframe)     ; a nicer company UI (Emacs 26+ only)
       ;helm              ; the *other* search engine for love and life
       ;ido               ; the other *other* search engine...
-       (ivy              ; a search engine for love and life
-        +childframe)     ; uses childframes for popups (Emacs 26+ only)
+       ivy               ; a search engine for love and life
 
        :ui
        doom              ; what makes DOOM look the way it does
