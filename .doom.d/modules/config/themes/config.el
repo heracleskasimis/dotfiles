@@ -26,3 +26,5 @@
 (setq-default dired-k-size-colors nil
               dired-k-date-colors nil)
 
+;; menu bar
+(if (and (featurep! +menu) (display-graphic-p)) (menu-bar-mode 1))

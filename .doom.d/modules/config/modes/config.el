@@ -23,9 +23,6 @@
 (setq-default mouse-wheel-progressive-speed nil
               scroll-preserve-screen-position nil)
 
-;; menu bar
-(if (display-graphic-p) (menu-bar-mode 1))
-
 ;; org-mode
 (defadvice org-babel-execute-src-block (around load-language nil activate)
   "Load language if needed"
