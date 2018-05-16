@@ -40,8 +40,8 @@ determine the exact padding."
   ((bg           '("#ffffff" nil       nil            ))
    (bg-alt       '("#f5f5f5" "#f5f5f5" "brightwhite"  ))
    (base0        '("#eeeeee" "#eeeeee" "white"        ))
-   (base1        '("#fafafa" "#fafafa" "brightwhite"  ))
-   (base2        '("#f7f7f7" "#f7f7f7" "brightwhite"  ))
+   (base1        '("#fcfcfc" "#fcfcfc" "brightwhite"  ))
+   (base2        '("#f3f3f3" "#f3f3f3" "brightwhite"  ))
    (base3        '("#c6c6c6" "#c6c6c6" "brightwhite"  ))
    (base4        '("#9e9e9e" "#9e9e9e" "white"        ))
    (base5        '("#808080" "#808080" "white"        ))
@@ -67,7 +67,7 @@ determine the exact padding."
 
    ;; face categories -- required for all themes
    (highlight      blue)
-   (vertical-bar   (doom-darken bg 0.1))
+   (vertical-bar   (doom-darken bg 0.05))
    (selection      cyan)
    (builtin        dark-blue)
    (comments       (if cyan-light-brighter-comments cyan base4))
@@ -115,8 +115,8 @@ determine the exact padding."
    ((line-number &override) :foreground (doom-darken base2 0.2) :background nil)
    ((line-number-current-line &override) :background highlight :foreground base0)
 
-   (solaire-default-face :background (doom-darken bg 0.04))
-   (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg 0.07))
+   (solaire-default-face :background (doom-darken bg 0.05))
+   (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg 0.1))
    (solaire-minibuffer-face :background bg);
 
    (doom-modeline-bar :background (if -modeline-bright modeline-bg highlight))
@@ -231,9 +231,9 @@ determine the exact padding."
    ;; neo-tree
    (neo-root-dir-face
     :foreground dark-cyan
-    :background bg
+    :background vertical-bar
     :bold bold
-    :box `(:line-width 3 :color ,bg))
+    :box `(:line-width 3 :color ,vertical-bar))
 
    ;; js2 & rjsx
    (js2-object-property :foreground fg)
