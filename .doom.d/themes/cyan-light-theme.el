@@ -162,6 +162,8 @@ determine the exact padding."
 
    ;; markdown-mode
    (markdown-markup-face     :foreground base5)
+   (markdown-url-face        :foreground builtin)
+   (markdown-italic-face     :foreground fg :slant 'italic)
    (markdown-list-face       :foreground fg)
    (markdown-header-face     :inherit 'bold :foreground fg)
    (markdown-code-face       :background base1)
@@ -231,9 +233,9 @@ determine the exact padding."
    ;; neo-tree
    (neo-root-dir-face
     :foreground dark-cyan
-    :background vertical-bar
+    :background (doom-darken bg 0.05)
     :bold bold
-    :box `(:line-width 3 :color ,vertical-bar))
+    :box `(:line-width 3 :color ,(doom-darken bg 0.05)))
 
    ;; js2 & rjsx
    (js2-object-property :foreground fg)
