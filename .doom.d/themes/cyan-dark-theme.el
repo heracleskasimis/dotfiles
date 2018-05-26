@@ -226,12 +226,18 @@ determine the exact padding."
     :bold bold
     :box `(:line-width 3 :color ,vertical-bar))
 
-   ;; js2
+   ;; js2 & rjsx
    (js2-object-property :foreground fg)
    (js2-object-property-access :foreground fg)
+   (rjsx-tag :foreground builtin)
+   (rjsx-tag-bracket-face :foreground builtin)
 
    ;; nav-flash
    (nav-flash-face :background base0 :foreground teal :weight 'bold)
+
+   ;; imenu
+   (imenu-list-entry-face-3 :foreground teal)
+   (imenu-list-entry-subalist-face-3 :foreground teal :underline t)
    )
 
   ;; --- extra variables ---------------------

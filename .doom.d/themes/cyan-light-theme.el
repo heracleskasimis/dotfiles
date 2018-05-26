@@ -242,6 +242,10 @@ determine the exact padding."
    (js2-object-property-access :foreground fg)
    (rjsx-tag :foreground builtin)
    (rjsx-tag-bracket-face :foreground builtin)
+
+   ;; imenu
+   (imenu-list-entry-face-3 :foreground teal)
+   (imenu-list-entry-subalist-face-3 :foreground teal :underline t)
    )
 
   ;; --- extra variables ---------------------
