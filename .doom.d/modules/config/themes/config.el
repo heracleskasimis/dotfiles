@@ -3,9 +3,7 @@
 (if (featurep! +large-font)
     (set-frame-font "LiterationMono Nerd Font Mono 13" nil t))
 (if (featurep! +small-font)
-  (set-frame-font "Liberation Mono 9" nil t))
-(if (and (not (featurep! +large-font)) (not (featurep! +small-font)))
-    (set-frame-font "Liberation Mono 12"))
+    (set-frame-font "Liberation Mono 9" nil t))
 
 (add-to-list 'custom-theme-load-path "~/.doom.d/themes")
 (add-to-list '+doom-solaire-themes '(cyan-light . t))
@@ -28,3 +26,22 @@
 
 ;; menu bar
 (if (and (featurep! +menu) (display-graphic-p)) (menu-bar-mode 1))
+
+;; hl-todo mode
+(setq-default hl-todo-keyword-faces
+  '(("HOLD" . "#5f5f00")
+    ("TODO" . "#5f5f00")
+    ("NEXT" . "#005f5f")
+    ("THEM" . "#ff5faf")
+    ("PROG" . "#005f5f")
+    ("OKAY" . "#5fd7d7")
+    ("DONT" . "#5f7f5f")
+    ("FAIL" . "#ff00af")
+    ("DONE" . "#5fd7d7")
+    ("NOTE"   . "#5f5f00")
+    ("KLUDGE" . "#5f5f00")
+    ("HACK"   . "#5f5f00")
+    ("FIXME"  . "#ff5faf")
+    ("XXX"    . "#ff5faf")
+    ("XXXX"   . "#ff5faf")
+    ("???" . "#ff5faf")))
