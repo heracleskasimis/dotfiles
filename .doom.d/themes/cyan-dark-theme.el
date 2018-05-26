@@ -105,8 +105,8 @@ determine the exact padding."
     :foreground doc-comments
     :slant 'italic)
 
-   ((line-number &override) :foreground base2 :background nil)
-   ((line-number-current-line &override) :foreground blue :background base0)
+   ((line-number &override) :foreground base4 :background nil)
+   ((line-number-current-line &override) :foreground base4 :background bg)
 
    (solaire-default-face :background (doom-darken bg 0.4))
    (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg-alt 0.4))
