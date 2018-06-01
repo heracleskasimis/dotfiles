@@ -113,7 +113,7 @@ determine the exact padding."
     :slant 'italic)
 
    ((line-number &override) :foreground (doom-darken base2 0.2) :background nil)
-   ((line-number-current-line &override) :background highlight :foreground base0)
+   ((line-number-current-line &override) :background teal :foreground bg)
 
    (solaire-default-face :background (doom-darken bg 0.05))
    (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg 0.1))
