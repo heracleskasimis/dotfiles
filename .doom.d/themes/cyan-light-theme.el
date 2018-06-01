@@ -213,7 +213,7 @@ determine the exact padding."
    (evil-ex-lazy-highlight
     :background (if cyan-light-yellow-highlight
                     light-yellow
-                  (doom-lighten teal 0.85)))
+                  (doom-lighten cyan 0.75)))
 
    ;; vim
    (vimrc-number :foreground strings)
@@ -246,6 +246,9 @@ determine the exact padding."
    ;; imenu
    (imenu-list-entry-face-3 :foreground teal)
    (imenu-list-entry-subalist-face-3 :foreground teal :underline t)
+
+   ;; parentheses
+   (show-paren-match :background (doom-lighten cyan 0.5))
    )
 
   ;; --- extra variables ---------------------
