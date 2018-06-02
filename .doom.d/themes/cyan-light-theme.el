@@ -202,7 +202,7 @@ determine the exact padding."
    (ediff-current-diff-Ancestor :foreground teal   :background (doom-lighten teal 0.8))
 
    ;; tooltip
-   (tooltip :background base1 :foreground fg)
+   (tooltip :background (doom-darken base2 0.05) :foreground fg)
 
    ;; dired
    (dired-k-modified :foreground red)
