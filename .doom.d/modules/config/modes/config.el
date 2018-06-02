@@ -38,5 +38,8 @@
   (define-key rjsx-mode-map (kbd "C-d") nil)
   (define-key rjsx-mode-map ">" nil))
 
+;; javascript
+(setq-default js-indent-align-list-continuation nil)
+
 ;; smart parens
 (smartparens-global-mode -1)
