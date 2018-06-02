@@ -20,6 +20,9 @@
 (add-hook 'term-mode-hook #'solaire-mode)
 (add-hook 'which-key-init-buffer-hook #'solaire-mode)
 (add-hook 'magit-refresh-popup-buffer-hook #'solaire-mode)
+(advice-add #'persp-load-state-from-file
+            :after
+            #'solaire-mode-restore-persp-mode-buffers)
 
 (setq-default dired-k-size-colors nil
               dired-k-date-colors nil)
