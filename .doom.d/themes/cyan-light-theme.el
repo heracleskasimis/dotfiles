@@ -61,7 +61,7 @@ determine the exact padding."
    (blue         '("#008787" "#008787" "brightblue"   ))
    (dark-blue    '("#005f5f" "#005f5f" "blue"         ))
    (magenta      '("#ff87df" "#ff87df" "magenta"      ))
-   (violet       '("#ffafdf" "#ffafdf" "brightmagenta"))
+   (violet       '("#ffafd7" "#ffafd7" "brightmagenta"))
    (cyan         '("#87ffff" "#87ffff" "brightcyan"   ))
    (dark-cyan    '("#008b8b" "#008b8b" "cyan"         ))
 
