@@ -4,7 +4,7 @@
 (setq-default neo-window-fixed-size nil)
 
 ;; flycheck
-(setq flycheck-check-syntax-automatically '(mode-enabled save))
+(setq-default flycheck-check-syntax-automatically '(mode-enabled save))
 
 ;; line wrap
 (add-hook 'visual-line-mode-hook #'adaptive-wrap-prefix-mode)
