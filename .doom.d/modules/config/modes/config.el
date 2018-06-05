@@ -21,7 +21,8 @@
 
 ;; scrolling
 (setq-default mouse-wheel-progressive-speed nil
-              scroll-preserve-screen-position nil)
+              scroll-preserve-screen-position nil
+              mouse-wheel-scroll-amount '(2 ((shift) . 1)))
 
 ;; org-mode
 (defadvice org-babel-execute-src-block (around load-language nil activate)
