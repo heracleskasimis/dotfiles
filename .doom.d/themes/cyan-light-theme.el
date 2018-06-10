@@ -60,8 +60,8 @@ determine the exact padding."
    (light-yellow '("#ffff5f" "#ffff5f" "brightyellow" ))
    (blue         '("#008787" "#008787" "brightblue"   ))
    (dark-blue    '("#005f5f" "#005f5f" "blue"         ))
-   (magenta      '("#ff87df" "#ff87df" "magenta"      ))
-   (violet       '("#ffafd7" "#ffafd7" "brightmagenta"))
+   (magenta      '("#ff87af" "#ff87af" "magenta"      ))
+   (violet       '("#ffafdf" "#ffafdf" "brightmagenta"))
    (cyan         '("#87ffff" "#87ffff" "brightcyan"   ))
    (dark-cyan    '("#008b8b" "#008b8b" "cyan"         ))
 
@@ -112,11 +112,11 @@ determine the exact padding."
     :foreground doc-comments
     :slant 'italic)
 
-   ((line-number &override) :foreground (doom-darken base2 0.2) :background nil)
-   ((line-number-current-line &override) :foreground teal :background bg)
+   (line-number :foreground (doom-darken base2 0.2) :background bg)
+   (line-number-current-line :foreground violet :background bg)
 
    (solaire-default-face :background (doom-darken bg 0.05))
-   (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg 0.05))
+   (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg 0.1))
    (solaire-minibuffer-face :background bg);
 
    (doom-modeline-bar :background (if -modeline-bright modeline-bg highlight))
