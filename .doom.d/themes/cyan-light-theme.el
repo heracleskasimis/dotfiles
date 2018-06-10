@@ -38,7 +38,7 @@ determine the exact padding."
 
   ;; name        default     256       16
   ((bg           '("#ffffff" nil       nil            ))
-   (bg-alt       '("#f5f5f5" "#f5f5f5" "brightwhite"  ))
+   (bg-alt       '("#f8f8f8" "#f8f8f8" "brightwhite"  ))
    (base0        '("#eeeeee" "#eeeeee" "white"        ))
    (base1        '("#fcfcfc" "#fcfcfc" "brightwhite"  ))
    (base2        '("#f3f3f3" "#f3f3f3" "brightwhite"  ))
@@ -112,12 +112,14 @@ determine the exact padding."
     :foreground doc-comments
     :slant 'italic)
 
-   (line-number :foreground (doom-darken base2 0.2) :background bg)
-   (line-number-current-line :foreground violet :background bg)
+   ((line-number &override) :foreground (doom-darken base2 0.2))
+   ((line-number-current-line &override) :foreground violet)
 
    (solaire-default-face :background (doom-darken bg 0.05))
-   (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg 0.1))
-   (solaire-minibuffer-face :background bg);
+   (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg-alt 0.05))
+   (solaire-minibuffer-face :background bg)
+
+   (hl-line :background bg-alt)
 
    (doom-modeline-bar :background (if -modeline-bright modeline-bg highlight))
 
