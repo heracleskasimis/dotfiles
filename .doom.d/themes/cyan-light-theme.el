@@ -53,7 +53,7 @@ determine the exact padding."
 
    (grey         base4)
    (red          '("#ff5faf" "#ff5faf" "red"          ))
-   (orange       '("#ff00af" "#ff00af" "brightred"    ))
+   (orange       '("#ff005f" "#ff005f" "brightred"    ))
    (green        '("#5fd7d7" "#5fd7d7" "green"        ))
    (teal         '("#00afaf" "#00afaf" "brightgreen"  ))
    (yellow       '("#5f5f00" "#5f5f00" "yellow"       ))
@@ -113,10 +113,10 @@ determine the exact padding."
     :slant 'italic)
 
    ((line-number &override) :foreground (doom-darken base2 0.2) :background nil)
-   ((line-number-current-line &override) :background teal :foreground bg)
+   ((line-number-current-line &override) :foreground teal :background bg)
 
    (solaire-default-face :background (doom-darken bg 0.05))
-   (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg 0.1))
+   (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg 0.05))
    (solaire-minibuffer-face :background bg);
 
    (doom-modeline-bar :background (if -modeline-bright modeline-bg highlight))
