@@ -238,6 +238,28 @@ determine the exact padding."
    ;; imenu
    (imenu-list-entry-face-3 :foreground teal)
    (imenu-list-entry-subalist-face-3 :foreground teal :underline t)
+
+   ;; helm
+   (helm-M-x-key :foreground yellow :underline t)
+   (helm-buffer-archive :foreground yellow)
+   (helm-buffer-directory :foreground magenta)
+   (helm-buffer-not-saved :foreground red)
+   (helm-buffer-process :foreground orange)
+   (helm-buffer-saved-out :foreground red :background fg)
+   (helm-delete-async-message :foreground yellow)
+   (helm-etags-file :foreground teal)
+   (helm-ff-dotted-symlink-directory :foreground cyan)
+   (helm-ff-invalid-symlink :foreground fg :background red)
+   (helm-ff-suid :foreground bg :background red)
+   (helm-line-left-margin :foreground fg :background bg-alt)
+   (helm-header-line-left-margin :foreground fg :background bg-alt)
+   (helm-history-remove :foreground red)
+   (helm-lisp-completion-info :foreground dark-blue)
+   (helm-lisp-show-completion :foreground fg :background bg-alt)
+   (helm-locate-finish :foreground green)
+   (helm-prefarg :foreground red)
+   (helm-resume-need-update :foreground fg :background red)
+   (helm-separator :foreground violet)
    )
 
   ;; --- extra variables ---------------------

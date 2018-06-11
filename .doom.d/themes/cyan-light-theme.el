@@ -112,8 +112,8 @@ determine the exact padding."
     :foreground doc-comments
     :slant 'italic)
 
-   ((line-number &override) :foreground (doom-darken base2 0.2))
-   ((line-number-current-line &override) :foreground violet)
+   ((line-number &override) :foreground (doom-darken base2 0.2) :background bg)
+   ((line-number-current-line &override) :foreground violet :background bg)
 
    (solaire-default-face :background (doom-darken bg 0.05))
    (solaire-hl-line-face :inherit 'hl-line :background (doom-darken bg-alt 0.05))
@@ -251,6 +251,28 @@ determine the exact padding."
 
    ;; parentheses
    (show-paren-match :background (doom-lighten cyan 0.5))
+
+   ;; helm
+   (helm-M-x-key :foreground yellow :underline t)
+   (helm-buffer-archive :foreground yellow)
+   (helm-buffer-directory :foreground magenta)
+   (helm-buffer-not-saved :foreground red)
+   (helm-buffer-process :foreground orange)
+   (helm-buffer-saved-out :foreground red :background fg)
+   (helm-delete-async-message :foreground yellow)
+   (helm-etags-file :foreground teal)
+   (helm-ff-dotted-symlink-directory :foreground cyan)
+   (helm-ff-invalid-symlink :foreground fg :background red)
+   (helm-ff-suid :foreground bg :background red)
+   (helm-line-left-margin :foreground fg :background bg-alt)
+   (helm-header-line-left-margin :foreground fg :background bg-alt)
+   (helm-history-remove :foreground red)
+   (helm-lisp-completion-info :foreground dark-blue)
+   (helm-lisp-show-completion :foreground fg :background bg-alt)
+   (helm-locate-finish :foreground green)
+   (helm-prefarg :foreground red)
+   (helm-resume-need-update :foreground fg :background red)
+   (helm-separator :foreground violet)
    )
 
   ;; --- extra variables ---------------------
