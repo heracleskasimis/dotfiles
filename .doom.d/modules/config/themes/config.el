@@ -27,6 +27,11 @@
 (setq-default dired-k-size-colors nil
               dired-k-date-colors nil)
 
+;; hl-line-mode
+(remove-hook 'prog-mode-hook #'hl-line-mode)
+(remove-hook 'text-mode-hook #'hl-line-mode)
+(remove-hook 'conf-mode-hook #'hl-line-mode)
+
 ;; menu bar
 (if (and (featurep! +menu) (display-graphic-p)) (menu-bar-mode 1))
 
