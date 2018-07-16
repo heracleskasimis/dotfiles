@@ -1,6 +1,8 @@
 set nocompatible
+set shellslash
+set runtimepath^=~/.vim
 
-let mapleader = ' '
+let mapleader=' '
 
 set backspace=indent,eol,start
 set history=50
@@ -13,7 +15,7 @@ set guifont=Liberation\ Mono\ for\ Powerline:h13
 set linespace=1
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set mouse=a
-set visualbell
+set novisualbell
 set t_vb=
 set noerrorbells
 
@@ -29,7 +31,7 @@ set foldlevelstart=16
 
 set clipboard=unnamed
 
-set wildignore=*.class,*.o,*.meta
+set wildignore=*.class,*.o,*.meta,*/node_modules/*
 
 set tags=tags; ",/Users/cell/.vim/tags/*
 
@@ -38,53 +40,60 @@ filetype off
 set background=light
 colorscheme cyan
 
-set rtp+=~/.vim/bundle/Vundle.vim/
-call vundle#begin()
-Plugin 'VundleVim/Vundle.vim'
-Plugin 'easymotion/vim-easymotion'
-" Plugin 'justinmk/vim-sneak'
-Plugin 'scrooloose/syntastic'
-Plugin 'mtscout6/syntastic-local-eslint.vim'
-Plugin 'pangloss/vim-javascript'
-Plugin 'scrooloose/nerdtree'
-Plugin 'sbl/scvim'
-" Plugin 'majutsushi/tagbar'
-Plugin 'digitaltoad/vim-jade'
-Plugin 'plasticboy/vim-markdown'
-Plugin 'mxw/vim-jsx'
-Plugin 'tpope/vim-fugitive'
-Plugin 'gregsexton/gitv'
-Plugin 'elzr/vim-json'
-Plugin 'kien/ctrlp.vim'
-Plugin 'vim-scripts/javacomplete'
-" Plugin 'Shougo/neocomplete.vim'
-" Plugin 'Shougo/unite.vim'
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'fidian/hexmode'
-Plugin 'Shougo/vimproc.vim'
-Plugin 'Shougo/vimshell.vim'
-"Plugin 'Shougo/unite-ssh'
-Plugin 'tpope/vim-vinegar'
-Plugin 'xolox/vim-misc'
-" Plugin 'xolox/vim-easytags'
-" Plugin 'kris89/vim-multiple-cursors'
-Plugin 'groenewege/vim-less'
-Plugin 'fatih/vim-go'
-Plugin 'editorconfig/editorconfig-vim'
-Plugin 'Chiel92/vim-autoformat'
-Plugin 'gerw/vim-HiLinkTrace'
-Plugin 'tfnico/vim-gradle'
-Plugin 'bling/vim-airline'
+call plug#begin('~/.vim/plugged')
+Plug 'easymotion/vim-easymotion'
+" Plug 'justinmk/vim-sneak'
+Plug 'scrooloose/syntastic'
+Plug 'mtscout6/syntastic-local-eslint.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'scrooloose/nerdtree'
+Plug 'sbl/scvim'
+" Plug 'majutsushi/tagbar'
+Plug 'digitaltoad/vim-jade'
+Plug 'plasticboy/vim-markdown'
+Plug 'mxw/vim-jsx'
+Plug 'tpope/vim-fugitive'
+Plug 'gregsexton/gitv'
+Plug 'elzr/vim-json'
+Plug 'kien/ctrlp.vim'
+Plug 'vim-scripts/javacomplete'
+" Plug 'Shougo/neocomplete.vim'
+" Plug 'Shougo/unite.vim'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'fidian/hexmode'
+Plug 'Shougo/vimproc.vim'
+Plug 'Shougo/vimshell.vim'
+"Plug 'Shougo/unite-ssh'
+Plug 'tpope/vim-vinegar'
+Plug 'xolox/vim-misc'
+" Plug 'xolox/vim-easytags'
+" Plug 'kris89/vim-multiple-cursors'
+Plug 'groenewege/vim-less'
+Plug 'fatih/vim-go'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'Chiel92/vim-autoformat'
+Plug 'gerw/vim-HiLinkTrace'
+Plug 'tfnico/vim-gradle'
+Plug 'bling/vim-airline'
+Plug 'vadimr/bclose.vim'
+Plug 'prettier/vim-prettier'
+" Plug 'sbdchd/neoformat'
 if has("gui_running")
-    Plugin 'ihacklog/HiCursorWords'
+    Plug 'ihacklog/HiCursorWords'
 endif
-call vundle#end()
+call plug#end()
 
 " Switch syntax highlighting on, when the terminal has colors
 " Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
     syntax on
     set hlsearch
+    set noshellslash
+    if has('win32')
+        set shell=cmd
+        set shellcmdflag=/c
+        set shellxquote=\"
+    endif
 endif
 
 filetype plugin indent on
@@ -138,7 +147,7 @@ let g:HiCursorWords_delay = 50
 let g:HiCursorWords_hiGroupRegexp = ''
 let g:HiCursorWords_debugEchoHiName = 0
 let g:NERDTreeHijackNetrw = 0
-let g:syntastic_shell = '/bin/sh'
+" let g:syntastic_shell = '/bin/sh'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
@@ -155,7 +164,8 @@ let g:syntastic_java_checkstyle_conf_file = '~/.checkstyle.xml'
 let g:formatprg_args_c = "--style=java"
 let g:formatprg_args_cpp = "--style=java"
 let g:formatprg_args_expr_javascript = '"-a -f - -".(&expandtab ? "s ".&shiftwidth : "t").(&textwidth ? " -w ".&textwidth : "")'
-let g:EditorConfig_core_mode = 'external_command'
+let g:EditorConfig_core_mode = 'python_external'
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 let g:Gitv_TruncateCommitSubjects = 1
 let g:Gitv_DoNotMapCtrlKey = 1
 
@@ -177,11 +187,12 @@ map <leader><Tab>[ :tabprevious<cr>
 map <leader><Tab>] :tabnext<cr>
 
 map <leader>on :NERDTreeToggle<cr>
-map <leader>0 :NERDTreeFind<cr>
+map <leader>oN :NERDTreeFind<cr>
 
 map <leader>bb :CtrlPBuffer<cr>
 map <leader>b] :bnext<cr>
 map <leader>b[ :bprevious<cr>
+map <leader>bk :Bclose<cr>
 map <leader>< :CtrlPBuffer<cr>
 
 map <leader>ww <c-w>w
@@ -194,8 +205,8 @@ map <c-Tab> <c-w>w
 " map <leader>g :Rgrep<cr>
 " map <leader><s-g> :Grep<cr>
 map <leader>f/ :CtrlP<cr>
+map <leader>p/ :CtrlP<cr>
 map <leader>/p :silent noautocmd vimgrep <c-r>=expand("<cword>")<cr> <c-r>=getcwd()<cr>/**/*.<c-r>=expand("%:e")<cr> \| copen<home><c-right><c-right><c-right><c-right>
-map <leader>p/ :silent noautocmd vimgrep <c-r>=expand("<cword>")<cr> <c-r>=getcwd()<cr>/**/*.<c-r>=expand("%:e")<cr> \| copen<home><c-right><c-right><c-right><c-right>
 map <leader>/d :silent noautocmd vimgrep <c-r>=expand("<cword>")<cr> <c-r>=getcwd()<cr>/**/*.<c-r>=expand("%:e")<cr> \| copen<home><c-right><c-right><c-right><c-right>
 
 map <leader>]e :lnext<cr>
