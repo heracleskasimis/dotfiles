@@ -20,11 +20,11 @@ hi SpecialKey         cterm=bold            ctermfg=NONE
 hi NonText            cterm=bold            ctermfg=NONE
 hi Directory          cterm=NONE            ctermfg=14
 hi ErrorMsg           cterm=NONE            ctermfg=15         ctermbg=1
-hi IncSearch          cterm=NONE            ctermfg=15        ctermbg=0
-hi Search             cterm=NONE            ctermfg=15        ctermbg=14
+hi IncSearch          cterm=NONE            ctermfg=231        ctermbg=0
+hi Search             cterm=NONE            ctermbg=195
 hi MoreMsg            cterm=bold            ctermfg=NONE
 hi ModeMsg            cterm=bold            ctermfg=NONE
-hi LineNr             cterm=NONE            ctermfg=7        ctermbg=NONE
+hi LineNr             cterm=NONE            ctermfg=231        ctermbg=15
 hi Question           cterm=standout        ctermfg=NONE
 " hi StatusLine         cterm=bold            ctermfg=15        ctermbg=8
 " hi StatusLineNC       cterm=NONE            ctermfg=7        ctermbg=234
