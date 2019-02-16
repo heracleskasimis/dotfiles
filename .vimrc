@@ -79,7 +79,7 @@ Plug 'vadimr/bclose.vim'
 Plug 'prettier/vim-prettier'
 " Plug 'sbdchd/neoformat'
 if has("gui_running")
-    Plug 'ihacklog/HiCursorWords'
+    Plug 'jkerian/HiCursorWords'
 endif
 call plug#end()
 
@@ -99,8 +99,8 @@ endif
 filetype plugin indent on
 
 command! -nargs=0 FormatJSON %!python -m json.tool
-command! -nargs=0 Thtml %!/usr/local/bin/tidy -q -i --show-errors 0
-command! -nargs=0 Txml  %!/usr/local/bin/tidy -q -i --show-errors 0 -xml
+command! -nargs=0 FormatHTML %!tidy -q -i --show-errors 0
+command! -nargs=0 FormatXML  %!tidy -q -i --show-errors 0 -xml
 
 if has("gui_running")
     "autocmd CursorMoved * silent! exe printf('match LazySearch /\<%s\>/', expand('<cword>'))
