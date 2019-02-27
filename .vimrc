@@ -16,7 +16,7 @@ set linespace=1
 set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
 set mouse=a
 set novisualbell
-set t_vb=
+set vb t_vb=
 set noerrorbells
 
 set langmap=ΑA,ΒB,ΨC,ΔD,ΕE,ΦF,ΓG,ΗH,ΙI,ΞJ,ΚK,ΛL,ΜM,ΝN,ΟO,ΠP,ΡR,ΣS,ΤT,ΘU,ΩV,ΧX,ΖY,ΥZ,αa,βb,ψc,δd,εe,φf,γg,ηh,ιi,ξj,κk,λl,μm,νn,οo,πp,qq,ρr,σs,τt,θu,ωv,ςw,χx,ζz,υy
