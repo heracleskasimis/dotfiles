@@ -6,8 +6,6 @@
 " :he cterm-colors
 "
 if version > 580
-    " no guarantees for version 5.8 and below, but this makes it stop
-    " complaining
     hi clear
     if exists("syntax_on")
     syntax reset
@@ -17,7 +15,7 @@ let g:colors_name="cyan"
 
 hi Cursorline         cterm=NONE            ctermfg=0        ctermbg=254
 hi SpecialKey         cterm=bold            ctermfg=NONE
-hi NonText            cterm=bold            ctermfg=NONE
+hi NonText            cterm=bold            ctermfg=255
 hi Directory          cterm=NONE            ctermfg=14
 hi ErrorMsg           cterm=NONE            ctermfg=15         ctermbg=1
 hi IncSearch          cterm=NONE            ctermfg=231        ctermbg=0
@@ -26,8 +24,6 @@ hi MoreMsg            cterm=bold            ctermfg=NONE
 hi ModeMsg            cterm=bold            ctermfg=NONE
 hi LineNr             cterm=NONE            ctermfg=231        ctermbg=15
 hi Question           cterm=standout        ctermfg=NONE
-" hi StatusLine         cterm=bold            ctermfg=15        ctermbg=8
-" hi StatusLineNC       cterm=NONE            ctermfg=7        ctermbg=234
 hi StatusLine         cterm=bold            ctermfg=15        ctermbg=0
 hi StatusLineNC       cterm=NONE            ctermfg=15        ctermbg=8
 hi VertSplit          cterm=NONE            ctermfg=15        ctermbg=15
@@ -51,18 +47,16 @@ hi Statement          cterm=bold            ctermfg=NONE
 hi PreProc            cterm=bold            ctermfg=NONE
 hi Type               cterm=bold            ctermfg=NONE
 hi Underlined         cterm=underline       ctermfg=NONE
-hi Ignore             cterm=bold            ctermfg=NONE
+hi Ignore             cterm=bold            ctermfg=231
 hi Error              cterm=NONE            ctermfg=15                ctermbg=1
 hi Todo               cterm=standout        ctermfg=NONE
 hi String             cterm=NONE            ctermfg=4
 
 hi Cursorline         gui=NONE              guifg=NONE        guibg=#ebebeb
-" hi Cursorline         gui=bold              guifg=NONE      guibg=#e0ffff
 hi CursorlineNr       gui=italic              guifg=#e0e0e0    guibg=#bbbbbb    ctermbg=NONE   ctermfg=7
 hi Cursor             gui=NONE              guifg=white        guibg=#ff0044
 hi SpecialKey         gui=bold              guifg=NONE
 hi NonText            gui=bold              guifg=#e0e0e0        guibg=NONE
-"hi NonText            gui=bold              guifg=NONE        guibg=#e6e6e6
 hi Directory          gui=bold,italic       guifg=NONE
 hi ErrorMsg           gui=reverse           guifg=#ffffff    guibg=#ff0044
 hi IncSearch          gui=reverse           guifg=black
@@ -76,7 +70,6 @@ hi StatusLineNC       gui=NONE              guifg=white     guibg=#a0a0a0
 hi VertSplit          gui=bold              guifg=#c8c8c8    guibg=#c8c8c8
 hi Title              gui=bold              guifg=NONE
 hi Visual             gui=NONE              guifg=NONE        guibg=#e0e0e0
-" hi Visual             gui=NONE              guifg=white        guibg=#3a70d7
 hi VisualNOS          gui=bold,underline    guifg=NONE
 hi WarningMsg         gui=standout          guifg=NONE
 hi Folded             gui=reverse,italic    guifg=#c8c8c8    guibg=white
@@ -100,7 +93,7 @@ hi Statement          gui=bold              guifg=NONE
 hi PreProc            gui=bold              guifg=NONE
 hi Type               gui=bold              guifg=NONE
 hi Underlined         gui=NONE              guifg=NONE        guibg=#ffffd0
-hi Ignore             gui=bold              guifg=NONE
+hi Ignore             gui=bold              guifg=#e0e0e0
 hi Error              gui=bold              guifg=#ff0044   guibg=#ffe0e9
 hi Todo               gui=bold              guifg=darkcyan    guibg=lightgrey
 hi String             gui=NONE              guifg=darkcyan
@@ -153,4 +146,3 @@ hi link EasyMotionTarget2SecondDefault DiffRemoved
 hi link EasyMotionIncSearchDefault DiffChange
 hi link EasyMotionIncCursorDefault DiffAdded
 hi link EasyMotionMoveHLDefault DiffAdded
-

@@ -74,6 +74,7 @@ Plug 'tpope/vim-dispatch'
 Plug 'OmniSharp/omnisharp-vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-speeddating'
+Plug 'vim-scripts/SyntaxRange'
 Plug 'jceb/vim-orgmode'
 " Plug 'justinmk/vim-sneak'
 " Plug 'majutsushi/tagbar'
@@ -212,6 +213,10 @@ map <leader>f/ :CtrlP<cr>
 map <leader>p/ :CtrlP<cr>
 map <leader>/p :silent noautocmd vimgrep <c-r>=expand("<cword>")<cr> <c-r>=getcwd()<cr>/**/*.<c-r>=expand("%:e")<cr> \| copen<home><c-right><c-right><c-right><c-right>
 map <leader>/d :silent noautocmd vimgrep <c-r>=expand("<cword>")<cr> <c-r>=getcwd()<cr>/**/*.<c-r>=expand("%:e")<cr> \| copen<home><c-right><c-right><c-right><c-right>
+map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
+\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
+\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
+
 
 map <leader>]e :lnext<cr>
 map <leader>[e :lprevious<cr>
