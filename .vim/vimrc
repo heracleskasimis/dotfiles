@@ -101,7 +101,9 @@ if &t_Co > 2 || has("gui_running")
         set shellcmdflag=/c
         set shellxquote=\"
     endif
-else
+endif
+
+if !has("gui_running")
     let loaded_matchparen = 1
 endif
 
