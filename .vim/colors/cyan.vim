@@ -24,8 +24,8 @@ hi MoreMsg            cterm=bold            ctermfg=NONE
 hi ModeMsg            cterm=bold            ctermfg=NONE
 hi LineNr             cterm=NONE            ctermfg=231        ctermbg=15
 hi Question           cterm=standout        ctermfg=NONE
-hi StatusLine         cterm=bold            ctermfg=15        ctermbg=0
-hi StatusLineNC       cterm=NONE            ctermfg=15        ctermbg=8
+hi StatusLine         cterm=bold            ctermfg=231       ctermbg=15
+hi StatusLineNC       cterm=NONE            ctermfg=231       ctermbg=15
 hi VertSplit          cterm=NONE            ctermfg=15        ctermbg=15
 hi Title              cterm=bold            ctermfg=NONE
 hi Visual             cterm=NONE            ctermfg=NONE    ctermbg=252
@@ -65,8 +65,8 @@ hi MoreMsg            gui=bold              guifg=NONE
 hi ModeMsg            gui=bold              guifg=NONE
 hi LineNr             gui=reverse,italic    guifg=#c8c8c8    guibg=white
 hi Question           gui=standout          guifg=NONE
-hi StatusLine         gui=bold              guifg=#ffffff    guibg=#707070
-hi StatusLineNC       gui=NONE              guifg=white     guibg=#a0a0a0
+hi StatusLine         gui=bold              guifg=#ffffff    guibg=#c0c0c0
+hi StatusLineNC       gui=NONE              guifg=#ffffff    guibg=#c8c8c8
 hi VertSplit          gui=bold              guifg=#c8c8c8    guibg=#c8c8c8
 hi Title              gui=bold              guifg=NONE
 hi Visual             gui=NONE              guifg=NONE        guibg=#e0e0e0
