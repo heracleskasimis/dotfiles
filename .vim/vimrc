@@ -74,6 +74,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-speeddating'
 Plug 'vim-scripts/SyntaxRange'
 Plug 'jceb/vim-orgmode'
+Plug 'mileszs/ack.vim'
 " Plug 'justinmk/vim-sneak'
 " Plug 'majutsushi/tagbar'
 " Plug 'Shougo/unite-ssh'
@@ -93,12 +94,17 @@ if &t_Co > 2 || has("gui_running")
     syntax on
     set hlsearch
     set noshellslash
+    let g:matchmaker_enable_startup = 1
+    set laststatus=2
     if has('win32')
         set shell=cmd
         set shellcmdflag=/c
         set shellxquote=\"
     endif
+else
+    let loaded_matchparen = 1
 endif
+
 
 filetype plugin indent on
 
@@ -106,13 +112,8 @@ command! -nargs=0 FormatJSON %!python -m json.tool
 command! -nargs=0 FormatHTML %!tidy -q -i --show-errors 0
 command! -nargs=0 FormatXML  %!tidy -q -i --show-errors 0 -xml
 
-if has("gui_running")
-    "autocmd CursorMoved * silent! exe printf('match LazySearch /\<%s\>/', expand('<cword>'))
-    "autocmd Syntax * syn match ExtraWhitespace /\s\+$\| \+\ze\t/ containedin=ALL
-    let g:matchmaker_enable_startup = 1
-    set laststatus=2
-else
-    let loaded_matchparen = 1
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
 endif
 
 set omnifunc=syntaxcomplete#Complete
@@ -201,17 +202,13 @@ map <leader>wk <c-w>k
 map <leader>wh <c-w>h
 map <leader>wl <c-w>l
 map <c-Tab> <c-w>w
-" map <leader>i :TagbarToggle<cr>
-" map <leader>g :Rgrep<cr>
-" map <leader><s-g> :Grep<cr>
 map <leader>f/ :CtrlP<cr>
 map <leader>p/ :CtrlP<cr>
-map <leader>/p :silent noautocmd vimgrep <c-r>=expand("<cword>")<cr> <c-r>=getcwd()<cr>/**/*.<c-r>=expand("%:e")<cr> \| copen<home><c-right><c-right><c-right><c-right>
-map <leader>/d :silent noautocmd vimgrep <c-r>=expand("<cword>")<cr> <c-r>=getcwd()<cr>/**/*.<c-r>=expand("%:e")<cr> \| copen<home><c-right><c-right><c-right><c-right>
+map <leader>/p :Ack! <c-r>=expand("<cword>")<cr>
+map <leader>/d :Ack! <c-r>=expand("<cword>")<cr>
 map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
 \ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
 \ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
-
 
 map <leader>]e :lnext<cr>
 map <leader>[e :lprevious<cr>
