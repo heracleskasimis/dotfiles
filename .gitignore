@@ -4,3 +4,4 @@
 *.elc
 *.swp
 tmp/
+.vim/plugged/
