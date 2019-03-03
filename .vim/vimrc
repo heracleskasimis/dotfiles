@@ -30,7 +30,7 @@ set foldlevelstart=16
 
 set clipboard=unnamed
 
-set wildignore=*.class,*.o,*.meta,*/node_modules/*
+set wildignore=*.class,*.o,*.meta,*.dll,*.pdb,*.exe,*/node_modules/*
 
 set tags=tags; ",/Users/cell/.vim/tags/*
 
