@@ -130,10 +130,7 @@ let g:easytags_async = 1
 let g:easytags_auto_highlight = 0
 let g:easytags_resolve_links = 1
 let g:easytags_on_cursorhold = 0
-" let g:easytags_by_filetype = '~/.vim/tags'
-let g:easytags_cmd = '/usr/local/bin/ctags'
 let g:easytags_dynamic_files = 1
-let g:tagbar_ctags_bin = '/usr/local/bin/ctags'
 let g:tagbar_expand = 0
 let g:tagbar_width = 34
 let g:tagbar_sort = 0
@@ -166,8 +163,8 @@ let g:syntastic_c_checkers = ['cppcheck']
 let g:syntastic_c_cppcheck_args = '--std=c89 --std=posix'
 let g:syntastic_c_checkpatch_args = '--file --no-tree'
 let g:syntastic_java_checkers = ['checkstyle']
-let g:syntastic_java_checkstyle_classpath = '/usr/local/Cellar/checkstyle/6.0/libexec/checkstyle-6.0-all.jar'
-let g:syntastic_java_checkstyle_conf_file = '~/.checkstyle.xml'
+let g:syntastic_java_checkstyle_classpath = '~/.vim/checkstyle.jar'
+let g:syntastic_java_checkstyle_conf_file = '~/.vim/checkstyle.xml'
 let g:formatprg_args_c = "--style=java"
 let g:formatprg_args_cpp = "--style=java"
 let g:formatprg_args_expr_javascript = '"-a -f - -".(&expandtab ? "s ".&shiftwidth : "t").(&textwidth ? " -w ".&textwidth : "")'
