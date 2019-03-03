@@ -32,7 +32,7 @@ set clipboard=unnamed
 
 set wildignore=*.class,*.o,*.meta,*.dll,*.pdb,*.exe,*/node_modules/*
 
-set tags=tags; ",/Users/cell/.vim/tags/*
+set tags=tags;
 
 filetype off
 
@@ -56,10 +56,7 @@ Plug 'kien/ctrlp.vim'
 Plug 'vim-scripts/javacomplete'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'fidian/hexmode'
-Plug 'Shougo/vimproc.vim'
-Plug 'Shougo/vimshell.vim'
 Plug 'tpope/vim-vinegar'
-Plug 'xolox/vim-misc'
 Plug 'groenewege/vim-less'
 Plug 'fatih/vim-go'
 Plug 'editorconfig/editorconfig-vim'
@@ -75,26 +72,16 @@ Plug 'tpope/vim-speeddating'
 Plug 'vim-scripts/SyntaxRange'
 Plug 'jceb/vim-orgmode'
 Plug 'mileszs/ack.vim'
-" Plug 'justinmk/vim-sneak'
-" Plug 'majutsushi/tagbar'
-" Plug 'Shougo/unite-ssh'
-" Plug 'xolox/vim-easytags'
-" Plug 'kris89/vim-multiple-cursors'
-" Plug 'Shougo/neocomplete.vim'
-" Plug 'Shougo/unite.vim'
 if has("gui_running")
     Plug 'jkerian/HiCursorWords'
     Plug 'bling/vim-airline'
 endif
 call plug#end()
 
-" Switch syntax highlighting on, when the terminal has colors
-" Also switch on highlighting the last used search pattern.
 if &t_Co > 2 || has("gui_running")
     syntax on
     set hlsearch
     set noshellslash
-    let g:matchmaker_enable_startup = 1
     set laststatus=2
     if has('win32')
         set shell=cmd
@@ -151,14 +138,11 @@ let g:HiCursorWords_delay = 333
 let g:HiCursorWords_hiGroupRegexp = ''
 let g:HiCursorWords_debugEchoHiName = 0
 let g:NERDTreeHijackNetrw = 0
-" let g:syntastic_shell = '/bin/sh'
 let g:syntastic_always_populate_loc_list = 1
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
-" let g:syntastic_javascript_checkers = ['jscs']
 let g:syntastic_javascript_checkers = ['eslint']
-" let g:syntastic_javascript_eslint_exec = 'eslint_d'
 let g:syntastic_c_checkers = ['cppcheck']
 let g:syntastic_c_cppcheck_args = '--std=c89 --std=posix'
 let g:syntastic_c_checkpatch_args = '--file --no-tree'
@@ -205,9 +189,6 @@ map <leader>f/ :CtrlP<cr>
 map <leader>p/ :CtrlP<cr>
 map <leader>/p :Ack! <c-r>=expand("<cword>")<cr>
 map <leader>/d :Ack! <c-r>=expand("<cword>")<cr>
-map <F10> :echo "hi<" . synIDattr(synID(line("."),col("."),1),"name") . '> trans<'
-\ . synIDattr(synID(line("."),col("."),0),"name") . "> lo<"
-\ . synIDattr(synIDtrans(synID(line("."),col("."),1)),"name") . ">"<CR>
 
 map <leader>]e :lnext<cr>
 map <leader>[e :lprevious<cr>
