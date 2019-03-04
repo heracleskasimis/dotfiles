@@ -93,7 +93,7 @@ hi Statement          gui=bold              guifg=NONE
 hi PreProc            gui=bold              guifg=NONE
 hi Type               gui=bold              guifg=NONE
 hi Underlined         gui=NONE              guifg=NONE        guibg=#ffffd0
-hi Ignore             gui=bold              guifg=#e0e0e0
+hi Ignore             gui=bold              guifg=#ffffff
 hi Error              gui=bold              guifg=#ff0044   guibg=#ffe0e9
 hi Todo               gui=bold              guifg=darkcyan    guibg=lightgrey
 hi String             gui=NONE              guifg=darkcyan
