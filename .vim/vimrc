@@ -185,6 +185,10 @@ map <leader>wj <c-w>j
 map <leader>wk <c-w>k
 map <leader>wh <c-w>h
 map <leader>wl <c-w>l
+map <leader>wJ <c-w>J
+map <leader>wK <c-w>K
+map <leader>wH <c-w>H
+map <leader>wL <c-w>L
 map <c-Tab> <c-w>w
 map <leader>f/ :CtrlP<cr>
 map <leader>p/ :CtrlP<cr>
