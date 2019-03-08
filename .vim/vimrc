@@ -72,6 +72,7 @@ Plug 'vim-scripts/SyntaxRange'
 Plug 'jceb/vim-orgmode'
 Plug 'mileszs/ack.vim'
 Plug 'airblade/vim-rooter'
+Plug 'ludovicchabant/vim-gutentags'
 if has("gui_running")
     Plug 'jkerian/HiCursorWords'
     Plug 'bling/vim-airline'
@@ -159,6 +160,7 @@ let g:Gitv_TruncateCommitSubjects = 1
 let g:Gitv_DoNotMapCtrlKey = 1
 let g:rooter_manual_only = 1
 let g:rooter_patterns = ['.git', '.gitignore', '.git/', '.svn/']
+let g:gutentags_project_root = ['.gitignore', '.git', '.hg', '.bzr', '_darcs', '_darcs', '_FOSSIL_', '.fslckout']
 
 function! Multiple_cursors_before()
     exe 'NeoCompleteLock'
