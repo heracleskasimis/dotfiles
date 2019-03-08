@@ -66,12 +66,12 @@ Plug 'tfnico/vim-gradle'
 Plug 'vadimr/bclose.vim'
 Plug 'prettier/vim-prettier'
 Plug 'tpope/vim-dispatch'
-Plug 'OmniSharp/omnisharp-vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'tpope/vim-speeddating'
 Plug 'vim-scripts/SyntaxRange'
 Plug 'jceb/vim-orgmode'
 Plug 'mileszs/ack.vim'
+Plug 'airblade/vim-rooter'
 if has("gui_running")
     Plug 'jkerian/HiCursorWords'
     Plug 'bling/vim-airline'
@@ -157,6 +157,8 @@ let g:EditorConfig_core_mode = 'python_external'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 let g:Gitv_TruncateCommitSubjects = 1
 let g:Gitv_DoNotMapCtrlKey = 1
+let g:rooter_manual_only = 1
+let g:rooter_patterns = ['.git', '.gitignore', '.git/', '.svn/']
 
 function! Multiple_cursors_before()
     exe 'NeoCompleteLock'
@@ -192,9 +194,8 @@ map <leader>wL <c-w>L
 map <c-Tab> <c-w>w
 map <leader>f/ :CtrlP<cr>
 map <leader>p/ :CtrlP<cr>
-map <leader>/p :Ack! <c-r>=expand("<cword>")<cr>
-map <leader>/d :Ack! <c-r>=expand("<cword>")<cr>
-
+map <leader>/p :Ack! <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><c-b><s-right><s-right>
+map <leader>/d :Ack! <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><c-b><s-right><s-right>
 map <leader>]e :lnext<cr>
 map <leader>[e :lprevious<cr>
 
