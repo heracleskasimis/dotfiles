@@ -186,6 +186,8 @@ map <leader>b[ :bprevious<cr>
 map <leader>bk :Bclose<cr>
 map <leader>< :CtrlPBuffer<cr>
 
+map <leader>cd :CtrlPTag<cr><c-\>w
+
 map <leader>ww <c-w>w
 map <leader>wj <c-w>j
 map <leader>wk <c-w>k
