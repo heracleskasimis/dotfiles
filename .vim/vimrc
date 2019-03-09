@@ -25,6 +25,7 @@ set number "relativenumber
 set hidden
 set ignorecase
 set smartcase
+set tagcase=match
 set ai nocin nosi inde=-1
 set foldlevelstart=16
 
