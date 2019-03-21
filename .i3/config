@@ -241,18 +241,18 @@ client.background #000000
 
 
 bar {
-	position bottom
-	status_command i3status
-	mode dock
-	tray_output primary
-	colors {
-		background #000000
-	    statusline #555555
-		focused_workspace  #d60039 #d60039 #ffffff
+    position bottom
+    status_command i3status
+    mode dock
+    tray_output primary
+    colors {
+        background #000000
+        statusline #555555
+        focused_workspace  #d60039 #d60039 #ffffff
         active_workspace   #000000 #000000 #ffffff
         inactive_workspace #000000 #000000 #666666
         urgent_workspace   #34000e #34000e #ff0044
-	}
+    }
 }
 
 exec i3-msg "workspace 1"
