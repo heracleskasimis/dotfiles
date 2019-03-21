@@ -37,9 +37,9 @@ hi WildMenu                 cterm=standout          ctermfg=NONE
 hi Folded                   cterm=NONE              ctermfg=7           ctermbg=234
 hi FoldColumn               cterm=standout          ctermfg=7           ctermbg=234
 hi DiffAdd                  cterm=bold              ctermfg=NONE
-hi DiffChange               cterm=bold              ctermfg=NONE
-hi DiffDelete               cterm=bold              ctermfg=NONE
-hi DiffText                 cterm=reverse           ctermfg=NONE
+hi DiffChange               cterm=bold              ctermfg=NONE        ctermbg=0
+hi DiffDelete               cterm=bold              ctermfg=NONE        ctermbg=1
+hi DiffText                 cterm=bold              ctermfg=NONE        ctermbg=8
 hi Comment                  cterm=NONE              ctermfg=7
 hi SpecialComment           cterm=NONE              ctermfg=8
 hi Constant                 cterm=NONE              ctermfg=14
@@ -52,6 +52,18 @@ hi Ignore                   cterm=bold              ctermfg=231
 hi Error                    cterm=NONE              ctermfg=15          ctermbg=1
 hi Todo                     cterm=standout          ctermfg=NONE
 hi String                   cterm=NONE              ctermfg=4
+
+if &background == 'dark'
+    hi Cursorline           cterm=NONE              ctermfg=15          ctermbg=0
+    hi NonText              cterm=bold              ctermfg=0
+    hi IncSearch            cterm=NONE              ctermfg=0           ctermbg=14
+    hi LineNr               cterm=NONE              ctermfg=7           ctermbg=0
+    hi StatusLine           cterm=bold              ctermfg=7           ctermbg=0
+    hi StatusLineNC         cterm=NONE              ctermfg=7           ctermbg=0
+    hi Ignore               cterm=bold              ctermfg=7
+    hi VertSplit            cterm=NONE              ctermfg=0           ctermbg=0 
+    hi Search               cterm=NONE              ctermfg=NONE        ctermbg=6
+endif
 
 hi Cursorline               gui=NONE                guifg=NONE          guibg=#ebebeb
 hi CursorlineNr             gui=italic              guifg=#e0e0e0       guibg=#bbbbbb

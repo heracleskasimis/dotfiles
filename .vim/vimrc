@@ -38,6 +38,10 @@ set tags=tags;
 filetype off
 
 set background=light
+if $BACKGROUND == 'dark'
+    set background=dark
+endif
+
 colorscheme cyan
 
 call plug#begin('~/.vim/plugged')
