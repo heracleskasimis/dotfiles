@@ -1,0 +1,33 @@
+#!/usr/bin/perl
+
+use AnyEvent::I3;
+
+#my $file = `echo -n /tmp/i3-\$(whoami)/ipc-socket.\$(pidof i3)`;
+chomp(my $file = qx(i3 --get-socketpath));
+my $i3 = i3($file);
+
+$i3->connect->recv or die "Error connecting";
+
+my $ws = $i3->get_workspaces->recv;
+
+my $prev=0;
+
+for my $w (@$ws)
+{
+	if( $w->{'focused'} )
+	{
+		if ( $prev )
+		{
+			print $prev;
+		}
+		else
+		{
+			print $ws->[$#w]->{'num'};
+		}
+		exit 0;
+	}
+	$prev = $w->{'num'};
+}
+
+#print $focused;
+print $ws->[$#w]->{'num'};

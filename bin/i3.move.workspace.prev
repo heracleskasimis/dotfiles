@@ -1,0 +1,3 @@
+#!/bin/sh
+w=$(i3.workspace.get.prev)
+i3-msg "move workspace "$w"; workspace "$w

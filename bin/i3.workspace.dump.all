@@ -1,0 +1,14 @@
+#!/usr/bin/perl
+
+use AnyEvent::I3;
+use Data::Dumper;
+
+#my $file = `echo -n /tmp/i3-\$(whoami)/ipc-socket.\$(pidof i3)`;
+chomp(my $file = qx(i3 --get-socketpath));
+my $i3 = i3($file);
+
+$i3->connect->recv or die "Error connecting";
+
+my $ws = $i3->get_workspaces->recv;
+print Dumper($ws) . "\n";
+
