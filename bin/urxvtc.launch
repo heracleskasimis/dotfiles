@@ -1,0 +1,13 @@
+#!/usr/bin/env zsh
+cd=$(xdotool getwindowfocus getwindowname | 
+sed -e 's/.* (\([~/].*\)).*/\1/' \
+	-e 's/^[\t ]*[a-z@]*://' \
+	-e 's/[\t ]*$//')
+cd=${cd/"~"/$HOME}
+
+if [[ -d $cd ]]
+then exists=1 
+else [[ -e $cd ]] && cd=${cd%/*} && exists=1
+fi
+
+(( $exists )) && urxvtc -cd "$cd" $@ || urxvtc $@

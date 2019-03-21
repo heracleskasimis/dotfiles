@@ -1,0 +1,18 @@
+#!/bin/sh
+
+eval $(xdotool getwindowfocus getwindowgeometry --shell %1)
+window=$WINDOW
+windowx=$X
+windowwidth=$WIDTH
+windowheight=$HEIGHT
+windowscreen=$SCREEN
+
+(( $windowx )) || exit 1
+
+eval $(xdotool getmouselocation --shell 2>/dev/null)
+mousescreen=$SCREEN
+
+(( $windowscreen == $mousescreen )) || exit 1
+
+#xdotool mousemove --window $window $(( $windowwidth / 2 )) $(( $windowheight / 2 )) sleep 0.05 windowfocus --sync $window click --window $window
+xdotool mousemove --window $window $(( $windowwidth / 2 )) $(( $windowheight / 2 )) #windowfocus --sync window=$window
