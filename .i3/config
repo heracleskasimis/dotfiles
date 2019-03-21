@@ -1,0 +1,259 @@
+set $mod Mod4
+set $shift shift
+
+set $left h
+set $right l
+set $down j
+set $up k
+
+set $term urxvtc.launch
+
+set $cursortoclient cursor.toclient
+set $dmenu dmenu.run
+
+new_float normal
+new_window 1pixel
+hide_edge_borders none
+
+font "xft:Liberation Mono 8"
+
+# Use Mouse+$mod to drag floating windows to their wanted position
+floating_modifier $mod
+
+workspace_layout tabbed
+
+mouse_warping output
+focus_follows_mouse yes
+
+bindsym $mod+x exec x -d -a exec "$(xclip -o)"
+bindsym $mod+$shift+x exec x -d -a edit "$(xclip -o)"
+
+# start a terminal
+bindsym $mod+Return exec $term -e tmux
+bindsym $mod+$shift+Return exec $term
+
+# kill focused window
+bindsym $mod+$shift+Q kill; exec $cursortoclient
+bindsym $mod+Q kill; exec $cursortoclient
+
+bindsym $mod+t border toggle
+
+bindsym $mod+d exec $dmenu
+bindsym $mod+colon exec $dmenu
+
+bindsym $mod+v exec $term -class XTermFloat -geometry 64x19 -title Alsamixer -e alsamixer -c 1
+
+# change focus
+bindsym $mod+$left focus left; exec $cursortoclient
+bindsym $mod+$down focus down; exec $cursortoclient
+bindsym $mod+$up focus up; exec $cursortoclient
+bindsym $mod+$right focus right; exec $cursortoclient
+
+bindsym $mod+$shift+bracketleft focus left; exec $cursortoclient
+bindsym $mod+$shift+bracketright focus right; exec $cursortoclient
+
+bindsym $mod+Tab focus right; exec $cursortoclient
+bindsym $mod+Shift+Tab focus left; exec $cursortoclient
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Alt_R focus left; exec $cursortoclient
+bindsym $mod+Super_R focus down; exec $cursortoclient
+bindsym $mod+Print focus up; exec $cursortoclient
+
+# move focused window
+bindsym $mod+$shift+$left move left; exec $cursortoclient
+bindsym $mod+$shift+$down move down; exec $cursortoclient
+bindsym $mod+$shift+$up move up; exec $cursortoclient
+bindsym $mod+$shift+$right move right; exec $cursortoclient
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+$shift+ISO_Next_Group move left; exec $cursortoclient
+bindsym $mod+$shift+Super_R move down; exec $cursortoclient
+bindsym $mod+$shift+Sys_Req move up; exec $cursortoclient
+
+# split in horizontal orientation
+bindsym $mod+$shift+backslash split h
+
+# split in vertical orientation
+bindsym $mod+backslash split v
+
+# enter fullscreen mode for the focused container
+bindsym $mod+f fullscreen
+
+# change container layout (stacked, tabbed, default)
+bindsym $mod+s layout stacking; exec $cursortoclient
+bindsym $mod+w layout tabbed; exec $cursortoclient
+bindsym $mod+e layout default; exec $cursortoclient
+
+# toggle tiling / floating
+bindsym $mod+$shift+space floating toggle; exec $cursortoclient
+
+# change focus between tiling / floating windows
+bindsym $mod+space focus mode_toggle; exec $cursortoclient
+
+# focus the parent container
+bindsym $mod+a focus parent; exec $cursortoclient
+
+# focus the child container
+#bindcode $mod+d focus child
+
+# switch to workspace
+bindsym $mod+1 workspace 1; exec $cursortoclient
+bindsym $mod+2 workspace 2; exec $cursortoclient
+bindsym $mod+3 workspace 3; exec $cursortoclient
+bindsym $mod+4 workspace 4; exec $cursortoclient
+bindsym $mod+5 workspace 5; exec $cursortoclient
+bindsym $mod+6 workspace 6; exec $cursortoclient
+bindsym $mod+7 workspace 7; exec $cursortoclient
+bindsym $mod+8 workspace 8; exec $cursortoclient
+bindsym $mod+9 workspace 9; exec $cursortoclient
+bindsym $mod+0 workspace 10; exec $cursortoclient
+
+bindsym $mod+period workspace next; exec $cursortoclient
+bindsym $mod+comma workspace prev; exec $cursortoclient
+
+bindsym $mod+n exec i3.workspace.focus.next_visible
+
+# move focused container to workspace
+bindsym $mod+$shift+1 move workspace 1; workspace 1; exec $cursortoclient
+bindsym $mod+$shift+2 move workspace 2; workspace 2; exec $cursortoclient
+bindsym $mod+$shift+3 move workspace 3; workspace 3; exec $cursortoclient
+bindsym $mod+$shift+4 move workspace 4; workspace 4; exec $cursortoclient
+bindsym $mod+$shift+5 move workspace 5; workspace 5; exec $cursortoclient
+bindsym $mod+$shift+6 move workspace 6; workspace 6; exec $cursortoclient
+bindsym $mod+$shift+7 move workspace 7; workspace 7; exec $cursortoclient
+bindsym $mod+$shift+8 move workspace 8; workspace 8; exec $cursortoclient
+bindsym $mod+$shift+9 move workspace 9; workspace 9; exec $cursortoclient
+bindsym $mod+$shift+0 move workspace 10; workspace 10; exec $cursortoclient
+
+bindsym $mod+$shift+period move workspace next; workspace next; exec $cursortoclient
+bindsym $mod+$shift+comma move workspace prev; workspace prev; exec $cursortoclient
+
+bindsym $mod+$shift+n exec i3.move.workspace.next_visible
+
+# reload the configuration file
+bindsym $mod+$shift+w reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+$shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+$shift+e exit
+
+bindsym $mod+minus resize shrink right 16 px or 16 ppt; resize shrink down 16 px or 16 ppt
+bindsym $mod+equal resize grow right 16 px or 16 ppt; resize grow down 16 px or 16 ppt
+
+bindsym $mod+$shift+minus resize shrink right 16 px or 16 ppt
+bindsym $mod+$shift+equal resize grow right 16 px or 16 ppt
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+    # These bindings trigger as soon as you enter the resize mode
+
+    # They resize the border in the direction you pressed, e.g.
+    # when pressing left, the window is resized so that it has
+    # more space on its left
+
+    bindsym $left resize shrink left 16 px or 16 ppt
+    bindsym $shift+$left resize grow left 16 px or 16 ppt
+
+    bindsym $down resize shrink down 16 px or 16 ppt
+    bindsym $shift+$down resize grow down 16 px or 16 ppt
+
+    bindsym $up resize shrink up 16 px or 16 ppt
+    bindsym $shift+$up resize grow up 16 px or 16 ppt
+
+    bindsym $right resize shrink right 16 px or 16 ppt
+    bindsym $shift+$right resize grow right 16 px or 16 ppt
+
+            # same bindings, but for the arrow keys
+    bindsym Alt_R resize shrink left 16 px or 16 ppt
+    bindsym $shift+ISO_Next_Group resize grow left 16 px or 16 ppt
+
+    bindsym Super_R resize shrink down 16 px or 16 ppt
+    bindsym $shift+Super_R resize grow down 16 px or 16 ppt
+
+    bindsym Print resize shrink up 16 px or 16 ppt
+    bindsym $shift+Sys_Req resize grow up 16 px or 16 ppt
+
+    bindsym $right resize shrink right 16 px or 16 ppt
+    bindsym $shift+$right resize grow right 16 px or 16 ppt
+
+    # back to normal: Enter or Escape
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+}
+
+bindsym $mod+r mode "resize"
+
+
+for_window [class="fontforge"] floating enable
+for_window [class="rdesktop"] floating enable
+for_window [class="ioquake3"] floating enable
+for_window [class="Gimp"] floating enable
+for_window [class="mplayer2"] floating enable
+for_window [title="MPlayer"] floating enable
+for_window [title="GOG - Wine desktop"] floating enable
+for_window [class="XFontSel"] floating enable
+for_window [class="XTermFloat"] floating enable
+for_window [class="Vncviewer"] floating enable
+for_window [class="Gscanbus"] floating enable
+for_window [class="XBoard"] floating enable
+for_window [class="Midicontroller"] floating enable
+for_window [class="Blender:Render"] floating enable
+for_window [class="Vkeybd.tcl"] floating enable
+for_window [class="Mprojop.tcl"] floating enable
+for_window [class="Seq24"] floating enable
+for_window [class="Zynaddsubfx"] floating enable
+for_window [class="Xnest"] floating enable
+for_window [class="feh"] floating enable
+for_window [class="Japa"] floating enable
+for_window [class="GImageView"] floating enable
+for_window [class="PdWindow"] floating enable
+for_window [class="PatchWindow"] floating enable
+for_window [class="Patchage"] floating enable
+for_window [class="HelpBrowser"] floating enable
+for_window [class="DialogWindow"] floating enable
+for_window [class="Toplevel"] floating enable
+for_window [class="gemrb"] floating enable
+for_window [class="processing-core-PApplet"] floating enable
+for_window [class="sun-awt-X11-XFramePeer"] floating enable
+for_window [title="Downloads"] floating enable
+for_window [title="Alsamixer"] floating enable
+for_window [title="TeamViewer"] floating enable
+
+#workspace 1 output xroet-0
+workspace 1 output LVDS-1
+workspace 2 output LVDS-1
+workspace 3 output LVDS-1
+workspace 4 output LVDS-1
+workspace 5 output LVDS-1
+workspace 6 output LVDS-1
+workspace 7 output VGA-1
+workspace 8 output VGA-1
+workspace 9 output VGA-1
+workspace 10 output VGA-1
+
+client.focused #000000 #000000 #ffffff #000000
+client.focused_inactive #000000 #000000 #aaaaaa #000000
+client.unfocused #000000 #000000 #777777 #000000
+client.urgent #34000e #34000e #ff0044 #34000e
+
+client.background #000000
+
+
+bar {
+	position bottom
+	status_command i3status
+	mode dock
+	tray_output primary
+	colors {
+		background #000000
+	    statusline #555555
+		focused_workspace  #d60039 #d60039 #ffffff
+        active_workspace   #000000 #000000 #ffffff
+        inactive_workspace #000000 #000000 #666666
+        urgent_workspace   #34000e #34000e #ff0044
+	}
+}
+
+exec i3-msg "workspace 1"
+exec setbg 2
