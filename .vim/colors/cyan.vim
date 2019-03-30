@@ -17,7 +17,7 @@ hi Cursorline               cterm=NONE              ctermfg=0           ctermbg=
 hi CursorlineNr             cterm=NONE              ctermfg=7
 hi SpecialKey               cterm=bold              ctermfg=NONE
 hi NonText                  cterm=bold              ctermfg=255
-hi Directory                cterm=NONE              ctermfg=14
+hi Directory                cterm=bold              ctermfg=NONE
 hi ErrorMsg                 cterm=NONE              ctermfg=15          ctermbg=1
 hi IncSearch                cterm=NONE              ctermfg=231         ctermbg=0
 hi Search                   cterm=NONE              ctermfg=NONE        ctermbg=195
@@ -42,7 +42,7 @@ hi DiffDelete               cterm=bold              ctermfg=NONE        ctermbg=
 hi DiffText                 cterm=bold              ctermfg=NONE        ctermbg=8
 hi Comment                  cterm=NONE              ctermfg=7
 hi SpecialComment           cterm=NONE              ctermfg=8
-hi Constant                 cterm=NONE              ctermfg=14
+hi Constant                 cterm=bold              ctermfg=NONE
 hi Special                  cterm=bold              ctermfg=NONE
 hi Identifier               cterm=bold              ctermfg=NONE
 hi Statement                cterm=bold              ctermfg=NONE
