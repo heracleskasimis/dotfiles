@@ -20,6 +20,8 @@ hi LineNr                   cterm=NONE              ctermfg=231         ctermbg=
 hi Question                 cterm=standout          ctermfg=NONE
 hi StatusLine               cterm=bold              ctermfg=231         ctermbg=15
 hi StatusLineNC             cterm=NONE              ctermfg=231         ctermbg=15
+hi StatusLineTerm           cterm=bold              ctermfg=231         ctermbg=15
+hi StatusLineTermNC         cterm=NONE              ctermfg=231         ctermbg=15
 hi VertSplit                cterm=NONE              ctermfg=15          ctermbg=15
 hi Title                    cterm=bold              ctermfg=NONE
 hi Visual                   cterm=NONE              ctermfg=NONE        ctermbg=252
@@ -53,6 +55,8 @@ if &background == 'dark'
     hi LineNr               cterm=NONE              ctermfg=7           ctermbg=0
     hi StatusLine           cterm=bold              ctermfg=7           ctermbg=0
     hi StatusLineNC         cterm=NONE              ctermfg=7           ctermbg=0
+    hi StatusLineTerm       cterm=bold              ctermfg=7           ctermbg=0
+    hi StatusLineTermNC     cterm=NONE              ctermfg=7           ctermbg=0
     hi Ignore               cterm=bold              ctermfg=7
     hi VertSplit            cterm=NONE              ctermfg=0           ctermbg=0 
     hi Search               cterm=NONE              ctermfg=NONE        ctermbg=6
