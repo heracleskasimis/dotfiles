@@ -46,8 +46,7 @@ colorscheme cyan
 
 call plug#begin('~/.vim/plugged')
 Plug 'easymotion/vim-easymotion'
-Plug 'scrooloose/syntastic'
-Plug 'mtscout6/syntastic-local-eslint.vim'
+Plug 'w0rp/ale'
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdtree'
 Plug 'sbl/scvim'
@@ -78,8 +77,8 @@ Plug 'jceb/vim-orgmode'
 Plug 'mileszs/ack.vim'
 Plug 'airblade/vim-rooter'
 Plug 'ludovicchabant/vim-gutentags'
+Plug 'jkerian/HiCursorWords'
 if has("gui_running")
-    Plug 'jkerian/HiCursorWords'
     Plug 'bling/vim-airline'
 endif
 call plug#end()
@@ -145,17 +144,6 @@ let g:HiCursorWords_hiGroupRegexp = ''
 let g:HiCursorWords_debugEchoHiName = 0
 let g:HiCursorWords_linkStyle = 'VisualNOS'
 let g:NERDTreeHijackNetrw = 0
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
-let g:syntastic_javascript_checkers = ['eslint']
-let g:syntastic_c_checkers = ['cppcheck']
-let g:syntastic_c_cppcheck_args = '--std=c89 --std=posix'
-let g:syntastic_c_checkpatch_args = '--file --no-tree'
-let g:syntastic_java_checkers = ['checkstyle']
-let g:syntastic_java_checkstyle_classpath = '~/.vim/checkstyle.jar'
-let g:syntastic_java_checkstyle_conf_file = '~/.vim/checkstyle.xml'
 let g:formatprg_args_c = "--style=java"
 let g:formatprg_args_cpp = "--style=java"
 let g:formatprg_args_expr_javascript = '"-a -f - -".(&expandtab ? "s ".&shiftwidth : "t").(&textwidth ? " -w ".&textwidth : "")'
