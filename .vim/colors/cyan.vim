@@ -1,10 +1,3 @@
-" Vim color file
-
-" cool help screens
-" :he group-name
-" :he highlight-groups
-" :he cterm-colors
-"
 if version > 580
     hi clear
     if exists("syntax_on")
@@ -13,7 +6,7 @@ if version > 580
 endif
 let g:colors_name="cyan"
 
-hi Cursorline               cterm=NONE              ctermfg=0           ctermbg=254
+hi Cursorline               cterm=NONE              ctermfg=0           ctermbg=255
 hi CursorlineNr             cterm=NONE              ctermfg=7
 hi SpecialKey               cterm=bold              ctermfg=NONE
 hi NonText                  cterm=bold              ctermfg=255
@@ -34,8 +27,8 @@ hi VisualNOS                cterm=NONE              ctermfg=NONE        ctermbg=
 hi Underlined               cterm=underline         ctermfg=NONE
 hi WarningMsg               cterm=standout          ctermfg=NONE
 hi WildMenu                 cterm=standout          ctermfg=NONE
-hi Folded                   cterm=NONE              ctermfg=231         ctermbg=15
-hi FoldColumn               cterm=standout          ctermfg=231         ctermbg=15
+hi Folded                   cterm=NONE              ctermfg=231         ctermbg=252
+hi FoldColumn               cterm=NONE              ctermfg=231         ctermbg=252
 hi DiffAdd                  cterm=bold              ctermfg=NONE        ctermbg=195
 hi DiffChange               cterm=bold              ctermfg=NONE        ctermbg=230
 hi DiffDelete               cterm=bold              ctermfg=1           ctermbg=NONE
