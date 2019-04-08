@@ -44,7 +44,7 @@ hi Statement                cterm=bold              ctermfg=NONE
 hi PreProc                  cterm=bold              ctermfg=NONE
 hi Type                     cterm=bold              ctermfg=NONE
 hi Ignore                   cterm=bold              ctermfg=231
-hi Error                    cterm=bold              ctermfg=1           ctermbg=8
+hi Error                    cterm=bold              ctermfg=1           ctermbg=NONE
 hi Todo                     cterm=standout          ctermfg=NONE
 hi String                   cterm=NONE              ctermfg=4
 hi SpellBad                 cterm=underline         ctermfg=9           ctermbg=NONE
