@@ -44,9 +44,12 @@ hi Statement                cterm=bold              ctermfg=NONE
 hi PreProc                  cterm=bold              ctermfg=NONE
 hi Type                     cterm=bold              ctermfg=NONE
 hi Ignore                   cterm=bold              ctermfg=231
-hi Error                    cterm=NONE              ctermfg=15          ctermbg=1
+hi Error                    cterm=bold              ctermfg=1           ctermbg=225
 hi Todo                     cterm=standout          ctermfg=NONE
 hi String                   cterm=NONE              ctermfg=4
+hi SpellBad                 cterm=NONE              ctermfg=NONE        ctermbg=225
+hi SpellCap                 cterm=NONE              ctermfg=NONE        ctermbg=225
+hi SpellRare                cterm=NONE              ctermfg=NONE        ctermbg=225
 
 if &background == 'dark'
     hi Cursorline           cterm=NONE              ctermfg=15          ctermbg=0
