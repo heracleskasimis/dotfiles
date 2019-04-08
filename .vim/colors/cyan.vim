@@ -11,7 +11,7 @@ hi CursorlineNr             cterm=italic            ctermfg=7
 hi SpecialKey               cterm=bold              ctermfg=NONE
 hi NonText                  cterm=bold              ctermfg=255
 hi Directory                cterm=bold,italic       ctermfg=NONE
-hi ErrorMsg                 cterm=NONE              ctermfg=15          ctermbg=1
+hi ErrorMsg                 cterm=NONE              ctermfg=231         ctermbg=1
 hi IncSearch                cterm=NONE              ctermfg=231         ctermbg=0
 hi Search                   cterm=NONE              ctermfg=NONE        ctermbg=195
 hi MoreMsg                  cterm=bold              ctermfg=NONE
@@ -44,12 +44,12 @@ hi Statement                cterm=bold              ctermfg=NONE
 hi PreProc                  cterm=bold              ctermfg=NONE
 hi Type                     cterm=bold              ctermfg=NONE
 hi Ignore                   cterm=bold              ctermfg=231
-hi Error                    cterm=bold              ctermfg=1           ctermbg=225
+hi Error                    cterm=bold              ctermfg=1           ctermbg=8
 hi Todo                     cterm=standout          ctermfg=NONE
 hi String                   cterm=NONE              ctermfg=4
-hi SpellBad                 cterm=NONE              ctermfg=NONE        ctermbg=225
-hi SpellCap                 cterm=NONE              ctermfg=NONE        ctermbg=225
-hi SpellRare                cterm=NONE              ctermfg=NONE        ctermbg=225
+hi SpellBad                 cterm=underline         ctermfg=9           ctermbg=NONE
+hi SpellCap                 cterm=underline         ctermfg=9           ctermbg=NONE
+hi SpellRare                cterm=underline         ctermfg=9           ctermbg=NONE
 
 if &background == 'dark'
     hi Cursorline           cterm=NONE              ctermfg=15          ctermbg=0
