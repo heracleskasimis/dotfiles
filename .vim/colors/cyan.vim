@@ -7,16 +7,16 @@ endif
 let g:colors_name="cyan"
 
 hi Cursorline               cterm=NONE              ctermfg=0           ctermbg=255
-hi CursorlineNr             cterm=NONE              ctermfg=7
+hi CursorlineNr             cterm=italic            ctermfg=7
 hi SpecialKey               cterm=bold              ctermfg=NONE
 hi NonText                  cterm=bold              ctermfg=255
-hi Directory                cterm=bold              ctermfg=NONE
-hi ErrorMsg                 cterm=NONE              ctermfg=15          ctermbg=1
+hi Directory                cterm=bold,italic       ctermfg=NONE
+hi ErrorMsg                 cterm=NONE              ctermfg=231         ctermbg=1
 hi IncSearch                cterm=NONE              ctermfg=231         ctermbg=0
 hi Search                   cterm=NONE              ctermfg=NONE        ctermbg=195
 hi MoreMsg                  cterm=bold              ctermfg=NONE
 hi ModeMsg                  cterm=bold              ctermfg=NONE
-hi LineNr                   cterm=NONE              ctermfg=231         ctermbg=15
+hi LineNr                   cterm=italic            ctermfg=231         ctermbg=15
 hi Question                 cterm=standout          ctermfg=NONE
 hi StatusLine               cterm=bold              ctermfg=231         ctermbg=15
 hi StatusLineNC             cterm=NONE              ctermfg=231         ctermbg=15
@@ -29,14 +29,14 @@ hi VisualNOS                cterm=NONE              ctermfg=NONE        ctermbg=
 hi Underlined               cterm=underline         ctermfg=NONE
 hi WarningMsg               cterm=standout          ctermfg=NONE
 hi WildMenu                 cterm=standout          ctermfg=NONE
-hi Folded                   cterm=NONE              ctermfg=231         ctermbg=252
-hi FoldColumn               cterm=NONE              ctermfg=231         ctermbg=252
+hi Folded                   cterm=italic            ctermfg=231         ctermbg=252
+hi FoldColumn               cterm=italic            ctermfg=231         ctermbg=252
 hi DiffAdd                  cterm=bold              ctermfg=NONE        ctermbg=195
 hi DiffChange               cterm=bold              ctermfg=NONE        ctermbg=230
 hi DiffDelete               cterm=bold              ctermfg=1           ctermbg=NONE
 hi DiffText                 cterm=bold              ctermfg=NONE        ctermbg=186
-hi Comment                  cterm=NONE              ctermfg=7
-hi SpecialComment           cterm=NONE              ctermfg=8
+hi Comment                  cterm=bold              ctermfg=7
+hi SpecialComment           cterm=bold              ctermfg=8
 hi Constant                 cterm=bold              ctermfg=NONE
 hi Special                  cterm=bold              ctermfg=NONE
 hi Identifier               cterm=bold              ctermfg=NONE
@@ -44,15 +44,18 @@ hi Statement                cterm=bold              ctermfg=NONE
 hi PreProc                  cterm=bold              ctermfg=NONE
 hi Type                     cterm=bold              ctermfg=NONE
 hi Ignore                   cterm=bold              ctermfg=231
-hi Error                    cterm=NONE              ctermfg=15          ctermbg=1
+hi Error                    cterm=bold              ctermfg=1           ctermbg=NONE
 hi Todo                     cterm=standout          ctermfg=NONE
 hi String                   cterm=NONE              ctermfg=4
+hi SpellBad                 cterm=underline         ctermfg=9           ctermbg=NONE
+hi SpellCap                 cterm=underline         ctermfg=9           ctermbg=NONE
+hi SpellRare                cterm=underline         ctermfg=9           ctermbg=NONE
 
 if &background == 'dark'
     hi Cursorline           cterm=NONE              ctermfg=15          ctermbg=0
     hi NonText              cterm=bold              ctermfg=0
     hi IncSearch            cterm=NONE              ctermfg=0           ctermbg=14
-    hi LineNr               cterm=NONE              ctermfg=7           ctermbg=0
+    hi LineNr               cterm=italic            ctermfg=7           ctermbg=0
     hi StatusLine           cterm=bold              ctermfg=7           ctermbg=0
     hi StatusLineNC         cterm=NONE              ctermfg=7           ctermbg=0
     hi StatusLineTerm       cterm=bold              ctermfg=7           ctermbg=0
