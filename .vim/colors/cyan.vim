@@ -47,9 +47,9 @@ hi Ignore                   cterm=bold              ctermfg=231
 hi Error                    cterm=bold              ctermfg=1           ctermbg=NONE
 hi Todo                     cterm=standout          ctermfg=NONE
 hi String                   cterm=NONE              ctermfg=4
-hi SpellBad                 cterm=underline         ctermfg=9           ctermbg=NONE
-hi SpellCap                 cterm=underline         ctermfg=9           ctermbg=NONE
-hi SpellRare                cterm=underline         ctermfg=9           ctermbg=NONE
+hi SpellBad                 cterm=NONE              ctermfg=9           ctermbg=NONE
+hi SpellCap                 cterm=NONE              ctermfg=9           ctermbg=NONE
+hi SpellRare                cterm=NONE              ctermfg=9           ctermbg=NONE
 
 if &background == 'dark'
     hi Cursorline           cterm=NONE              ctermfg=15          ctermbg=0
