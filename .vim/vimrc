@@ -156,6 +156,7 @@ let g:rooter_patterns = ['.git', '.gitignore', '.git/', '.svn/']
 let g:gutentags_project_root = ['.gitignore', '.git', '.hg', '.bzr', '_darcs', '_darcs', '_FOSSIL_', '.fslckout']
 let g:gutentags_cache_dir = '~/.cache/tags'
 let g:ale_lint_on_text_changed = 'never'
+let g:ale_set_highlights = 0
 
 function! Multiple_cursors_before()
     exe 'NeoCompleteLock'
