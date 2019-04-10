@@ -144,6 +144,8 @@ let g:HiCursorWords_hiGroupRegexp = ''
 let g:HiCursorWords_debugEchoHiName = 0
 let g:HiCursorWords_linkStyle = 'VisualNOS'
 let g:NERDTreeHijackNetrw = 0
+let g:NERDTreeAutoCenter = 0
+let g:NERDTreeHighlightCursorline = 0
 let g:formatprg_args_c = "--style=java"
 let g:formatprg_args_cpp = "--style=java"
 let g:formatprg_args_expr_javascript = '"-a -f - -".(&expandtab ? "s ".&shiftwidth : "t").(&textwidth ? " -w ".&textwidth : "")'
