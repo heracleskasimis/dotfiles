@@ -6,7 +6,7 @@ if version > 580
 endif
 let g:colors_name="cyan"
 
-hi Cursorline               cterm=NONE              ctermfg=0           ctermbg=255
+hi Cursorline               cterm=NONE              ctermfg=NONE        ctermbg=255
 hi CursorlineNr             cterm=italic            ctermfg=7
 hi SpecialKey               cterm=bold              ctermfg=NONE
 hi NonText                  cterm=bold              ctermfg=255
@@ -52,7 +52,7 @@ hi SpellCap                 cterm=NONE              ctermfg=9           ctermbg=
 hi SpellRare                cterm=NONE              ctermfg=9           ctermbg=NONE
 
 if &background == 'dark'
-    hi Cursorline           cterm=NONE              ctermfg=15          ctermbg=0
+    hi Cursorline           cterm=NONE              ctermfg=NONE        ctermbg=0
     hi NonText              cterm=bold              ctermfg=0
     hi IncSearch            cterm=NONE              ctermfg=0           ctermbg=14
     hi LineNr               cterm=italic            ctermfg=7           ctermbg=0
