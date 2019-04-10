@@ -45,7 +45,7 @@ hi PreProc                  cterm=bold              ctermfg=NONE
 hi Type                     cterm=bold              ctermfg=NONE
 hi Ignore                   cterm=bold              ctermfg=231
 hi Error                    cterm=bold              ctermfg=1           ctermbg=NONE
-hi Todo                     cterm=bold              ctermfg=4           ctermbg=254
+hi Todo                     cterm=bold              ctermfg=12          ctermbg=254
 hi String                   cterm=NONE              ctermfg=4
 hi SpellBad                 cterm=NONE              ctermfg=9           ctermbg=NONE
 hi SpellCap                 cterm=NONE              ctermfg=9           ctermbg=NONE
