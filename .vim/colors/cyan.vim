@@ -71,12 +71,12 @@ hi Cursor                   gui=NONE                guifg=white         guibg=#f
 hi SpecialKey               gui=bold                guifg=NONE
 hi NonText                  gui=bold                guifg=#e0e0e0       guibg=NONE
 hi Directory                gui=bold,italic         guifg=NONE
-hi ErrorMsg                 gui=reverse             guifg=#ffffff       guibg=#ff0044
-hi IncSearch                gui=reverse             guifg=black
+hi ErrorMsg                 gui=NONE                guifg=#ff0044       guibg=#ffffff
+hi IncSearch                gui=NONE                guifg=#ffffff       guibg=#000000
 hi Search                   gui=NONE                guifg=black         guibg=#ccffff
 hi MoreMsg                  gui=bold                guifg=NONE
 hi ModeMsg                  gui=bold                guifg=NONE
-hi LineNr                   gui=reverse,italic      guifg=#c8c8c8       guibg=white
+hi LineNr                   gui=italic              guifg=white         guibg=#c8c8c8
 hi Question                 gui=standout            guifg=NONE
 hi StatusLine               gui=bold                guifg=#ffffff       guibg=#c0c0c0
 hi StatusLineNC             gui=NONE                guifg=#ffffff       guibg=#c8c8c8
@@ -86,8 +86,8 @@ hi Visual                   gui=NONE                guifg=NONE          guibg=#e
 hi VisualNOS                gui=NONE                guifg=NONE          guibg=#ffffd0
 hi Underlined               gui=bold,underline      guifg=NONE
 hi WarningMsg               gui=standout            guifg=NONE
-hi Folded                   gui=reverse,italic      guifg=#c8c8c8       guibg=white
-hi FoldColumn               gui=reverse,italic      guifg=#c8c8c8       guibg=white
+hi Folded                   gui=italic              guifg=#ffffff       guibg=#c8c8c8
+hi FoldColumn               gui=italic              guifg=#ffffff       guibg=#c8c8c8
 hi DiffChange               gui=bold                guifg=NONE          guibg=#f0f0b5
 hi DiffDelete               gui=bold                guifg=NONE          guibg=#ffe0e9
 hi DiffAdd                  gui=bold                guifg=NONE          guibg=#e0ffff
