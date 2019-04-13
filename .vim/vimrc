@@ -160,13 +160,8 @@ let g:gutentags_cache_dir = '~/.cache/tags'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_set_highlights = 0
 
-function! Multiple_cursors_before()
-    exe 'NeoCompleteLock'
-endfunction
-
-function! Multiple_cursors_after()
-    exe 'NeoCompleteUnlock'
-endfunction
+let &t_ZH="\e[3m"
+let &t_ZR="\e[23m"
 
 map <leader><Tab>n :tabe<cr>
 map <leader><Tab>d :tabclose<cr>
