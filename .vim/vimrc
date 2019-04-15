@@ -203,4 +203,6 @@ imap <up> <c-o>gk
 
 imap <insert> <esc>"*P']ji
 
-cnoremap <C-g> <C-[>
+cnoremap <c-g> <c-[>
+
+tnoremap <Esc><Esc> <c-\><c-n>
