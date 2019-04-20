@@ -50,9 +50,13 @@ hi String                   cterm=NONE              ctermfg=4
 hi SpellBad                 cterm=NONE              ctermfg=9           ctermbg=NONE
 hi SpellCap                 cterm=NONE              ctermfg=9           ctermbg=NONE
 hi SpellRare                cterm=NONE              ctermfg=9           ctermbg=NONE
+hi TabLineFill              cterm=NONE              ctermfg=231         ctermbg=15
+hi TabLine                  cterm=italic            ctermfg=231         ctermbg=15
+hi TabLineSel               cterm=italic,bold       ctermfg=4           ctermbg=15
 
 if &background == 'dark'
-    hi Cursorline           cterm=NONE              ctermfg=NONE        ctermbg=0
+    hi Cursorline           cterm=NONE              ctermfg=NONE        ctermbg=232
+    hi VisualNOS            cterm=NONE              ctermfg=NONE        ctermbg=236
     hi NonText              cterm=bold              ctermfg=0
     hi IncSearch            cterm=NONE              ctermfg=0           ctermbg=14
     hi LineNr               cterm=italic            ctermfg=7           ctermbg=0
@@ -63,6 +67,9 @@ if &background == 'dark'
     hi Ignore               cterm=bold              ctermfg=7
     hi VertSplit            cterm=NONE              ctermfg=0           ctermbg=0 
     hi Search               cterm=NONE              ctermfg=NONE        ctermbg=6
+    hi TabLineFill          cterm=NONE              ctermfg=7           ctermbg=0
+    hi TabLine              cterm=italic            ctermfg=7           ctermbg=0
+    hi TabLineSel           cterm=italic,bold       ctermfg=4           ctermbg=0
 endif
 
 hi Cursorline               gui=NONE                guifg=NONE          guibg=#ebebeb
