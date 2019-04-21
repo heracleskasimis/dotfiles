@@ -14,5 +14,4 @@ mousescreen=$SCREEN
 
 (( $windowscreen == $mousescreen )) || exit 1
 
-#xdotool mousemove --window $window $(( $windowwidth / 2 )) $(( $windowheight / 2 )) sleep 0.05 windowfocus --sync $window click --window $window
-xdotool mousemove --window $window $(( $windowwidth / 2 )) $(( $windowheight / 2 )) #windowfocus --sync window=$window
+xdotool mousemove --window $window $(( $windowwidth / 2 )) $(( $windowheight / 2 )) 
