@@ -160,9 +160,9 @@ hi link javaCommentTitle Comment
 hi link javaDocTags SpecialComment
 hi link javaDocParam SpecialComment
 
-hi link EasyMotionTargetDefault DiffRemoved
-hi link EasyMotionTarget2FirstDefault DiffRemoved
-hi link EasyMotionTarget2SecondDefault DiffRemoved
-hi link EasyMotionIncSearchDefault DiffChange
-hi link EasyMotionIncCursorDefault DiffAdded
-hi link EasyMotionMoveHLDefault DiffAdded
+hi link EasyMotionTarget Search
+hi link EasyMotionShade  Comment
+hi link EasyMotionTarget2First Search
+hi link EasyMotionTarget2Second Search
+hi link EasyMotionMoveHL Search
+hi link EasyMotionIncSearch Search

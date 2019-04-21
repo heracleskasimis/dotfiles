@@ -118,11 +118,6 @@ let ruby_space_errors = 1
 let javascript_space_errors = 1
 
 let g:jsx_ext_required = 0
-let g:easytags_async = 1
-let g:easytags_auto_highlight = 0
-let g:easytags_resolve_links = 1
-let g:easytags_on_cursorhold = 0
-let g:easytags_dynamic_files = 1
 let g:tagbar_expand = 0
 let g:tagbar_width = 34
 let g:tagbar_sort = 0
@@ -166,15 +161,21 @@ let &t_ZR="\e[23m"
 map <leader><Tab>n :tabe<cr>
 map <leader><Tab>d :tabclose<cr>
 map <leader><Tab>[ :tabprevious<cr>
+map <leader><Tab>p :tabprevious<cr>
 map <leader><Tab>] :tabnext<cr>
+map <leader><Tab>n :tabnext<cr>
 
-map <leader>on :NERDTreeToggle<cr>
-map <leader>oN :NERDTreeFind<cr>
+map <leader>op :NERDTreeToggle<cr>
+map <leader>oP :NERDTreeFind<cr>
 
 map <leader>bb :CtrlPBuffer<cr>
+map <leader>b, :CtrlPBuffer<cr>
 map <leader>b] :bnext<cr>
+map <leader>bn :bnext<cr>
 map <leader>b[ :bprevious<cr>
+map <leader>bp :bprevious<cr>
 map <leader>bk :Bclose<cr>
+map <leader>bN :vnew<cr>
 map <leader>< :CtrlPBuffer<cr>
 
 map <leader>cd :CtrlPTag<cr><c-\>w
@@ -191,10 +192,14 @@ map <leader>wL <c-w>L
 map <c-Tab> <c-w>w
 map <leader>f/ :CtrlP<cr>
 map <leader>p/ :CtrlP<cr>
+map <leader><leader> :CtrlP<cr>
 map <leader>/p :Ack! <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><c-b><s-right><s-right>
 map <leader>/d :Ack! <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><c-b><s-right><s-right>
 map <leader>]e :lnext<cr>
 map <leader>[e :lprevious<cr>
+
+map ; <Plug>(easymotion-prefix)
+map , <Plug>(easymotion-prefix)
 
 map <down> gj
 map <up> gk
@@ -207,4 +212,3 @@ tnoremap <Esc><Esc> <c-\><c-n>
 
 autocmd FileType vim setlocal keywordprg=:help
 autocmd FileType python setlocal keywordprg=pydoc
-
