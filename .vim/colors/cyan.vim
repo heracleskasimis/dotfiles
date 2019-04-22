@@ -29,12 +29,12 @@ hi VisualNOS                cterm=NONE              ctermfg=NONE        ctermbg=
 hi Underlined               cterm=underline         ctermfg=NONE
 hi WarningMsg               cterm=standout          ctermfg=NONE
 hi WildMenu                 cterm=standout          ctermfg=NONE
-hi Folded                   cterm=italic            ctermfg=231         ctermbg=252
-hi FoldColumn               cterm=italic            ctermfg=231         ctermbg=252
+hi Folded                   cterm=italic            ctermfg=231         ctermbg=253
+hi FoldColumn               cterm=italic            ctermfg=231         ctermbg=253
 hi DiffAdd                  cterm=bold              ctermfg=NONE        ctermbg=195
 hi DiffChange               cterm=bold              ctermfg=NONE        ctermbg=230
 hi DiffDelete               cterm=bold              ctermfg=161         ctermbg=NONE
-hi DiffText                 cterm=italic            ctermfg=NONE        ctermbg=227
+hi DiffText                 cterm=bold              ctermfg=232         ctermbg=186
 hi Comment                  cterm=bold              ctermfg=252
 hi SpecialComment           cterm=bold              ctermfg=250
 hi Constant                 cterm=bold              ctermfg=NONE
