@@ -81,6 +81,7 @@ Plug 'airblade/vim-rooter'
 Plug 'ludovicchabant/vim-gutentags'
 Plug 'jkerian/HiCursorWords'
 Plug 'vim-scripts/indentpython.vim'
+Plug 'nvie/vim-flake8'
 if has("gui_running")
     Plug 'bling/vim-airline'
 endif
