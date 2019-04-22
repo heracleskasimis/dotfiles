@@ -24,7 +24,7 @@ hi StatusLineTerm           cterm=bold              ctermfg=231         ctermbg=
 hi StatusLineTermNC         cterm=NONE              ctermfg=231         ctermbg=250
 hi VertSplit                cterm=NONE              ctermfg=231         ctermbg=250
 hi Title                    cterm=bold              ctermfg=NONE
-hi Visual                   cterm=NONE              ctermfg=NONE        ctermbg=252
+hi Visual                   cterm=NONE              ctermfg=NONE        ctermbg=253
 hi VisualNOS                cterm=NONE              ctermfg=NONE        ctermbg=230
 hi Underlined               cterm=underline         ctermfg=NONE
 hi WarningMsg               cterm=standout          ctermfg=NONE
@@ -32,9 +32,9 @@ hi WildMenu                 cterm=standout          ctermfg=NONE
 hi Folded                   cterm=italic            ctermfg=231         ctermbg=252
 hi FoldColumn               cterm=italic            ctermfg=231         ctermbg=252
 hi DiffAdd                  cterm=bold              ctermfg=NONE        ctermbg=195
-hi DiffChange               cterm=bold              ctermfg=NONE        ctermbg=NONE
+hi DiffChange               cterm=bold              ctermfg=NONE        ctermbg=230
 hi DiffDelete               cterm=bold              ctermfg=1           ctermbg=NONE
-hi DiffText                 cterm=bold              ctermfg=100         ctermbg=230
+hi DiffText                 cterm=italic            ctermfg=NONE        ctermbg=227
 hi Comment                  cterm=bold              ctermfg=7
 hi SpecialComment           cterm=bold              ctermfg=8
 hi Constant                 cterm=bold              ctermfg=NONE
