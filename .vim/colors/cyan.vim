@@ -22,7 +22,7 @@ hi StatusLine               cterm=bold              ctermfg=231         ctermbg=
 hi StatusLineNC             cterm=NONE              ctermfg=231         ctermbg=250
 hi StatusLineTerm           cterm=bold              ctermfg=231         ctermbg=250
 hi StatusLineTermNC         cterm=NONE              ctermfg=231         ctermbg=250
-hi VertSplit                cterm=NONE              ctermfg=255         ctermbg=250
+hi VertSplit                cterm=NONE              ctermfg=231         ctermbg=250
 hi Title                    cterm=bold              ctermfg=NONE
 hi Visual                   cterm=NONE              ctermfg=NONE        ctermbg=252
 hi VisualNOS                cterm=NONE              ctermfg=NONE        ctermbg=230
