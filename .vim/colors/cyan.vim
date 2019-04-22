@@ -7,11 +7,11 @@ endif
 let g:colors_name="cyan"
 
 hi Cursorline               cterm=NONE              ctermfg=NONE        ctermbg=255
-hi CursorlineNr             cterm=italic            ctermfg=7
+hi CursorlineNr             cterm=italic            ctermfg=252
 hi SpecialKey               cterm=bold              ctermfg=NONE
 hi NonText                  cterm=bold              ctermfg=255
 hi Directory                cterm=bold,italic       ctermfg=NONE
-hi ErrorMsg                 cterm=NONE              ctermfg=231         ctermbg=1
+hi ErrorMsg                 cterm=NONE              ctermfg=231         ctermbg=161
 hi IncSearch                cterm=NONE              ctermfg=231         ctermbg=0
 hi Search                   cterm=NONE              ctermfg=NONE        ctermbg=195
 hi MoreMsg                  cterm=bold              ctermfg=NONE
@@ -33,10 +33,10 @@ hi Folded                   cterm=italic            ctermfg=231         ctermbg=
 hi FoldColumn               cterm=italic            ctermfg=231         ctermbg=252
 hi DiffAdd                  cterm=bold              ctermfg=NONE        ctermbg=195
 hi DiffChange               cterm=bold              ctermfg=NONE        ctermbg=230
-hi DiffDelete               cterm=bold              ctermfg=1           ctermbg=NONE
+hi DiffDelete               cterm=bold              ctermfg=161         ctermbg=NONE
 hi DiffText                 cterm=italic            ctermfg=NONE        ctermbg=227
-hi Comment                  cterm=bold              ctermfg=7
-hi SpecialComment           cterm=bold              ctermfg=8
+hi Comment                  cterm=bold              ctermfg=252
+hi SpecialComment           cterm=bold              ctermfg=250
 hi Constant                 cterm=bold              ctermfg=NONE
 hi Special                  cterm=bold              ctermfg=NONE
 hi Identifier               cterm=bold              ctermfg=NONE
@@ -44,12 +44,12 @@ hi Statement                cterm=bold              ctermfg=NONE
 hi PreProc                  cterm=bold              ctermfg=NONE
 hi Type                     cterm=bold              ctermfg=NONE
 hi Ignore                   cterm=bold              ctermfg=231
-hi Error                    cterm=bold              ctermfg=1           ctermbg=NONE
-hi Todo                     cterm=bold              ctermfg=12          ctermbg=254
+hi Error                    cterm=bold              ctermfg=161         ctermbg=NONE
+hi Todo                     cterm=bold              ctermfg=37          ctermbg=254
 hi String                   cterm=NONE              ctermfg=30
-hi SpellBad                 cterm=NONE              ctermfg=9           ctermbg=NONE
-hi SpellCap                 cterm=NONE              ctermfg=9           ctermbg=NONE
-hi SpellRare                cterm=NONE              ctermfg=9           ctermbg=NONE
+hi SpellBad                 cterm=NONE              ctermfg=161         ctermbg=NONE
+hi SpellCap                 cterm=NONE              ctermfg=161         ctermbg=NONE
+hi SpellRare                cterm=NONE              ctermfg=161         ctermbg=NONE
 hi TabLineFill              cterm=NONE              ctermfg=255         ctermbg=252
 hi TabLine                  cterm=italic            ctermfg=255         ctermbg=252
 hi TabLineSel               cterm=bold              ctermfg=231         ctermbg=252
