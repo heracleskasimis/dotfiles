@@ -44,6 +44,8 @@ endif
 
 colorscheme cyan
 
+let g:no_plugin_maps = 1
+
 call plug#begin('~/.vim/plugged')
 Plug 'easymotion/vim-easymotion'
 Plug 'w0rp/ale'
@@ -67,7 +69,7 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'gerw/vim-HiLinkTrace'
 Plug 'tfnico/vim-gradle'
-Plug 'vadimr/bclose.vim'
+Plug 'rbgrouleff/bclose.vim'
 Plug 'prettier/vim-prettier'
 Plug 'tpope/vim-dispatch'
 Plug 'ryanoasis/vim-devicons'
