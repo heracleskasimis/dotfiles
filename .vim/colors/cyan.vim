@@ -16,13 +16,13 @@ hi IncSearch                cterm=NONE              ctermfg=231         ctermbg=
 hi Search                   cterm=NONE              ctermfg=NONE        ctermbg=195
 hi MoreMsg                  cterm=bold              ctermfg=NONE
 hi ModeMsg                  cterm=bold              ctermfg=NONE
-hi LineNr                   cterm=italic            ctermfg=231         ctermbg=252
+hi LineNr                   cterm=italic            ctermfg=231         ctermbg=251
 hi Question                 cterm=standout          ctermfg=NONE
-hi StatusLine               cterm=bold              ctermfg=231         ctermbg=252
-hi StatusLineNC             cterm=NONE              ctermfg=231         ctermbg=252
-hi StatusLineTerm           cterm=bold              ctermfg=231         ctermbg=252
-hi StatusLineTermNC         cterm=NONE              ctermfg=231         ctermbg=252
-hi VertSplit                cterm=NONE              ctermfg=231         ctermbg=252
+hi StatusLine               cterm=bold              ctermfg=231         ctermbg=251
+hi StatusLineNC             cterm=NONE              ctermfg=231         ctermbg=251
+hi StatusLineTerm           cterm=bold              ctermfg=231         ctermbg=251
+hi StatusLineTermNC         cterm=NONE              ctermfg=231         ctermbg=251
+hi VertSplit                cterm=NONE              ctermfg=251         ctermbg=251
 hi Title                    cterm=bold              ctermfg=NONE
 hi Visual                   cterm=NONE              ctermfg=NONE        ctermbg=253
 hi VisualNOS                cterm=NONE              ctermfg=NONE        ctermbg=230
@@ -50,9 +50,9 @@ hi String                   cterm=NONE              ctermfg=30
 hi SpellBad                 cterm=NONE              ctermfg=161         ctermbg=NONE
 hi SpellCap                 cterm=NONE              ctermfg=161         ctermbg=NONE
 hi SpellRare                cterm=NONE              ctermfg=161         ctermbg=NONE
-hi TabLineFill              cterm=NONE              ctermfg=255         ctermbg=252
-hi TabLine                  cterm=italic            ctermfg=255         ctermbg=252
-hi TabLineSel               cterm=bold              ctermfg=231         ctermbg=252
+hi TabLineFill              cterm=NONE              ctermfg=255         ctermbg=251
+hi TabLine                  cterm=italic            ctermfg=255         ctermbg=251
+hi TabLineSel               cterm=bold              ctermfg=231         ctermbg=251
 
 if &background == 'dark'
     hi Cursorline           cterm=NONE              ctermfg=NONE        ctermbg=232
