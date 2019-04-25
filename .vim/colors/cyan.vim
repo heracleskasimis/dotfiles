@@ -24,7 +24,7 @@ hi StatusLineTerm           cterm=bold              ctermfg=231         ctermbg=
 hi StatusLineTermNC         cterm=NONE              ctermfg=231         ctermbg=251
 hi VertSplit                cterm=NONE              ctermfg=251         ctermbg=251
 hi Title                    cterm=bold              ctermfg=NONE
-hi Visual                   cterm=NONE              ctermfg=NONE        ctermbg=253
+hi Visual                   cterm=NONE              ctermfg=NONE        ctermbg=254
 hi VisualNOS                cterm=NONE              ctermfg=NONE        ctermbg=230
 hi Underlined               cterm=underline         ctermfg=NONE
 hi WarningMsg               cterm=standout          ctermfg=NONE
@@ -35,8 +35,8 @@ hi DiffAdd                  cterm=bold              ctermfg=NONE        ctermbg=
 hi DiffChange               cterm=bold              ctermfg=NONE        ctermbg=230
 hi DiffDelete               cterm=bold              ctermfg=161         ctermbg=NONE
 hi DiffText                 cterm=bold              ctermfg=232         ctermbg=186
-hi Comment                  cterm=bold              ctermfg=252
-hi SpecialComment           cterm=bold              ctermfg=250
+hi Comment                  cterm=bold              ctermfg=250
+hi SpecialComment           cterm=bold              ctermfg=248
 hi Constant                 cterm=bold              ctermfg=NONE
 hi Special                  cterm=bold              ctermfg=NONE
 hi Identifier               cterm=bold              ctermfg=NONE
