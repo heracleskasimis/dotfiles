@@ -83,16 +83,12 @@ Plug 'jkerian/HiCursorWords'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'nvie/vim-flake8'
 Plug 'JamshedVesuna/vim-markdown-preview'
-if has("gui_running")
-    Plug 'bling/vim-airline'
-endif
 call plug#end()
 
 if &t_Co > 2 || has("gui_running")
     syntax on
     set hlsearch
     set noshellslash
-    set laststatus=2
     if has('win32')
         set shell=cmd
         set shellcmdflag=/c
@@ -104,6 +100,16 @@ if !has("gui_running")
     let loaded_matchparen = 1
 endif
 
+set laststatus=2
+set statusline=
+set statusline+=%F
+set statusline+=%m
+set statusline+=%=
+set statusline+=%y
+set statusline+=\ %{&fileencoding?&fileencoding:&encoding}
+set statusline+=\[%{&fileformat}\]
+set statusline+=\ %p%%
+set statusline+=\ %l:%c
 
 filetype plugin indent on
 

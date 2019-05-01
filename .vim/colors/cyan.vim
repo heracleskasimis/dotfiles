@@ -65,7 +65,7 @@ if &background == 'dark'
     hi StatusLineTerm       cterm=bold              ctermfg=7           ctermbg=0
     hi StatusLineTermNC     cterm=NONE              ctermfg=7           ctermbg=0
     hi Ignore               cterm=bold              ctermfg=7
-    hi VertSplit            cterm=NONE              ctermfg=0           ctermbg=0 
+    hi VertSplit            cterm=NONE              ctermfg=0           ctermbg=0
     hi Search               cterm=NONE              ctermfg=NONE        ctermbg=6
     hi TabLineFill          cterm=NONE              ctermfg=7           ctermbg=0
     hi TabLine              cterm=italic            ctermfg=7           ctermbg=0
