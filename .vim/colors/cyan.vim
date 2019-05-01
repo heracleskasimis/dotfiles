@@ -87,6 +87,8 @@ hi LineNr                   gui=italic              guifg=white         guibg=#c
 hi Question                 gui=standout            guifg=NONE
 hi StatusLine               gui=bold                guifg=#ffffff       guibg=#c0c0c0
 hi StatusLineNC             gui=NONE                guifg=#ffffff       guibg=#c8c8c8
+hi StatusLineTerm           gui=bold                guifg=#ffffff       guibg=#c0c0c0
+hi StatusLineTermNC         gui=NONE                guifg=#ffffff       guibg=#c8c8c8
 hi VertSplit                gui=bold                guifg=#c8c8c8       guibg=#c8c8c8
 hi Title                    gui=bold                guifg=NONE
 hi Visual                   gui=NONE                guifg=NONE          guibg=#e0e0e0
