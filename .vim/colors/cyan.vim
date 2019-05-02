@@ -171,5 +171,5 @@ hi link EasyMotionIncSearch Search
 
 let g:terminal_ansi_colors = [
     \'#262626', '#ff5faf', '#00afaf', '#b5b5a9', '#007f80', '#d75fd7', '#00cdd4', '#929292',
-    \'#515151', '#ff96ca', '#00bebe', '#eaeaea', '#00a4a4', '#ff71ff', '#00ffff', '#d7d7d7'
+    \'#515151', '#ff96ca', '#00bebe', '#dcdcd2', '#00a4a4', '#ff71ff', '#00ffff', '#d7d7d7'
 \]
