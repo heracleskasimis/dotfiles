@@ -81,7 +81,7 @@ Plug 'ludovicchabant/vim-gutentags'
 Plug 'jkerian/HiCursorWords'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'nvie/vim-flake8'
-Plug 'JamshedVesuna/vim-markdown-preview'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 call plug#end()
 
 if &t_Co > 2 || has("gui_running")
