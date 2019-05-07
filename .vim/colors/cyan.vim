@@ -29,6 +29,10 @@ hi VisualNOS                cterm=NONE              ctermfg=NONE        ctermbg=
 hi Underlined               cterm=underline         ctermfg=NONE
 hi WarningMsg               cterm=standout          ctermfg=NONE
 hi WildMenu                 cterm=standout          ctermfg=NONE
+hi PMenu                    cterm=NONE              ctermfg=16          ctermbg=255
+hi PMenuSel                 cterm=NONE              ctermfg=231         ctermbg=16
+hi PMenuSbar                cterm=NONE              ctermfg=16          ctermbg=254
+hi PMenuThumb               cterm=NONE              ctermfg=16          ctermbg=16
 hi Folded                   cterm=italic            ctermfg=231         ctermbg=253
 hi FoldColumn               cterm=italic            ctermfg=231         ctermbg=253
 hi DiffAdd                  cterm=bold              ctermfg=NONE        ctermbg=195
