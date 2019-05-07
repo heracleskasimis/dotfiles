@@ -47,7 +47,7 @@ colorscheme cyan
 let g:no_plugin_maps = 1
 
 call plug#begin('~/.vim/plugged')
-Plug 'easymotion/vim-easymotion'
+Plug 'justinmk/vim-sneak'
 Plug 'w0rp/ale'
 Plug 'pangloss/vim-javascript'
 Plug 'scrooloose/nerdtree'
@@ -201,9 +201,6 @@ map <leader>/d :Ack! <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><c
 map <leader>]e :lnext<cr>
 map <leader>[e :lprevious<cr>
 
-map ; <Plug>(easymotion-prefix)
-map , <Plug>(easymotion-prefix)
-
 map <down> gj
 map <up> gk
 imap <down> <c-o>gj
@@ -212,6 +209,11 @@ imap <insert> <esc>"*P']ji
 
 cnoremap <c-g> <c-[>
 tnoremap <Esc><Esc> <c-\><c-n>
+
+map f <Plug>Sneak_f
+map F <Plug>Sneak_F
+map t <Plug>Sneak_t
+map T <Plug>Sneak_T
 
 autocmd FileType vim setlocal keywordprg=:help
 autocmd FileType python setlocal keywordprg=pydoc

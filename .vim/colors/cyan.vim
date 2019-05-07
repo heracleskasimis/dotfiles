@@ -57,6 +57,8 @@ hi SpellRare                cterm=NONE              ctermfg=161         ctermbg=
 hi TabLineFill              cterm=NONE              ctermfg=255         ctermbg=251
 hi TabLine                  cterm=italic            ctermfg=255         ctermbg=251
 hi TabLineSel               cterm=bold              ctermfg=231         ctermbg=251
+hi Sneak                    cterm=NONE              ctermfg=231         ctermbg=16
+hi SneakLabel               cterm=NONE              ctermfg=16          ctermbg=16 
 
 if &background == 'dark'
     hi Cursorline           cterm=NONE              ctermfg=NONE        ctermbg=232
@@ -131,6 +133,8 @@ hi PMenu                    gui=NONE                guifg=black         guibg=#d
 hi PMenuSel                 gui=NONE                guifg=#ffffff       guibg=black
 hi PMenuSbar                gui=NONE                guifg=black         guibg=#cccccc
 hi PMenuThumb               gui=NONE                guifg=#000000       guibg=#000000
+hi Sneak                    gui=NONE                guifg=#ffffff       guibg=#000000
+hi SneakLabel               gui=NONE                guifg=#000000       guibg=#000000
 
 hi Highlight                gui=NONE                guifg=NONE          guibg=#44ffff
 hi SpellBad                 gui=undercurl           guisp=#ff0044
