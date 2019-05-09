@@ -57,8 +57,8 @@ hi SpellRare                cterm=NONE              ctermfg=161         ctermbg=
 hi TabLineFill              cterm=NONE              ctermfg=255         ctermbg=251
 hi TabLine                  cterm=italic            ctermfg=255         ctermbg=251
 hi TabLineSel               cterm=bold              ctermfg=231         ctermbg=251
-hi Sneak                    cterm=NONE              ctermfg=231         ctermbg=16
-hi SneakLabel               cterm=NONE              ctermfg=16          ctermbg=16 
+hi Sneak                    cterm=underline         ctermfg=37          ctermbg=NONE
+hi SneakLabel               cterm=NONE              ctermfg=37          ctermbg=37 
 
 if &background == 'dark'
     hi Cursorline           cterm=NONE              ctermfg=NONE        ctermbg=232
