@@ -58,7 +58,7 @@ hi TabLineFill              cterm=NONE              ctermfg=255         ctermbg=
 hi TabLine                  cterm=italic            ctermfg=255         ctermbg=251
 hi TabLineSel               cterm=bold              ctermfg=231         ctermbg=251
 hi Sneak                    cterm=NONE              ctermfg=NONE        ctermbg=229
-hi SneakLabel               cterm=NONE              ctermfg=229         ctermbg=229 
+hi SneakLabel               cterm=underline         ctermfg=16          ctermbg=227
 
 if &background == 'dark'
     hi Cursorline           cterm=NONE              ctermfg=NONE        ctermbg=232
@@ -134,7 +134,7 @@ hi PMenuSel                 gui=NONE                guifg=#ffffff       guibg=bl
 hi PMenuSbar                gui=NONE                guifg=black         guibg=#cccccc
 hi PMenuThumb               gui=NONE                guifg=#000000       guibg=#000000
 hi Sneak                    gui=NONE                guifg=NONE          guibg=#ffffa0
-hi SneakLabel               gui=NONE                guifg=NONE          guibg=#ffffa0
+hi SneakLabel               gui=underline           guifg=#000000       guibg=#ffff60
 
 hi Highlight                gui=NONE                guifg=NONE          guibg=#44ffff
 hi SpellBad                 gui=undercurl           guisp=#ff0044
