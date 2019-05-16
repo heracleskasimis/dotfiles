@@ -215,5 +215,8 @@ map F <Plug>Sneak_F
 map t <Plug>Sneak_t
 map T <Plug>Sneak_T
 
+nmap <X1Mouse> <c-o>
+nmap <X2Mouse> <c-i>
+
 autocmd FileType vim setlocal keywordprg=:help
 autocmd FileType python setlocal keywordprg=pydoc
