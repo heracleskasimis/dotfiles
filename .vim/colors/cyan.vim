@@ -7,7 +7,7 @@ endif
 let g:colors_name="cyan"
 
 hi Cursorline               cterm=NONE              ctermfg=NONE        ctermbg=255
-hi CursorlineNr             cterm=italic            ctermfg=252
+hi CursorlineNr             cterm=bold              ctermfg=249         ctermbg=255
 hi SpecialKey               cterm=bold              ctermfg=NONE
 hi NonText                  cterm=bold              ctermfg=255
 hi Directory                cterm=bold,italic       ctermfg=NONE
@@ -16,13 +16,13 @@ hi IncSearch                cterm=NONE              ctermfg=231         ctermbg=
 hi Search                   cterm=NONE              ctermfg=NONE        ctermbg=195
 hi MoreMsg                  cterm=bold              ctermfg=NONE
 hi ModeMsg                  cterm=bold              ctermfg=NONE
-hi LineNr                   cterm=italic            ctermfg=231         ctermbg=250
+hi LineNr                   cterm=NONE              ctermfg=249         ctermbg=255
 hi Question                 cterm=standout          ctermfg=NONE
-hi StatusLine               cterm=bold              ctermfg=231         ctermbg=250
-hi StatusLineNC             cterm=NONE              ctermfg=231         ctermbg=250
-hi StatusLineTerm           cterm=bold              ctermfg=231         ctermbg=250
-hi StatusLineTermNC         cterm=NONE              ctermfg=231         ctermbg=250
-hi VertSplit                cterm=NONE              ctermfg=250         ctermbg=250
+hi StatusLine               cterm=bold,italic       ctermfg=NONE        ctermbg=255
+hi StatusLineNC             cterm=bold,italic       ctermfg=249         ctermbg=255
+hi StatusLineTerm           cterm=bold,italic       ctermfg=NONE        ctermbg=255
+hi StatusLineTermNC         cterm=italic            ctermfg=NONE        ctermbg=255
+hi VertSplit                cterm=NONE              ctermfg=255         ctermbg=255
 hi SignColumn               cterm=NONE              ctermfg=30          ctermbg=249
 hi Title                    cterm=bold              ctermfg=NONE
 hi Visual                   cterm=NONE              ctermfg=NONE        ctermbg=254
@@ -81,7 +81,8 @@ if &background == 'dark'
 endif
 
 hi Cursorline               gui=NONE                guifg=NONE          guibg=#ebebeb
-hi CursorlineNr             gui=italic              guifg=#e0e0e0       guibg=#bbbbbb
+hi CursorlineNr             gui=italic              guifg=#aaaaaa       guibg=NONE
+hi LineNr                   gui=italic              guifg=#aaaaaa       guibg=NONE
 hi Cursor                   gui=NONE                guifg=white         guibg=#ff0044
 hi SpecialKey               gui=bold                guifg=NONE
 hi NonText                  gui=bold                guifg=#e0e0e0       guibg=NONE
@@ -91,13 +92,12 @@ hi IncSearch                gui=NONE                guifg=#ffffff       guibg=#0
 hi Search                   gui=NONE                guifg=black         guibg=#ccffff
 hi MoreMsg                  gui=bold                guifg=NONE
 hi ModeMsg                  gui=bold                guifg=NONE
-hi LineNr                   gui=italic              guifg=white         guibg=#c4c4c4
 hi Question                 gui=standout            guifg=NONE
-hi StatusLine               gui=bold                guifg=#ffffff       guibg=#c4c4c4
-hi StatusLineNC             gui=NONE                guifg=#ffffff       guibg=#c4c4c4
-hi StatusLineTerm           gui=bold                guifg=#ffffff       guibg=#c4c4c4
-hi StatusLineTermNC         gui=NONE                guifg=#ffffff       guibg=#c4c4c4
-hi VertSplit                gui=bold                guifg=#c4c4c4       guibg=#c4c4c4
+hi StatusLine               gui=bold                guifg=#000000       guibg=#eeeeee
+hi StatusLineNC             gui=bold                guifg=#aaaaaa       guibg=#eeeeee
+hi StatusLineTerm           gui=bold                guifg=#000000       guibg=#eeeeee
+hi StatusLineTermNC         gui=bold                guifg=#aaaaaa       guibg=#eeeeee
+hi VertSplit                gui=bold                guifg=#eeeeee       guibg=#eeeeee
 hi SignColumn               gui=bold                guifg=darkcyan      guibg=#bbbbbb
 hi Title                    gui=bold                guifg=NONE
 hi Visual                   gui=NONE                guifg=NONE          guibg=#e0e0e0
