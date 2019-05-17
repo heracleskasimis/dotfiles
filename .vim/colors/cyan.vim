@@ -7,7 +7,8 @@ endif
 let g:colors_name="cyan"
 
 hi Cursorline               cterm=NONE              ctermfg=NONE        ctermbg=255
-hi CursorlineNr             cterm=bold              ctermfg=249         ctermbg=255
+hi CursorlineNr             cterm=bold              ctermfg=248         ctermbg=255
+hi LineNr                   cterm=NONE              ctermfg=248         ctermbg=255
 hi SpecialKey               cterm=bold              ctermfg=NONE
 hi NonText                  cterm=bold              ctermfg=255
 hi Directory                cterm=bold,italic       ctermfg=NONE
@@ -16,7 +17,6 @@ hi IncSearch                cterm=NONE              ctermfg=231         ctermbg=
 hi Search                   cterm=NONE              ctermfg=NONE        ctermbg=195
 hi MoreMsg                  cterm=bold              ctermfg=NONE
 hi ModeMsg                  cterm=bold              ctermfg=NONE
-hi LineNr                   cterm=NONE              ctermfg=249         ctermbg=255
 hi Question                 cterm=standout          ctermfg=NONE
 hi StatusLine               cterm=bold,italic       ctermfg=NONE        ctermbg=255
 hi StatusLineNC             cterm=bold,italic       ctermfg=249         ctermbg=255
@@ -80,9 +80,9 @@ if &background == 'dark'
     hi TabLineSel           cterm=bold              ctermfg=7           ctermbg=0
 endif
 
-hi Cursorline               gui=NONE                guifg=NONE          guibg=#ebebeb
-hi CursorlineNr             gui=italic              guifg=#aaaaaa       guibg=NONE
-hi LineNr                   gui=italic              guifg=#aaaaaa       guibg=NONE
+hi Cursorline               gui=NONE                guifg=NONE          guibg=#f0f0f0
+hi CursorlineNr             gui=bold                guifg=#aaaaaa       guibg=#f6f6f6
+hi LineNr                   gui=NONE                guifg=#aaaaaa       guibg=#f6f6f6
 hi Cursor                   gui=NONE                guifg=white         guibg=#ff0044
 hi SpecialKey               gui=bold                guifg=NONE
 hi NonText                  gui=bold                guifg=#e0e0e0       guibg=NONE
@@ -93,11 +93,11 @@ hi Search                   gui=NONE                guifg=black         guibg=#c
 hi MoreMsg                  gui=bold                guifg=NONE
 hi ModeMsg                  gui=bold                guifg=NONE
 hi Question                 gui=standout            guifg=NONE
-hi StatusLine               gui=bold                guifg=#000000       guibg=#eeeeee
-hi StatusLineNC             gui=bold                guifg=#aaaaaa       guibg=#eeeeee
-hi StatusLineTerm           gui=bold                guifg=#000000       guibg=#eeeeee
-hi StatusLineTermNC         gui=bold                guifg=#aaaaaa       guibg=#eeeeee
-hi VertSplit                gui=bold                guifg=#eeeeee       guibg=#eeeeee
+hi StatusLine               gui=bold                guifg=#000000       guibg=#f6f6f6
+hi StatusLineNC             gui=bold                guifg=#aaaaaa       guibg=#f6f6f6
+hi StatusLineTerm           gui=bold                guifg=#000000       guibg=#f6f6f6
+hi StatusLineTermNC         gui=bold                guifg=#aaaaaa       guibg=#f6f6f6
+hi VertSplit                gui=bold                guifg=#f6f6f6       guibg=#f6f6f6
 hi SignColumn               gui=bold                guifg=darkcyan      guibg=#bbbbbb
 hi Title                    gui=bold                guifg=NONE
 hi Visual                   gui=NONE                guifg=NONE          guibg=#e0e0e0
