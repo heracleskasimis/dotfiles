@@ -12,7 +12,7 @@ set incsearch
 set encoding=utf-8
 set guioptions=a
 set linespace=1
-set tabstop=4 softtabstop=4 shiftwidth=4 expandtab
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set mouse=a
 set novisualbell
 set vb t_vb=
@@ -82,6 +82,8 @@ Plug 'jkerian/HiCursorWords'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'nvie/vim-flake8'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'ambv/black'
+Plug 'tpope/vim-dadbod'
 call plug#end()
 
 if &t_Co > 2 || has("gui_running")
