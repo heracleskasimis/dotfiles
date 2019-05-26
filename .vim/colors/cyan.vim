@@ -48,7 +48,7 @@ hi Identifier               cterm=bold              ctermfg=NONE
 hi Statement                cterm=bold              ctermfg=NONE
 hi PreProc                  cterm=bold              ctermfg=NONE
 hi Type                     cterm=bold              ctermfg=NONE
-hi Ignore                   cterm=bold              ctermfg=231
+hi Ignore                   cterm=bold              ctermfg=255
 hi Error                    cterm=bold              ctermfg=161         ctermbg=NONE
 hi Todo                     cterm=bold              ctermfg=37          ctermbg=254
 hi String                   cterm=NONE              ctermfg=30
@@ -127,7 +127,7 @@ hi Identifier               gui=bold                guifg=NONE
 hi Statement                gui=bold                guifg=NONE
 hi PreProc                  gui=bold                guifg=NONE
 hi Type                     gui=bold                guifg=NONE
-hi Ignore                   gui=bold                guifg=#ffffff
+hi Ignore                   gui=bold                guifg=#f4f4f4
 hi Error                    gui=bold                guifg=#ff0044       guibg=#ffe0e9
 hi Todo                     gui=bold                guifg=darkcyan      guibg=lightgrey
 hi String                   gui=NONE                guifg=darkcyan
