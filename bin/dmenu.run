@@ -1,7 +1,6 @@
 #!/bin/sh
 FONT="Liberation Mono-8:normal"
-HEIGHT=18
-MENU=$( echo $PATH | sed 's/:/ /g' ) 
-EXE=$( ls $MENU | sed '/\//d' | dmenu -b -fn "$FONT" -nb '#000000' -nf '#888888' -sb '#000000' -sf '#ffffff' -h $HEIGHT )
+MENU=$(echo $PATH | sed 's/:/ /g') 
+EXE=$(ls $MENU | sed '/\//d' | dmenu -b -fn "$FONT" -nb '#000000' -nf '#888888' -sb '#000000' -sf '#ffffff')
 echo "$EXE" | bash -l
 
