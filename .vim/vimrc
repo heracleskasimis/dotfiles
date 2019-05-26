@@ -224,6 +224,7 @@ map T <Plug>Sneak_T
 
 nmap <X1Mouse> <c-o>
 nmap <X2Mouse> <c-i>
+nmap <RightMouse> <LeftMouse>/<c-r>=expand("<cword>")<cr><cr>
 
 autocmd FileType vim setlocal keywordprg=:help
 autocmd FileType python setlocal keywordprg=pydoc
