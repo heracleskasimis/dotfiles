@@ -2,6 +2,8 @@
 
 (if (featurep! +large-font)
     (set-frame-font "LiterationMono Nerd Font Mono 13" nil t))
+(if (featurep! +medium-font)
+    (set-frame-font "LiterationMono Nerd Font 11" nil t))
 (if (featurep! +small-font)
     (set-frame-font "Liberation Mono 9" nil t))
 
