@@ -166,7 +166,6 @@ let g:gutentags_project_root = ['.gitignore', '.git', '.hg', '.bzr', '_darcs', '
 let g:gutentags_cache_dir = '~/.cache/tags'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_set_highlights = 0
-let vim_markdown_preview_hotkey='<F5>'
 
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
