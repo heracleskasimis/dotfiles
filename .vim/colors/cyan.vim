@@ -23,7 +23,7 @@ hi StatusLineNC             cterm=bold,italic       ctermfg=249         ctermbg=
 hi StatusLineTerm           cterm=bold,italic       ctermfg=NONE        ctermbg=255
 hi StatusLineTermNC         cterm=italic            ctermfg=NONE        ctermbg=255
 hi VertSplit                cterm=NONE              ctermfg=255         ctermbg=255
-hi SignColumn               cterm=NONE              ctermfg=30          ctermbg=249
+hi SignColumn               cterm=NONE              ctermfg=30          ctermbg=254
 hi Title                    cterm=bold              ctermfg=NONE
 hi Visual                   cterm=NONE              ctermfg=NONE        ctermbg=254
 hi VisualNOS                cterm=NONE              ctermfg=NONE        ctermbg=230
@@ -34,8 +34,8 @@ hi PMenu                    cterm=NONE              ctermfg=16          ctermbg=
 hi PMenuSel                 cterm=NONE              ctermfg=231         ctermbg=16
 hi PMenuSbar                cterm=NONE              ctermfg=16          ctermbg=254
 hi PMenuThumb               cterm=NONE              ctermfg=16          ctermbg=16
-hi Folded                   cterm=bold,italic       ctermfg=231         ctermbg=252
-hi FoldColumn               cterm=italic            ctermfg=231         ctermbg=250
+hi Folded                   cterm=bold,italic       ctermfg=231         ctermbg=253
+hi FoldColumn               cterm=italic            ctermfg=231         ctermbg=253
 hi DiffAdd                  cterm=bold              ctermfg=NONE        ctermbg=195
 hi DiffChange               cterm=bold              ctermfg=NONE        ctermbg=230
 hi DiffDelete               cterm=bold              ctermfg=161         ctermbg=NONE
@@ -81,8 +81,8 @@ if &background == 'dark'
 endif
 
 hi Cursorline               gui=NONE                guifg=NONE          guibg=#f0f0f0
-hi CursorlineNr             gui=bold                guifg=#aaaaaa       guibg=#f6f6f6
-hi LineNr                   gui=NONE                guifg=#aaaaaa       guibg=#f6f6f6
+hi CursorlineNr             gui=bold                guifg=#aaaaaa       guibg=#f4f4f4
+hi LineNr                   gui=NONE                guifg=#aaaaaa       guibg=#f4f4f4
 hi Cursor                   gui=NONE                guifg=white         guibg=#ff0044
 hi SpecialKey               gui=bold                guifg=NONE
 hi NonText                  gui=bold                guifg=#e0e0e0       guibg=NONE
@@ -93,19 +93,22 @@ hi Search                   gui=NONE                guifg=black         guibg=#c
 hi MoreMsg                  gui=bold                guifg=NONE
 hi ModeMsg                  gui=bold                guifg=NONE
 hi Question                 gui=standout            guifg=NONE
-hi StatusLine               gui=bold                guifg=#000000       guibg=#f6f6f6
-hi StatusLineNC             gui=bold                guifg=#aaaaaa       guibg=#f6f6f6
-hi StatusLineTerm           gui=bold                guifg=#000000       guibg=#f6f6f6
-hi StatusLineTermNC         gui=bold                guifg=#aaaaaa       guibg=#f6f6f6
-hi VertSplit                gui=bold                guifg=#f6f6f6       guibg=#f6f6f6
-hi SignColumn               gui=bold                guifg=darkcyan      guibg=#bbbbbb
+hi StatusLine               gui=bold                guifg=#000000       guibg=#f4f4f4
+hi StatusLineNC             gui=bold                guifg=#aaaaaa       guibg=#f4f4f4
+hi StatusLineTerm           gui=bold                guifg=#000000       guibg=#f4f4f4
+hi StatusLineTermNC         gui=bold                guifg=#aaaaaa       guibg=#f4f4f4
+hi VertSplit                gui=bold                guifg=#f4f4f4       guibg=#f4f4f4
+hi SignColumn               gui=bold                guifg=darkcyan      guibg=#f0f0f0
+hi TabLineFill              gui=italic              guifg=#aaaaaa       guibg=#f0f0f0
+hi TabLine                  gui=italic              guifg=#aaaaaa       guibg=#f0f0f0
+hi TabLineSel               gui=bold                guifg=#000000       guibg=#f0f0f0
 hi Title                    gui=bold                guifg=NONE
 hi Visual                   gui=NONE                guifg=NONE          guibg=#e0e0e0
 hi VisualNOS                gui=NONE                guifg=NONE          guibg=#ffffd0
 hi Underlined               gui=bold,underline      guifg=NONE
 hi WarningMsg               gui=standout            guifg=NONE
 hi Folded                   gui=bold,italic         guifg=#ffffff       guibg=#d4d4d4
-hi FoldColumn               gui=italic              guifg=#ffffff       guibg=#c4c4c4
+hi FoldColumn               gui=italic              guifg=#ffffff       guibg=#d4d4d4
 hi DiffChange               gui=bold                guifg=NONE          guibg=#f0f0b5
 hi DiffDelete               gui=bold                guifg=NONE          guibg=#ffe0e9
 hi DiffAdd                  gui=bold                guifg=NONE          guibg=#e0ffff
@@ -128,9 +131,6 @@ hi Ignore                   gui=bold                guifg=#ffffff
 hi Error                    gui=bold                guifg=#ff0044       guibg=#ffe0e9
 hi Todo                     gui=bold                guifg=darkcyan      guibg=lightgrey
 hi String                   gui=NONE                guifg=darkcyan
-hi TabLineFill              gui=italic              guifg=#eeeeee       guibg=#c4c4c4
-hi TabLine                  gui=italic              guifg=#eeeeee       guibg=#c4c4c4
-hi TabLineSel               gui=bold                guifg=#ffffff       guibg=#c4c4c4
 hi WildMenu                 gui=NONE                guifg=black         guibg=#dddddd
 hi PMenu                    gui=NONE                guifg=black         guibg=#dddddd
 hi PMenuSel                 gui=NONE                guifg=#ffffff       guibg=black
