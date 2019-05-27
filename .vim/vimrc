@@ -58,7 +58,6 @@ Plug 'mxw/vim-jsx'
 Plug 'tpope/vim-fugitive'
 Plug 'gregsexton/gitv'
 Plug 'elzr/vim-json'
-Plug 'kien/ctrlp.vim'
 Plug 'vim-scripts/javacomplete'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'fidian/hexmode'
@@ -84,6 +83,8 @@ Plug 'nvie/vim-flake8'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'ambv/black'
 Plug 'tpope/vim-dadbod'
+Plug 'mtth/scratch.vim'
+Plug 'junegunn/fzf.vim'
 call plug#end()
 
 if &t_Co > 2 || has("gui_running")
@@ -170,6 +171,9 @@ let g:ale_set_highlights = 0
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 
+let g:intelligencia = 'postgres://intelligencia@localhost/intelligencia'
+let g:airflow = 'postgres://airflow@localhost/airflow'
+
 map <leader><Tab>n :tabe<cr>
 map <leader><Tab>d :tabclose<cr>
 map <leader><Tab>[ :tabprevious<cr>
@@ -181,32 +185,41 @@ map <leader>op :NERDTreeToggle<cr>
 map <leader>oP :NERDTreeFind<cr>
 map <leader>ot :terminal<cr>
 
-map <leader>bb :CtrlPBuffer<cr>
-map <leader>b, :CtrlPBuffer<cr>
+map <leader>bb :Buffers<cr>
+map <leader>b, :Buffers<cr>
 map <leader>b] :bnext<cr>
 map <leader>bn :bnext<cr>
 map <leader>b[ :bprevious<cr>
 map <leader>bp :bprevious<cr>
 map <leader>bk :Bclose<cr>
 map <leader>bN :vnew<cr>
-map <leader>< :CtrlPBuffer<cr>
+map <leader>< :Buffers<cr>
 map <BS> <c-^>
 
-map <leader>cd :CtrlPTag<cr><c-\>w
+map <leader>bx :Scratch<cr>
+map <leader>x :Scratch<cr>
+
+map <leader>cd :Tags <c-r>=expand("<cword>")<cr><cr>
 map <leader>cx :lopen<cr>
+map <leader>cc :make<cr>
 
 map <leader>w <c-w>
 map <c-Tab> <c-w>w
-map <leader>f/ :CtrlP<cr>
-map <leader>p/ :CtrlP<cr>
-map <leader><leader> :CtrlP<cr>
+map <leader>f/ :Files<cr>
+map <leader>p/ :Files <c-r>=FindRootDirectory()<cr><cr>
+map <leader><leader> :Files <c-r>=FindRootDirectory()<cr><cr>
 map <leader>* :Ack! <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><c-b><s-right><s-right>
 map <leader>/p :Ack! <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><c-b><s-right><s-right>
 map <leader>/d :Ack! <c-r>=expand("<cword>")<cr> <c-r>=getcwd()<cr><c-b><s-right><s-right>
 map <leader>/b :Ack! <c-r>=expand("<cword>")<cr> %<c-b><s-right><s-right>
-map <leader>/i :CtrlPTag<cr><c-\>w
+map <leader>/i :Tags <c-r>=expand("<cword>")<cr><cr>
+map <leader>/g :Gitv! -S<c-r>=expand("<cword>")<cr>
 map <leader>]e :lnext<cr>
 map <leader>[e :lprevious<cr>
+
+map <leader>gg :Gstatus<cr>
+map <leader>gl :Gitv<cr>
+map <leader>gL :Gitv!<cr>
 
 map <down> gj
 map <up> gk
