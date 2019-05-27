@@ -171,9 +171,6 @@ let g:ale_set_highlights = 0
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 
-let g:intelligencia = 'postgres://intelligencia@localhost/intelligencia'
-let g:airflow = 'postgres://airflow@localhost/airflow'
-
 map <leader><Tab>n :tabe<cr>
 map <leader><Tab>d :tabclose<cr>
 map <leader><Tab>[ :tabprevious<cr>
