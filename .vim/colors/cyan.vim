@@ -89,7 +89,7 @@ hi NonText                  gui=bold                guifg=#e0e0e0       guibg=NO
 hi Directory                gui=bold,italic         guifg=NONE
 hi ErrorMsg                 gui=NONE                guifg=#ff0044       guibg=#ffffff
 hi IncSearch                gui=NONE                guifg=#ffffff       guibg=#000000
-hi Search                   gui=NONE                guifg=black         guibg=#ccffff
+hi Search                   gui=NONE                guifg=black         guibg=#d7ffff
 hi MoreMsg                  gui=bold                guifg=NONE
 hi ModeMsg                  gui=bold                guifg=NONE
 hi Question                 gui=standout            guifg=NONE
@@ -107,8 +107,8 @@ hi Visual                   gui=NONE                guifg=NONE          guibg=#e
 hi VisualNOS                gui=NONE                guifg=NONE          guibg=#ffffd0
 hi Underlined               gui=bold,underline      guifg=NONE
 hi WarningMsg               gui=standout            guifg=NONE
-hi Folded                   gui=bold,italic         guifg=#ffffff       guibg=#d4d4d4
-hi FoldColumn               gui=italic              guifg=#ffffff       guibg=#d4d4d4
+hi Folded                   gui=bold,italic         guifg=#aaaaaa       guibg=#ffffff
+hi FoldColumn               gui=italic              guifg=#aaaaaa       guibg=#f4f4f4
 hi DiffChange               gui=bold                guifg=NONE          guibg=#f0f0b5
 hi DiffDelete               gui=bold                guifg=NONE          guibg=#ffe0e9
 hi DiffAdd                  gui=bold                guifg=NONE          guibg=#e0ffff
@@ -154,8 +154,11 @@ hi TagbarVisibilityPublic   gui=NONE                guifg=NONE
 hi TagbarVisibilityPrivate  gui=NONE                guifg=NONE
 
 hi Matchparen               gui=NONE                guifg=NONE          guibg=#bbffff
-
 hi TrailingWhitespace       gui=NONE                guifg=#ff0044       guibg=#ffe0e9
+
+hi fzf1                     gui=NONE                guifg=#ff0055       guibg=#f4f4f4
+hi fzf2                     gui=NONE                guifg=darkcyan      guibg=#f4f4f4
+hi fzf3                     gui=NONE                guifg=NONE          guibg=#f4f4f4
 
 hi gitvGraphEdge9           guifg=#850024
 hi gitvGraphEdge8           guifg=#005d6d
@@ -168,6 +171,8 @@ hi gitvGraphEdge2           guifg=#18a3a7
 hi gitvGraphEdge1           guifg=#808080
 hi gitvLocalCommitedNode    guifg=darkcyan
 hi gitvLocalUncommitNode    guifg=#b60020
+
+hi link ColorColumn DiffDelete
 
 hi link javaCommentTitle Comment
 hi link javaDocTags SpecialComment
