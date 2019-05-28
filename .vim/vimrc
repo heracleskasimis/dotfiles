@@ -119,11 +119,19 @@ command! -nargs=0 FormatJSON %!python -m json.tool
 command! -nargs=0 FormatHTML %!tidy -q -i --show-errors 0
 command! -nargs=0 FormatXML  %!tidy -q -i --show-errors 0 -xml
 
+command! -nargs=1 QFTag call s:QFTag(<f-args>)
+function! s:QFTag(name)
+  let qf_taglist = []
+  for entry in taglist('^'.a:name)
+    call add(qf_taglist, { 'pattern':  entry['cmd'], 'filename': entry['filename'] })
+  endfor
+  call setqflist(qf_taglist)
+  copen
+endfunction
+
 if executable('ag')
   let g:ackprg = 'ag --vimgrep'
 endif
-
-set omnifunc=syntaxcomplete#Complete
 
 let c_space_errors = 1
 let java_space_errors = 1
@@ -171,16 +179,26 @@ let g:ale_set_highlights = 0
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 
+let g:intelligencia = 'postgres://intelligencia@localhost/intelligencia'
+let g:airflow = 'postgres://airflow@localhost/airflow'
+
 map <leader><Tab>n :tabe<cr>
 map <leader><Tab>d :tabclose<cr>
 map <leader><Tab>[ :tabprevious<cr>
-map <leader><Tab>p :tabprevious<cr>
 map <leader><Tab>] :tabnext<cr>
-map <leader><Tab>n :tabnext<cr>
+map <leader><Tab>1 1gt<cr>
+map <leader><Tab>2 2gt<cr>
+map <leader><Tab>3 3gt<cr>
+map <leader><Tab>4 4gt<cr>
+map <leader><Tab>5 5gt<cr>
+map <leader><Tab>6 6gt<cr>
+map <leader><Tab>7 7gt<cr>
+map <leader><Tab>8 8gt<cr>
+map <leader><Tab>9 9gt<cr>
 
-map <leader>op :NERDTreeToggle<cr>
+map <leader>op :NERDTreeToggle <c-r>=FindRootDirectory()<cr><cr>
 map <leader>oP :NERDTreeFind<cr>
-map <leader>ot :terminal<cr>
+map <leader>ot :belowright 10split \| lcd <c-r>=FindRootDirectory()<cr> \| terminal ++curwin<cr>
 
 map <leader>bb :Buffers<cr>
 map <leader>b, :Buffers<cr>
@@ -196,7 +214,7 @@ map <BS> <c-^>
 map <leader>bx :Scratch<cr>
 map <leader>x :Scratch<cr>
 
-map <leader>cd :Tags <c-r>=expand("<cword>")<cr><cr>
+map <leader>cd :Tags '<c-r>=expand("<cword>")<cr><cr>
 map <leader>cx :lopen<cr>
 map <leader>cc :make<cr>
 
@@ -205,14 +223,12 @@ map <c-Tab> <c-w>w
 map <leader>f/ :Files<cr>
 map <leader>p/ :Files <c-r>=FindRootDirectory()<cr><cr>
 map <leader><leader> :Files <c-r>=FindRootDirectory()<cr><cr>
-map <leader>* :Ack! <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><c-b><s-right><s-right>
+map <leader>* :Ack! <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><cr>
 map <leader>/p :Ack! <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><c-b><s-right><s-right>
 map <leader>/d :Ack! <c-r>=expand("<cword>")<cr> <c-r>=getcwd()<cr><c-b><s-right><s-right>
 map <leader>/b :Ack! <c-r>=expand("<cword>")<cr> %<c-b><s-right><s-right>
-map <leader>/i :Tags <c-r>=expand("<cword>")<cr><cr>
+map <leader>/i :QFTag <c-r>=expand("<cword>")<cr>
 map <leader>/g :Gitv! -S<c-r>=expand("<cword>")<cr>
-map <leader>]e :lnext<cr>
-map <leader>[e :lprevious<cr>
 
 map <leader>gg :Gstatus<cr>
 map <leader>gl :Gitv<cr>
@@ -222,10 +238,8 @@ map <down> gj
 map <up> gk
 imap <down> <c-o>gj
 imap <up> <c-o>gk
-imap <insert> <esc>"*P']ji
 
-cnoremap <c-g> <c-[>
-tnoremap <Esc><Esc> <c-\><c-n>
+cmap <c-g> <c-[>
 
 map f <Plug>Sneak_f
 map F <Plug>Sneak_F
@@ -235,6 +249,9 @@ map T <Plug>Sneak_T
 nmap <X1Mouse> <c-o>
 nmap <X2Mouse> <c-i>
 nmap <RightMouse> <LeftMouse>/<c-r>=expand("<cword>")<cr><cr>
+
+autocmd TerminalOpen * tnoremap <buffer> <esc><esc> <c-\><c-n>
+autocmd FileType fzf tunmap <buffer> <esc><esc>
 
 autocmd FileType vim setlocal keywordprg=:help
 autocmd FileType python setlocal keywordprg=pydoc
