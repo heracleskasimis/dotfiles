@@ -237,6 +237,7 @@ map <leader>gL :Gitv!<cr>
 map <leader>hf :Helptags<cr>
 map <leader>hi :help<cr>
 
+nmap <esc> :noh<cr>
 map <down> gj
 map <up> gk
 imap <down> <c-o>gj
