@@ -234,11 +234,15 @@ map <leader>gg :Gstatus<cr>
 map <leader>gl :Gitv<cr>
 map <leader>gL :Gitv!<cr>
 
+map <leader>hf :Helptags<cr>
+map <leader>hi :help<cr>
+
 map <down> gj
 map <up> gk
 imap <down> <c-o>gj
 imap <up> <c-o>gk
 
+" imap <insert> <esc>"*P']ji
 cmap <c-g> <c-[>
 
 map f <Plug>Sneak_f
@@ -250,8 +254,20 @@ nmap <X1Mouse> <c-o>
 nmap <X2Mouse> <c-i>
 nmap <RightMouse> <LeftMouse>/<c-r>=expand("<cword>")<cr><cr>
 
-autocmd TerminalOpen * tnoremap <buffer> <esc><esc> <c-\><c-n>
-autocmd FileType fzf tunmap <buffer> <esc><esc>
+augroup termesc
+  autocmd!
+  autocmd TerminalOpen * silent tnoremap <buffer> <esc><esc> <c-\><c-n>
+  autocmd FileType fzf silent tunmap <buffer> <esc><esc>
+augroup END
 
-autocmd FileType vim setlocal keywordprg=:help
-autocmd FileType python setlocal keywordprg=pydoc
+augroup fzf
+  autocmd!
+  autocmd FileType fzf set laststatus=0 noshowmode noruler
+        \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+augroup END
+
+augroup keywordhelp
+  autocmd!
+  autocmd FileType vim setlocal keywordprg=:help
+  autocmd FileType python setlocal keywordprg=pydoc
+augroup END
