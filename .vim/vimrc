@@ -119,8 +119,8 @@ command! -nargs=0 FormatJSON %!python -m json.tool
 command! -nargs=0 FormatHTML %!tidy -q -i --show-errors 0
 command! -nargs=0 FormatXML  %!tidy -q -i --show-errors 0 -xml
 
-command! -nargs=1 QFTag call s:QFTag(<f-args>)
-function! s:QFTag(name)
+command! -nargs=1 Ctags call s:Ctags(<f-args>)
+function! s:Ctags(name)
   let qf_taglist = []
   for entry in taglist('^'.a:name)
     call add(qf_taglist, { 'pattern':  entry['cmd'], 'filename': entry['filename'] })
@@ -227,7 +227,7 @@ map <leader>* :Ack! <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><cr
 map <leader>/p :Ack! <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><c-b><s-right><s-right>
 map <leader>/d :Ack! <c-r>=expand("<cword>")<cr> <c-r>=getcwd()<cr><c-b><s-right><s-right>
 map <leader>/b :Ack! <c-r>=expand("<cword>")<cr> %<c-b><s-right><s-right>
-map <leader>/i :QFTag <c-r>=expand("<cword>")<cr>
+map <leader>/i :Ctags <c-r>=expand("<cword>")<cr>
 map <leader>/g :Gitv! -S<c-r>=expand("<cword>")<cr>
 
 map <leader>gg :Gstatus<cr>
