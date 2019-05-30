@@ -34,8 +34,8 @@ hi PMenu                    cterm=NONE              ctermfg=16          ctermbg=
 hi PMenuSel                 cterm=NONE              ctermfg=231         ctermbg=16
 hi PMenuSbar                cterm=NONE              ctermfg=16          ctermbg=254
 hi PMenuThumb               cterm=NONE              ctermfg=16          ctermbg=16
-hi Folded                   cterm=bold,italic       ctermfg=231         ctermbg=253
-hi FoldColumn               cterm=italic            ctermfg=231         ctermbg=253
+hi Folded                   cterm=bold,italic       ctermfg=249         ctermbg=231
+hi FoldColumn               cterm=italic            ctermfg=249         ctermbg=255
 hi DiffAdd                  cterm=bold              ctermfg=NONE        ctermbg=195
 hi DiffChange               cterm=bold              ctermfg=NONE        ctermbg=230
 hi DiffDelete               cterm=bold              ctermfg=161         ctermbg=NONE
@@ -55,9 +55,9 @@ hi String                   cterm=NONE              ctermfg=30
 hi SpellBad                 cterm=NONE              ctermfg=161         ctermbg=NONE
 hi SpellCap                 cterm=NONE              ctermfg=161         ctermbg=NONE
 hi SpellRare                cterm=NONE              ctermfg=161         ctermbg=NONE
-hi TabLineFill              cterm=NONE              ctermfg=255         ctermbg=250
-hi TabLine                  cterm=italic            ctermfg=255         ctermbg=250
-hi TabLineSel               cterm=bold              ctermfg=231         ctermbg=250
+hi TabLineFill              cterm=NONE              ctermfg=249         ctermbg=255
+hi TabLine                  cterm=bold              ctermfg=249         ctermbg=255
+hi TabLineSel               cterm=bold              ctermfg=231         ctermbg=0
 hi Sneak                    cterm=NONE              ctermfg=NONE        ctermbg=229
 hi SneakLabel               cterm=underline         ctermfg=16          ctermbg=227
 
@@ -76,45 +76,43 @@ if &background == 'dark'
     hi VertSplit            cterm=NONE              ctermfg=0           ctermbg=0
     hi Search               cterm=NONE              ctermfg=NONE        ctermbg=6
     hi TabLineFill          cterm=NONE              ctermfg=7           ctermbg=0
-    hi TabLine              cterm=italic            ctermfg=7           ctermbg=0
+    hi TabLine              cterm=bold,italic       ctermfg=7           ctermbg=0
     hi TabLineSel           cterm=bold              ctermfg=7           ctermbg=0
 endif
 
 hi Cursorline               gui=NONE                guifg=NONE          guibg=#f0f0f0
-hi CursorlineNr             gui=bold                guifg=#aaaaaa       guibg=#f4f4f4
-hi LineNr                   gui=NONE                guifg=#aaaaaa       guibg=#f4f4f4
-hi Cursor                   gui=NONE                guifg=white         guibg=#ff0044
+hi CursorlineNr             gui=bold                guifg=#aaaaaa       guibg=#f0f0f0
+hi LineNr                   gui=NONE                guifg=#aaaaaa       guibg=#f0f0f0
+hi Cursor                   gui=NONE                guifg=white         guibg=#ff0055
 hi SpecialKey               gui=bold                guifg=NONE
 hi NonText                  gui=bold                guifg=#e0e0e0       guibg=NONE
 hi Directory                gui=bold,italic         guifg=NONE
-hi ErrorMsg                 gui=NONE                guifg=#ff0044       guibg=#ffffff
+hi ErrorMsg                 gui=NONE                guifg=#ff0055       guibg=#ffffff
 hi IncSearch                gui=NONE                guifg=#ffffff       guibg=#000000
 hi Search                   gui=NONE                guifg=black         guibg=#d7ffff
 hi MoreMsg                  gui=bold                guifg=NONE
 hi ModeMsg                  gui=bold                guifg=NONE
 hi Question                 gui=standout            guifg=NONE
-hi StatusLine               gui=bold                guifg=#000000       guibg=#f4f4f4
-hi StatusLineNC             gui=bold                guifg=#aaaaaa       guibg=#f4f4f4
-hi StatusLineTerm           gui=bold                guifg=#000000       guibg=#f4f4f4
-hi StatusLineTermNC         gui=bold                guifg=#aaaaaa       guibg=#f4f4f4
-hi VertSplit                gui=bold                guifg=#f4f4f4       guibg=#f4f4f4
+hi StatusLine               gui=bold                guifg=#000000       guibg=#f0f0f0
+hi StatusLineNC             gui=bold                guifg=#aaaaaa       guibg=#f0f0f0
+hi StatusLineTerm           gui=bold                guifg=#000000       guibg=#f0f0f0
+hi StatusLineTermNC         gui=bold                guifg=#aaaaaa       guibg=#f0f0f0
+hi VertSplit                gui=bold                guifg=#f0f0f0       guibg=#f0f0f0
 hi SignColumn               gui=bold                guifg=darkcyan      guibg=#f0f0f0
-hi TabLineFill              gui=italic              guifg=#aaaaaa       guibg=#f0f0f0
-hi TabLine                  gui=italic              guifg=#aaaaaa       guibg=#f0f0f0
-hi TabLineSel               gui=bold                guifg=#000000       guibg=#f0f0f0
+hi TabLineFill              gui=bold                guifg=#aaaaaa       guibg=#f0f0f0
+hi TabLine                  gui=bold                guifg=#aaaaaa       guibg=#f0f0f0
+hi TabLineSel               gui=bold                guifg=#ffffff       guibg=#000000
 hi Title                    gui=bold                guifg=NONE
 hi Visual                   gui=NONE                guifg=NONE          guibg=#e0e0e0
 hi VisualNOS                gui=NONE                guifg=NONE          guibg=#ffffd0
 hi Underlined               gui=bold,underline      guifg=NONE
 hi WarningMsg               gui=standout            guifg=NONE
 hi Folded                   gui=bold,italic         guifg=#aaaaaa       guibg=#ffffff
-hi FoldColumn               gui=italic              guifg=#aaaaaa       guibg=#f4f4f4
-hi DiffChange               gui=bold                guifg=NONE          guibg=#f0f0b5
-hi DiffDelete               gui=bold                guifg=NONE          guibg=#ffe0e9
-hi DiffAdd                  gui=bold                guifg=NONE          guibg=#e0ffff
-hi DiffText                 gui=italic              guifg=NONE          guibg=#dbdba5
-hi DiffAdded                gui=bold                guifg=NONE          guibg=#e0ffff
-hi DiffRemoved              gui=bold                guifg=NONE          guibg=#ffe0e9
+hi FoldColumn               gui=italic              guifg=#aaaaaa       guibg=#f0f0f0
+hi DiffChange               gui=NONE                guifg=NONE          guibg=#ffffe8
+hi DiffDelete               gui=bold                guifg=#ff0055       guibg=#fff7f9
+hi DiffAdd                  gui=NONE                guifg=NONE          guibg=#ecffff
+hi DiffText                 gui=NONE                guifg=NONE          guibg=#e8e8d0
 hi Comment                  gui=bold                guifg=darkgrey
 hi SpecialComment           gui=bold                guifg=#808080
 hi jsDocParam               gui=bold                guifg=darkgrey
@@ -127,8 +125,8 @@ hi Identifier               gui=bold                guifg=NONE
 hi Statement                gui=bold                guifg=NONE
 hi PreProc                  gui=bold                guifg=NONE
 hi Type                     gui=bold                guifg=NONE
-hi Ignore                   gui=bold                guifg=#f4f4f4
-hi Error                    gui=bold                guifg=#ff0044       guibg=#ffe0e9
+hi Ignore                   gui=bold                guifg=#f0f0f0
+hi Error                    gui=bold                guifg=#ff0055       guibg=#ffe0e9
 hi Todo                     gui=bold                guifg=darkcyan      guibg=lightgrey
 hi String                   gui=NONE                guifg=darkcyan
 hi WildMenu                 gui=NONE                guifg=black         guibg=#dddddd
@@ -140,7 +138,7 @@ hi Sneak                    gui=NONE                guifg=NONE          guibg=#f
 hi SneakLabel               gui=underline           guifg=#000000       guibg=#ffff60
 
 hi Highlight                gui=NONE                guifg=NONE          guibg=#44ffff
-hi SpellBad                 gui=undercurl           guisp=#ff0044
+hi SpellBad                 gui=undercurl           guisp=#ff0055
 hi SpellCap                 gui=undercurl           guisp=darkcyan
 hi SpellRare                gui=undercurl           guisp=#888888
 
@@ -154,11 +152,11 @@ hi TagbarVisibilityPublic   gui=NONE                guifg=NONE
 hi TagbarVisibilityPrivate  gui=NONE                guifg=NONE
 
 hi Matchparen               gui=NONE                guifg=NONE          guibg=#bbffff
-hi TrailingWhitespace       gui=NONE                guifg=#ff0044       guibg=#ffe0e9
+hi TrailingWhitespace       gui=NONE                guifg=#ff0055       guibg=#ffe0e9
 
-hi fzf1                     gui=NONE                guifg=#ff0055       guibg=#f4f4f4
-hi fzf2                     gui=NONE                guifg=darkcyan      guibg=#f4f4f4
-hi fzf3                     gui=NONE                guifg=NONE          guibg=#f4f4f4
+hi fzf1                     gui=bold                guifg=NONE          guibg=#f0f0f0
+hi fzf2                     gui=NONE                guifg=darkcyan      guibg=#f0f0f0
+hi fzf3                     gui=NONE                guifg=NONE          guibg=#f0f0f0
 
 hi gitvGraphEdge9           guifg=#850024
 hi gitvGraphEdge8           guifg=#005d6d
