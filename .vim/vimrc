@@ -202,6 +202,7 @@ map <leader>op :NERDTreeToggle <c-r>=FindRootDirectory()<cr><cr>
 map <leader>oP :NERDTreeFind<cr>
 map <leader>ot :belowright 10split \| lcd <c-r>=FindRootDirectory()<cr> \| terminal ++curwin<cr>
 
+map <leader>, :Buffers<cr>
 map <leader>bb :Buffers<cr>
 map <leader>b, :Buffers<cr>
 map <leader>b] :bnext<cr>
@@ -232,6 +233,7 @@ map <leader>/d :Ack! <c-r>=expand("<cword>")<cr> %:h<c-b><s-right><s-right>
 map <leader>/b :Ack! <c-r>=expand("<cword>")<cr> %<c-b><s-right><s-right>
 map <leader>/i :Ctags <c-r>=expand("<cword>")<cr>
 map <leader>/g :Gitv! -S<c-r>=expand("<cword>")<cr>
+map <leader>/x :XPathSearchPrompt<cr>
 
 map <leader>gg :Gstatus<cr>
 map <leader>gl :Gitv<cr>
