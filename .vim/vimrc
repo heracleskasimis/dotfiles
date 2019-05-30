@@ -85,6 +85,8 @@ Plug 'ambv/black'
 Plug 'tpope/vim-dadbod'
 Plug 'mtth/scratch.vim'
 Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-eunuch'
+Plug 'actionshrimp/vim-xpath'
 call plug#end()
 
 if &t_Co > 2 || has("gui_running")
@@ -220,12 +222,13 @@ map <leader>cc :make<cr>
 
 map <leader>w <c-w>
 map <c-Tab> <c-w>w
-map <leader>f/ :Files<cr>
+map <leader>. :Files %:h<cr>
+map <leader>f/ :Files %:h<cr>
 map <leader>p/ :Files <c-r>=FindRootDirectory()<cr><cr>
 map <leader><leader> :Files <c-r>=FindRootDirectory()<cr><cr>
 map <leader>* :Ack! <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><cr>
 map <leader>/p :Ack! <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><c-b><s-right><s-right>
-map <leader>/d :Ack! <c-r>=expand("<cword>")<cr> <c-r>=getcwd()<cr><c-b><s-right><s-right>
+map <leader>/d :Ack! <c-r>=expand("<cword>")<cr> %:h<c-b><s-right><s-right>
 map <leader>/b :Ack! <c-r>=expand("<cword>")<cr> %<c-b><s-right><s-right>
 map <leader>/i :Ctags <c-r>=expand("<cword>")<cr>
 map <leader>/g :Gitv! -S<c-r>=expand("<cword>")<cr>
