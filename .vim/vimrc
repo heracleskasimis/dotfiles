@@ -87,6 +87,7 @@ Plug 'mtth/scratch.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'actionshrimp/vim-xpath'
+Plug 'sunaku/vim-shortcut'
 call plug#end()
 
 if &t_Co > 2 || has("gui_running")
@@ -184,81 +185,90 @@ let &t_ZR="\e[23m"
 let g:intelligencia = 'postgres://intelligencia@localhost/intelligencia'
 let g:airflow = 'postgres://airflow@localhost/airflow'
 
-map <leader><Tab>n :tabe<cr>
-map <leader><Tab>d :tabclose<cr>
-map <leader><Tab>[ :tabprevious<cr>
-map <leader><Tab>] :tabnext<cr>
-map <leader><Tab>1 1gt<cr>
-map <leader><Tab>2 2gt<cr>
-map <leader><Tab>3 3gt<cr>
-map <leader><Tab>4 4gt<cr>
-map <leader><Tab>5 5gt<cr>
-map <leader><Tab>6 6gt<cr>
-map <leader><Tab>7 7gt<cr>
-map <leader><Tab>8 8gt<cr>
-map <leader><Tab>9 9gt<cr>
+function! s:Shortcuts()
+  Shortcut 'Run shortcut' map <leader> :Shortcuts<cr>
 
-map <leader>op :NERDTreeToggle <c-r>=FindRootDirectory()<cr><cr>
-map <leader>oP :NERDTreeFind<cr>
-map <leader>ot :belowright 10split \| lcd <c-r>=FindRootDirectory()<cr> \| terminal ++curwin<cr>
+  Shortcut 'New tab' map <leader><Tab>n :tabe<cr>
+  Shortcut 'Delete tab' map <leader><Tab>d :tabclose<cr>
+  Shortcut 'Previous tab' map <leader><Tab>[ :tabprevious<cr>
+  Shortcut 'Next tab' map <leader><Tab>] :tabnext<cr>
+  Shortcut 'Switch to tab 1' map <leader><Tab>1 1gt<cr>
+  Shortcut 'Switch to tab 2' map <leader><Tab>2 2gt<cr>
+  Shortcut 'Switch to tab 3' map <leader><Tab>3 3gt<cr>
+  Shortcut 'Switch to tab 4' map <leader><Tab>4 4gt<cr>
+  Shortcut 'Switch to tab 5' map <leader><Tab>5 5gt<cr>
+  Shortcut 'Switch to tab 6' map <leader><Tab>6 6gt<cr>
+  Shortcut 'Switch to tab 7' map <leader><Tab>7 7gt<cr>
+  Shortcut 'Switch to tab 8' map <leader><Tab>8 8gt<cr>
+  Shortcut 'Switch to tab 9' map <leader><Tab>9 9gt<cr>
 
-map <leader>, :Buffers<cr>
-map <leader>bb :Buffers<cr>
-map <leader>b, :Buffers<cr>
-map <leader>b] :bnext<cr>
-map <leader>bn :bnext<cr>
-map <leader>b[ :bprevious<cr>
-map <leader>bp :bprevious<cr>
-map <leader>bk :Bclose<cr>
-map <leader>bN :vnew<cr>
-map <leader>< :Buffers<cr>
-map <BS> <c-^>
+  Shortcut 'Project sidebar' map <leader>op :NERDTreeToggle <c-r>=FindRootDirectory()<cr><cr>
+  Shortcut 'Find file in project sidebar' map <leader>oP :NERDTreeFind<cr>
+  Shortcut 'Terminal' map <leader>ot :belowright 10split \| lcd <c-r>=FindRootDirectory()<cr> \| terminal ++curwin<cr>
 
-map <leader>bx :Scratch<cr>
-map <leader>x :Scratch<cr>
+  Shortcut 'Switch buffer' map <leader>, :Buffers<cr>
+  Shortcut 'Switch buffer' map <leader>bb :Buffers<cr>
+  Shortcut 'Switch buffer' map <leader>b, :Buffers<cr>
+  Shortcut 'Next buffer' map <leader>b] :bnext<cr>
+  Shortcut 'Next buffer' map <leader>bn :bnext<cr>
+  Shortcut 'Previous buffer' map <leader>b[ :bprevious<cr>
+  Shortcut 'Previous buffer' map <leader>bp :bprevious<cr>
+  Shortcut 'Kill buffer' map <leader>bk :Bclose<cr>
+  Shortcut 'New empty buffer' map <leader>bN :vnew<cr>
+  Shortcut 'Switch buffer' map <leader>< :Buffers<cr>
+  Shortcut 'Previously edited buffer' map <BS> <c-^>
 
-map <leader>cd :Tags '<c-r>=expand("<cword>")<cr><cr>
-map <leader>cx :lopen<cr>
-map <leader>cc :make<cr>
+  Shortcut 'Pop up scratch buffer' map <leader>bx :Scratch<cr>
+  Shortcut 'Pop up scratch buffer' map <leader>x :Scratch<cr>
 
-map <leader>w <c-w>
-map <c-Tab> <c-w>w
-map <leader>. :Files %:h<cr>
-map <leader>f/ :Files %:h<cr>
-map <leader>p/ :Files <c-r>=FindRootDirectory()<cr><cr>
-map <leader><leader> :Files <c-r>=FindRootDirectory()<cr><cr>
-map <leader>* :Ack! <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><cr>
-map <leader>/p :Ack! <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><c-b><s-right><s-right>
-map <leader>/d :Ack! <c-r>=expand("<cword>")<cr> %:h<c-b><s-right><s-right>
-map <leader>/b :Ack! <c-r>=expand("<cword>")<cr> %<c-b><s-right><s-right>
-map <leader>/i :Ctags <c-r>=expand("<cword>")<cr>
-map <leader>/g :Gitv! -S<c-r>=expand("<cword>")<cr>
-map <leader>/x :XPathSearchPrompt<cr>
+  Shortcut 'Jump to definition' map <leader>cd :Tags '<c-r>=expand("<cword>")<cr><cr>
+  Shortcut 'List errors' map <leader>cx :lopen<cr>
+  Shortcut 'Compile' map <leader>cc :make<cr>
 
-map <leader>gg :Gstatus<cr>
-map <leader>gl :Gitv<cr>
-map <leader>gL :Gitv!<cr>
+  Shortcut 'Window movement' map <leader>w <c-w>
+  Shortcut 'Next window' map <c-Tab> <c-w>w
+  Shortcut 'Find file' map <leader>. :Files %:h<cr>
+  Shortcut 'Find file' map <leader>f/ :Files %:h<cr>
+  Shortcut 'Find file in project' map <leader>p/ :Files <c-r>=FindRootDirectory()<cr><cr>
+  Shortcut 'Find file in project' map <leader><leader> :Files <c-r>=FindRootDirectory()<cr><cr>
+  Shortcut 'Search for symbol in project' map <leader>* :Ack! <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><cr>
+  Shortcut 'Search project' map <leader>/p :Ack! <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><c-b><s-right><s-right>
+  Shortcut 'Search current directory' map <leader>/d :Ack! <c-r>=expand("<cword>")<cr> %:h<c-b><s-right><s-right>
+  Shortcut 'Search buffer' map <leader>/b :Ack! <c-r>=expand("<cword>")<cr> %<c-b><s-right><s-right>
+  Shortcut 'Search symbol' map <leader>/i :Ctags <c-r>=expand("<cword>")<cr>
+  Shortcut 'Search git' map <leader>/g :Gitv! -S<c-r>=expand("<cword>")<cr>
+  Shortcut 'Search XML' map <leader>/x :XPathSearchPrompt<cr>
 
-map <leader>hf :Helptags<cr>
-map <leader>hi :help<cr>
+  Shortcut 'Git status' map <leader>gg :Gstatus<cr>
+  Shortcut 'List git commits' map <leader>gl :Gitv<cr>
+  Shortcut 'List git file commits' map <leader>gL :Gitv!<cr>
 
-nmap <esc> :noh<cr>
-map <down> gj
-map <up> gk
-imap <down> <c-o>gj
-imap <up> <c-o>gk
+  Shortcut 'List commands' map <leader>hf :Helptags<cr>
+  Shortcut 'Vim info' map <leader>hi :help<cr>
 
-" imap <insert> <esc>"*P']ji
-cmap <c-g> <c-[>
+  nmap <esc><esc> :noh<cr>
+  map <down> gj
+  map <up> gk
+  imap <down> <c-o>gj
+  imap <up> <c-o>gk
 
-map f <Plug>Sneak_f
-map F <Plug>Sneak_F
-map t <Plug>Sneak_t
-map T <Plug>Sneak_T
+  " imap <insert> <esc>"*P']ji
+  cmap <c-g> <c-[>
 
-nmap <X1Mouse> <c-o>
-nmap <X2Mouse> <c-i>
-nmap <RightMouse> <LeftMouse>/<c-r>=expand("<cword>")<cr><cr>
+  map f <Plug>Sneak_f
+  map F <Plug>Sneak_F
+  map t <Plug>Sneak_t
+  map T <Plug>Sneak_T
+
+  nmap <X1Mouse> <c-o>
+  nmap <X2Mouse> <c-i>
+  nmap <RightMouse> <LeftMouse>/<c-r>=expand("<cword>")<cr><cr>
+endfunction
+
+augroup shortcuts
+  autocmd!
+  autocmd VimEnter * call s:Shortcuts()
+augroup END
 
 augroup termesc
   autocmd!
