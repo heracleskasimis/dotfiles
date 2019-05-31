@@ -36,9 +36,11 @@ hi PMenuSbar                cterm=NONE              ctermfg=16          ctermbg=
 hi PMenuThumb               cterm=NONE              ctermfg=16          ctermbg=16
 hi Folded                   cterm=bold,italic       ctermfg=249         ctermbg=231
 hi FoldColumn               cterm=italic            ctermfg=249         ctermbg=255
-hi DiffAdd                  cterm=bold              ctermfg=NONE        ctermbg=195
+hi DiffAdd                  cterm=NONE              ctermfg=NONE        ctermbg=195
+hi DiffAdded                cterm=NONE              ctermfg=NONE        ctermbg=195
 hi DiffChange               cterm=bold              ctermfg=NONE        ctermbg=230
 hi DiffDelete               cterm=bold              ctermfg=161         ctermbg=NONE
+hi DiffRemoved              cterm=NONE              ctermfg=161         ctermbg=NONE
 hi DiffText                 cterm=bold              ctermfg=232         ctermbg=187
 hi Comment                  cterm=bold              ctermfg=250
 hi SpecialComment           cterm=bold              ctermfg=248
@@ -111,7 +113,9 @@ hi Folded                   gui=bold,italic         guifg=#aaaaaa       guibg=#f
 hi FoldColumn               gui=italic              guifg=#aaaaaa       guibg=#f0f0f0
 hi DiffChange               gui=NONE                guifg=NONE          guibg=#ffffe8
 hi DiffDelete               gui=bold                guifg=#ff0055       guibg=#fff7f9
+hi DiffRemoved              gui=NONE                guifg=#ff0055       guibg=#fff7f9
 hi DiffAdd                  gui=NONE                guifg=NONE          guibg=#ecffff
+hi DiffAdded                gui=NONE                guifg=NONE          guibg=#ecffff
 hi DiffText                 gui=NONE                guifg=NONE          guibg=#e8e8d0
 hi Comment                  gui=bold                guifg=darkgrey
 hi SpecialComment           gui=bold                guifg=#808080
