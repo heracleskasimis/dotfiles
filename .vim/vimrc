@@ -92,12 +92,6 @@ call plug#end()
 if &t_Co > 2 || has("gui_running")
   syntax on
   set hlsearch
-  set noshellslash
-  if has('win32')
-    set shell=cmd
-    set shellcmdflag=/c
-    set shellxquote=\"
-  endif
 endif
 
 if !has("gui_running")
@@ -123,11 +117,11 @@ command! -nargs=0 FormatXML  %!tidy -q -i --show-errors 0 -xml
 
 command! -nargs=1 Ctags call s:Ctags(<f-args>)
 function! s:Ctags(name)
-  let qf_taglist = []
+  let ctaglist = []
   for entry in taglist('^'.a:name)
-    call add(qf_taglist, { 'pattern':  entry['cmd'], 'filename': entry['filename'] })
+    call add(ctaglist, { 'pattern':  entry['cmd'], 'filename': entry['filename'] })
   endfor
-  call setqflist(qf_taglist)
+  call setqflist(ctaglist)
   copen
 endfunction
 
@@ -141,22 +135,8 @@ let ruby_space_errors = 1
 let javascript_space_errors = 1
 
 let g:jsx_ext_required = 0
-let g:tagbar_expand = 0
-let g:tagbar_width = 34
-let g:tagbar_sort = 0
-let Tlist_Use_Right_Window = 1
-let Tlist_Enable_Fold_Column = 0
-let Tlist_Inc_Winwidth = 0
-let g:solarized_termstrans = 1
 let g:vim_markdown_folding_disabled = 1
-let g:extradite_resize = 0
 let g:vim_json_syntax_conceal = 0
-let g:ctrlp_cmd = 'CtrlPMixed'
-let g:ctrlp_working_path_mode = 'ra'
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let g:neocomplete#sources#syntax#min_keyword_length = 3
-let g:airline_powerline_fonts=1
 let g:HiCursorWords_delay = 333
 let g:HiCursorWords_hiGroupRegexp = ''
 let g:HiCursorWords_debugEchoHiName = 0
@@ -341,17 +321,21 @@ augroup codeeval
   autocmd FileType sql Shortcut 'Evaluate buffer/region'
     \ nmap <leader>ce :DB $DB_URI < %
   autocmd FileType javascript Shortcut 'Evaluate buffer/region'
-    \ vmap <leader>ce :<c-u>:belowright '<,'>term node<cr>
+    \ vmap <leader>ce :<c-u>belowright '<,'>term node<cr>
   autocmd FileType javascript Shortcut 'Evaluate buffer/region'
-    \ nmap <leader>ce :<c-u>:belowright term node %
+    \ nmap <leader>ce :<c-u>belowright term node %
   autocmd FileType python Shortcut 'Evaluate buffer/region'
-    \ vmap <leader>ce :<c-u>:belowright '<,'>term python<cr>
+    \ vmap <leader>ce :<c-u>belowright '<,'>term python<cr>
   autocmd FileType python Shortcut 'Evaluate buffer/region'
-    \ nmap <leader>ce :<c-u>:belowright term python %
+    \ nmap <leader>ce :<c-u>belowright term python %
   autocmd FileType sh Shortcut 'Evaluate buffer/region'
-    \ vmap <leader>ce :<c-u>:belowright '<,'>term sh<cr>
+    \ vmap <leader>ce :<c-u>belowright '<,'>term sh<cr>
   autocmd FileType sh Shortcut 'Evaluate buffer/region'
-    \ nmap <leader>ce :<c-u>:belowright term %
+    \ nmap <leader>ce :<c-u>belowright term %
+  autocmd FileType vim Shortcut 'Evaluate buffer/region'
+    \ vmap <leader>ce y:@"<cr>
+  autocmd FileType vim Shortcut 'Evaluate buffer/region'
+    \ nmap <leader>ce source %
 augroup END
 
 augroup keywordhelp
