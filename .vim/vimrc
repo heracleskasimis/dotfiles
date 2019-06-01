@@ -2,7 +2,7 @@ set nocompatible
 set shellslash
 set runtimepath^=~/.vim
 
-let mapleader=' '
+let mapleader='\<space>'
 
 set backspace=indent,eol,start
 set history=50
@@ -91,18 +91,18 @@ Plug 'sunaku/vim-shortcut'
 call plug#end()
 
 if &t_Co > 2 || has("gui_running")
-    syntax on
-    set hlsearch
-    set noshellslash
-    if has('win32')
-        set shell=cmd
-        set shellcmdflag=/c
-        set shellxquote=\"
-    endif
+  syntax on
+  set hlsearch
+  set noshellslash
+  if has('win32')
+    set shell=cmd
+    set shellcmdflag=/c
+    set shellxquote=\"
+  endif
 endif
 
 if !has("gui_running")
-    let loaded_matchparen = 1
+  let loaded_matchparen = 1
 endif
 
 set laststatus=2
@@ -185,7 +185,7 @@ let &t_ZR="\e[23m"
 let g:intelligencia = 'postgres://intelligencia@localhost/intelligencia'
 let g:airflow = 'postgres://airflow@localhost/airflow'
 
-function! s:Shortcuts()
+function! VimShortcuts()
   Shortcut 'Run shortcut' map <leader> :Shortcuts<cr>
 
   Shortcut 'New tab' map <leader><Tab>n :tabe<cr>
@@ -236,7 +236,7 @@ function! s:Shortcuts()
   Shortcut 'Search current directory' map <leader>/d :Ack! <c-r>=expand("<cword>")<cr> %:h<c-b><s-right><s-right>
   Shortcut 'Search buffer' map <leader>/b :Ack! <c-r>=expand("<cword>")<cr> %<c-b><s-right><s-right>
   Shortcut 'Search symbol' map <leader>/i :Ctags <c-r>=expand("<cword>")<cr>
-  Shortcut 'Search git' map <leader>/g :Gitv! -S<c-r>=expand("<cword>")<cr>
+  Shortcut 'Search git' map <leader>/g :Gitv! -S <c-r>=expand("<cword>")<cr>
   Shortcut 'Search XML' map <leader>/x :XPathSearchPrompt<cr>
 
   Shortcut 'Git status' map <leader>gg :Gstatus<cr>
@@ -262,12 +262,12 @@ function! s:Shortcuts()
 
   nmap <X1Mouse> <c-o>
   nmap <X2Mouse> <c-i>
-  nmap <RightMouse> <LeftMouse>/<c-r>=expand("<cword>")<cr><cr>
+  nmap <RightMouse> <LeftMouse>/\<<c-r>=expand("<cword>")<cr>\><cr>
 endfunction
 
 augroup shortcuts
   autocmd!
-  autocmd VimEnter * call s:Shortcuts()
+  autocmd VimEnter * call VimShortcuts()
 augroup END
 
 augroup termesc
