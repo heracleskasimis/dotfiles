@@ -2,8 +2,6 @@ set nocompatible
 set shellslash
 set runtimepath^=~/.vim
 
-let mapleader='\<space>'
-
 set backspace=indent,eol,start
 set history=50
 set ruler
@@ -88,6 +86,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'actionshrimp/vim-xpath'
 Plug 'sunaku/vim-shortcut'
+Plug 'tpope/vim-dotenv'
 call plug#end()
 
 if &t_Co > 2 || has("gui_running")
@@ -182,10 +181,11 @@ let g:ale_set_highlights = 0
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
 
-let g:intelligencia = 'postgres://intelligencia@localhost/intelligencia'
-let g:airflow = 'postgres://airflow@localhost/airflow'
+function! VimrcShortcuts()
+  map <space> <leader>
+  map <space><space> <leader><leader>
+  map <leader><esc> <esc>
 
-function! VimShortcuts()
   Shortcut 'Run shortcut' map <leader> :Shortcuts<cr>
 
   Shortcut 'New tab' map <leader><Tab>n :tabe<cr>
@@ -216,7 +216,7 @@ function! VimShortcuts()
   Shortcut 'Kill buffer' map <leader>bk :Bclose<cr>
   Shortcut 'New empty buffer' map <leader>bN :vnew<cr>
   Shortcut 'Switch buffer' map <leader>< :Buffers<cr>
-  Shortcut 'Previously edited buffer' map <BS> <c-^>
+  Shortcut 'Previously edited buffer' map <bs> <c-^>
 
   Shortcut 'Pop up scratch buffer' map <leader>bx :Scratch<cr>
   Shortcut 'Pop up scratch buffer' map <leader>x :Scratch<cr>
@@ -226,7 +226,7 @@ function! VimShortcuts()
   Shortcut 'Compile' map <leader>cc :make<cr>
 
   Shortcut 'Window movement' map <leader>w <c-w>
-  Shortcut 'Next window' map <c-Tab> <c-w>w
+  Shortcut 'Next tab' map <c-Tab> gt
   Shortcut 'Find file' map <leader>. :Files %:h<cr>
   Shortcut 'Find file' map <leader>f/ :Files %:h<cr>
   Shortcut 'Find file in project' map <leader>p/ :Files <c-r>=FindRootDirectory()<cr><cr>
@@ -267,7 +267,7 @@ endfunction
 
 augroup shortcuts
   autocmd!
-  autocmd VimEnter * call VimShortcuts()
+  autocmd VimEnter * call VimrcShortcuts()
 augroup END
 
 augroup termesc
@@ -279,7 +279,28 @@ augroup END
 augroup fzf
   autocmd!
   autocmd FileType fzf set laststatus=0 noshowmode noruler
-        \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+    \ | autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+augroup END
+
+augroup codeeval
+  autocmd!
+  autocmd FileType * silent Dotenv
+  autocmd FileType sql Shortcut 'Evaluate buffer/region'
+    \ vmap <leader>ce :DB $DB_URI<cr>
+  autocmd FileType sql Shortcut 'Evaluate buffer/region'
+    \ nmap <leader>ce :DB $DB_URI < %
+  autocmd FileType javascript Shortcut 'Evaluate buffer/region'
+    \ vmap <leader>ce :<c-u>:belowright '<,'>term node<cr>
+  autocmd FileType javascript Shortcut 'Evaluate buffer/region'
+    \ nmap <leader>ce :<c-u>:belowright term node %
+  autocmd FileType python Shortcut 'Evaluate buffer/region'
+    \ vmap <leader>ce :<c-u>:belowright '<,'>term python<cr>
+  autocmd FileType python Shortcut 'Evaluate buffer/region'
+    \ nmap <leader>ce :<c-u>:belowright term python %
+  autocmd FileType sh Shortcut 'Evaluate buffer/region'
+    \ vmap <leader>ce :<c-u>:belowright '<,'>term sh<cr>
+  autocmd FileType sh Shortcut 'Evaluate buffer/region'
+    \ nmap <leader>ce :<c-u>:belowright term %
 augroup END
 
 augroup keywordhelp
