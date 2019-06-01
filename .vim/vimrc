@@ -9,7 +9,6 @@ set showcmd
 set incsearch
 set encoding=utf-8
 set guioptions=a
-set linespace=1
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set mouse=a
 set novisualbell
