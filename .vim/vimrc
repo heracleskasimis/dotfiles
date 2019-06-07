@@ -156,6 +156,9 @@ let g:gutentags_project_root = ['.gitignore', '.git', '.hg', '.bzr', '_darcs', '
 let g:gutentags_cache_dir = '~/.cache/tags'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_set_highlights = 0
+let g:ale_fixers = {
+  \ 'javascript': ['eslint']
+  \ }
 
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
@@ -246,9 +249,9 @@ function! VimrcShortcuts()
   Shortcut 'Find file'
     \ map <leader>f/ :Files %:h<cr>
   Shortcut 'Find file in project'
-    \ map <leader>p/ :Files <c-r>=FindRootDirectory()<cr><cr>
+    \ map <leader>p/ :GFiles <c-r>=FindRootDirectory()<cr><cr>
   Shortcut 'Find file in project'
-    \ map <leader><leader> :Files <c-r>=FindRootDirectory()<cr><cr>
+    \ map <leader><leader> :GFiles <c-r>=FindRootDirectory()<cr><cr>
   Shortcut 'Search for symbol in project'
     \ map <leader>* :Ack! <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><cr>
   Shortcut 'Search project'
