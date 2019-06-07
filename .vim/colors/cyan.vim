@@ -14,7 +14,7 @@ hi NonText                  cterm=bold              ctermfg=255
 hi Directory                cterm=bold,italic       ctermfg=NONE
 hi ErrorMsg                 cterm=NONE              ctermfg=231         ctermbg=161
 hi IncSearch                cterm=NONE              ctermfg=231         ctermbg=0
-hi Search                   cterm=NONE              ctermfg=NONE        ctermbg=195
+hi Search                   cterm=NONE              ctermfg=NONE        ctermbg=159
 hi MoreMsg                  cterm=bold              ctermfg=NONE
 hi ModeMsg                  cterm=bold              ctermfg=NONE
 hi Question                 cterm=standout          ctermfg=NONE
@@ -83,8 +83,8 @@ if &background == 'dark'
 endif
 
 hi Cursorline               gui=NONE                guifg=NONE          guibg=#f0f0f0
-hi CursorlineNr             gui=bold                guifg=#aaaaaa       guibg=#f0f0f0
-hi LineNr                   gui=NONE                guifg=#aaaaaa       guibg=#f0f0f0
+hi CursorlineNr             gui=bold                guifg=#a0a0a0       guibg=#f0f0f0
+hi LineNr                   gui=NONE                guifg=#aaaaaa       guibg=#f6f6f6
 hi Cursor                   gui=NONE                guifg=white         guibg=#ff0055
 hi SpecialKey               gui=bold                guifg=NONE
 hi NonText                  gui=bold                guifg=#e0e0e0       guibg=NONE
@@ -96,17 +96,17 @@ hi MoreMsg                  gui=bold                guifg=NONE
 hi ModeMsg                  gui=bold                guifg=NONE
 hi Question                 gui=standout            guifg=NONE
 hi StatusLine               gui=bold                guifg=#000000       guibg=#f0f0f0
-hi StatusLineNC             gui=bold                guifg=#aaaaaa       guibg=#f0f0f0
+hi StatusLineNC             gui=bold                guifg=#a0a0a0       guibg=#f0f0f0
 hi StatusLineTerm           gui=bold                guifg=#000000       guibg=#f0f0f0
-hi StatusLineTermNC         gui=bold                guifg=#aaaaaa       guibg=#f0f0f0
+hi StatusLineTermNC         gui=bold                guifg=#a0a0a0       guibg=#f0f0f0
 hi VertSplit                gui=bold                guifg=#f0f0f0       guibg=#f0f0f0
 hi SignColumn               gui=bold                guifg=darkcyan      guibg=#f0f0f0
-hi TabLineFill              gui=bold                guifg=#aaaaaa       guibg=#f0f0f0
-hi TabLine                  gui=bold                guifg=#aaaaaa       guibg=#f0f0f0
+hi TabLineFill              gui=bold                guifg=#a0a0a0       guibg=#f0f0f0
+hi TabLine                  gui=bold                guifg=#a0a0a0       guibg=#f0f0f0
 hi TabLineSel               gui=bold                guifg=#ffffff       guibg=#000000
 hi Title                    gui=bold                guifg=NONE
 hi Visual                   gui=NONE                guifg=NONE          guibg=#e0e0e0
-hi VisualNOS                gui=NONE                guifg=NONE          guibg=#ffffd0
+hi VisualNOS                gui=NONE                guifg=NONE          guibg=#ffffcc
 hi Underlined               gui=bold,underline      guifg=NONE
 hi WarningMsg               gui=standout            guifg=NONE
 hi Folded                   gui=bold,italic         guifg=#aaaaaa       guibg=#ffffff
@@ -138,7 +138,7 @@ hi PMenu                    gui=NONE                guifg=black         guibg=#d
 hi PMenuSel                 gui=NONE                guifg=#ffffff       guibg=black
 hi PMenuSbar                gui=NONE                guifg=black         guibg=#cccccc
 hi PMenuThumb               gui=NONE                guifg=#000000       guibg=#000000
-hi Sneak                    gui=NONE                guifg=NONE          guibg=#ffffa0
+hi Sneak                    gui=NONE                guifg=NONE          guibg=#ffff88
 hi SneakLabel               gui=underline           guifg=#000000       guibg=#ffff60
 
 hi Highlight                gui=NONE                guifg=NONE          guibg=#44ffff
@@ -175,6 +175,7 @@ hi gitvLocalCommitedNode    guifg=darkcyan
 hi gitvLocalUncommitNode    guifg=#b60020
 
 hi link ColorColumn DiffDelete
+hi link QuickfixLine DiffAdd
 
 hi link javaCommentTitle Comment
 hi link javaDocTags SpecialComment
