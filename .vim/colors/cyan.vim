@@ -189,6 +189,6 @@ hi link EasyMotionMoveHL Search
 hi link EasyMotionIncSearch Search
 
 let g:terminal_ansi_colors = [
-    \'#404040', '#ff70a4', '#00a8a8', '#a2a2a2', '#008080', '#844f8d', '#00cdcd', '#cccccc',
-    \'#6f6f6f', '#ffa2c1', '#00bebe', '#d5d5d5', '#00a4a4', '#ad7fa8', '#00ffff', '#eeeeee'
+    \'#404040', '#ff70a4', '#00a8a8', '#a2a2a2', '#008080', '#8d5796', '#00cdcd', '#cccccc',
+    \'#585858', '#ffa2c1', '#00bebe', '#d5d5d5', '#00a4a4', '#ac80a6', '#00ffff', '#eeeeee'
 \]
