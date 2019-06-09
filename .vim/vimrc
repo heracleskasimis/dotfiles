@@ -157,7 +157,9 @@ let g:gutentags_cache_dir = '~/.cache/tags'
 let g:ale_lint_on_text_changed = 'never'
 let g:ale_set_highlights = 0
 let g:ale_fixers = {
-  \ 'javascript': ['eslint']
+  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \ 'javascript': ['eslint'],
+  \ 'python': ['autopep8', 'black']
   \ }
 
 let &t_ZH="\e[3m"
@@ -239,6 +241,8 @@ function! VimrcShortcuts()
     \ map <leader>cx :lopen<cr>
   Shortcut 'Compile'
     \ map <leader>cc :make<cr>
+  Shortcut 'Format buffer/region'
+    \ map <leader>cf :ALEFix<cr>
 
   Shortcut 'Window
     \ movement' map <leader>w <c-w>
