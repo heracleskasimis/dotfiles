@@ -29,7 +29,7 @@ hi Visual                   cterm=NONE              ctermfg=NONE        ctermbg=
 hi VisualNOS                cterm=NONE              ctermfg=NONE        ctermbg=230
 hi Underlined               cterm=underline         ctermfg=NONE
 hi WarningMsg               cterm=standout          ctermfg=NONE
-hi WildMenu                 cterm=standout          ctermfg=NONE
+hi WildMenu                 cterm=bold              ctermfg=231         ctermbg=0
 hi PMenu                    cterm=NONE              ctermfg=16          ctermbg=255
 hi PMenuSel                 cterm=NONE              ctermfg=231         ctermbg=16
 hi PMenuSbar                cterm=NONE              ctermfg=16          ctermbg=254
@@ -133,7 +133,7 @@ hi Ignore                   gui=bold                guifg=#f0f0f0
 hi Error                    gui=bold                guifg=#ff0055       guibg=#ffe0e9
 hi Todo                     gui=bold                guifg=darkcyan      guibg=lightgrey
 hi String                   gui=NONE                guifg=darkcyan
-hi WildMenu                 gui=NONE                guifg=black         guibg=#dddddd
+hi WildMenu                 gui=bold                guifg=#ffffff       guibg=#000000
 hi PMenu                    gui=NONE                guifg=black         guibg=#dddddd
 hi PMenuSel                 gui=NONE                guifg=#ffffff       guibg=black
 hi PMenuSbar                gui=NONE                guifg=black         guibg=#cccccc
