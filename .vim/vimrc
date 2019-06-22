@@ -126,6 +126,7 @@ let ruby_space_errors = 1
 let javascript_space_errors = 1
 
 if executable('ag')
+  let $FZF_DEFAULT_COMMAND = 'ag --vimgrep'
   let g:ackprg = 'ag --vimgrep'
 endif
 let g:ack_qhandler = "copen 10"
