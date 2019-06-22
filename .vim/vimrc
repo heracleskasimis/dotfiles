@@ -296,6 +296,8 @@ function! VimrcShortcuts()
 
   Shortcut 'Git status'
     \ map <leader>gg :Gstatus<cr>
+  Shortcut 'Git blame'
+    \ map <leader>gb :Gblame<cr>
   Shortcut 'List git commits'
     \ map <leader>gl :Gitv<cr>
   Shortcut 'List git file commits'
