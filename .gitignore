@@ -4,7 +4,3 @@
 *.elc
 *.swp
 tmp/
-.vim/plugged/
-.i3/log
-.vim/.netrwhist
-.vim/black

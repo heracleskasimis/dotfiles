@@ -126,8 +126,8 @@ let ruby_space_errors = 1
 let javascript_space_errors = 1
 
 if executable('ag')
-  let $FZF_DEFAULT_COMMAND = 'ag --vimgrep'
-  let g:ackprg = 'ag --vimgrep'
+  let $FZF_DEFAULT_COMMAND = 'ag --vimgrep --hidden --ignore .git -g ""'
+  let g:ackprg = 'ag --vimgrep --hidden'
 endif
 let g:ack_qhandler = "copen 10"
 let g:jsx_ext_required = 0
@@ -251,12 +251,12 @@ function! VimrcShortcuts()
     \ map <c-Tab> gt
 
   Shortcut 'Find file'
-    \ map <leader>. :Files %:h<cr>
+    \ map <leader>. :Files <c-r>=expand('%:p:h')<cr><cr>
 
   Shortcut 'Find file from here'
-    \ map <leader>f/ :Files %:h<cr>
+    \ map <leader>f/ :Files <c-r>=expand('%:p:h')<cr><cr>
   Shortcut 'Find file from here'
-    \ map <leader>ff :Files %:h<cr>
+    \ map <leader>ff :Files <c-r>=expand('%:p:h')<cr><cr>
   Shortcut 'Find file'
     \ map <leader>f. :Files <c-r>=FindRootDirectory()<cr><cr>
   Shortcut 'Delete this file'
