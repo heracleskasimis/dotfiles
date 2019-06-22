@@ -167,7 +167,7 @@ let &t_ZR="\e[23m"
 function! VimrcShortcuts()
   map <space> <leader>
   map <space><space> <leader><leader>
-  map <leader><esc> <esc>
+  map <leader><esc> <Nop>
 
   Shortcut 'Run shortcut'
     \ map <leader> :Shortcuts<cr>
@@ -198,6 +198,7 @@ function! VimrcShortcuts()
     \ map <leader><Tab>8 8gt<cr>
   Shortcut 'Switch to tab 9'
     \ map <leader><Tab>9 9gt<cr>
+  map <leader><Tab><esc> <Nop>
 
   Shortcut 'Project sidebar'
     \ map <leader>op :NERDTreeToggle <c-r>=FindRootDirectory()<cr><cr>
@@ -205,6 +206,7 @@ function! VimrcShortcuts()
     \ map <leader>oP :NERDTreeFind<cr>
   Shortcut 'Terminal'
     \ map <leader>ot :belowright 10split \| lcd <c-r>=FindRootDirectory()<cr> \| terminal ++curwin<cr>
+  map <leader>o<esc> <Nop>
 
   Shortcut 'Switch buffer'
     \ map <leader>, :Buffers<cr>
@@ -226,6 +228,8 @@ function! VimrcShortcuts()
     \ map <leader>bN :vnew<cr>
   Shortcut 'Switch buffer'
     \ map <leader>< :Buffers<cr>
+  map <leader>b<esc> <Nop>
+
   Shortcut 'Previously edited buffer'
     \ map <bs> <c-^>
 
@@ -242,19 +246,41 @@ function! VimrcShortcuts()
     \ map <leader>cc :make<cr>
   Shortcut 'Format buffer/region'
     \ map <leader>cf :ALEFix<cr>
+  map <leader>c<esc> <Nop>
 
   Shortcut 'Window
     \ movement' map <leader>w <c-w>
   Shortcut 'Next tab'
     \ map <c-Tab> gt
+
   Shortcut 'Find file'
     \ map <leader>. :Files %:h<cr>
-  Shortcut 'Find file'
+
+  Shortcut 'Find file from here'
     \ map <leader>f/ :Files %:h<cr>
+  Shortcut 'Find file from here'
+    \ map <leader>ff :Files %:h<cr>
+  Shortcut 'Find file'
+    \ map <leader>f. :Files <c-r>=FindRootDirectory()<cr><cr>
+  Shortcut 'Delete this file'
+    \ map <leader>fX :Remove<cr>
+  Shortcut 'Move file'
+    \ map <leader>fm :Move <c-r>=expand('%:p:h')<cr>
+  Shortcut 'Open project editorconfig'
+    \ map <leader>fc :e <c-r>=FindRootDirectory()<cr>/.editorconfig<cr>
+  Shortcut 'Recent files'
+    \ map <leader>fr :History<cr>
+  Shortcut 'Yank filename'
+    \ map <leader>fy :let @+ = expand('%:p:h')<cr>
+  map <leader>f<esc> <Nop>
+
   Shortcut 'Find file in project'
     \ map <leader>p/ :GFiles <c-r>=FindRootDirectory()<cr><cr>
+  map <leader>p<esc> <Nop>
+
   Shortcut 'Find file in project'
     \ map <leader><leader> :GFiles <c-r>=FindRootDirectory()<cr><cr>
+
   Shortcut 'Search for symbol in project'
     \ map <leader>* :Ack! <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><cr>
   Shortcut 'Search project'
@@ -271,6 +297,7 @@ function! VimrcShortcuts()
     \ map <leader>/x :XPathSearchPrompt<cr>
   Shortcut 'Quicklist replace'
     \ map <leader>/: :cdo s/\(\<<c-r>=expand("<cword>")<cr>\>\)//g \| update<s-left><s-left><left><left><left>
+  map <leader>/<esc> <Nop>
 
   Shortcut 'Git status'
     \ map <leader>gg :Gstatus<cr>
@@ -278,11 +305,13 @@ function! VimrcShortcuts()
     \ map <leader>gl :Gitv<cr>
   Shortcut 'List git file commits'
     \ map <leader>gL :Gitv!<cr>
+  map <leader>g<esc> <Nop>
 
   Shortcut 'List commands'
     \ map <leader>hf :Helptags<cr>
   Shortcut 'Vim info'
     \ map <leader>hi :help<cr>
+  map <leader>h<esc> <Nop>
 
   nmap <esc><esc> :noh<cr>
   map <down> gj
