@@ -82,7 +82,6 @@ Plug 'tpope/vim-dadbod'
 Plug 'mtth/scratch.vim'
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
-Plug 'actionshrimp/vim-xpath'
 Plug 'sunaku/vim-shortcut'
 Plug 'tpope/vim-dotenv'
 call plug#end()
@@ -293,8 +292,6 @@ function! VimrcShortcuts()
     \ map <leader>/i :Ctags <c-r>=expand("<cword>")<cr>
   Shortcut 'Search git'
     \ map <leader>/g :Gitv! -S <c-r>=expand("<cword>")<cr>
-  Shortcut 'Search XML'
-    \ map <leader>/x :XPathSearchPrompt<cr>
   Shortcut 'Quicklist replace'
     \ map <leader>/: :cdo s/\(\<<c-r>=expand("<cword>")<cr>\>\)//g \| update<s-left><s-left><left><left><left>
   map <leader>/<esc> <Nop>
