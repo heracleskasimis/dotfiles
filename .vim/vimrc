@@ -33,10 +33,7 @@ set tags=tags;
 
 filetype off
 
-set background=light
-if $BACKGROUND == 'dark'
-    set background=dark
-endif
+let &background=empty($BACKGROUND) ? 'light' : $BACKGROUND
 
 colorscheme cyan
 
