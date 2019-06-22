@@ -170,7 +170,7 @@ function! VimrcShortcuts()
   map <leader><esc> <Nop>
 
   Shortcut 'Run shortcut'
-    \ map <leader> :Shortcuts<cr>
+    \ map <leader> :Shortcuts<cr><leader>
 
   Shortcut 'New tab'
     \ map <leader><Tab>n :tabe<cr>
