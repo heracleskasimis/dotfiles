@@ -171,6 +171,9 @@ function! VimrcShortcuts()
   Shortcut 'Run shortcut'
     \ map <leader> :Shortcuts<cr><leader>
 
+  Shortcut 'Commands'
+    \ map <leader>: :Commands<cr>
+
   Shortcut 'New tab'
     \ map <leader><Tab>n :tabe<cr>
   Shortcut 'Delete tab'
