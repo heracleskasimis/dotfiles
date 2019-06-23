@@ -139,7 +139,7 @@ let g:HiCursorWords_debugEchoHiName = 0
 let g:HiCursorWords_linkStyle = 'VisualNOS'
 let g:NERDTreeHijackNetrw = 0
 let g:NERDTreeAutoCenter = 0
-let g:NERDTreeHighlightCursorline = 1
+let g:NERDTreeHighlightCursorline = 0
 let g:formatprg_args_c = "--style=java"
 let g:formatprg_args_cpp = "--style=java"
 let g:formatprg_args_expr_javascript = '"-a -f - -".(&expandtab ? "s ".&shiftwidth : "t").(&textwidth ? " -w ".&textwidth : "")'
@@ -203,6 +203,8 @@ function! VimrcShortcuts()
     \ map <leader>oP :NERDTreeFind<cr>
   Shortcut 'Terminal'
     \ map <leader>ot :belowright 10split \| lcd <c-r>=FindRootDirectory()<cr> \| terminal ++curwin<cr>
+  Shortcut 'Terminal here'
+    \ map <leader>oT :belowright 10split \| lcd <c-r>=expand('%:p:h')<cr> \| terminal ++curwin<cr>
   map <leader>o<esc> <Nop>
 
   Shortcut 'Switch buffer'
@@ -251,24 +253,24 @@ function! VimrcShortcuts()
     \ map <c-Tab> gt
 
   Shortcut 'Find file'
-    \ map <leader>. :Files <c-r>=expand('%:p:h')<cr><cr>
+    \ map <leader>. :Files <c-r>=expand('%:p:h')<cr>/<cr>
 
   Shortcut 'Find file from here'
-    \ map <leader>f/ :Files <c-r>=expand('%:p:h')<cr><cr>
+    \ map <leader>f/ :Files <c-r>=expand('%:p:h')<cr>/<cr>
   Shortcut 'Find file from here'
-    \ map <leader>ff :Files <c-r>=expand('%:p:h')<cr><cr>
+    \ map <leader>ff :Files <c-r>=expand('%:p:h')<cr>/<cr>
   Shortcut 'Find file'
     \ map <leader>f. :Files <c-r>=FindRootDirectory()<cr><cr>
   Shortcut 'Delete this file'
     \ map <leader>fX :Remove<cr>
   Shortcut 'Move file'
-    \ map <leader>fm :Move <c-r>=expand('%:p:h')<cr>
+    \ map <leader>fm :Move <c-r>=expand('%:p')<cr>
   Shortcut 'Open project editorconfig'
     \ map <leader>fc :e <c-r>=FindRootDirectory()<cr>/.editorconfig<cr>
   Shortcut 'Recent files'
     \ map <leader>fr :History<cr>
   Shortcut 'Yank filename'
-    \ map <leader>fy :let @+ = expand('%:p:h')<cr>
+    \ map <leader>fy :let @+ = expand('%:p')<cr>
   map <leader>f<esc> <Nop>
 
   Shortcut 'Find file in project'
