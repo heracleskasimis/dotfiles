@@ -49,7 +49,6 @@ Plug 'digitaltoad/vim-jade'
 Plug 'plasticboy/vim-markdown'
 Plug 'mxw/vim-jsx'
 Plug 'tpope/vim-fugitive'
-Plug 'gregsexton/gitv'
 Plug 'elzr/vim-json'
 Plug 'vim-scripts/javacomplete'
 Plug 'christoomey/vim-tmux-navigator'
@@ -146,8 +145,6 @@ let g:formatprg_args_c = "--style=java"
 let g:formatprg_args_cpp = "--style=java"
 let g:formatprg_args_expr_javascript = '"-a -f - -".(&expandtab ? "s ".&shiftwidth : "t").(&textwidth ? " -w ".&textwidth : "")'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
-let g:Gitv_TruncateCommitSubjects = 1
-let g:Gitv_DoNotMapCtrlKey = 1
 let g:rooter_manual_only = 1
 let g:rooter_patterns = ['.git', '.gitignore', '.git/', '.svn/']
 let g:gutentags_project_root = ['.gitignore', '.git', '.hg', '.bzr', '_darcs', '_darcs', '_FOSSIL_', '.fslckout']
@@ -295,8 +292,10 @@ function! VimrcShortcuts()
     \ map <leader>/b :Ack! <c-r>=expand("<cword>")<cr> %<c-b><s-right><s-right>
   Shortcut 'Search symbol'
     \ map <leader>/i :Ctags <c-r>=expand("<cword>")<cr>
-  Shortcut 'Search git'
-    \ map <leader>/g :Gitv! -S <c-r>=expand("<cword>")<cr>
+  Shortcut 'Search git commits'
+    \ map <leader>/g :Glog! --grep=<c-r>=expand("<cword>")<cr> -- \| copen<s-left><s-left><s-left><left>
+  Shortcut 'Search git file commits'
+    \ map <leader>/G :0Glog! --grep=<c-r>=expand("<cword>")<cr> -- \| copen<s-left><s-left><s-left><left>
   Shortcut 'Quicklist replace'
     \ map <leader>/: :cdo s/\(\<<c-r>=expand("<cword>")<cr>\>\)//g \| update<s-left><s-left><left><left><left>
   map <leader>/<esc> <Nop>
@@ -306,9 +305,9 @@ function! VimrcShortcuts()
   Shortcut 'Git blame'
     \ map <leader>gb :Gblame<cr>
   Shortcut 'List git commits'
-    \ map <leader>gl :Gitv<cr>
+    \ map <leader>gl :Commits<cr>
   Shortcut 'List git file commits'
-    \ map <leader>gL :Gitv!<cr>
+    \ map <leader>gL :BCommits<cr>
   map <leader>g<esc> <Nop>
 
   Shortcut 'List commands'
