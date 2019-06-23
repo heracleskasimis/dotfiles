@@ -293,9 +293,9 @@ function! VimrcShortcuts()
   Shortcut 'Search symbol'
     \ map <leader>/i :Ctags <c-r>=expand("<cword>")<cr>
   Shortcut 'Search git commits'
-    \ map <leader>/g :Glog! --grep=<c-r>=expand("<cword>")<cr> -- \| copen<s-left><s-left><s-left><left>
+    \ map <leader>/g :Glog! -S<c-r>=expand("<cword>")<cr> -- \| copen<s-left><s-left><s-left><left>
   Shortcut 'Search git file commits'
-    \ map <leader>/G :0Glog! --grep=<c-r>=expand("<cword>")<cr> -- \| copen<s-left><s-left><s-left><left>
+    \ map <leader>/G :0Glog! -S<c-r>=expand("<cword>")<cr> -- \| copen<s-left><s-left><s-left><left>
   Shortcut 'Quicklist replace'
     \ map <leader>/: :cdo s/\(\<<c-r>=expand("<cword>")<cr>\>\)//g \| update<s-left><s-left><left><left><left>
   map <leader>/<esc> <Nop>
