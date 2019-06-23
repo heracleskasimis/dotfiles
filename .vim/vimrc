@@ -104,6 +104,8 @@ set statusline+=\[%{&fileformat}\]
 set statusline+=\ %p%%
 set statusline+=\ %l:%c
 
+set fillchars=vert:│,stl:-,stlnc:-,fold:-,diff:-
+
 filetype plugin indent on
 
 command! -nargs=0 FormatJSON %!python -m json.tool
