@@ -93,7 +93,7 @@ endif
 
 set wildmenu
 
-function CreateStatusline(active)
+function! CreateStatusline(active)
   let statusline = ''
   let color = 8
   let mode = mode()
@@ -106,20 +106,20 @@ function CreateStatusline(active)
   elseif a:active && mode =~ '^[vc]'
     let color = 4
   endif
-  let statusline .= '%' . color . '* ' . toupper(mode()) . ' '
+  let statusline .= '%' . color . '* %t%M '
   let statusline .= '%0* %Y '
   let statusline .= '%<%F'
-  let statusline .= '%m'
+  let statusline .= '%r'
   let statusline .= '%='
-  let statusline .= ' %{&fileencoding?&fileencoding:&encoding} |'
-  let statusline .= ' %{&fileformat} |'
-  let statusline .= ' %p%% '
+  let statusline .= '%{&fileencoding?&fileencoding:&encoding} | '
+  let statusline .= '%{&fileformat} |'
+  let statusline .= '%p%% '
   let statusline .= '%' . color . '* %l:%c '
   return statusline
 endfunction
 
 set laststatus=2
-set statusline=%!CreateStatusline(0)
+set statusline=%!CreateStatusline(1)
 
 set fillchars=fold:-,diff:-,vert:\|
 
