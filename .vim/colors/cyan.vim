@@ -171,18 +171,6 @@ hi fzf1                     gui=bold                guifg=NONE          guibg=NO
 hi fzf2                     gui=NONE                guifg=#008888       guibg=NONE
 hi fzf3                     gui=NONE                guifg=NONE          guibg=NONE
 
-hi gitvGraphEdge9           guifg=#850024
-hi gitvGraphEdge8           guifg=#005d6d
-hi gitvGraphEdge7           guifg=#b60020
-hi gitvGraphEdge6           guifg=#00779f
-hi gitvGraphEdge5           guifg=#a30023
-hi gitvGraphEdge4           guifg=#108d9b
-hi gitvGraphEdge3           guifg=#de002b
-hi gitvGraphEdge2           guifg=#18a3a7
-hi gitvGraphEdge1           guifg=#808080
-hi gitvLocalCommitedNode    guifg=#008888
-hi gitvLocalUncommitNode    guifg=#b60020
-
 hi link ColorColumn DiffDelete
 hi link QuickfixLine DiffAdd
 
