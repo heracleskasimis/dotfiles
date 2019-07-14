@@ -136,7 +136,7 @@ endfunction
 set laststatus=2
 set statusline=%!CreateStatusline(1)
 
-set fillchars=fold:-,diff:-,vert:\|
+set fillchars=fold:-,diff:-,vert:│
 
 filetype plugin indent on
 

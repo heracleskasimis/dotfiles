@@ -108,7 +108,7 @@ hi StatusLine               gui=bold                guifg=#000000       guibg=#e
 hi StatusLineNC             gui=bold                guifg=#000000       guibg=#f0f0f0
 hi StatusLineTerm           gui=bold                guifg=#000000       guibg=#e8e8e8
 hi StatusLineTermNC         gui=bold                guifg=#000000       guibg=#f0f0f0
-hi VertSplit                gui=bold                guifg=#ffffff       guibg=#f0f0f0
+hi VertSplit                gui=bold                guifg=#dddddd       guibg=NONE
 hi SignColumn               gui=bold                guifg=#008888       guibg=#f0f0f0
 hi TabLineFill              gui=bold                guifg=#808080       guibg=#f0f0f0
 hi TabLine                  gui=bold                guifg=#000000       guibg=#e8e8e8
