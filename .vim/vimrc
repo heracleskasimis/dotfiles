@@ -93,29 +93,41 @@ endif
 
 set wildmenu
 
+function! HumanSize(bytes) abort
+    let l:bytes = a:bytes
+    let l:sizes = ['B', 'KiB', 'MiB', 'GiB']
+    let l:i = 0
+    while l:bytes >= 1024
+        let l:bytes = l:bytes / 1024.0
+        let l:i += 1
+    endwhile
+    return printf('%.1f%s', l:bytes, l:sizes[l:i])
+endfunction
+
 function! CreateStatusline(active)
-  let statusline = ''
-  let color = 8
-  let mode = mode()
-  if a:active && mode =~ '^[n]'
-    let color = 3
-  elseif a:active && mode =~ '^[it]'
-    let color = 1
-  elseif a:active && mode =~ '^[r!]'
-    let color = 2
-  elseif a:active && mode =~ '^[vc]'
-    let color = 4
+  let l:mode = mode()
+  let l:color = 8
+  if a:active && l:mode =~ '^[n]'
+    let l:color = 3
+  elseif a:active && l:mode =~ '^[it]'
+    let l:color = 1
+  elseif a:active && l:mode =~ '^[r!]'
+    let l:color = 2
+  elseif a:active && l:mode =~ '^[vc]'
+    let l:color = 4
   endif
-  let statusline .= '%' . color . '* %t%M '
-  let statusline .= '%0* %Y '
-  let statusline .= '%<%F'
-  let statusline .= '%r'
-  let statusline .= '%='
-  let statusline .= '%{&fileencoding?&fileencoding:&encoding} | '
-  let statusline .= '%{&fileformat} |'
-  let statusline .= '%p%% '
-  let statusline .= '%' . color . '* %l:%c '
-  return statusline
+  let l:statusline = ''
+  let l:statusline .= '%' . color . '* %t%M '
+  let l:statusline .= '%0* %Y '
+  let l:statusline .= '%<%F'
+  let l:statusline .= '%r'
+  let l:statusline .= '%='
+  let l:statusline .= (&fileencoding ? &fileencoding : &encoding) . ' | '
+  let l:statusline .= &fileformat . ' | '
+  let l:statusline .= HumanSize(getfsize(expand('%:p'))) . ' | '
+  let l:statusline .= '%p%% '
+  let l:statusline .= '%' . color . '* %l:%c '
+  return l:statusline
 endfunction
 
 set laststatus=2
