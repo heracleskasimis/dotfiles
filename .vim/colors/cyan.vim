@@ -25,11 +25,11 @@ hi StatusLineTermNC         cterm=bold              ctermfg=249         ctermbg=
 hi VertSplit                cterm=NONE              ctermfg=254         ctermbg=NONE
 hi SignColumn               cterm=NONE              ctermfg=30          ctermbg=254
 hi Title                    cterm=bold              ctermfg=NONE
-hi Visual                   cterm=NONE              ctermfg=NONE        ctermbg=254
+hi Visual                   cterm=NONE              ctermfg=NONE        ctermbg=123
 hi VisualNOS                cterm=NONE              ctermfg=NONE        ctermbg=230
 hi Underlined               cterm=underline         ctermfg=NONE
 hi WarningMsg               cterm=standout          ctermfg=NONE
-hi WildMenu                 cterm=bold              ctermfg=231         ctermbg=0
+hi WildMenu                 cterm=bold              ctermfg=231         ctermbg=232
 hi PMenu                    cterm=NONE              ctermfg=16          ctermbg=255
 hi PMenuSel                 cterm=NONE              ctermfg=231         ctermbg=16
 hi PMenuSbar                cterm=NONE              ctermfg=16          ctermbg=254
@@ -65,7 +65,7 @@ hi SneakLabel               cterm=underline         ctermfg=16          ctermbg=
 
 hi User1                    cterm=bold              ctermfg=231         ctermbg=30
 hi User2                    cterm=bold              ctermfg=231         ctermbg=161
-hi User3                    cterm=bold              ctermfg=231         ctermbg=0
+hi User3                    cterm=bold              ctermfg=231         ctermbg=232
 hi User4                    cterm=bold              ctermfg=231         ctermbg=37
 hi User5                    cterm=bold              ctermfg=231         ctermbg=244
 hi User7                    cterm=bold              ctermfg=NONE        ctermbg=NONE
