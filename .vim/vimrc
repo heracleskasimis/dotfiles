@@ -109,7 +109,7 @@ endfunction
 
 function! CreateStatusline(active)
   let l:mode = mode()
-  let l:color = 8
+  let l:color = 9
   if a:active && l:mode =~ '^[n]'
     let l:color = 3
   elseif a:active && l:mode =~ '^[it]'
