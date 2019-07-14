@@ -8,7 +8,7 @@ set ruler
 set showcmd
 set incsearch
 set encoding=utf-8
-set guioptions=a
+set guioptions=ae
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set mouse=a
 set novisualbell
@@ -93,22 +93,33 @@ endif
 
 set wildmenu
 
+function CreateStatusline(active)
+  let statusline = ''
+  let color = 8
+  let mode = mode()
+  if a:active && mode =~ '^[n]'
+    let color = 3
+  elseif a:active && mode =~ '^[it]'
+    let color = 1
+  elseif a:active && mode =~ '^[r!]'
+    let color = 2
+  elseif a:active && mode =~ '^[vc]'
+    let color = 4
+  endif
+  let statusline .= '%' . color . '* ' . toupper(mode()) . ' '
+  let statusline .= '%0* %Y '
+  let statusline .= '%<%F'
+  let statusline .= '%m'
+  let statusline .= '%='
+  let statusline .= ' %{&fileencoding?&fileencoding:&encoding} |'
+  let statusline .= ' %{&fileformat} |'
+  let statusline .= ' %p%% '
+  let statusline .= '%' . color . '* %l:%c '
+  return statusline
+endfunction
+
 set laststatus=2
-set statusline=
-set statusline+=%1*%{mode()=~'^i'?'\ \ I\ ':''}
-set statusline+=%2*%{mode()=~'^r'?'\ \ R\ ':''}
-set statusline+=%4*%{mode()=~'^v'?'\ \ V\ ':''}
-set statusline+=%1*%{mode()=~'^t'?'\ \ T\ ':''}
-set statusline+=%4*%{mode()=~'^c'?'\ \ C\ ':''}
-set statusline+=%0*%{(mode()=~'^[^irvtc]')?'\ \ '.toupper(mode()).'\ ':''}
-set statusline+=%9*\ %Y\ 
-set statusline+=%<%F
-set statusline+=%m
-set statusline+=%=
-set statusline+=\ %{&fileencoding?&fileencoding:&encoding}\ \|
-set statusline+=\ %{&fileformat}\ \|
-set statusline+=\ %p%%\ 
-set statusline+=%0*\ %l:%c\ 
+set statusline=%!CreateStatusline(0)
 
 set fillchars=fold:-,diff:-,vert:\|
 
@@ -148,7 +159,7 @@ let g:HiCursorWords_linkStyle = 'VisualNOS'
 let g:NERDTreeHijackNetrw = 0
 let g:NERDTreeAutoCenter = 0
 let g:NERDTreeHighlightCursorline = 0
-let g:NERDTreeStatusline = "\ %{(mode()=~'^[^irvtc]')?toupper(mode()):''}\ %9*\ %Y"
+let g:NERDTreeStatusline = -1
 let g:formatprg_args_c = "--style=java"
 let g:formatprg_args_cpp = "--style=java"
 let g:formatprg_args_expr_javascript = '"-a -f - -".(&expandtab ? "s ".&shiftwidth : "t").(&textwidth ? " -w ".&textwidth : "")'
@@ -410,4 +421,10 @@ augroup keywordhelp
   autocmd!
   autocmd FileType vim setlocal keywordprg=:help
   autocmd FileType python setlocal keywordprg=pydoc
+augroup END
+
+augroup statusline
+  autocmd!
+  autocmd WinEnter * setlocal statusline=%!CreateStatusline(1)
+  autocmd WinLeave * setlocal statusline=%!CreateStatusline(0)
 augroup END

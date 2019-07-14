@@ -83,7 +83,7 @@ if &background == 'dark'
 endif
 
 hi Cursorline               gui=NONE                guifg=NONE          guibg=#f8f8f8
-hi CursorlineNr             gui=NONE                guifg=#bbbbbb       guibg=NONE
+hi CursorlineNr             gui=NONE                guifg=#ffc0d0       guibg=NONE
 hi LineNr                   gui=NONE                guifg=#bbbbbb       guibg=NONE
 hi Cursor                   gui=NONE                guifg=white         guibg=#ff0066
 hi SpecialKey               gui=bold                guifg=NONE
@@ -95,14 +95,14 @@ hi Search                   gui=NONE                guifg=black         guibg=#d
 hi MoreMsg                  gui=bold                guifg=NONE
 hi ModeMsg                  gui=bold                guifg=NONE
 hi Question                 gui=standout            guifg=NONE
-hi StatusLine               gui=bold                guifg=#ffffff       guibg=#000000
-hi StatusLineNC             gui=bold                guifg=#000000       guibg=#e4e4e4
-hi StatusLineTerm           gui=bold                guifg=#ffffff       guibg=#000000
-hi StatusLineTermNC         gui=bold                guifg=#000000       guibg=#e4e4e4
+hi StatusLine               gui=bold                guifg=#000000       guibg=#e8e8e8
+hi StatusLineNC             gui=bold                guifg=#000000       guibg=#f0f0f0
+hi StatusLineTerm           gui=bold                guifg=#000000       guibg=#e8e8e8
+hi StatusLineTermNC         gui=bold                guifg=#000000       guibg=#f0f0f0
 hi VertSplit                gui=bold                guifg=#ffffff       guibg=#f0f0f0
 hi SignColumn               gui=bold                guifg=#008888       guibg=#f0f0f0
 hi TabLineFill              gui=bold                guifg=#808080       guibg=#f0f0f0
-hi TabLine                  gui=bold                guifg=#000000       guibg=#e4e4e4
+hi TabLine                  gui=bold                guifg=#000000       guibg=#e8e8e8
 hi TabLineSel               gui=bold                guifg=#ffffff       guibg=#00c0c0
 hi Title                    gui=bold                guifg=NONE
 hi Visual                   gui=NONE                guifg=NONE          guibg=#b0ffff
@@ -133,7 +133,7 @@ hi Ignore                   gui=bold                guifg=#f0f0f0
 hi Error                    gui=bold                guifg=#ff0066       guibg=#ffe0e9
 hi Todo                     gui=bold                guifg=#008888       guibg=#e0e0e0
 hi String                   gui=NONE                guifg=#008888
-hi WildMenu                 gui=bold                guifg=#ffffff       guibg=#888888
+hi WildMenu                 gui=bold                guifg=#ffffff       guibg=#00b0b0
 hi PMenu                    gui=NONE                guifg=#000000       guibg=#e8e8e8
 hi PMenuSel                 gui=NONE                guifg=#ffffff       guibg=#000000
 hi PMenuSbar                gui=NONE                guifg=#000000       guibg=#d8d8d8
@@ -147,7 +147,7 @@ hi User3                    gui=bold                guifg=#ffffff       guibg=#0
 hi User4                    gui=bold                guifg=#ffffff       guibg=#00c0c0
 hi User5                    gui=bold                guifg=#ffffff       guibg=#808080
 hi User7                    gui=bold                guifg=NONE          guibg=NONE
-hi User8                    gui=bold                guifg=#000000       guibg=#e4e4e4
+hi User8                    gui=bold                guifg=#000000       guibg=#e0e0e0
 hi User9                    gui=bold                guifg=#000000       guibg=#f0f0f0
 
 hi Highlight                gui=NONE                guifg=NONE          guibg=#44ffff
