@@ -63,6 +63,15 @@ hi TabLineSel               cterm=bold              ctermfg=231         ctermbg=
 hi Sneak                    cterm=NONE              ctermfg=NONE        ctermbg=229
 hi SneakLabel               cterm=underline         ctermfg=16          ctermbg=227
 
+hi User1                    cterm=bold              ctermfg=231         ctermbg=30
+hi User2                    cterm=bold              ctermfg=231         ctermbg=161
+hi User3                    cterm=bold              ctermfg=231         ctermbg=0
+hi User4                    cterm=bold              ctermfg=231         ctermbg=37
+hi User5                    cterm=bold              ctermfg=231         ctermbg=244
+hi User7                    cterm=bold              ctermfg=NONE        ctermbg=NONE
+hi User8                    cterm=bold              ctermfg=232         ctermbg=255
+hi User9                    cterm=bold              ctermfg=232         ctermbg=255
+
 if &background == 'dark'
     hi Cursorline           cterm=NONE              ctermfg=NONE        ctermbg=232
     hi VisualNOS            cterm=NONE              ctermfg=NONE        ctermbg=236
