@@ -95,7 +95,7 @@ if &background == 'dark'
 endif
 
 hi Cursorline               gui=NONE                guifg=NONE          guibg=#f8f8f8
-hi CursorlineNr             gui=NONE                guifg=#ffc0d0       guibg=NONE
+hi CursorlineNr             gui=NONE                guifg=#ffa6ca       guibg=NONE
 hi LineNr                   gui=NONE                guifg=#bbbbbb       guibg=NONE
 hi Cursor                   gui=NONE                guifg=white         guibg=#ff0066
 hi SpecialKey               gui=bold                guifg=NONE
@@ -112,7 +112,7 @@ hi StatusLineNC             gui=bold                guifg=#000000       guibg=#f
 hi StatusLineTerm           gui=bold                guifg=#000000       guibg=#e8e8e8
 hi StatusLineTermNC         gui=bold                guifg=#000000       guibg=#f0f0f0
 hi VertSplit                gui=bold                guifg=#dddddd       guibg=NONE
-hi SignColumn               gui=bold                guifg=#008888       guibg=#f0f0f0
+hi SignColumn               gui=bold                guifg=#008888       guibg=NONE
 hi TabLineFill              gui=bold                guifg=#808080       guibg=#f0f0f0
 hi TabLine                  gui=bold                guifg=#000000       guibg=#e8e8e8
 hi TabLineSel               gui=bold                guifg=#ffffff       guibg=#00c0c0
