@@ -107,34 +107,32 @@ function! HumanSize(bytes) abort
   return printf('%.1f%s', l:bytes, l:sizes[l:i])
 endfunction
 
-function! CreateStatusline(active)
-  let l:mode = mode()
-  let l:color = 9
-  if a:active && l:mode =~ '^[n]'
-    let l:color = 3
-  elseif a:active && l:mode =~ '^[it]'
-    let l:color = 1
-  elseif a:active && l:mode =~ '^[r!]'
-    let l:color = 2
-  elseif a:active && l:mode =~ '^[vc]'
-    let l:color = 4
-  endif
+function! CreateStatusline()
+  let l:win = winnr()
   let l:statusline = ''
-  let l:statusline .= '%' . color . '* %t%M '
+  let l:statusline .= '%9*%{winnr()!=' . l:win . '?"  ".bufname("%")." ":""}'
+  let l:statusline .= '%3*%{winnr()==' . l:win . '&&mode()=~"^[n]"?"  ".bufname("%")." ":""}'
+  let l:statusline .= '%1*%{winnr()==' . l:win . '&&mode()=~"^[it]"?"  ".bufname("%")." ":""}'
+  let l:statusline .= '%2*%{winnr()==' . l:win . '&&mode()=~"^[r!]"?"  ".bufname("%")." ":""}'
+  let l:statusline .= '%4*%{winnr()==' . l:win . '&&mode()=~"^[vc]"?"  ".bufname("%")." ":""}'
   let l:statusline .= '%0* %Y '
-  let l:statusline .= '%<%F'
+  let l:statusline .= '%<%F%M'
   let l:statusline .= '%r'
   let l:statusline .= '%='
   let l:statusline .= '%{&fileencoding ? &fileencoding : &encoding} | '
   let l:statusline .= '%{&fileformat} | '
   let l:statusline .= '%{HumanSize(getfsize(expand("%:p")))} | '
   let l:statusline .= '%p%% '
-  let l:statusline .= '%' . color . '* %l:%c '
+  let l:statusline .= '%9*%{winnr()!=' . l:win . '?" ".expand("%")." ":""}'
+  let l:statusline .= '%3*%{winnr()==' . l:win . '&&mode()=~"^[n]"?" ".line(".").":".col(".")." ":""}'
+  let l:statusline .= '%1*%{winnr()==' . l:win . '&&mode()=~"^[it]"?" ".line(".").":".col(".")." ":""}'
+  let l:statusline .= '%2*%{winnr()==' . l:win . '&&mode()=~"^[r!]"?" ".line(".").":".col(".")." ":""}'
+  let l:statusline .= '%4*%{winnr()==' . l:win . '&&mode()=~"^[vc]"?" ".line(".").":".col(".")." ":""}'
   return l:statusline
 endfunction
 
 set laststatus=2
-set statusline=%!CreateStatusline(1)
+set statusline=%!CreateStatusline()
 
 set fillchars=fold:-,diff:-,vert:│
 
@@ -436,10 +434,4 @@ augroup keywordhelp
   autocmd!
   autocmd FileType vim setlocal keywordprg=:help
   autocmd FileType python setlocal keywordprg=pydoc
-augroup END
-
-augroup statusline
-  autocmd!
-  autocmd WinEnter * setlocal statusline=%!CreateStatusline(1)
-  autocmd WinLeave * setlocal statusline=%!CreateStatusline(0)
 augroup END
