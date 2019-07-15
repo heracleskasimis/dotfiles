@@ -125,9 +125,9 @@ function! CreateStatusline(active)
   let l:statusline .= '%<%F'
   let l:statusline .= '%r'
   let l:statusline .= '%='
-  let l:statusline .= (&fileencoding ? &fileencoding : &encoding) . ' | '
-  let l:statusline .= &fileformat . ' | '
-  let l:statusline .= HumanSize(getfsize(expand('%:p'))) . ' | '
+  let l:statusline .= '%{&fileencoding ? &fileencoding : &encoding} | '
+  let l:statusline .= '%{&fileformat} | '
+  let l:statusline .= '%{HumanSize(getfsize(expand("%:p")))} | '
   let l:statusline .= '%p%% '
   let l:statusline .= '%' . color . '* %l:%c '
   return l:statusline
