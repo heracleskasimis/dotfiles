@@ -64,7 +64,7 @@ hi Sneak                    cterm=NONE              ctermfg=NONE        ctermbg=
 hi SneakLabel               cterm=underline         ctermfg=16          ctermbg=227
 
 hi User1                    cterm=bold              ctermfg=231         ctermbg=30
-hi User2                    cterm=bold              ctermfg=231         ctermbg=161
+hi User2                    cterm=bold              ctermfg=231         ctermbg=197
 hi User3                    cterm=bold              ctermfg=231         ctermbg=232
 hi User4                    cterm=bold              ctermfg=231         ctermbg=37
 hi User5                    cterm=bold              ctermfg=NONE        ctermbg=NONE
