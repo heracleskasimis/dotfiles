@@ -107,7 +107,7 @@ function! HumanSize(bytes) abort
   return printf('%.1f%s', l:bytes, l:sizes[l:i])
 endfunction
 
-function! CreateStatuslineColorLabel(label)
+function! CreateStatuslineColorLabel(label) abort
   let l:win = winnr()
   let l:label = ''
   let l:label .= '%9*%{winnr()!=' . l:win . '?" ".' . a:label . '." ":""}'
@@ -118,7 +118,7 @@ function! CreateStatuslineColorLabel(label)
   return l:label
 endfunction
 
-function! CreateStatusline()
+function! CreateStatusline() abort
   let l:statusline = ''
   let l:statusline .= CreateStatuslineColorLabel('" ".expand("%:t").(&modified?"+":"")')
   let l:statusline .= '%0* %Y '
