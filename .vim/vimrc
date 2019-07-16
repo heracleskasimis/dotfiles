@@ -122,9 +122,8 @@ function! CreateStatusline() abort
   let l:statusline = ''
   let l:statusline .= CreateStatuslineColorLabel('" ".expand("%:t").(&modified?"+":"")')
   let l:statusline .= '%0* %Y '
-  let l:statusline .= '%<%F'
-  let l:statusline .= '%r'
-  let l:statusline .= '%='
+  let l:statusline .= '%<%F '
+  let l:statusline .= '%= '
   let l:statusline .= '%{&fileencoding ? &fileencoding : &encoding} | '
   let l:statusline .= '%{&fileformat} | '
   let l:statusline .= '%{HumanSize(getfsize(expand("%:p")))} | '

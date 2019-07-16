@@ -7,7 +7,7 @@ endif
 let g:colors_name="cyan"
 
 hi Cursorline               cterm=NONE              ctermfg=NONE        ctermbg=255
-hi CursorlineNr             cterm=NONE              ctermfg=250         ctermbg=NONE
+hi CursorlineNr             cterm=NONE              ctermfg=219         ctermbg=NONE
 hi LineNr                   cterm=NONE              ctermfg=250         ctermbg=NONE
 hi SpecialKey               cterm=bold              ctermfg=NONE
 hi NonText                  cterm=bold              ctermfg=255
@@ -18,18 +18,18 @@ hi Search                   cterm=NONE              ctermfg=NONE        ctermbg=
 hi MoreMsg                  cterm=bold              ctermfg=NONE
 hi ModeMsg                  cterm=bold              ctermfg=NONE
 hi Question                 cterm=standout          ctermfg=NONE
-hi StatusLine               cterm=bold              ctermfg=NONE        ctermbg=NONE
-hi StatusLineNC             cterm=bold              ctermfg=249         ctermbg=NONE
-hi StatusLineTerm           cterm=bold              ctermfg=NONE        ctermbg=NONE
-hi StatusLineTermNC         cterm=bold              ctermfg=249         ctermbg=NONE
+hi StatusLine               cterm=bold              ctermfg=NONE        ctermbg=255
+hi StatusLineNC             cterm=bold              ctermfg=NONE        ctermbg=255
+hi StatusLineTerm           cterm=bold              ctermfg=NONE        ctermbg=255
+hi StatusLineTermNC         cterm=bold              ctermfg=NONE        ctermbg=255
 hi VertSplit                cterm=NONE              ctermfg=254         ctermbg=NONE
-hi SignColumn               cterm=NONE              ctermfg=30          ctermbg=254
+hi SignColumn               cterm=NONE              ctermfg=30          ctermbg=NONE
 hi Title                    cterm=bold              ctermfg=NONE
 hi Visual                   cterm=NONE              ctermfg=NONE        ctermbg=123
 hi VisualNOS                cterm=NONE              ctermfg=NONE        ctermbg=230
 hi Underlined               cterm=underline         ctermfg=NONE
 hi WarningMsg               cterm=standout          ctermfg=NONE
-hi WildMenu                 cterm=bold              ctermfg=231         ctermbg=232
+hi WildMenu                 cterm=bold              ctermfg=231         ctermbg=37
 hi PMenu                    cterm=NONE              ctermfg=16          ctermbg=255
 hi PMenuSel                 cterm=NONE              ctermfg=231         ctermbg=16
 hi PMenuSbar                cterm=NONE              ctermfg=16          ctermbg=254
@@ -70,7 +70,7 @@ hi User4                    cterm=bold              ctermfg=231         ctermbg=
 hi User5                    cterm=bold              ctermfg=NONE        ctermbg=NONE
 hi User7                    cterm=bold              ctermfg=NONE        ctermbg=NONE
 hi User8                    cterm=bold              ctermfg=NONE        ctermbg=NONE
-hi User9                    cterm=bold              ctermfg=232         ctermbg=255
+hi User9                    cterm=bold              ctermfg=232         ctermbg=254
 
 if &background == 'dark'
     hi Cursorline           cterm=NONE              ctermfg=NONE        ctermbg=232
@@ -83,7 +83,6 @@ if &background == 'dark'
     hi StatusLineNC         cterm=NONE              ctermfg=7           ctermbg=234
     hi StatusLineTerm       cterm=bold              ctermfg=7           ctermbg=235
     hi StatusLineTermNC     cterm=NONE              ctermfg=7           ctermbg=234
-    hi SignColumn           cterm=NONE              ctermfg=30          ctermbg=235
     hi Ignore               cterm=bold              ctermfg=7
     hi VertSplit            cterm=NONE              ctermfg=0           ctermbg=NONE
     hi Search               cterm=NONE              ctermfg=NONE        ctermbg=6
