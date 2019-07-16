@@ -120,7 +120,7 @@ endfunction
 
 function! CreateStatusline()
   let l:statusline = ''
-  let l:statusline .= CreateStatuslineColorLabel('" ".bufname("%").(&modified?"+":"")')
+  let l:statusline .= CreateStatuslineColorLabel('" ".expand("%:t").(&modified?"+":"")')
   let l:statusline .= '%0* %Y '
   let l:statusline .= '%<%F'
   let l:statusline .= '%r'
@@ -227,11 +227,19 @@ function! VimrcShortcuts()
     \ map <leader><Tab>6 6gt<cr>
   Shortcut 'Switch to tab 7'
     \ map <leader><Tab>7 7gt<cr>
-  Shortcut 'Switch to tab 8'
-    \ map <leader><Tab>8 8gt<cr>
-  Shortcut 'Switch to tab 9'
-    \ map <leader><Tab>9 9gt<cr>
   map <leader><Tab><esc> <Nop>
+
+  map <m-8> 8gt<cr>
+  map <m-9> 9gt<cr>
+  map <m-1> 1gt<cr>
+  map <m-2> 2gt<cr>
+  map <m-3> 3gt<cr>
+  map <m-4> 4gt<cr>
+  map <m-5> 5gt<cr>
+  map <m-6> 6gt<cr>
+  map <m-7> 7gt<cr>
+  map <m-8> 8gt<cr>
+  map <m-9> 9gt<cr>
 
   Shortcut 'Project sidebar'
     \ map <leader>op :NERDTreeToggle <c-r>=FindRootDirectory()<cr><cr>
