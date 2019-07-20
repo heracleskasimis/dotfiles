@@ -57,9 +57,9 @@ hi String                   cterm=NONE              ctermfg=30
 hi SpellBad                 cterm=NONE              ctermfg=161         ctermbg=NONE
 hi SpellCap                 cterm=NONE              ctermfg=161         ctermbg=NONE
 hi SpellRare                cterm=NONE              ctermfg=161         ctermbg=NONE
-hi TabLineFill              cterm=NONE              ctermfg=249         ctermbg=NONE
-hi TabLine                  cterm=bold              ctermfg=249         ctermbg=NONE
-hi TabLineSel               cterm=bold              ctermfg=231         ctermbg=0
+hi TabLineFill              cterm=NONE              ctermfg=249         ctermbg=255
+hi TabLine                  cterm=bold              ctermfg=232         ctermbg=254
+hi TabLineSel               cterm=bold              ctermfg=231         ctermbg=44
 hi Sneak                    cterm=NONE              ctermfg=NONE        ctermbg=229
 hi SneakLabel               cterm=underline         ctermfg=16          ctermbg=227
 
