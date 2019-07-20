@@ -36,6 +36,7 @@ filetype off
 let &background=empty($BACKGROUND) ? 'light' : $BACKGROUND
 
 colorscheme cyan
+set t_ut=
 
 let g:no_plugin_maps = 1
 
@@ -118,11 +119,22 @@ function! CreateStatuslineColorLabel(label) abort
   return l:label
 endfunction
 
+function! GetBufferLabel() abort
+  let l:label = expand('%:t')
+  if l:label == ''
+    let l:label = &buftype
+  endif
+  if l:label == ''
+    let l:label = bufnr('%')
+  endif
+  return l:label
+endfunction
+
 function! CreateStatusline() abort
   let l:statusline = ''
-  let l:statusline .= CreateStatuslineColorLabel('" ".expand("%:t").(&modified?"+":"")')
+  let l:statusline .= CreateStatuslineColorLabel('" ".GetBufferLabel().(&modified?"+":"")')
   let l:statusline .= '%0* %Y '
-  let l:statusline .= '%<%F '
+  let l:statusline .= '%<%{exists("w:quickfix_title")?w:quickfix_title:expand("%:p")} '
   let l:statusline .= '%= '
   let l:statusline .= '%{&fileencoding ? &fileencoding : &encoding} | '
   let l:statusline .= '%{&fileformat} | '
@@ -409,6 +421,22 @@ augroup fzf
     \ | autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 augroup END
 
+augroup chdir
+  autocmd!
+  autocmd BufEnter * if &ft !~ '^nerdtree$' | silent! lcd %:p:h | endif
+augroup END
+
+augroup quickfix
+  autocmd!
+  autocmd Filetype qf setlocal statusline=%!CreateStatusline()
+augroup END
+
+augroup keywordhelp
+  autocmd!
+  autocmd FileType vim setlocal keywordprg=:help
+  autocmd FileType python setlocal keywordprg=pydoc
+augroup END
+
 augroup codeeval
   autocmd!
   autocmd FileType * silent Dotenv
@@ -432,15 +460,4 @@ augroup codeeval
     \ vmap <leader>ce y:@"<cr>
   autocmd FileType vim Shortcut 'Evaluate buffer/region'
     \ nmap <leader>ce source %
-augroup END
-
-augroup chdir
-  autocmd!
-  autocmd BufEnter * if &ft !~ '^nerdtree$' | silent! lcd %:p:h | endif
-augroup END
-
-augroup keywordhelp
-  autocmd!
-  autocmd FileType vim setlocal keywordprg=:help
-  autocmd FileType python setlocal keywordprg=pydoc
 augroup END
