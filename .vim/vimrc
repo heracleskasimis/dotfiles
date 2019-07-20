@@ -10,6 +10,8 @@ set incsearch
 set encoding=utf-8
 set guioptions=ae
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+set tw=0
+set breakindent
 set mouse=a
 set novisualbell
 set vb t_vb=
@@ -36,7 +38,6 @@ filetype off
 let &background=empty($BACKGROUND) ? 'light' : $BACKGROUND
 
 colorscheme cyan
-set t_ut=
 
 let g:no_plugin_maps = 1
 
