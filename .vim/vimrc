@@ -12,7 +12,7 @@ set guioptions=ae
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set tw=0
 set breakindent
-set mouse=a
+set mouse=ar
 set novisualbell
 set vb t_vb=
 set noerrorbells
@@ -192,7 +192,7 @@ let g:formatprg_args_cpp = "--style=java"
 let g:formatprg_args_expr_javascript = '"-a -f - -".(&expandtab ? "s ".&shiftwidth : "t").(&textwidth ? " -w ".&textwidth : "")'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 let g:rooter_manual_only = 1
-let g:rooter_patterns = ['.git', '.gitignore', '.git/', '.svn/']
+let g:rooter_patterns = ['.git', '.git/', '.svn/']
 let g:gutentags_project_root = ['.gitignore', '.git', '.hg', '.bzr', '_darcs', '_darcs', '_FOSSIL_', '.fslckout']
 let g:gutentags_cache_dir = '~/.cache/tags'
 let g:ale_lint_on_text_changed = 'never'
@@ -200,6 +200,7 @@ let g:ale_set_highlights = 0
 let g:ale_fixers = {
   \ '*': ['remove_trailing_lines', 'trim_whitespace'],
   \ 'javascript': ['eslint'],
+  \ 'javascript.jsx': ['eslint'],
   \ 'python': ['autopep8', 'black']
   \ }
 
