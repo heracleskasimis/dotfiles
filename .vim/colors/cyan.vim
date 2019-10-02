@@ -91,6 +91,12 @@ if &background == 'dark'
     hi TabLineSel           cterm=bold              ctermfg=7           ctermbg=0
     hi User3                cterm=bold              ctermfg=NONE        ctermbg=238
     hi User9                cterm=bold              ctermfg=NONE        ctermbg=236
+    hi DiffAdd              cterm=NONE              ctermfg=231         ctermbg=30
+    hi DiffAdded            cterm=NONE              ctermfg=231         ctermbg=30
+    hi DiffChange           cterm=bold              ctermfg=NONE        ctermbg=58
+    hi DiffText             cterm=bold              ctermfg=255         ctermbg=100
+    hi Folded               cterm=bold,italic       ctermfg=249         ctermbg=234
+    hi FoldColumn           cterm=italic            ctermfg=249         ctermbg=234
 endif
 
 hi Cursorline               gui=NONE                guifg=NONE          guibg=#f8f8f8
@@ -102,7 +108,7 @@ hi NonText                  gui=bold                guifg=#e0e0e0       guibg=NO
 hi Directory                gui=bold,italic         guifg=NONE
 hi ErrorMsg                 gui=NONE                guifg=#ff0066       guibg=#ffffff
 hi IncSearch                gui=NONE                guifg=#ffffff       guibg=#000000
-hi Search                   gui=NONE                guifg=black         guibg=#d7ffff
+hi Search                   gui=NONE                guifg=#000000       guibg=#d7ffff
 hi MoreMsg                  gui=bold                guifg=NONE
 hi ModeMsg                  gui=bold                guifg=NONE
 hi Question                 gui=standout            guifg=NONE
@@ -134,7 +140,7 @@ hi jsDocParam               gui=bold                guifg=darkgrey
 hi jsDocTags                gui=bold                guifg=#888888
 hi jsDocType                gui=bold                guifg=#888888
 hi jsDocTypeNoParam         gui=bold                guifg=#888888
-hi Constant                 gui=bold                guifg=black
+hi Constant                 gui=bold                guifg=NONE
 hi Special                  gui=bold                guifg=NONE
 hi Identifier               gui=bold                guifg=NONE
 hi Statement                gui=bold                guifg=NONE
@@ -181,6 +187,35 @@ hi TrailingWhitespace       gui=NONE                guifg=#ff0066       guibg=#f
 hi fzf1                     gui=bold                guifg=NONE          guibg=NONE
 hi fzf2                     gui=NONE                guifg=#008888       guibg=NONE
 hi fzf3                     gui=NONE                guifg=NONE          guibg=NONE
+
+if &background == 'dark'
+    hi Cursorline           gui=NONE                guifg=NONE          guibg=#000000
+    hi Visual               gui=NONE                guifg=NONE          guibg=#008888
+    hi VisualNOS            gui=NONE                guifg=NONE          guibg=#222222
+    hi NonText              gui=bold                guifg=#232323
+    hi IncSearch            gui=NONE                guifg=#f0f0f0       guibg=#008888
+    hi LineNr               gui=NONE                guifg=#ffffff       guibg=NONE
+    hi StatusLine           gui=bold                guifg=#aaaaaa       guibg=#303030
+    hi StatusLineNC         gui=NONE                guifg=#aaaaaa       guibg=#202020
+    hi StatusLineTerm       gui=bold                guifg=#aaaaaa       guibg=#303030
+    hi StatusLineTermNC     gui=NONE                guifg=#aaaaaa       guibg=#202020
+    hi Ignore               gui=bold                guifg=#aaaaaa
+    hi VertSplit            gui=NONE                guifg=#232323       guibg=NONE
+    hi Search               gui=NONE                guifg=#232323       guibg=#888888
+    hi TabLineFill          gui=NONE                guifg=#aaaaaa       guibg=#232323
+    hi TabLine              gui=bold,italic         guifg=#aaaaaa       guibg=#232323
+    hi TabLineSel           gui=bold                guifg=#aaaaaa       guibg=#232323
+    hi User3                gui=bold                guifg=NONE          guibg=#444444
+    hi User9                gui=bold                guifg=NONE          guibg=#303030
+    hi DiffAdd              gui=NONE                guifg=#ffffff       guibg=#002222
+    hi DiffAdded            gui=NONE                guifg=#ffffff       guibg=#002222
+    hi DiffChange           gui=bold                guifg=NONE          guibg=#222200
+    hi DiffDelete           gui=NONE                guifg=#ff0066       guibg=NONE
+    hi DiffRemoved          gui=NONE                guifg=#ff0066       guibg=NONE
+    hi DiffText             gui=bold                guifg=#eeeeee       guibg=#333300
+    hi Folded               gui=bold,italic         guifg=#b0b0b0       guibg=#202020
+    hi FoldColumn           gui=italic              guifg=#b0b0b0       guibg=#202020
+endif
 
 hi link ColorColumn DiffDelete
 hi link QuickfixLine DiffAdd
