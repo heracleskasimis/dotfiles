@@ -99,6 +99,7 @@ if &background == 'dark'
     hi FoldColumn           cterm=italic            ctermfg=249         ctermbg=234
 endif
 
+hi Normal                   gui=NONE                guifg=NONE          guibg=NONE
 hi Cursorline               gui=NONE                guifg=NONE          guibg=#f8f8f8
 hi CursorlineNr             gui=NONE                guifg=#ffa6ca       guibg=NONE
 hi LineNr                   gui=NONE                guifg=#bbbbbb       guibg=NONE
@@ -189,6 +190,7 @@ hi fzf2                     gui=NONE                guifg=#008888       guibg=NO
 hi fzf3                     gui=NONE                guifg=NONE          guibg=NONE
 
 if &background == 'dark'
+    hi Normal               gui=NONE                guifg=#ffffff       guibg=#444444
     hi Cursorline           gui=NONE                guifg=NONE          guibg=#000000
     hi Visual               gui=NONE                guifg=NONE          guibg=#008888
     hi VisualNOS            gui=NONE                guifg=NONE          guibg=#222222
@@ -196,25 +198,25 @@ if &background == 'dark'
     hi IncSearch            gui=NONE                guifg=#f0f0f0       guibg=#008888
     hi LineNr               gui=NONE                guifg=#ffffff       guibg=NONE
     hi StatusLine           gui=bold                guifg=#aaaaaa       guibg=#303030
-    hi StatusLineNC         gui=NONE                guifg=#aaaaaa       guibg=#202020
+    hi StatusLineNC         gui=NONE                guifg=#aaaaaa       guibg=#363636
     hi StatusLineTerm       gui=bold                guifg=#aaaaaa       guibg=#303030
-    hi StatusLineTermNC     gui=NONE                guifg=#aaaaaa       guibg=#202020
+    hi StatusLineTermNC     gui=NONE                guifg=#aaaaaa       guibg=#363636
     hi Ignore               gui=bold                guifg=#aaaaaa
     hi VertSplit            gui=NONE                guifg=#232323       guibg=NONE
     hi Search               gui=NONE                guifg=#232323       guibg=#888888
     hi TabLineFill          gui=NONE                guifg=#aaaaaa       guibg=#232323
     hi TabLine              gui=bold,italic         guifg=#aaaaaa       guibg=#232323
     hi TabLineSel           gui=bold                guifg=#aaaaaa       guibg=#232323
-    hi User3                gui=bold                guifg=NONE          guibg=#444444
+    hi User3                gui=bold                guifg=NONE          guibg=#222222
     hi User9                gui=bold                guifg=NONE          guibg=#303030
-    hi DiffAdd              gui=NONE                guifg=#ffffff       guibg=#002222
-    hi DiffAdded            gui=NONE                guifg=#ffffff       guibg=#002222
-    hi DiffChange           gui=bold                guifg=NONE          guibg=#222200
+    hi DiffAdd              gui=NONE                guifg=#ffffff       guibg=#445050
+    hi DiffAdded            gui=NONE                guifg=#ffffff       guibg=#445050
+    hi DiffChange           gui=bold                guifg=NONE          guibg=#555544
     hi DiffDelete           gui=NONE                guifg=#ff0066       guibg=NONE
     hi DiffRemoved          gui=NONE                guifg=#ff0066       guibg=NONE
-    hi DiffText             gui=bold                guifg=#eeeeee       guibg=#333300
-    hi Folded               gui=bold,italic         guifg=#b0b0b0       guibg=#202020
-    hi FoldColumn           gui=italic              guifg=#b0b0b0       guibg=#202020
+    hi DiffText             gui=bold                guifg=#eeeeee       guibg=#555522
+    hi Folded               gui=bold,italic         guifg=#b0b0b0       guibg=#383838
+    hi FoldColumn           gui=italic              guifg=#b0b0b0       guibg=#383838
 endif
 
 hi link ColorColumn DiffDelete
