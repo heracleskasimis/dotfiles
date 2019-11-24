@@ -7,6 +7,8 @@
 (if (featurep! +small-font)
     (set-frame-font "Liberation Mono 9" nil t))
 
+(setq-default line-spacing 2)
+
 (add-to-list 'custom-theme-load-path "~/.doom.d/themes")
 (add-to-list '+doom-solaire-themes '(cyan-light . t))
 (add-to-list '+doom-solaire-themes '(cyan-dark . t))
