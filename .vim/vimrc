@@ -150,6 +150,7 @@ endfunction
 
 set laststatus=2
 set statusline=%!CreateStatusline()
+set guitablabel=%{FindRootDirectory()!=''?fnamemodify(FindRootDirectory(),':p:h:t').'/':expand('%:t')}
 
 set fillchars=fold:-,diff:-,vert:│
 
