@@ -192,10 +192,11 @@ hi fzf3                     gui=NONE                guifg=NONE          guibg=NO
 if &background == 'dark'
     hi Normal               gui=NONE                guifg=#ffffff       guibg=#444444
     hi Cursorline           gui=NONE                guifg=NONE          guibg=#000000
-    hi Visual               gui=NONE                guifg=NONE          guibg=#008888
-    hi VisualNOS            gui=NONE                guifg=NONE          guibg=#222222
+    hi Visual               gui=NONE                guifg=NONE          guibg=#282828
+    hi VisualNOS            gui=NONE                guifg=NONE          guibg=#000000
     hi NonText              gui=bold                guifg=#232323
-    hi IncSearch            gui=NONE                guifg=#f0f0f0       guibg=#008888
+    hi Search               gui=NONE                guifg=NONE          guibg=#004444
+    hi IncSearch            gui=NONE                guifg=#f0f0f0       guibg=#008080
     hi LineNr               gui=NONE                guifg=#ffffff       guibg=NONE
     hi StatusLine           gui=bold                guifg=#aaaaaa       guibg=#303030
     hi StatusLineNC         gui=NONE                guifg=#aaaaaa       guibg=#363636
@@ -203,7 +204,6 @@ if &background == 'dark'
     hi StatusLineTermNC     gui=NONE                guifg=#aaaaaa       guibg=#363636
     hi Ignore               gui=bold                guifg=#aaaaaa
     hi VertSplit            gui=NONE                guifg=#232323       guibg=NONE
-    hi Search               gui=NONE                guifg=#232323       guibg=#888888
     hi TabLineFill          gui=NONE                guifg=#aaaaaa       guibg=#232323
     hi TabLine              gui=bold,italic         guifg=#aaaaaa       guibg=#232323
     hi TabLineSel           gui=bold                guifg=#aaaaaa       guibg=#232323
@@ -217,6 +217,8 @@ if &background == 'dark'
     hi DiffText             gui=bold                guifg=#eeeeee       guibg=#555522
     hi Folded               gui=bold,italic         guifg=#b0b0b0       guibg=#383838
     hi FoldColumn           gui=italic              guifg=#b0b0b0       guibg=#383838
+    hi String               gui=NONE                guifg=#00f0f0
+    hi Matchparen           gui=bold                guifg=NONE          guibg=#000000
 endif
 
 hi link ColorColumn DiffDelete
