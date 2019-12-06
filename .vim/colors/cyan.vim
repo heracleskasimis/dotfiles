@@ -74,9 +74,10 @@ hi User9                    cterm=bold              ctermfg=232         ctermbg=
 
 if &background == 'dark'
     hi Cursorline           cterm=NONE              ctermfg=NONE        ctermbg=232
-    hi Visual               cterm=NONE              ctermfg=NONE        ctermbg=23
-    hi VisualNOS            cterm=NONE              ctermfg=NONE        ctermbg=236
+    hi Visual               cterm=NONE              ctermfg=NONE        ctermbg=8
+    hi VisualNOS            cterm=NONE              ctermfg=NONE        ctermbg=58
     hi NonText              cterm=bold              ctermfg=0
+    hi Search               cterm=NONE              ctermfg=232         ctermbg=6
     hi IncSearch            cterm=NONE              ctermfg=0           ctermbg=14
     hi LineNr               cterm=NONE              ctermfg=7           ctermbg=NONE
     hi StatusLine           cterm=bold              ctermfg=7           ctermbg=235
@@ -84,19 +85,20 @@ if &background == 'dark'
     hi StatusLineTerm       cterm=bold              ctermfg=7           ctermbg=235
     hi StatusLineTermNC     cterm=NONE              ctermfg=7           ctermbg=234
     hi Ignore               cterm=bold              ctermfg=7
-    hi VertSplit            cterm=NONE              ctermfg=0           ctermbg=NONE
-    hi Search               cterm=NONE              ctermfg=0           ctermbg=6
+    hi VertSplit            cterm=NONE              ctermfg=236         ctermbg=NONE
     hi TabLineFill          cterm=NONE              ctermfg=7           ctermbg=0
     hi TabLine              cterm=bold,italic       ctermfg=7           ctermbg=0
     hi TabLineSel           cterm=bold              ctermfg=7           ctermbg=0
     hi User3                cterm=bold              ctermfg=NONE        ctermbg=238
     hi User9                cterm=bold              ctermfg=NONE        ctermbg=236
-    hi DiffAdd              cterm=NONE              ctermfg=231         ctermbg=30
-    hi DiffAdded            cterm=NONE              ctermfg=231         ctermbg=30
-    hi DiffChange           cterm=bold              ctermfg=NONE        ctermbg=58
-    hi DiffText             cterm=bold              ctermfg=255         ctermbg=100
+    hi DiffAdd              cterm=NONE              ctermfg=123         ctermbg=NONE
+    hi DiffAdded            cterm=NONE              ctermfg=123         ctermbg=NONE
+    hi DiffChange           cterm=bold              ctermfg=100         ctermbg=NONE
+    hi DiffText             cterm=bold              ctermfg=184         ctermbg=NONE
     hi Folded               cterm=bold,italic       ctermfg=249         ctermbg=234
     hi FoldColumn           cterm=italic            ctermfg=249         ctermbg=234
+    hi Sneak                cterm=NONE              ctermfg=232         ctermbg=229
+    hi SneakLabel           cterm=underline         ctermfg=232         ctermbg=227
 endif
 
 hi Normal                   gui=NONE                guifg=NONE          guibg=NONE
@@ -195,30 +197,32 @@ if &background == 'dark'
     hi Visual               gui=NONE                guifg=NONE          guibg=#282828
     hi VisualNOS            gui=NONE                guifg=NONE          guibg=#000000
     hi NonText              gui=bold                guifg=#232323
-    hi Search               gui=NONE                guifg=NONE          guibg=#004444
-    hi IncSearch            gui=NONE                guifg=#f0f0f0       guibg=#008080
-    hi LineNr               gui=NONE                guifg=#ffffff       guibg=NONE
-    hi StatusLine           gui=bold                guifg=#aaaaaa       guibg=#303030
-    hi StatusLineNC         gui=NONE                guifg=#aaaaaa       guibg=#363636
-    hi StatusLineTerm       gui=bold                guifg=#aaaaaa       guibg=#303030
-    hi StatusLineTermNC     gui=NONE                guifg=#aaaaaa       guibg=#363636
+    hi Search               gui=NONE                guifg=#000000       guibg=#ccffff
+    hi IncSearch            gui=NONE                guifg=#000000       guibg=#00ffff
+    hi LineNr               gui=NONE                guifg=#bbbbbb       guibg=NONE
+    hi StatusLine           gui=bold                guifg=#dcdcdc       guibg=#4e4e4e
+    hi StatusLineNC         gui=NONE                guifg=#cccccc       guibg=#4e4e4e
+    hi StatusLineTerm       gui=bold                guifg=#dcdcdc       guibg=#4e4e4e
+    hi StatusLineTermNC     gui=NONE                guifg=#cccccc       guibg=#4e4e4e
     hi Ignore               gui=bold                guifg=#aaaaaa
-    hi VertSplit            gui=NONE                guifg=#232323       guibg=NONE
+    hi VertSplit            gui=NONE                guifg=#303030       guibg=NONE
     hi TabLineFill          gui=NONE                guifg=#aaaaaa       guibg=#232323
     hi TabLine              gui=bold,italic         guifg=#aaaaaa       guibg=#232323
     hi TabLineSel           gui=bold                guifg=#aaaaaa       guibg=#232323
     hi User3                gui=bold                guifg=NONE          guibg=#222222
     hi User9                gui=bold                guifg=NONE          guibg=#303030
-    hi DiffAdd              gui=NONE                guifg=#ffffff       guibg=#445050
-    hi DiffAdded            gui=NONE                guifg=#ffffff       guibg=#445050
-    hi DiffChange           gui=bold                guifg=NONE          guibg=#555544
-    hi DiffDelete           gui=NONE                guifg=#ff0066       guibg=NONE
-    hi DiffRemoved          gui=NONE                guifg=#ff0066       guibg=NONE
-    hi DiffText             gui=bold                guifg=#eeeeee       guibg=#555522
-    hi Folded               gui=bold,italic         guifg=#b0b0b0       guibg=#383838
-    hi FoldColumn           gui=italic              guifg=#b0b0b0       guibg=#383838
+    hi DiffAdd              gui=NONE                guifg=#007777       guibg=#3e3e3e
+    hi DiffAdded            gui=NONE                guifg=#007777       guibg=#3e3e3e
+    hi DiffChange           gui=bold                guifg=#bbbb88       guibg=#3e3e3e
+    hi DiffDelete           gui=NONE                guifg=#ff0066       guibg=#3e3e3e
+    hi DiffRemoved          gui=NONE                guifg=#ff0066       guibg=#3e3e3e
+    hi DiffText             gui=bold                guifg=#ffffbb       guibg=NONE
+    hi Folded               gui=bold,italic         guifg=#b0b0b0       guibg=#505050
+    hi FoldColumn           gui=italic              guifg=#b0b0b0       guibg=#505050
     hi String               gui=NONE                guifg=#00f0f0
     hi Matchparen           gui=bold                guifg=NONE          guibg=#000000
+    hi Sneak                gui=NONE                guifg=#000000       guibg=#ffff88
+    hi SneakLabel           gui=underline           guifg=#000000       guibg=#ffff60
 endif
 
 hi link ColorColumn DiffDelete
