@@ -211,8 +211,8 @@ if &background == 'dark'
     hi TabLineSel           gui=bold                guifg=#aaaaaa       guibg=#232323
     hi User3                gui=bold                guifg=NONE          guibg=#222222
     hi User9                gui=bold                guifg=NONE          guibg=#303030
-    hi DiffAdd              gui=NONE                guifg=#007777       guibg=#3e3e3e
-    hi DiffAdded            gui=NONE                guifg=#007777       guibg=#3e3e3e
+    hi DiffAdd              gui=NONE                guifg=#008080       guibg=#3e3e3e
+    hi DiffAdded            gui=NONE                guifg=#008888       guibg=#3e3e3e
     hi DiffChange           gui=bold                guifg=#bbbb88       guibg=#3e3e3e
     hi DiffDelete           gui=NONE                guifg=#ff0066       guibg=#3e3e3e
     hi DiffRemoved          gui=NONE                guifg=#ff0066       guibg=#3e3e3e
