@@ -1,0 +1,22 @@
+set guifont=LiberationMono\ 11
+let vim_markdown_preview_browser='Firefox'
+set lines=44 columns=120
+
+set linespace=1
+
+function! FontSizePlus ()
+  let l:gf_size_whole = matchstr(&guifont, '\( \)\@<=\d\+$')
+  let l:gf_size_whole = l:gf_size_whole + 1
+  let l:new_font_size = ' '.l:gf_size_whole
+  let &guifont = substitute(&guifont, ' \d\+$', l:new_font_size, '')
+endfunction
+
+function! FontSizeMinus ()
+  let l:gf_size_whole = matchstr(&guifont, '\( \)\@<=\d\+$')
+  let l:gf_size_whole = l:gf_size_whole - 1
+  let l:new_font_size = ' '.l:gf_size_whole
+  let &guifont = substitute(&guifont, ' \d\+$', l:new_font_size, '')
+endfunction
+
+nmap <c-ScrollWheelUp> :call FontSizePlus()<cr>
+nmap <c-ScrollWheelDown> :call FontSizeMinus()<cr>
