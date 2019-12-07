@@ -475,8 +475,7 @@ endfunction
 
 augroup workspace
   autocmd!
-  autocmd TabNew * call settabvar(tabpagenr(), 'buffers', {})
-  autocmd BufWinEnter * call extend(gettabvar(tabpagenr(), 'buffers'), { bufnr(): localtime() })
+  autocmd BufWinEnter * call settabvar(tabpagenr(), 'buffers', extend(gettabvar(tabpagenr(), 'buffers', {}), { bufnr(): localtime() }))
   autocmd BufDelete * silent! call remove(gettabvar(tabpagenr(), 'buffers'), expand('<abuf>'))
 augroup END
 
