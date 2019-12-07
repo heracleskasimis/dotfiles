@@ -85,6 +85,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'sunaku/vim-shortcut'
 Plug 'tpope/vim-dotenv'
+Plug 'junegunn/vim-peekaboo'
 call plug#end()
 
 if &t_Co > 2 || has("gui_running")
@@ -222,6 +223,7 @@ let &t_ZR="\e[23m"
 
 function! VimrcShortcuts()
   map <space> <leader>
+  map <space>m <localleader>
   map <space><space> <leader><leader>
   map <leader><esc> <Nop>
 
