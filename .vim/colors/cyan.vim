@@ -103,7 +103,7 @@ if &background == 'dark'
     hi SneakLabel           cterm=underline         ctermfg=232         ctermbg=227
 endif
 
-hi Normal                   gui=NONE                guifg=NONE          guibg=NONE
+hi Normal                   gui=NONE                guifg=#000000       guibg=#ffffff
 hi Cursorline               gui=NONE                guifg=NONE          guibg=#f8f8f8
 hi CursorlineNr             gui=NONE                guifg=#ffa6ca       guibg=NONE
 hi LineNr                   gui=NONE                guifg=#bbbbbb       guibg=NONE
