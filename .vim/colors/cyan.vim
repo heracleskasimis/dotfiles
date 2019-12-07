@@ -6,6 +6,7 @@ if version > 580
 endif
 let g:colors_name="cyan"
 
+hi Normal                   cterm=NONE              ctermfg=232         ctermbg=231
 hi Cursorline               cterm=NONE              ctermfg=NONE        ctermbg=255
 hi CursorlineNr             cterm=NONE              ctermfg=219         ctermbg=NONE
 hi LineNr                   cterm=NONE              ctermfg=250         ctermbg=NONE
@@ -73,7 +74,8 @@ hi User8                    cterm=bold              ctermfg=NONE        ctermbg=
 hi User9                    cterm=bold              ctermfg=232         ctermbg=254
 
 if &background == 'dark'
-    hi Cursorline           cterm=NONE              ctermfg=NONE        ctermbg=232
+    hi Normal               cterm=NONE              ctermfg=231         ctermbg=232
+    hi Cursorline           cterm=NONE              ctermfg=NONE        ctermbg=233
     hi Visual               cterm=NONE              ctermfg=NONE        ctermbg=8
     hi VisualNOS            cterm=NONE              ctermfg=NONE        ctermbg=58
     hi NonText              cterm=bold              ctermfg=0
