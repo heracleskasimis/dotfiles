@@ -279,8 +279,12 @@ function! s:FormatBuffer(b)
   return substitute(printf("[%s] %s\t%s\t%s", a:b, flag, name, extra), '^\s*\|\s*$', '', 'g')
 endfunction
 
+function! s:GetFormattedWorkspaceBuffers()
+  return map(s:GetSortedWorkspaceBuffers(), {v -> s:FormatBuffer(v:val)})
+endfunction
+
 function! s:WorkspaceBuffers(...)
-  call fzf#vim#buffers('', { 'source': map(s:GetSortedWorkspaceBuffers(), {v -> s:FormatBuffer(v:val)}) })
+  call fzf#vim#buffers('', { 'source': s:GetFormattedWorkspaceBuffers() })
 endfunction
 command! WorkspaceBuffers call s:WorkspaceBuffers()
 
