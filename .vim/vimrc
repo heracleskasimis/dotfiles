@@ -256,14 +256,14 @@ endfunction
 command! PreviousWorkspaceBuffer call s:PreviousWorkspaceBuffer()
 
 function! s:WorkspaceAttachBuffer(...)
-  let buffernr = empty(a:0) ? bufnr() : str2nr(a:bufnr)
+  let buffernr = a:0 == 0 ? bufnr() : str2nr(a:1)
   let buffers = extend(gettabvar(tabpagenr(), 'buffers', {}), { buffernr: localtime() })
   call settabvar(tabpagenr(), 'buffers', buffers)
 endfunction
 command! -nargs=? WorkspaceAttachBuffer call s:WorkspaceAttachBuffer(<args>)
 
 function! s:WorkspaceDetachBuffer(...)
-  let buffernr = empty(a:0) ? expand('<abuf>') : str2nr(a:bufnr)
+  let buffernr = a:0 == 0 ? bufnr() : str2nr(a:1)
   silent! call remove(gettabvar(tabpagenr(), 'buffers'), buffernr)
 endfunction
 command! -nargs=? WorkspaceDetachBuffer call s:WorkspaceDetachBuffer(<args>)
@@ -488,8 +488,8 @@ endfunction
 
 augroup workspace
   autocmd!
-  autocmd BufWinEnter * WorkspaceAttachBuffer
-  autocmd BufDelete * WorkspaceDetachBuffer
+  autocmd BufWinEnter * WorkspaceAttachBuffer 
+  autocmd BufDelete * WorkspaceDetachBuffer expand('<abuf>') 
 augroup END
 
 augroup shortcuts
