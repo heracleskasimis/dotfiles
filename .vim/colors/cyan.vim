@@ -64,9 +64,9 @@ hi TabLineSel               cterm=bold              ctermfg=231         ctermbg=
 hi Sneak                    cterm=NONE              ctermfg=NONE        ctermbg=229
 hi SneakLabel               cterm=underline         ctermfg=16          ctermbg=227
 
-hi User1                    cterm=bold              ctermfg=231         ctermbg=30
+hi User1                    cterm=bold              ctermfg=231         ctermbg=232
 hi User2                    cterm=bold              ctermfg=231         ctermbg=197
-hi User3                    cterm=bold              ctermfg=231         ctermbg=232
+hi User3                    cterm=bold              ctermfg=231         ctermbg=30
 hi User4                    cterm=bold              ctermfg=231         ctermbg=37
 hi User5                    cterm=bold              ctermfg=NONE        ctermbg=NONE
 hi User7                    cterm=bold              ctermfg=NONE        ctermbg=NONE
@@ -91,7 +91,7 @@ if &background == 'dark'
     hi TabLineFill          cterm=NONE              ctermfg=7           ctermbg=0
     hi TabLine              cterm=bold,italic       ctermfg=7           ctermbg=0
     hi TabLineSel           cterm=bold              ctermfg=7           ctermbg=0
-    hi User3                cterm=bold              ctermfg=NONE        ctermbg=238
+    hi User1                cterm=bold              ctermfg=NONE        ctermbg=238
     hi User9                cterm=bold              ctermfg=NONE        ctermbg=236
     hi DiffAdd              cterm=NONE              ctermfg=123         ctermbg=NONE
     hi DiffAdded            cterm=NONE              ctermfg=123         ctermbg=NONE
@@ -101,6 +101,7 @@ if &background == 'dark'
     hi FoldColumn           cterm=italic            ctermfg=249         ctermbg=234
     hi Sneak                cterm=NONE              ctermfg=232         ctermbg=229
     hi SneakLabel           cterm=underline         ctermfg=232         ctermbg=227
+    hi String               cterm=NONE              ctermfg=37
 endif
 
 hi Normal                   gui=NONE                guifg=#000000       guibg=#ffffff
@@ -163,9 +164,9 @@ hi PMenuThumb               gui=NONE                guifg=#000000       guibg=#0
 hi Sneak                    gui=NONE                guifg=NONE          guibg=#ffff88
 hi SneakLabel               gui=underline           guifg=#000000       guibg=#ffff60
 
-hi User1                    gui=bold                guifg=#ffffff       guibg=#008888
+hi User1                    gui=bold                guifg=#ffffff       guibg=#000000
 hi User2                    gui=bold                guifg=#ffffff       guibg=#ff0066
-hi User3                    gui=bold                guifg=#ffffff       guibg=#000000
+hi User3                    gui=bold                guifg=#ffffff       guibg=#008888
 hi User4                    gui=bold                guifg=#ffffff       guibg=#00c0c0
 hi User5                    gui=bold                guifg=NONE          guibg=NONE
 hi User7                    gui=bold                guifg=NONE          guibg=NONE
@@ -211,8 +212,8 @@ if &background == 'dark'
     hi TabLineFill          gui=NONE                guifg=#aaaaaa       guibg=#232323
     hi TabLine              gui=bold,italic         guifg=#aaaaaa       guibg=#232323
     hi TabLineSel           gui=bold                guifg=#aaaaaa       guibg=#232323
-    hi User3                gui=bold                guifg=NONE          guibg=#222222
-    hi User9                gui=bold                guifg=NONE          guibg=#303030
+    hi User1                gui=bold                guifg=NONE          guibg=#222222
+    hi User9                gui=bold                guifg=NONE          guibg=#606060
     hi DiffAdd              gui=NONE                guifg=#008080       guibg=#3e3e3e
     hi DiffAdded            gui=NONE                guifg=#008888       guibg=#3e3e3e
     hi DiffChange           gui=bold                guifg=#bbbb88       guibg=#3e3e3e
@@ -221,7 +222,7 @@ if &background == 'dark'
     hi DiffText             gui=bold                guifg=#ffffbb       guibg=NONE
     hi Folded               gui=bold,italic         guifg=#b0b0b0       guibg=#505050
     hi FoldColumn           gui=italic              guifg=#b0b0b0       guibg=#505050
-    hi String               gui=NONE                guifg=#00f0f0
+    hi String               gui=NONE                guifg=#00c0c0
     hi Matchparen           gui=bold                guifg=NONE          guibg=#000000
     hi Sneak                gui=NONE                guifg=#000000       guibg=#ffff88
     hi SneakLabel           gui=underline           guifg=#000000       guibg=#ffff60
