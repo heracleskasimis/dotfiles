@@ -393,7 +393,7 @@ function! VimrcShortcuts()
     \ map <c-s-Tab> gT
 
   Shortcut 'Find file'
-    \ map <leader>. :Files <c-r>=expand('%:p:h')<cr>/<cr>
+    \ map <leader>. :Files <c-r>=FindRootDirectory()<cr>/<cr>
 
   Shortcut 'Find file from here'
     \ map <leader>f/ :Files <c-r>=expand('%:p:h')<cr>/<cr>
