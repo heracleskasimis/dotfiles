@@ -30,7 +30,7 @@ set tagcase=match
 set ai nocin nosi inde=-1
 set foldlevelstart=16
 
-set clipboard=unnamed
+set clipboard=unnamedplus
 
 set wildignore=*.class,*.o,*.meta,*.dll,*.pdb,*.exe,*.asset,*.unity,*.prefab,*.min.js,*.min.css,tags,node_modules,bin,obj,build,dist
 
@@ -213,7 +213,8 @@ let g:ale_fixers = {
 let g:ale_linters = {
   \ 'javascript': ['eslint'],
   \ 'javascript.jsx': ['eslint'],
-  \ 'python': ['flake8']
+  \ 'python': ['flake8'],
+  \ 'sql': ['sqllint']
   \ }
 let g:ale_sql_pgformatter_options = '--spaces 2 --function-case 1 --comma-break'
 
@@ -472,7 +473,7 @@ function! VimrcShortcuts()
   imap <down> <c-o>gj
   imap <up> <c-o>gk
 
-  " imap <insert> <esc>"*P']ji
+  tmap <s-insert> <c-w>"*
   cmap <c-g> <c-[>
 
   map f <Plug>Sneak_f
