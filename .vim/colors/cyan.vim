@@ -243,6 +243,12 @@ hi link EasyMotionTarget2Second Search
 hi link EasyMotionMoveHL Search
 hi link EasyMotionIncSearch Search
 
+hi link ALEErrorSign DiffDelete
+hi link ALEWarningSign DiffRemoved
+hi link ALEInfoSign DiffAdd
+hi link ALEStyleErrorSign DiffDelete
+hi link ALEStyleWarningSign DiffRemoved
+
 let g:terminal_ansi_colors = [
     \'#404040', '#ff70a4', '#00a8a8', '#a2a2a2', '#008080', '#8d5796', '#00cdcd', '#cccccc',
     \'#585858', '#ffa2c1', '#00bebe', '#d5d5d5', '#00a4a4', '#ac80a6', '#00ffff', '#eeeeee'
