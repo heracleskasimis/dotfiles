@@ -85,6 +85,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'sunaku/vim-shortcut'
 Plug 'tpope/vim-dotenv'
 Plug 'junegunn/vim-peekaboo'
+Plug 'jamessan/vim-gnupg'
 call plug#end()
 
 if &t_Co > 2 || has("gui_running")
@@ -179,6 +180,7 @@ if executable('ag')
   let $FZF_DEFAULT_COMMAND = 'ag --vimgrep --hidden --skip-vcs-ignores --ignore .git -g ""'
   let g:ackprg = 'ag --vimgrep --hidden --ignore .git'
 endif
+let g:fzf_layout = { 'down': '40%' }
 let g:ack_qhandler = "copen 10"
 let g:jsx_ext_required = 0
 let g:vim_markdown_folding_disabled = 1
