@@ -253,3 +253,5 @@ let g:terminal_ansi_colors = [
     \'#404040', '#ff70a4', '#00a8a8', '#a2a2a2', '#008080', '#8d5796', '#00cdcd', '#cccccc',
     \'#585858', '#ffa2c1', '#00bebe', '#d5d5d5', '#00a4a4', '#ac80a6', '#00ffff', '#eeeeee'
 \]
+
+let $BAT_THEME='ansi-' . &background
