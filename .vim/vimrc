@@ -19,6 +19,7 @@ set mouse=ar
 set novisualbell
 set vb t_vb=
 set noerrorbells
+set noequalalways
 
 set langmap=ΑA,ΒB,ΨC,ΔD,ΕE,ΦF,ΓG,ΗH,ΙI,ΞJ,ΚK,ΛL,ΜM,ΝN,ΟO,ΠP,ΡR,ΣS,ΤT,ΘU,ΩV,ΧX,ΖY,ΥZ,αa,βb,ψc,δd,εe,φf,γg,ηh,ιi,ξj,κk,λl,μm,νn,οo,πp,qq,ρr,σs,τt,θu,ωv,ςw,χx,ζz,υy
 
@@ -232,13 +233,13 @@ function! s:GetWorkspaceBuffers(...)
   let formatted = get(a:, 2, 0)
   let buffers = gettabvar(tabpagenr(), 'buffers')
   let bufnumbers = sort(map(keys(buffers), {v -> str2nr(v:val)}), 'n')
-  let bufnumbers = filter(bufnumbers, {v -> buflisted(v:val) && getbufvar(v:val, "&filetype") != "qf"})
+  let bufnumbers = filter(bufnumbers, {v -> buflisted(v:val) && getbufvar(v:val, '&filetype') != 'qf'})
   let bufnumbers = sorted ? sort(bufnumbers, {a, b -> buffers[a] < buffers[b] ? 1 : -1}) : bufnumbers
   return formatted ? map(bufnumbers, {v -> fzf#vim#_format_buffer(v:val)}) : bufnumbers
 endfunction
 
 function! s:PreviousEditedWorkspaceBuffer()
-  let buffers = filter(s:GetWorkspaceBuffers(1), {v -> v:val != bufnr()})
+  let buffers = filter(s:GetWorkspaceBuffers(1), {v -> v:val != bufnr() && bufname(v:val) !~ '^!' && getbufvar(v:val, '&filetype') != 'fugitive'})
   if len(buffers) > 0
     execute ':buffer ' .  buffers[0]
   endif
@@ -435,7 +436,7 @@ function! VimrcShortcuts()
   Shortcut 'Git status'
     \ map <leader>gg :Gstatus<cr>
   Shortcut 'Git blame'
-    \ map <leader>gB :Gblame<cr>
+    \ map <leader>gB :Git blame<cr>
   Shortcut 'List git commits'
     \ map <leader>gl :Commits<cr>
   Shortcut 'List git file commits'
@@ -491,7 +492,15 @@ augroup END
 augroup termesc
   autocmd!
   autocmd TerminalOpen * silent tnoremap <buffer> <esc><esc> <c-\><c-n>
+  autocmd TerminalOpen * silent tnoremap <buffer> <c-h> <c-w>h
+  autocmd TerminalOpen * silent tnoremap <buffer> <c-j> <c-w>j
+  autocmd TerminalOpen * silent tnoremap <buffer> <c-k> <c-w>k
+  autocmd TerminalOpen * silent tnoremap <buffer> <c-l> <c-w>l
   autocmd FileType fzf silent tunmap <buffer> <esc><esc>
+  autocmd FileType fzf silent tunmap <buffer> <c-h>
+  autocmd FileType fzf silent tunmap <buffer> <c-j>
+  autocmd FileType fzf silent tunmap <buffer> <c-k>
+  autocmd FileType fzf silent tunmap <buffer> <c-l>
 augroup END
 
 augroup fzf
