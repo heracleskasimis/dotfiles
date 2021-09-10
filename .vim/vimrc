@@ -434,7 +434,7 @@ function! VimrcShortcuts()
   map <leader>/<esc> <Nop>
 
   Shortcut 'Git status'
-    \ map <leader>gg :aboveleft Gstatus<cr>
+    \ map <leader>gg :aboveleft Git<cr>
   Shortcut 'Git blame'
     \ map <leader>gB :Git blame<cr>
   Shortcut 'List git commits'
