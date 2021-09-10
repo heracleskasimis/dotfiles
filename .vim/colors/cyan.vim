@@ -9,6 +9,7 @@ let g:colors_name="cyan"
 hi Normal                   cterm=NONE              ctermfg=232         ctermbg=231
 hi Cursorline               cterm=NONE              ctermfg=NONE        ctermbg=255
 hi CursorlineNr             cterm=NONE              ctermfg=219         ctermbg=NONE
+hi ColorColumn              cterm=NONE              ctermfg=NONE        ctermbg=255
 hi LineNr                   cterm=NONE              ctermfg=250         ctermbg=NONE
 hi SpecialKey               cterm=bold              ctermfg=NONE
 hi NonText                  cterm=bold              ctermfg=255
@@ -76,6 +77,7 @@ hi User9                    cterm=bold              ctermfg=232         ctermbg=
 if &background == 'dark'
     hi Normal               cterm=NONE              ctermfg=231         ctermbg=232
     hi Cursorline           cterm=NONE              ctermfg=NONE        ctermbg=233
+    hi ColorColumn          cterm=NONE              ctermfg=NONE        ctermbg=233
     hi Visual               cterm=NONE              ctermfg=NONE        ctermbg=8
     hi VisualNOS            cterm=NONE              ctermfg=NONE        ctermbg=58
     hi NonText              cterm=bold              ctermfg=0
@@ -107,6 +109,7 @@ endif
 hi Normal                   gui=NONE                guifg=#000000       guibg=#ffffff
 hi Cursorline               gui=NONE                guifg=NONE          guibg=#f8f8f8
 hi CursorlineNr             gui=NONE                guifg=#ffa6ca       guibg=NONE
+hi ColorColumn              gui=NONE                guifg=NONE          guibg=#f8f8f8
 hi LineNr                   gui=NONE                guifg=#bbbbbb       guibg=NONE
 hi Cursor                   gui=NONE                guifg=white         guibg=#ff0066
 hi SpecialKey               gui=bold                guifg=NONE
@@ -197,6 +200,7 @@ hi fzf3                     gui=NONE                guifg=NONE          guibg=NO
 if &background == 'dark'
     hi Normal               gui=NONE                guifg=#ffffff       guibg=#444444
     hi Cursorline           gui=NONE                guifg=NONE          guibg=#000000
+    hi ColorColumn          gui=NONE                guifg=NONE          guibg=#000000
     hi Visual               gui=NONE                guifg=NONE          guibg=#282828
     hi VisualNOS            gui=NONE                guifg=NONE          guibg=#000000
     hi NonText              gui=bold                guifg=#232323
@@ -254,4 +258,5 @@ let g:terminal_ansi_colors = [
     \'#585858', '#ffa2c1', '#00bebe', '#d5d5d5', '#00a4a4', '#ac80a6', '#00ffff', '#eeeeee'
 \]
 
-let $BAT_THEME='ansi-' . &background
+let $BAT_THEME='ansi'
+let $FZF_DEFAULT_OPTS='--color=16,bg+:255,fg+:232,gutter:-1,hl:44,pointer:44,info:44,header:44'
