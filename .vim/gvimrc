@@ -25,9 +25,29 @@ nmap <c-s-t> :tabe<cr>
 nmap <c-s-PageUp> <c-w>gT
 nmap <c-s-PageDown> <c-w>gt
 
+nmap <M-1> 1gt
+nmap <M-2> 2gt
+nmap <M-3> 3gt
+nmap <M-4> 4gt
+nmap <M-5> 5gt
+nmap <M-6> 6gt
+nmap <M-7> 7gt
+nmap <M-8> 8gt
+nmap <M-9> 9gt
+
+
 augroup termnavesc
   autocmd!
   autocmd TerminalOpen * silent tnoremap <buffer> <c-s-t> <c-w>:tabe<cr>
   autocmd TerminalOpen * silent tnoremap <buffer> <c-PageUp> <c-w>gT
   autocmd TerminalOpen * silent tnoremap <buffer> <c-PageDown> <c-w>gt
+  autocmd TerminalOpen * silent tnoremap <buffer> <M-1> <c-w>1gt
+  autocmd TerminalOpen * silent tnoremap <buffer> <M-2> <c-w>2gt
+  autocmd TerminalOpen * silent tnoremap <buffer> <M-3> <c-w>3gt
+  autocmd TerminalOpen * silent tnoremap <buffer> <M-4> <c-w>4gt
+  autocmd TerminalOpen * silent tnoremap <buffer> <M-5> <c-w>5gt
+  autocmd TerminalOpen * silent tnoremap <buffer> <M-6> <c-w>6gt
+  autocmd TerminalOpen * silent tnoremap <buffer> <M-7> <c-w>7gt
+  autocmd TerminalOpen * silent tnoremap <buffer> <M-8> <c-w>8gt
+  autocmd TerminalOpen * silent tnoremap <buffer> <M-9> <c-w>9gt
 augroup END

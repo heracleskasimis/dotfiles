@@ -312,18 +312,6 @@ function! VimrcShortcuts()
     \ map <leader><Tab>7 7gt<cr>
   map <leader><Tab><esc> <Nop>
 
-  map <m-8> 8gt<cr>
-  map <m-9> 9gt<cr>
-  map <m-1> 1gt<cr>
-  map <m-2> 2gt<cr>
-  map <m-3> 3gt<cr>
-  map <m-4> 4gt<cr>
-  map <m-5> 5gt<cr>
-  map <m-6> 6gt<cr>
-  map <m-7> 7gt<cr>
-  map <m-8> 8gt<cr>
-  map <m-9> 9gt<cr>
-
   Shortcut 'Project sidebar'
     \ map <leader>op :NERDTreeToggle <c-r>=FindRootDirectory()<cr><cr>
   Shortcut 'Find file in project sidebar'
