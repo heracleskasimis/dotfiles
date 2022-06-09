@@ -21,7 +21,8 @@ endfunction
 nmap <c-ScrollWheelUp> :call FontSizePlus()<cr>
 nmap <c-ScrollWheelDown> :call FontSizeMinus()<cr>
 
-nmap <c-s-t> :tabe<cr>
+nmap <c-s-t> :tabe \| lcd <c-r>=FindRootDirectory()<cr> \| terminal ++curwin<cr>
+nmap <c-t> :tabe<cr>
 nmap <c-s-PageUp> <c-w>gT
 nmap <c-s-PageDown> <c-w>gt
 
