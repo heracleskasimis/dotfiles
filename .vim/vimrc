@@ -496,6 +496,8 @@ augroup termesc
   autocmd TerminalOpen * silent tnoremap <buffer> <c-j> <c-w>j
   autocmd TerminalOpen * silent tnoremap <buffer> <c-k> <c-w>k
   autocmd TerminalOpen * silent tnoremap <buffer> <c-l> <c-w>l
+  autocmd TerminalOpen * silent tnoremap <buffer> <c-Tab> <c-w>gt
+  autocmd TerminalOpen * silent tnoremap <buffer> <c-s-Tab> <c-w>gT
   autocmd FileType fzf silent tunmap <buffer> <esc><esc>
   autocmd FileType fzf silent tunmap <buffer> <c-h>
   autocmd FileType fzf silent tunmap <buffer> <c-j>

@@ -20,3 +20,14 @@ endfunction
 
 nmap <c-ScrollWheelUp> :call FontSizePlus()<cr>
 nmap <c-ScrollWheelDown> :call FontSizeMinus()<cr>
+
+nmap <c-s-t> :tabe<cr>
+nmap <c-s-PageUp> <c-w>gT
+nmap <c-s-PageDown> <c-w>gt
+
+augroup termnavesc
+  autocmd!
+  autocmd TerminalOpen * silent tnoremap <buffer> <c-s-t> <c-w>:tabe<cr>
+  autocmd TerminalOpen * silent tnoremap <buffer> <c-PageUp> <c-w>gT
+  autocmd TerminalOpen * silent tnoremap <buffer> <c-PageDown> <c-w>gt
+augroup END
