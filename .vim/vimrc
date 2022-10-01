@@ -447,7 +447,7 @@ function! VimrcShortcuts()
     \ map <leader>hi :help<cr>
   map <leader>h<esc> <Nop>
 
-  nmap <esc><esc> :noh<cr>
+  nmap <esc> :noh<cr>
   map <down> gj
   map <up> gk
   imap <down> <c-o>gj
