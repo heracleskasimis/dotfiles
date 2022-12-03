@@ -40,6 +40,7 @@ set tags=tags;
 filetype off
 
 let &background=empty($BACKGROUND) ? 'light' : $BACKGROUND
+set t_Co=256
 colorscheme cyan
 
 let g:no_plugin_maps = 1
