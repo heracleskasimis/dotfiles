@@ -227,7 +227,7 @@ if &background == 'dark'
     hi Folded               gui=bold,italic         guifg=#b0b0b0       guibg=#202020
     hi FoldColumn           gui=italic              guifg=#b0b0b0       guibg=#202020
     hi String               gui=NONE                guifg=#00c0c0
-    hi Matchparen           gui=bold                guifg=NONE          guibg=#00cccc
+    hi Matchparen           gui=bold                guifg=NONE          guibg=#008888
     hi Sneak                gui=NONE                guifg=#444444       guibg=#ffff88
     hi SneakLabel           gui=underline           guifg=#444444       guibg=#ffff60
     hi ErrorMsg             gui=NONE                guifg=#ffffff       guibg=#ff0066

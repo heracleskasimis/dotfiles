@@ -66,7 +66,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'Chiel92/vim-autoformat'
 Plug 'gerw/vim-HiLinkTrace'
 Plug 'tfnico/vim-gradle'
-Plug 'rbgrouleff/bclose.vim'
 Plug 'prettier/vim-prettier'
 Plug 'tpope/vim-dispatch'
 Plug 'tpope/vim-speeddating'
@@ -277,6 +276,13 @@ function! s:WorkspaceBuffers(...)
 endfunction
 command! WorkspaceBuffers call s:WorkspaceBuffers()
 
+function! s:Bclose(bang, buffer)
+  let buffernr = empty(a:buffer) ? bufnr() : str2nr(a:buffer)
+  call s:PreviousEditedWorkspaceBuffer()
+  execute 'bdelete'.a:bang.' '.buffernr
+endfunction
+command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
+
 function! VimrcShortcuts()
   map <space> <leader>
   map <space>m <localleader>
@@ -341,6 +347,8 @@ function! VimrcShortcuts()
     \ map <leader>bp :PreviousWorkspaceBuffer<cr>
   Shortcut 'Kill buffer'
     \ map <leader>bk :Bclose<cr>
+  Shortcut 'Kill unsaved buffer'
+    \ map <leader>bK :Bclose!<cr>
   Shortcut 'New empty buffer'
     \ map <leader>bN :vnew<cr>
   Shortcut 'Kill other buffers'
