@@ -39,7 +39,8 @@ nmap <M-9> 9gt
 
 augroup termnavesc
   autocmd!
-  autocmd TerminalOpen * silent tnoremap <buffer> <c-s-t> <c-w>:tabe<cr>
+  autocmd TerminalOpen * silent tnoremap <buffer> <c-t> <c-w>:tabe<cr>
+  autocmd TerminalOpen * silent tnoremap <buffer> <c-s-t> <c-w>:tabe \| lcd <c-r>=FindRootDirectory()<cr> \| terminal ++curwin<cr>
   autocmd TerminalOpen * silent tnoremap <buffer> <c-PageUp> <c-w>gT
   autocmd TerminalOpen * silent tnoremap <buffer> <c-PageDown> <c-w>gt
   autocmd TerminalOpen * silent tnoremap <buffer> <M-1> <c-w>1gt
