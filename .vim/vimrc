@@ -281,7 +281,7 @@ function! s:Bclose(bang, buffer)
   if buffernr == bufnr()
     call s:PreviousEditedWorkspaceBuffer()
   endif
-  execute 'bdelete'.a:bang.' '.buffernr
+  execute ':bdelete'.a:bang.' '.buffernr
 endfunction
 command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
 
@@ -530,23 +530,27 @@ augroup codeeval
   autocmd!
   autocmd FileType * silent Dotenv
   autocmd FileType sql Shortcut 'Evaluate buffer/region'
-    \ vmap <leader>ce :DB $DB_URI<cr>
+    \ vmap <buffer> <leader>ce :DB $DB_URI<cr>
   autocmd FileType sql Shortcut 'Evaluate buffer/region'
-    \ nmap <leader>ce :DB $DB_URI < %
+    \ nmap <buffer> <leader>ce :DB $DB_URI < %
   autocmd FileType javascript Shortcut 'Evaluate buffer/region'
-    \ vmap <leader>ce :<c-u>belowright '<,'>term node<cr>
+    \ vmap <buffer> <leader>ce :<c-u>belowright '<,'>term node<cr>
   autocmd FileType javascript Shortcut 'Evaluate buffer/region'
-    \ nmap <leader>ce :<c-u>belowright term node %
+    \ nmap <buffer> <leader>ce :<c-u>belowright term node %
   autocmd FileType python Shortcut 'Evaluate buffer/region'
-    \ vmap <leader>ce :<c-u>belowright '<,'>term python<cr>
+    \ vmap <buffer> <leader>ce :<c-u>belowright '<,'>term python<cr>
   autocmd FileType python Shortcut 'Evaluate buffer/region'
-    \ nmap <leader>ce :<c-u>belowright term python %
+    \ nmap <buffer> <leader>ce :<c-u>belowright term python %
   autocmd FileType sh Shortcut 'Evaluate buffer/region'
-    \ vmap <leader>ce :<c-u>belowright '<,'>term sh<cr>
+    \ vmap <buffer> <leader>ce :<c-u>belowright '<,'>term sh<cr>
   autocmd FileType sh Shortcut 'Evaluate buffer/region'
-    \ nmap <leader>ce :<c-u>belowright term %
+    \ nmap <buffer> <leader>ce :<c-u>belowright term %
+  autocmd TerminalOpen * Shortcut 'Evaluate buffer/region'
+    \ vmap <buffer> <leader>ce :<c-u>belowright '<,'>term sh<cr>
+  autocmd TerminalOpen * Shortcut 'Evaluate buffer/region'
+    \ nmap <buffer> <leader>ce :<c-u>belowright term %
   autocmd FileType vim Shortcut 'Evaluate buffer/region'
-    \ vmap <leader>ce y:@"<cr>
+    \ vmap <buffer> <leader>ce y:@"<cr>
   autocmd FileType vim Shortcut 'Evaluate buffer/region'
-    \ nmap <leader>ce source %
+    \ nmap <buffer> <leader>ce :source %
 augroup END
