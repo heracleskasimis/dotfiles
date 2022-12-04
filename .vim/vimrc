@@ -278,7 +278,9 @@ command! WorkspaceBuffers call s:WorkspaceBuffers()
 
 function! s:Bclose(bang, buffer)
   let buffernr = empty(a:buffer) ? bufnr() : str2nr(a:buffer)
-  call s:PreviousEditedWorkspaceBuffer()
+  if buffernr == bufnr()
+    call s:PreviousEditedWorkspaceBuffer()
+  endif
   execute 'bdelete'.a:bang.' '.buffernr
 endfunction
 command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
