@@ -474,7 +474,7 @@ function! VimrcShortcuts()
 
   nmap <X1Mouse> <c-o>
   nmap <X2Mouse> <c-i>
-  nmap <RightMouse> <LeftMouse>/\<<c-r>=expand("<cword>")<cr>\><cr>
+  nmap <RightMouse> <LeftMouse>/\<<c-r>=expand("<cword>")<cr>\><cr>zz
 endfunction
 
 augroup workspace
