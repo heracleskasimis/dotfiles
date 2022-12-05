@@ -49,6 +49,7 @@ call plug#begin('~/.vim/plugged')
 Plug 'justinmk/vim-sneak'
 Plug 'w0rp/ale'
 Plug 'pangloss/vim-javascript'
+Plug 'Glench/Vim-Jinja2-Syntax'
 Plug 'scrooloose/nerdtree'
 Plug 'sbl/scvim'
 Plug 'digitaltoad/vim-jade'
@@ -553,4 +554,9 @@ augroup codeeval
     \ vmap <buffer> <leader>ce y:@"<cr>
   autocmd FileType vim Shortcut 'Evaluate buffer/region'
     \ nmap <buffer> <leader>ce :source %
+augroup END
+
+augroup filetypes
+  autocmd!
+  autocmd BufNewFile,BufRead *.jinja2,*.j2,*.j2.*,*.jinja,*.tera set ft=jinja
 augroup END
