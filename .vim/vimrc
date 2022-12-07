@@ -5,6 +5,8 @@ set runtimepath^=~/.vim
 set nobackup
 set noswapfile
 
+set updatetime=500
+
 set backspace=indent,eol,start
 set history=50
 set ruler
@@ -75,7 +77,6 @@ Plug 'jceb/vim-orgmode'
 Plug 'mileszs/ack.vim'
 Plug 'airblade/vim-rooter'
 Plug 'ludovicchabant/vim-gutentags'
-Plug 'jkerian/HiCursorWords'
 Plug 'vim-scripts/indentpython.vim'
 Plug 'nvie/vim-flake8'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
@@ -100,6 +101,16 @@ if !has("gui_running")
 endif
 
 set wildmenu
+
+function! HighlightWordUnderCursor()
+  if getline(".")[col(".")-1] !~# '[[:punct:][:blank:]]'
+    exec '2match' 'VisualNOS' '/\V\<'.expand('<cword>').'\>/'
+  endif
+endfunction
+
+function! ClearWordHighlight()
+  2match none
+endfunction
 
 function! HumanSize(bytes) abort
   let l:bytes = a:bytes
@@ -187,10 +198,6 @@ let g:ack_qhandler = "copen 10"
 let g:jsx_ext_required = 0
 let g:vim_markdown_folding_disabled = 1
 let g:vim_json_syntax_conceal = 0
-let g:HiCursorWords_delay = 333
-let g:HiCursorWords_hiGroupRegexp = ''
-let g:HiCursorWords_debugEchoHiName = 0
-let g:HiCursorWords_linkStyle = 'VisualNOS'
 let g:NERDTreeHijackNetrw = 0
 let g:NERDTreeAutoCenter = 0
 let g:NERDTreeHighlightCursorline = 0
@@ -554,6 +561,12 @@ augroup codeeval
     \ vmap <buffer> <leader>ce y:@"<cr>
   autocmd FileType vim Shortcut 'Evaluate buffer/region'
     \ nmap <buffer> <leader>ce :source %
+augroup END
+
+augroup highlight
+  autocmd!
+  autocmd CursorHold,CursorHoldI * call HighlightWordUnderCursor()
+  autocmd  CursorMoved,CursorMovedI * call ClearWordHighlight()
 augroup END
 
 augroup filetypes
