@@ -11,22 +11,22 @@ Xft.rgba: rgb
 *italicFont: Liberation\ Sans:pixelsize=22:antialias=true:style=italic
 *boldItalicFont: Liberation\ Sans:pixelsize=22:antialias=true:style=bold:italic
 
-*color0: #000000
-*color8: #3a3a3a
-*color1: #7d0021
-*color9: #d60039
-*color2: #595959
-*color10: #696969
-*color3: #787878
-*color11: #bcbcbc
-*color4: #1c6666
-*color12: #2fabab
-*color5: #b80031
-*color13: #ff0044
-*color6: #299696
-*color14: #39d6d6
-*color7: #a8a8a8
-*color15: #ffffff
+*color0: #404040
+*color8: #585858
+*color1: #ff70a4
+*color9: #ffa2c1
+*color2: #00a8a8
+*color10: #00bebe
+*color3: #a2a2a2
+*color11: #d5d5d5
+*color4: #008080
+*color12: #00a4a4
+*color5: #8d5796
+*color13: #ac80a6
+*color6: #00cdcd
+*color14: #00ffff
+*color7: #cccccc
+*color15: #eeeeee
 
 *color232: #0a0a0a
 
