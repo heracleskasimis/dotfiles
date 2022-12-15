@@ -1,0 +1,110 @@
+Xft.dpi: 180
+Xft.autohint: 0
+Xft.lcdfilter: lcddefault
+Xft.hintstyle: hintfull
+Xft.hinting: 1
+Xft.antialias: 1
+Xft.rgba: rgb
+
+*font: Liberation\ Sans:pixelsize=22:antialias=true
+*boldFont: Liberation\ Sans:pixelsize=22:antialias=true:style=bold
+*italicFont: Liberation\ Sans:pixelsize=22:antialias=true:style=italic
+*boldItalicFont: Liberation\ Sans:pixelsize=22:antialias=true:style=bold:italic
+
+*color0: #000000
+*color8: #3a3a3a
+*color1: #7d0021
+*color9: #d60039
+*color2: #595959
+*color10: #696969
+*color3: #787878
+*color11: #bcbcbc
+*color4: #1c6666
+*color12: #2fabab
+*color5: #b80031
+*color13: #ff0044
+*color6: #299696
+*color14: #39d6d6
+*color7: #a8a8a8
+*color15: #ffffff
+
+*color232: #0a0a0a
+
+URxvt*background: #ffffff
+URxvt*foreground: #0c0c0c
+URxvt*meta8: true
+URxvt.font: Liberation\ Mono:pixelsize=28:antialias=true
+URxvt.boldFont: Liberation\ Mono:pixelsize=28:antialias=true:style=bold
+URxvt.italicFont: Liberation\ Mono:pixelsize=28:antialias=true:style=italic
+URxvt.boldItalicFont: Liberation\ Mono:pixelsize=28:antialias=true:style=bold:italic
+URxvt.letterSpace: -1
+URxvt*buffered: true
+URxvt.cursorBlink: true
+URxvt.scrollBar: false
+URxvt.internalBorder: 4
+URxvt.loginShell: true
+URxvt.urgentOnBell: true
+URxvt.saveLines: 2048
+URxvt.scrollTtyOutput: false
+URxvt.scrollTtyKeypress: true
+URxvt.execLauncher: :x
+URxvt.editLauncher: :e
+URxvt.urlLauncher: luakit -U
+URxvt.colorUL: #307878
+URxvt.keysym.Control-tab: \033[27;5;9~
+URxvt.keysym.Control-period: \033[27;5;46~
+URxvt.keysym.Control-comma: \033[27;5;44~
+
+XTerm*background: #000000
+XTerm*foreground: #ffffff
+XTerm*faceName: Liberation\ Mono:pixelsize=28:antialias=true:hinting=false
+XTerm*utf8: 1
+XTerm*showBlinkAsBold: true
+XTerm*loginShell: true
+XTerm*bellIsUrgent: true
+XTerm*saveLines: 2048
+XTerm*pointerMode: 0
+XTerm*charClass: 33:48,35:48,37-38:48,43-47:48,58:48,61:48,63-64:48,95:48,126:48
+XTerm*scrollTtyKeypress: true
+XTerm*scrollKey: true
+XTerm*scrollBar: false
+XTerm*multiScroll: true
+XTerm*jumpScroll: true
+XTerm*fastScroll: true
+XTerm*BorderWidth: 0
+XTerm*italicULMode: true
+XTerm*cutNewLine: false
+XTerm*eightBitInput: false
+XTerm*ttyModes: erase ^?
+XTerm*disallowedWindowOps: 20,21,SetXprop
+XTerm*geometry: 140x44
+XTerm*backarrowKey: false
+
+*VT100.Translations:	#override \
+	<Key>Delete: string(0x04) \n\
+	<Key>BackSpace: string(0x7F)
+
+UXTerm*background: #000000
+UXTerm*foreground: #ffffff
+UXTerm*faceName: Liberation\ Mono:pixelsize=28:antialias=true:hinting=false
+UXTerm*utf8: 1
+UXTerm*showBlinkAsBold: true
+UXTerm*loginShell: true
+UXTerm*bellIsUrgent: true
+UXTerm*saveLines: 2048
+UXTerm*pointerMode: 0
+UXTerm*charClass: 33:48,35:48,37-38:48,43-47:48,58:48,61:48,63-64:48,95:48,126:48
+UXTerm*scrollTtyKeypress: true
+UXTerm*scrollKey: true
+UXTerm*scrollBar: false
+UXTerm*multiScroll: true
+UXTerm*jumpScroll: true
+UXTerm*fastScroll: true
+UXTerm*BorderWidth: 0
+UXTerm*italicULMode: true
+UXTerm*cutNewLine: false
+UXTerm*eightBitInput: false
+UXTerm*ttyModes: erase ^?
+UXTerm*disallowedWindowOps: 20,21,SetXprop
+UXTerm*geometry: 140x44
+UXTerm*backarrowKey: false
