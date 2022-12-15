@@ -2,6 +2,8 @@ set guifont=LiberationMono\ 11
 let vim_markdown_preview_browser='Firefox'
 set lines=44 columns=120
 
+let &background='light'
+
 set linespace=1
 
 function! FontSizePlus ()
