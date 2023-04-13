@@ -35,7 +35,7 @@ set foldlevelstart=16
 
 set clipboard=unnamedplus
 
-set wildignore=*.class,*.o,*.meta,*.dll,*.pdb,*.exe,*.asset,*.unity,*.prefab,*.min.js,*.min.css,tags,node_modules,bin,obj,build,dist
+set wildignore=*.class,*.o,*.meta,*.dll,*.pdb,*.exe,*.asset,*.unity,*.prefab,*.min.js,*.min.css,tags,node_modules,venv,bin,obj,build,dist
 
 set tags=tags;
 
@@ -103,9 +103,7 @@ endif
 set wildmenu
 
 function! HighlightWordUnderCursor()
-  if getline(".")[col(".")-1] !~# '[[:punct:][:blank:]]'
-    exec '2match' 'VisualNOS' '/\V\<'.expand('<cword>').'\>/'
-  endif
+  exec '2match' 'VisualNOS' '/\<'.expand('<cword>').'\>/'
 endfunction
 
 function! ClearWordHighlight()
@@ -228,6 +226,7 @@ let g:ale_linters = {
   \ 'sql': ['sqllint']
   \ }
 let g:ale_sql_pgformatter_options = '--spaces 2 --function-case 1 --comma-break'
+let g:ale_python_flake8_options = '--config ~/.config/flake8'
 
 let &t_ZH="\e[3m"
 let &t_ZR="\e[23m"
