@@ -564,8 +564,8 @@ augroup END
 
 augroup highlight
   autocmd!
-  autocmd CursorHold,CursorHoldI * call HighlightWordUnderCursor()
-  autocmd  CursorMoved,CursorMovedI,WinLeave * call ClearWordHighlight()
+  autocmd CursorHold,CursorHoldI * silent! call HighlightWordUnderCursor()
+  autocmd  CursorMoved,CursorMovedI,WinLeave * silent! call ClearWordHighlight()
 augroup END
 
 augroup filetypes
