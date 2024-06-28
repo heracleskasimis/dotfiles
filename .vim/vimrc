@@ -422,13 +422,13 @@ function! VimrcShortcuts()
     \ map <leader><leader> :GFiles <c-r>=FindRootDirectory()<cr><cr>
 
   Shortcut 'Search for symbol in project'
-    \ map <leader>* :Ack! <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><cr>
+    \ map <leader>* :Ack! -- <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><cr>
   Shortcut 'Search project'
-    \ map <leader>/p :Ack! <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><c-b><s-right><s-right>
+    \ map <leader>/p :Ack! -- <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><c-b><s-right><s-right><s-right>
   Shortcut 'Search current directory'
-    \ map <leader>/d :Ack! <c-r>=expand("<cword>")<cr> %:h<c-b><s-right><s-right>
+    \ map <leader>/d :Ack! -- <c-r>=expand("<cword>")<cr> %:h<c-b><s-right><s-right><s-right>
   Shortcut 'Search buffer'
-    \ map <leader>/b :Ack! <c-r>=expand("<cword>")<cr> %<c-b><s-right><s-right>
+    \ map <leader>/b :Ack! -- <c-r>=expand("<cword>")<cr> %<c-b><s-right><s-right><s-right>
   Shortcut 'Search symbol'
     \ map <leader>/i :Ctags <c-r>=expand("<cword>")<cr>
   Shortcut 'Search git commits'
