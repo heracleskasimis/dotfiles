@@ -18,6 +18,7 @@ set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set tw=0
 set breakindent
 set mouse=ar
+set mousemodel=extend
 set novisualbell
 set vb t_vb=
 set noerrorbells
@@ -32,6 +33,7 @@ set smartcase
 set tagcase=match
 set ai nocin nosi inde=-1
 set foldlevelstart=16
+set splitright
 
 set clipboard=unnamedplus
 
@@ -206,7 +208,7 @@ let g:formatprg_args_cpp = "--style=java"
 let g:formatprg_args_expr_javascript = '"-a -f - -".(&expandtab ? "s ".&shiftwidth : "t").(&textwidth ? " -w ".&textwidth : "")'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 let g:rooter_manual_only = 1
-let g:rooter_patterns = ['.git', '.git/', '.svn/']
+let g:rooter_patterns = ['.git', '.git/', '.svn/', 'package.json']
 let g:gutentags_project_root = ['.gitignore', '.git', '.hg', '.bzr', '_darcs', '_darcs', '_FOSSIL_', '.fslckout']
 let g:gutentags_cache_dir = '~/.cache/tags'
 let g:ale_lint_on_text_changed = 'always'
@@ -473,6 +475,8 @@ function! VimrcShortcuts()
   imap <down> <c-o>gj
   imap <up> <c-o>gk
 
+  imap <c-s-v> <c-r>+
+  tmap <c-s-v> <c-w>"+
   tmap <s-insert> <c-w>"*
   cmap <c-g> <c-[>
 
@@ -483,7 +487,11 @@ function! VimrcShortcuts()
 
   nmap <X1Mouse> <c-o>
   nmap <X2Mouse> <c-i>
-  nmap <RightMouse> <LeftMouse>/\<<c-r>=expand("<cword>")<cr>\><cr>zz
+  nmap <c-LeftDrag> <LeftMouse><c-v>
+  vmap <c-LeftDrag> <RightDrag>
+
+  tmap <c-Tab> <c-w>gt
+  tmap <c-s-Tab> <c-w>gT
 endfunction
 
 augroup workspace
@@ -499,18 +507,29 @@ augroup END
 
 augroup termesc
   autocmd!
-  autocmd TerminalOpen * silent tnoremap <buffer> <esc><esc> <c-\><c-n>
-  autocmd TerminalOpen * silent tnoremap <buffer> <c-h> <c-w>h
-  autocmd TerminalOpen * silent tnoremap <buffer> <c-j> <c-w>j
-  autocmd TerminalOpen * silent tnoremap <buffer> <c-k> <c-w>k
-  autocmd TerminalOpen * silent tnoremap <buffer> <c-l> <c-w>l
-  autocmd TerminalOpen * silent tnoremap <buffer> <c-Tab> <c-w>gt
-  autocmd TerminalOpen * silent tnoremap <buffer> <c-s-Tab> <c-w>gT
+  autocmd TerminalOpen * set nonumber norelativenumber
+  autocmd TerminalOpen * silent tmap <buffer> <esc><esc> <c-\><c-n>
+  autocmd TerminalOpen * silent tmap <buffer> <c-h> <c-w>h
+  autocmd TerminalOpen * silent tmap <buffer> <c-j> <c-w>j
+  autocmd TerminalOpen * silent tmap <buffer> <c-k> <c-w>k
+  autocmd TerminalOpen * silent tmap <buffer> <c-l> <c-w>l
+  autocmd TerminalOpen * silent tmap <buffer> <ScrollWheelUp> <c-\><c-n><ScrollWheelUp>
+  autocmd TerminalOpen * silent tmap <buffer> <ScrollWheelDown> <c-\><c-n><ScrollWheelDown>
+  autocmd TerminalOpen * silent tmap <buffer> <LeftMouse> <c-\><c-n><LeftMouse>
+  autocmd TerminalOpen * silent tmap <buffer> <RightMouse> <c-\><c-n><RightMouse>
+  autocmd TerminalOpen * silent tmap <buffer> <c-LeftMouse> <c-\><c-n><c-LeftMouse>
+  autocmd TerminalOpen * silent nmap <buffer> <MiddleMouse> i<MiddleMouse>
+  autocmd TerminalOpen * silent vmap <buffer> <MiddleMouse> <esc>i<MiddleMouse>
   autocmd FileType fzf silent tunmap <buffer> <esc><esc>
   autocmd FileType fzf silent tunmap <buffer> <c-h>
   autocmd FileType fzf silent tunmap <buffer> <c-j>
   autocmd FileType fzf silent tunmap <buffer> <c-k>
   autocmd FileType fzf silent tunmap <buffer> <c-l>
+  autocmd FileType fzf silent tunmap <buffer> <ScrollWheelUp>
+  autocmd FileType fzf silent tunmap <buffer> <ScrollWheelDown>
+  autocmd FileType fzf silent tunmap <buffer> <LeftMouse>
+  autocmd FileType fzf silent tunmap <buffer> <c-LeftMouse>
+  autocmd FileType fzf silent tunmap <buffer> <RightMouse>
 augroup END
 
 augroup fzf
