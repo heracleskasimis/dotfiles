@@ -24,7 +24,7 @@ set vb t_vb=
 set noerrorbells
 set noequalalways
 
-set langmap=ΑA,ΒB,ΨC,ΔD,ΕE,ΦF,ΓG,ΗH,ΙI,ΞJ,ΚK,ΛL,ΜM,ΝN,ΟO,ΠP,ΡR,ΣS,ΤT,ΘU,ΩV,ΧX,ΖY,ΥZ,αa,βb,ψc,δd,εe,φf,γg,ηh,ιi,ξj,κk,λl,μm,νn,οo,πp,qq,ρr,σs,τt,θu,ωv,ςw,χx,ζz,υy
+set langmap=ΑA,ΒB,ΨC,ΔD,ΕE,ΦF,ΓG,ΗH,ΙI,ΞJ,ΚK,ΛL,ΜM,ΝN,ΟO,ΠP,QQ,ΡR,ΣS,ΤT,ΘU,ΩV,WW,ΧX,ΥY,ΖZ,αa,βb,ψc,δd,εe,φf,γg,ηh,ιi,ξj,κk,λl,μm,νn,οo,πp,qq,ρr,σs,τt,θu,ωv,ςw,χx,υy,ζz
 
 set nonumber relativenumber
 set hidden
@@ -208,7 +208,7 @@ let g:formatprg_args_cpp = "--style=java"
 let g:formatprg_args_expr_javascript = '"-a -f - -".(&expandtab ? "s ".&shiftwidth : "t").(&textwidth ? " -w ".&textwidth : "")'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 let g:rooter_manual_only = 1
-let g:rooter_patterns = ['.git', '.git/', '.svn/', 'package.json']
+let g:rooter_patterns = ['.git', '.git/', '.svn/', 'package.json', 'requirements.txt', 'Dockerfile', 'docker-compose*.yml']
 let g:gutentags_project_root = ['.gitignore', '.git', '.hg', '.bzr', '_darcs', '_darcs', '_FOSSIL_', '.fslckout']
 let g:gutentags_cache_dir = '~/.cache/tags'
 let g:ale_lint_on_text_changed = 'always'
