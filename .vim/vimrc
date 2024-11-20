@@ -507,19 +507,20 @@ augroup END
 
 augroup termesc
   autocmd!
-  autocmd TerminalOpen * set nonumber norelativenumber
-  autocmd TerminalOpen * silent tmap <buffer> <esc><esc> <c-\><c-n>
-  autocmd TerminalOpen * silent tmap <buffer> <c-h> <c-w>h
-  autocmd TerminalOpen * silent tmap <buffer> <c-j> <c-w>j
-  autocmd TerminalOpen * silent tmap <buffer> <c-k> <c-w>k
-  autocmd TerminalOpen * silent tmap <buffer> <c-l> <c-w>l
-  autocmd TerminalOpen * silent tmap <buffer> <ScrollWheelUp> <c-\><c-n><ScrollWheelUp>
-  autocmd TerminalOpen * silent tmap <buffer> <ScrollWheelDown> <c-\><c-n><ScrollWheelDown>
-  autocmd TerminalOpen * silent tmap <buffer> <LeftMouse> <c-\><c-n><LeftMouse>
-  autocmd TerminalOpen * silent tmap <buffer> <RightMouse> <c-\><c-n><RightMouse>
-  autocmd TerminalOpen * silent tmap <buffer> <c-LeftMouse> <c-\><c-n><c-LeftMouse>
-  autocmd TerminalOpen * silent nmap <buffer> <MiddleMouse> i<MiddleMouse>
-  autocmd TerminalOpen * silent vmap <buffer> <MiddleMouse> <esc>i<MiddleMouse>
+  autocmd TerminalWinOpen * setlocal nonumber norelativenumber
+  autocmd TerminalWinOpen * silent nmap <buffer> <bs> <bs>
+  autocmd TerminalWinOpen * silent tmap <buffer> <esc><esc> <c-\><c-n>
+  autocmd TerminalWinOpen * silent tmap <buffer> <c-h> <c-w>h
+  autocmd TerminalWinOpen * silent tmap <buffer> <c-j> <c-w>j
+  autocmd TerminalWinOpen * silent tmap <buffer> <c-k> <c-w>k
+  autocmd TerminalWinOpen * silent tmap <buffer> <c-l> <c-w>l
+  autocmd TerminalWinOpen * silent tmap <buffer> <ScrollWheelUp> <c-\><c-n><ScrollWheelUp>
+  autocmd TerminalWinOpen * silent tmap <buffer> <ScrollWheelDown> <c-\><c-n><ScrollWheelDown>
+  autocmd TerminalWinOpen * silent tmap <buffer> <LeftMouse> <c-\><c-n><LeftMouse>
+  autocmd TerminalWinOpen * silent tmap <buffer> <c-LeftMouse> <c-\><c-n><c-LeftMouse>
+  autocmd TerminalWinOpen * silent tmap <buffer> <RightMouse> <c-\><c-n><RightMouse>
+  autocmd TerminalWinOpen * silent nmap <buffer> <MiddleMouse> i<MiddleMouse>
+  autocmd TerminalWinOpen * silent vmap <buffer> <MiddleMouse> <esc>i<MiddleMouse>
   autocmd FileType fzf silent tunmap <buffer> <esc><esc>
   autocmd FileType fzf silent tunmap <buffer> <c-h>
   autocmd FileType fzf silent tunmap <buffer> <c-j>
