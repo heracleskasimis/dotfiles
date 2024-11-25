@@ -218,6 +218,7 @@ let g:ale_fixers = {
   \ '*': ['remove_trailing_lines', 'trim_whitespace'],
   \ 'javascript': ['eslint'],
   \ 'javascript.jsx': ['eslint'],
+  \ 'typescript': ['eslint'],
   \ 'python': ['isort', 'autopep8', 'black'],
   \ 'sql': ['sqlfluff']
   \ }
