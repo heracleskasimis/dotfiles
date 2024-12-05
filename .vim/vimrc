@@ -219,6 +219,7 @@ let g:ale_fixers = {
   \ 'javascript': ['eslint'],
   \ 'javascript.jsx': ['eslint'],
   \ 'typescript': ['eslint'],
+  \ 'typescriptreact': ['eslint'],
   \ 'python': ['isort', 'autopep8', 'black'],
   \ 'sql': ['sqlfluff']
   \ }
