@@ -298,6 +298,17 @@ function! s:Bclose(bang, buffer)
 endfunction
 command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
 
+function! s:Tag(tag)
+  let tlist = taglist('^' . a:tag)
+  if len(tlist) > 1
+    call fzf#vim#tags(a:tag)
+  else
+    execute ':tag ' . a:tag
+  endif
+endfunction
+command! -complete=buffer -nargs=? Tag call s:Tag('<args>')
+    
+
 function! VimrcShortcuts()
   map <space> <leader>
   map <space>m <localleader>
@@ -381,7 +392,7 @@ function! VimrcShortcuts()
     \ map <leader>x :Scratch<cr>
 
   Shortcut 'Jump to definition'
-    \ map <leader>cd :Tags '<c-r>=expand("<cword>")<cr><cr>
+    \ map <leader>cd :Tags <c-r>=expand("<cword>")<cr><cr>
   Shortcut 'List errors'
     \ map <leader>cx :lopen<cr>
   Shortcut 'Compile'
@@ -487,6 +498,8 @@ function! VimrcShortcuts()
   map F <Plug>Sneak_F
   map t <Plug>Sneak_t
   map T <Plug>Sneak_T
+
+  map <c-]> :Tag <c-r>=expand("<cword>")<cr><cr>
 
   nmap <X1Mouse> <c-o>
   nmap <X2Mouse> <c-i>
