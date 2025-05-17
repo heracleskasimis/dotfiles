@@ -479,6 +479,7 @@ function! VimrcShortcuts()
 
   imap <c-s-v> <c-r>+
   tmap <c-s-v> <c-w>"+
+  cmap <c-s-v> <c-r>+
   tmap <s-insert> <c-w>"*
   cmap <c-g> <c-[>
 
