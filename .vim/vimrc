@@ -299,7 +299,7 @@ endfunction
 command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
 
 function! s:Tag(tag)
-  let tlist = taglist('^' . a:tag)
+  let tlist = taglist('^' . a:tag . '$')
   if len(tlist) > 1
     call fzf#vim#tags(a:tag)
   else
