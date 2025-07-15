@@ -237,6 +237,7 @@ hi link ColorColumn DiffDelete
 hi link QuickfixLine DiffAdd
 
 hi link mkdLineBreak Error
+hi link markdownCodeBlock String
 hi link javaCommentTitle Comment
 hi link javaDocTags SpecialComment
 hi link javaDocParam SpecialComment
