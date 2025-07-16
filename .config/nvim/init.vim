@@ -1,0 +1,521 @@
+set nobackup
+set noswapfile
+
+set title
+
+set clipboard=unnamedplus
+
+set nonumber relativenumber
+
+let &background=empty($BACKGROUND) ? 'light' : $BACKGROUND
+set t_Co=256
+colorscheme cyan
+
+"--------------------------------------------------------------------------------------------------
+
+let g:no_plugin_maps = 1
+filetype off
+
+if executable('ag')
+  let $FZF_DEFAULT_COMMAND = 'ag --vimgrep --hidden --skip-vcs-ignores --ignore .git -g ""'
+  let g:ackprg = 'ag --vimgrep --hidden --ignore .git'
+endif
+let $FZF_DEFAULT_OPTS='--color=16,bg+:255,fg+:232,gutter:-1,hl:44,pointer:44,info:44,header:44,border:15 --border=none'
+let g:fzf_layout = { 'down': '40%' }
+let g:ack_qhandler = "copen 10"
+let g:jsx_ext_required = 0
+let g:vim_markdown_folding_disabled = 1
+let g:vim_json_syntax_conceal = 0
+let g:NERDTreeHijackNetrw = 0
+let g:NERDTreeAutoCenter = 0
+let g:NERDTreeHighlightCursorline = 0
+let g:NERDTreeStatusline = -1
+let g:NERDTreeWinSize = 48
+let g:formatprg_args_c = "--style=java"
+let g:formatprg_args_cpp = "--style=java"
+let g:formatprg_args_expr_javascript = '"-a -f - -".(&expandtab ? "s ".&shiftwidth : "t").(&textwidth ? " -w ".&textwidth : "")'
+let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+let g:rooter_manual_only = 1
+let g:rooter_patterns = ['.git', '.svn', 'package.json', 'requirements.txt', 'Dockerfile', 'docker-compose*.yml']
+let g:gutentags_project_root = ['.git', '.svn', 'package.json', 'requirements.txt', 'Dockerfile', 'docker-compose*.yml']
+let g:gutentags_cache_dir = '~/.cache/tags'
+let g:gutentags_ctags_extra_args = ['--map-TypeScript=+.tsx']
+let g:ale_lint_on_text_changed = 'always'
+let g:ale_set_highlights = 0
+let g:ale_use_neovim_diagnostics_api = 1
+let g:ale_lint_delay = 750
+let g:ale_fixers = {
+  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
+  \ 'javascript': ['eslint'],
+  \ 'javascript.jsx': ['eslint'],
+  \ 'typescript': ['eslint'],
+  \ 'typescriptreact': ['eslint'],
+  \ 'python': ['isort', 'autopep8', 'black'],
+  \ 'sql': ['sqlfluff']
+  \ }
+let g:ale_linters = {
+  \ 'javascript': ['eslint'],
+  \ 'javascript.jsx': ['eslint'],
+  \ 'python': ['pylint', 'flake8'],
+  \ 'sql': ['sqlfluff']
+  \ }
+let g:ale_sql_pgformatter_options = '--spaces 2 --function-case 1 --comma-break'
+let g:ale_sql_sqlfluff_options = '--dialect postgres'
+let g:ale_python_flake8_options = '--config ~/.config/flake8'
+let g:ale_virtualtext_cursor = 'disabled'
+
+call plug#begin()
+Plug 'justinmk/vim-sneak'
+Plug 'w0rp/ale'
+Plug 'pangloss/vim-javascript'
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'scrooloose/nerdtree'
+Plug 'sbl/scvim'
+Plug 'digitaltoad/vim-jade'
+Plug 'plasticboy/vim-markdown'
+Plug 'mxw/vim-jsx'
+Plug 'tpope/vim-fugitive'
+Plug 'elzr/vim-json'
+Plug 'vim-scripts/javacomplete'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'fidian/hexmode'
+Plug 'tpope/vim-vinegar'
+Plug 'groenewege/vim-less'
+Plug 'fatih/vim-go'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'Chiel92/vim-autoformat'
+Plug 'gerw/vim-HiLinkTrace'
+Plug 'tfnico/vim-gradle'
+Plug 'prettier/vim-prettier'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-speeddating'
+Plug 'vim-scripts/SyntaxRange'
+Plug 'jceb/vim-orgmode'
+Plug 'mileszs/ack.vim'
+Plug 'airblade/vim-rooter'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'vim-scripts/indentpython.vim'
+Plug 'nvie/vim-flake8'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'psf/black', { 'branch': 'main' }
+Plug 'tpope/vim-dadbod'
+Plug 'mtth/scratch.vim'
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-eunuch'
+Plug 'sunaku/vim-shortcut'
+Plug 'tpope/vim-dotenv'
+Plug 'junegunn/vim-peekaboo'
+Plug 'jamessan/vim-gnupg'
+call plug#end()
+
+"--------------------------------------------------------------------------------------------------
+
+function! s:mod(n,m)
+  return ((a:n % a:m) + a:m) % a:m
+endfunction
+
+function! s:GetWorkspaceBuffers(...)
+  let sorted = get(a:, 1, 0)
+  let formatted = get(a:, 2, 0)
+  let buffers = gettabvar(tabpagenr(), 'buffers')
+  let bufnumbers = sort(map(keys(buffers), {v -> str2nr(v:val)}), 'n')
+  let bufnumbers = filter(bufnumbers, {v -> buflisted(v:val) && getbufvar(v:val, '&filetype') != 'qf'})
+  let bufnumbers = sorted ? sort(bufnumbers, {a, b -> buffers[a] < buffers[b] ? 1 : -1}) : bufnumbers
+  return formatted ? map(bufnumbers, {v -> fzf#vim#_format_buffer(v:val)}) : bufnumbers
+endfunction
+
+function! s:PreviousEditedWorkspaceBuffer()
+  let buffers = filter(s:GetWorkspaceBuffers(1), {v -> v:val != bufnr() && bufname(v:val) !~ '^!' && bufname(v:val) != 'Claude Chat' && getbufvar(v:val, '&filetype') != 'fugitive'})
+  if len(buffers) > 0
+    execute ':buffer ' .  buffers[0]
+  endif
+endfunction
+command! PreviousEditedWorkspaceBuffer call s:PreviousEditedWorkspaceBuffer()
+
+function! s:NextWorkspaceBuffer()
+  let buffers = s:GetWorkspaceBuffers()
+  execute ':buffer ' . buffers[s:mod((index(buffers, bufnr()) + 1), len(buffers))]
+endfunction
+command! NextWorkspaceBuffer call s:NextWorkspaceBuffer()
+
+function! s:PreviousWorkspaceBuffer()
+  let buffers = s:GetWorkspaceBuffers()
+  execute ':buffer ' . buffers[s:mod((index(buffers, bufnr()) - 1), len(buffers))]
+endfunction
+command! PreviousWorkspaceBuffer call s:PreviousWorkspaceBuffer()
+
+function! s:WorkspaceAttachBuffer(...)
+  let buffernr = a:0 == 0 ? bufnr() : str2nr(a:1)
+  let buffers = extend(gettabvar(tabpagenr(), 'buffers', {}), { buffernr: localtime() })
+  call settabvar(tabpagenr(), 'buffers', buffers)
+endfunction
+command! -nargs=? WorkspaceAttachBuffer call s:WorkspaceAttachBuffer(<args>)
+
+function! s:WorkspaceDetachBuffer(...)
+  let buffernr = a:0 == 0 ? bufnr() : str2nr(a:1)
+  silent! call remove(gettabvar(tabpagenr(), 'buffers'), buffernr)
+endfunction
+command! -nargs=? WorkspaceDetachBuffer call s:WorkspaceDetachBuffer(<args>)
+
+function! s:WorkspaceBuffers(...)
+  call fzf#vim#buffers('', { 'source': s:GetWorkspaceBuffers(1, 1) })
+endfunction
+command! WorkspaceBuffers call s:WorkspaceBuffers()
+
+function! s:Bclose(bang, buffer)
+  let buffernr = empty(a:buffer) ? bufnr() : str2nr(a:buffer)
+  if buffernr == bufnr()
+    call s:PreviousEditedWorkspaceBuffer()
+  endif
+  execute ':bdelete'.a:bang.' '.buffernr
+endfunction
+command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
+
+function! s:Tag(tag)
+  let tlist = taglist('^' . a:tag . '$')
+  if len(tlist) > 1
+    call fzf#vim#tags(a:tag)
+  else
+    execute ':tag ' . a:tag
+  endif
+endfunction
+command! -complete=buffer -nargs=? Tag call s:Tag('<args>')
+    
+function! VimrcShortcuts()
+  map <space> <leader>
+  map <space>m <localleader>
+  map <space><space> <leader><leader>
+  map <leader><esc> <Nop>
+
+  Shortcut 'Run shortcut'
+    \ map <leader> :Shortcuts<cr><leader>
+
+  Shortcut 'Commands'
+    \ map <leader>: :Commands<cr>
+
+  Shortcut 'New tab'
+    \ map <leader><Tab>n :tabe<cr>
+  Shortcut 'Delete tab'
+    \ map <leader><Tab>d :tabclose<cr>
+  Shortcut 'Previous tab'
+    \ map <leader><Tab>[ :tabprevious<cr>
+  Shortcut 'Next tab'
+    \ map <leader><Tab>] :tabnext<cr>
+  Shortcut 'Switch to tab 1'
+    \ map <leader><Tab>1 1gt<cr>
+  Shortcut 'Switch to tab 2'
+    \ map <leader><Tab>2 2gt<cr>
+  Shortcut 'Switch to tab 3'
+    \ map <leader><Tab>3 3gt<cr>
+  Shortcut 'Switch to tab 4'
+    \ map <leader><Tab>4 4gt<cr>
+  Shortcut 'Switch to tab 5'
+    \ map <leader><Tab>5 5gt<cr>
+  Shortcut 'Switch to tab 6'
+    \ map <leader><Tab>6 6gt<cr>
+  Shortcut 'Switch to tab 7'
+    \ map <leader><Tab>7 7gt<cr>
+  map <leader><Tab><esc> <Nop>
+
+  Shortcut 'Project sidebar'
+    \ map <leader>op :NERDTreeToggle <c-r>=FindRootDirectory()<cr><cr>
+  Shortcut 'Find file in project sidebar'
+    \ map <leader>oP :NERDTreeFind<cr>
+  Shortcut 'Terminal'
+    \ map <leader>ot :belowright 10split \| lcd <c-r>=FindRootDirectory()<cr> \| terminal<cr>
+  Shortcut 'Terminal here'
+    \ map <leader>oT :belowright 10split \| lcd <c-r>=expand('%:p:h')<cr> \| terminal<cr>
+  map <leader>o<esc> <Nop>
+
+  Shortcut 'Switch workspace buffer'
+    \ map <leader>, :WorkspaceBuffers<cr>
+  Shortcut 'Switch workspace buffer'
+    \ map <leader>bb :WorkspaceBuffers<cr>
+  Shortcut 'Switch buffer'
+    \ map <leader>bB :Buffers<cr>
+  Shortcut 'Switch workspace buffer'
+    \ map <leader>b, :WorkspaceBuffers<cr>
+  Shortcut 'Next buffer'
+    \ map <leader>b] :NextWorkspaceBuffer<cr>
+  Shortcut 'Next buffer'
+    \ map <leader>bn :NextWorkspaceBuffer<cr>
+  Shortcut 'Previous buffer'
+    \ map <leader>b[ :PreviousWorkspaceBuffer<cr>
+  Shortcut 'Previous buffer'
+    \ map <leader>bp :PreviousWorkspaceBuffer<cr>
+  Shortcut 'Kill buffer'
+    \ map <leader>bk :Bclose<cr>
+  Shortcut 'Kill unsaved buffer'
+    \ map <leader>bK :Bclose!<cr>
+  Shortcut 'New empty buffer'
+    \ map <leader>bN :vnew<cr>
+  Shortcut 'Kill other buffers'
+    \ map <leader>bo :%bd\|e#\|bd#<cr>
+  Shortcut 'Switch buffer'
+    \ map <leader>< :Buffers<cr>
+  map <leader>b<esc> <Nop>
+
+  Shortcut 'Previously edited buffer'
+    \ map <bs> :PreviousEditedWorkspaceBuffer<cr>
+
+  Shortcut 'Pop up scratch buffer'
+    \ map <leader>bx :Scratch<cr>
+  Shortcut 'Pop up scratch buffer'
+    \ map <leader>x :Scratch<cr>
+
+  Shortcut 'Jump to definition'
+    \ map <leader>cd :Tags <c-r>=expand("<cword>")<cr><cr>
+  Shortcut 'List errors'
+    \ map <leader>cx :lopen<cr>
+  Shortcut 'Compile'
+    \ map <leader>cc :make<cr>
+  Shortcut 'Format buffer/region'
+    \ map <leader>cf :ALEFix<cr>
+  map <leader>c<esc> <Nop>
+
+  Shortcut 'Window movement'
+    \ map <leader>w <c-w>
+  Shortcut 'Next tab'
+    \ map <c-Tab> gt
+  Shortcut 'Previous tab'
+    \ map <c-s-Tab> gT
+
+  Shortcut 'Find file'
+    \ map <leader>. :Files <c-r>=FindRootDirectory()<cr>/<cr>
+
+  Shortcut 'Find file from here'
+    \ map <leader>f/ :Files <c-r>=expand('%:p:h')<cr>/<cr>
+  Shortcut 'Find file from here'
+    \ map <leader>ff :Files <c-r>=expand('%:p:h')<cr>/<cr>
+  Shortcut 'Find file'
+    \ map <leader>f. :Files <c-r>=FindRootDirectory()<cr><cr>
+  Shortcut 'Delete this file'
+    \ map <leader>fX :Remove<cr>
+  Shortcut 'Move file'
+    \ map <leader>fm :Move <c-r>=expand('%:p')<cr>
+  Shortcut 'Open project editorconfig'
+    \ map <leader>fc :e <c-r>=FindRootDirectory()<cr>/.editorconfig<cr>
+  Shortcut 'Recent files'
+    \ map <leader>fr :History<cr>
+  Shortcut 'Find file in private configuration'
+    \ map <leader>fp :Files <c-r>=expand('$HOME')<cr>/.vim/<cr>
+  Shortcut 'Yank filename'
+    \ map <leader>fy :let @+ = expand('%:p')<cr>
+  map <leader>f<esc> <Nop>
+
+  Shortcut 'Find file in project'
+    \ map <leader>p/ :GFiles <c-r>=FindRootDirectory()<cr><cr>
+  map <leader>p<esc> <Nop>
+
+  Shortcut 'Find file in project'
+    \ map <leader><leader> :GFiles <c-r>=FindRootDirectory()<cr><cr>
+
+  Shortcut 'Search for symbol in project'
+    \ map <leader>* :Ack! -- <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><cr>
+  Shortcut 'Search project'
+    \ map <leader>/p :Ack! -- <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><c-b><s-right><s-right><s-right>
+  Shortcut 'Search current directory'
+    \ map <leader>/d :Ack! -- <c-r>=expand("<cword>")<cr> %:h<c-b><s-right><s-right><s-right>
+  Shortcut 'Search buffer'
+    \ map <leader>/b :Ack! -- <c-r>=expand("<cword>")<cr> %<c-b><s-right><s-right><s-right>
+  Shortcut 'Search symbol'
+    \ map <leader>/i :Ctags <c-r>=expand("<cword>")<cr>
+  Shortcut 'Search git commits'
+    \ map <leader>/g :Gclog! -S<c-r>=expand("<cword>")<cr> -- \| copen<s-left><s-left><s-left><left>
+  Shortcut 'Search git file commits'
+    \ map <leader>/G :0Gclog! -S<c-r>=expand("<cword>")<cr> -- \| copen<s-left><s-left><s-left><left>
+  Shortcut 'Quicklist replace'
+    \ map <leader>/: :cdo s/\(\<<c-r>=expand("<cword>")<cr>\>\)//g \| update<s-left><s-left><left><left><left>
+  map <leader>/<esc> <Nop>
+
+  Shortcut 'Git status'
+    \ map <leader>gg :aboveleft Git<cr>
+  Shortcut 'Git blame'
+    \ map <leader>gB :Git blame<cr>
+  Shortcut 'List git commits'
+    \ map <leader>gl :Commits<cr>
+  Shortcut 'List git file commits'
+    \ map <leader>gL :BCommits<cr>
+  Shortcut 'Git stage file'
+    \ map <leader>gS :Git add %<cr>
+  Shortcut 'Git unstage file'
+    \ map <leader>gU :Git reset HEAD %<cr>
+  Shortcut 'Git revert file'
+    \ map <leader>gR :Git chekout -- %<cr>
+  Shortcut 'Git fetch'
+    \ map <leader>gF :Git fetch<cr>
+  Shortcut 'Git remove file'
+    \ map <leader>gx :Gremove %<cr>
+  map <leader>g<esc> <Nop>
+
+  Shortcut 'List commands'
+    \ map <leader>hf :Helptags<cr>
+  Shortcut 'Vim info'
+    \ map <leader>hi :help<cr>
+  map <leader>h<esc> <Nop>
+
+  nmap <esc> :noh<cr>
+  map <down> gj
+  map <up> gk
+  imap <down> <c-o>gj
+  imap <up> <c-o>gk
+
+  imap <c-s-v> <c-r>+
+  tmap <c-s-v> <c-w>"+
+  cmap <c-s-v> <c-r>+
+  tmap <s-insert> <c-w>"*
+  cmap <c-g> <c-[>
+
+  map f <Plug>Sneak_f
+  map F <Plug>Sneak_F
+  map t <Plug>Sneak_t
+  map T <Plug>Sneak_T
+
+  map <c-]> :Tag <c-r>=expand("<cword>")<cr><cr>
+
+  nmap <X1Mouse> <c-o>
+  nmap <X2Mouse> <c-i>
+  nmap <c-LeftDrag> <LeftMouse><c-v>
+  vmap <c-LeftDrag> <RightDrag>
+
+  tmap <c-Tab> <c-w>gt
+  tmap <c-s-Tab> <c-w>gT
+endfunction
+
+augroup workspace
+  autocmd!
+  autocmd BufWinEnter * WorkspaceAttachBuffer 
+  autocmd BufDelete * WorkspaceDetachBuffer expand('<abuf>') 
+augroup END
+
+augroup shortcuts
+  autocmd!
+  autocmd VimEnter * call VimrcShortcuts()
+augroup END
+
+"--------------------------------------------------------------------------------------------------
+
+function! HumanSize(bytes) abort
+  let l:bytes = a:bytes
+  if l:bytes < 0
+    return '-'
+  endif
+  let l:sizes = ['B', 'KiB', 'MiB', 'GiB']
+  let l:i = 0
+  while l:bytes >= 1024
+    let l:bytes = l:bytes / 1024.0
+    let l:i += 1
+  endwhile
+  return printf('%.1f%s', l:bytes, l:sizes[l:i])
+endfunction
+
+function! CreateStatuslineColorLabel(label) abort
+  let l:win = winnr()
+  let l:label = ''
+  let l:label .= '%9*%{winnr()!=' . l:win . '?" ".' . a:label . '." ":""}'
+  let l:label .= '%3*%{winnr()==' . l:win . '&&mode()=~"^[n]"?" ".' . a:label . '." ":""}'
+  let l:label .= '%1*%{winnr()==' . l:win . '&&mode()=~"^[it]"?" ".' . a:label . '." ":""}'
+  let l:label .= '%2*%{winnr()==' . l:win . '&&mode()=~"^[r!]"?" ".' . a:label . '." ":""}'
+  let l:label .= '%4*%{winnr()==' . l:win . '&&mode()=~"^[vc]"?" ".' . a:label . '." ":""}'
+  return l:label
+endfunction
+
+function! GetBufferLabel() abort
+  let l:label = expand('%:t')
+  if l:label == ''
+    let l:label = &buftype
+  endif
+  if l:label == ''
+    let l:label = bufnr('%')
+  endif
+  return l:label
+endfunction
+
+function! CreateStatusline() abort
+  let l:statusline = ''
+  let l:statusline .= CreateStatuslineColorLabel('" ".GetBufferLabel().(&modified?"+":"")')
+  let l:statusline .= '%0* %Y '
+  let l:statusline .= '%<%{exists("w:quickfix_title")?w:quickfix_title:expand("%:p")} '
+  let l:statusline .= '%= '
+  let l:statusline .= '%{&fileencoding ? &fileencoding : &encoding} | '
+  let l:statusline .= '%{&fileformat} | '
+  let l:statusline .= '%{HumanSize(getfsize(expand("%:p")))} | '
+  let l:statusline .= '%p%% '
+  let l:statusline .= CreateStatuslineColorLabel('line(".").":".col(".")')
+  return l:statusline
+endfunction
+
+set laststatus=2
+set statusline=%!CreateStatusline()
+" set guitablabel=%{FindRootDirectory()!=''?fnamemodify(FindRootDirectory(),':p:h:t').'/':expand('%:t')}
+
+augroup fzf
+  autocmd!
+  autocmd FileType fzf set laststatus=0 noshowmode noruler
+    \ | autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+augroup END
+
+"--------------------------------------------------------------------------------------------------
+
+set updatetime=750
+
+function! HighlightWordUnderCursor()
+  exec '2match' 'VisualNOS' '/\<'.expand('<cword>').'\>/'
+endfunction
+
+function! ClearWordHighlight()
+  2match none
+endfunction
+
+augroup highlight
+  autocmd!
+  autocmd CursorHold,CursorHoldI * silent! call HighlightWordUnderCursor()
+  autocmd  CursorMoved,CursorMovedI,WinLeave * silent! call ClearWordHighlight()
+augroup END
+
+"--------------------------------------------------------------------------------------------------
+
+filetype plugin indent on
+
+set guicursor=n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor
+
+if exists("g:neovide")
+  set guifont=Liberation\ Mono:h11
+  set linespace=1
+  let vim_markdown_preview_browser='Firefox'
+
+  let g:neovide_text_gamma = 0.0
+  let g:neovide_text_contrast = 0.75
+  let g:neovide_scale_factor = 1.0
+  let g:neovide_cursor_animation_length = 0
+  let g:neovide_scroll_animation_length = 0
+
+  set lines=44 columns=120
+  let &background='light'
+
+  function! FontSizePlus ()
+    let g:neovide_scale_factor += 0.05
+  endfunction
+
+  function! FontSizeMinus ()
+    let g:neovide_scale_factor -= 0.05
+  endfunction
+
+  nmap <c-ScrollWheelUp> :call FontSizePlus()<cr>
+  nmap <c-ScrollWheelDown> :call FontSizeMinus()<cr>
+
+  nmap <c-s-t> :tabe \| lcd <c-r>=FindRootDirectory()<cr> \| terminal ++curwin<cr>
+  nmap <c-t> :tabe<cr>
+  nmap <c-s-PageUp> <c-w>gT
+  nmap <c-s-PageDown> <c-w>gt
+
+  nmap <M-1> 1gt
+  nmap <M-2> 2gt
+  nmap <M-3> 3gt
+  nmap <M-4> 4gt
+  nmap <M-5> 5gt
+  nmap <M-6> 6gt
+  nmap <M-7> 7gt
+  nmap <M-8> 8gt
+  nmap <M-9> 9gt
+endif
