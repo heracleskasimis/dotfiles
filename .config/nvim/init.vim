@@ -2,19 +2,64 @@ set nobackup
 set noswapfile
 
 set title
-
+set ignorecase
+set smartcase
 set clipboard=unnamedplus
-
 set nonumber relativenumber
+set tagcase=match
 
 let &background=empty($BACKGROUND) ? 'light' : $BACKGROUND
 set t_Co=256
 colorscheme cyan
 
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
+set autoindent nocindent nosmartindent inde=-1
+
 "--------------------------------------------------------------------------------------------------
 
 let g:no_plugin_maps = 1
-filetype off
+
+call plug#begin()
+Plug 'justinmk/vim-sneak'
+Plug 'w0rp/ale'
+Plug 'scrooloose/nerdtree'
+Plug 'sbl/scvim'
+Plug 'tpope/vim-fugitive'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'fidian/hexmode'
+Plug 'tpope/vim-vinegar'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'gerw/vim-HiLinkTrace'
+Plug 'mileszs/ack.vim'
+Plug 'airblade/vim-rooter'
+Plug 'ludovicchabant/vim-gutentags'
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
+Plug 'tpope/vim-dadbod'
+Plug 'mtth/scratch.vim'
+Plug 'junegunn/fzf.vim'
+Plug 'tpope/vim-eunuch'
+Plug 'sunaku/vim-shortcut'
+Plug 'tpope/vim-dotenv'
+Plug 'junegunn/vim-peekaboo'
+Plug 'jamessan/vim-gnupg'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'olimorris/codecompanion.nvim'
+call plug#end()
+
+lua << EOF
+require("codecompanion").setup({
+  adapters = {
+    anthropic = function() return require("codecompanion.adapters").extend("anthropic", { env = { api_key = "cmd:cat ~/.config/genai.keys | grep ANTHROPIC | cut -d= -f2" } }) end,
+    gemini = function() return require("codecompanion.adapters").extend("gemini", { env = { api_key = "cmd:cat ~/.config/genai.keys | grep GEMINI | cut -d= -f2" } }) end,
+    copilot = function() return require("codecompanion.adapters").extend("copilot", { env = { api_key = "cmd:cat ~/.config/genai.keys | grep COPILOT | cut -d= -f2" } }) end,
+  },
+})
+require'nvim-treesitter.configs'.setup({
+  highlight = { enable = true },
+  indent = { enable = true },
+})
+EOF
 
 if executable('ag')
   let $FZF_DEFAULT_COMMAND = 'ag --vimgrep --hidden --skip-vcs-ignores --ignore .git -g ""'
@@ -64,49 +109,7 @@ let g:ale_sql_sqlfluff_options = '--dialect postgres'
 let g:ale_python_flake8_options = '--config ~/.config/flake8'
 let g:ale_virtualtext_cursor = 'disabled'
 
-call plug#begin()
-Plug 'justinmk/vim-sneak'
-Plug 'w0rp/ale'
-Plug 'pangloss/vim-javascript'
-Plug 'Glench/Vim-Jinja2-Syntax'
-Plug 'scrooloose/nerdtree'
-Plug 'sbl/scvim'
-Plug 'digitaltoad/vim-jade'
-Plug 'plasticboy/vim-markdown'
-Plug 'mxw/vim-jsx'
-Plug 'tpope/vim-fugitive'
-Plug 'elzr/vim-json'
-Plug 'vim-scripts/javacomplete'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'fidian/hexmode'
-Plug 'tpope/vim-vinegar'
-Plug 'groenewege/vim-less'
-Plug 'fatih/vim-go'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'Chiel92/vim-autoformat'
-Plug 'gerw/vim-HiLinkTrace'
-Plug 'tfnico/vim-gradle'
-Plug 'prettier/vim-prettier'
-Plug 'tpope/vim-dispatch'
-Plug 'tpope/vim-speeddating'
-Plug 'vim-scripts/SyntaxRange'
-Plug 'jceb/vim-orgmode'
-Plug 'mileszs/ack.vim'
-Plug 'airblade/vim-rooter'
-Plug 'ludovicchabant/vim-gutentags'
-Plug 'vim-scripts/indentpython.vim'
-Plug 'nvie/vim-flake8'
-Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
-Plug 'psf/black', { 'branch': 'main' }
-Plug 'tpope/vim-dadbod'
-Plug 'mtth/scratch.vim'
-Plug 'junegunn/fzf.vim'
-Plug 'tpope/vim-eunuch'
-Plug 'sunaku/vim-shortcut'
-Plug 'tpope/vim-dotenv'
-Plug 'junegunn/vim-peekaboo'
-Plug 'jamessan/vim-gnupg'
-call plug#end()
+" filetype plugin indent on
 
 "--------------------------------------------------------------------------------------------------
 
@@ -364,6 +367,8 @@ function! VimrcShortcuts()
   tmap <c-s-v> <c-w>"+
   cmap <c-s-v> <c-r>+
   tmap <s-insert> <c-w>"*
+  imap <s-insert> <c-r>*
+  cmap <s-insert> <c-r>*
   cmap <c-g> <c-[>
 
   map f <Plug>Sneak_f
@@ -391,6 +396,35 @@ augroup END
 augroup shortcuts
   autocmd!
   autocmd VimEnter * call VimrcShortcuts()
+augroup END
+
+augroup termesc
+  autocmd!
+  autocmd TermOpen * silent tmap <buffer> <esc><esc> <c-\><c-n>
+  autocmd TermOpen * silent tmap <buffer> <c-[><c-[> <c-\><c-n>
+  autocmd TermOpen * silent tmap <buffer> <c-h> <c-w>h
+  autocmd TermOpen * silent tmap <buffer> <c-j> <c-w>j
+  autocmd TermOpen * silent tmap <buffer> <c-k> <c-w>k
+  autocmd TermOpen * silent tmap <buffer> <c-l> <c-w>l
+  autocmd TermOpen * silent tmap <buffer> <c-s-f> <c-\><c-n>/
+  autocmd TermOpen * silent tmap <buffer> <ScrollWheelUp> <c-\><c-n><ScrollWheelUp>
+  autocmd TermOpen * silent tmap <buffer> <ScrollWheelDown> <c-\><c-n><ScrollWheelDown>
+  autocmd TermOpen * silent tmap <buffer> <LeftMouse> <c-\><c-n><LeftMouse>
+  autocmd TermOpen * silent tmap <buffer> <c-LeftMouse> <c-\><c-n><c-LeftMouse>
+  autocmd TermOpen * silent tmap <buffer> <RightMouse> <c-\><c-n><RightMouse>
+  autocmd TermOpen * silent nmap <buffer> <MiddleMouse> i<MiddleMouse>
+  autocmd TermOpen * silent vmap <buffer> <MiddleMouse> <esc>i<MiddleMouse>
+  autocmd FileType fzf silent tunmap <buffer> <esc><esc>
+  autocmd FileType fzf silent tunmap <buffer> <c-[><c-[>
+  autocmd FileType fzf silent tunmap <buffer> <c-h>
+  autocmd FileType fzf silent tunmap <buffer> <c-j>
+  autocmd FileType fzf silent tunmap <buffer> <c-k>
+  autocmd FileType fzf silent tunmap <buffer> <c-l>
+  autocmd FileType fzf silent tunmap <buffer> <ScrollWheelUp>
+  autocmd FileType fzf silent tunmap <buffer> <ScrollWheelDown>
+  autocmd FileType fzf silent tunmap <buffer> <LeftMouse>
+  autocmd FileType fzf silent tunmap <buffer> <c-LeftMouse>
+  autocmd FileType fzf silent tunmap <buffer> <RightMouse>
 augroup END
 
 "--------------------------------------------------------------------------------------------------
@@ -475,8 +509,6 @@ augroup END
 
 "--------------------------------------------------------------------------------------------------
 
-filetype plugin indent on
-
 set guicursor=n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor
 
 if exists("g:neovide")
@@ -490,7 +522,7 @@ if exists("g:neovide")
   let g:neovide_cursor_animation_length = 0
   let g:neovide_scroll_animation_length = 0
 
-  set lines=44 columns=120
+  " set lines=44 columns=120
   let &background='light'
 
   function! FontSizePlus ()
@@ -504,7 +536,7 @@ if exists("g:neovide")
   nmap <c-ScrollWheelUp> :call FontSizePlus()<cr>
   nmap <c-ScrollWheelDown> :call FontSizeMinus()<cr>
 
-  nmap <c-s-t> :tabe \| lcd <c-r>=FindRootDirectory()<cr> \| terminal ++curwin<cr>
+  nmap <c-s-t> :tabe \| lcd <c-r>=FindRootDirectory()<cr> \| terminal<cr>
   nmap <c-t> :tabe<cr>
   nmap <c-s-PageUp> <c-w>gT
   nmap <c-s-PageDown> <c-w>gt
