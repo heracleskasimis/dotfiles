@@ -15,6 +15,10 @@ colorscheme cyan
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set autoindent nocindent nosmartindent inde=-1
 
+lua << EOF
+vim.diagnostic.config { underline = false }
+EOF
+
 "--------------------------------------------------------------------------------------------------
 
 let g:no_plugin_maps = 1
@@ -48,16 +52,16 @@ Plug 'olimorris/codecompanion.nvim'
 call plug#end()
 
 lua << EOF
-require("codecompanion").setup({
+require('codecompanion').setup({
   adapters = {
-    anthropic = function() return require("codecompanion.adapters").extend("anthropic", { env = { api_key = "cmd:cat ~/.config/genai.keys | grep ANTHROPIC | cut -d= -f2" } }) end,
-    gemini = function() return require("codecompanion.adapters").extend("gemini", { env = { api_key = "cmd:cat ~/.config/genai.keys | grep GEMINI | cut -d= -f2" } }) end,
-    copilot = function() return require("codecompanion.adapters").extend("copilot", { env = { api_key = "cmd:cat ~/.config/genai.keys | grep COPILOT | cut -d= -f2" } }) end,
+    anthropic = function() return require('codecompanion.adapters').extend('anthropic', { env = { api_key = 'cmd:cat ~/.config/genai.keys | grep ANTHROPIC | cut -d= -f2' } }) end,
+    gemini = function() return require('codecompanion.adapters').extend('gemini', { env = { api_key = 'cmd:cat ~/.config/genai.keys | grep GEMINI | cut -d= -f2' } }) end,
+    copilot = function() return require('codecompanion.adapters').extend('copilot', { env = { api_key = 'cmd:cat ~/.config/genai.keys | grep COPILOT | cut -d= -f2' } }) end,
   },
 })
 require'nvim-treesitter.configs'.setup({
   highlight = { enable = true },
-  indent = { enable = true },
+  indent = { enable = false },
 })
 EOF
 
@@ -67,7 +71,7 @@ if executable('ag')
 endif
 let $FZF_DEFAULT_OPTS='--color=16,bg+:255,fg+:232,gutter:-1,hl:44,pointer:44,info:44,header:44,border:15 --border=none'
 let g:fzf_layout = { 'down': '40%' }
-let g:ack_qhandler = "copen 10"
+let g:ack_qhandler = 'copen 10'
 let g:jsx_ext_required = 0
 let g:vim_markdown_folding_disabled = 1
 let g:vim_json_syntax_conceal = 0
@@ -76,8 +80,8 @@ let g:NERDTreeAutoCenter = 0
 let g:NERDTreeHighlightCursorline = 0
 let g:NERDTreeStatusline = -1
 let g:NERDTreeWinSize = 48
-let g:formatprg_args_c = "--style=java"
-let g:formatprg_args_cpp = "--style=java"
+let g:formatprg_args_c = '--style=java'
+let g:formatprg_args_cpp = '--style=java'
 let g:formatprg_args_expr_javascript = '"-a -f - -".(&expandtab ? "s ".&shiftwidth : "t").(&textwidth ? " -w ".&textwidth : "")'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 let g:rooter_manual_only = 1
@@ -481,7 +485,6 @@ endfunction
 
 set laststatus=2
 set statusline=%!CreateStatusline()
-" set guitablabel=%{FindRootDirectory()!=''?fnamemodify(FindRootDirectory(),':p:h:t').'/':expand('%:t')}
 
 augroup fzf
   autocmd!
@@ -511,7 +514,7 @@ augroup END
 
 set guicursor=n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor
 
-if exists("g:neovide")
+if exists('g:neovide')
   set guifont=Liberation\ Mono:h11
   set linespace=1
   let vim_markdown_preview_browser='Firefox'
@@ -522,7 +525,6 @@ if exists("g:neovide")
   let g:neovide_cursor_animation_length = 0
   let g:neovide_scroll_animation_length = 0
 
-  " set lines=44 columns=120
   let &background='light'
 
   function! FontSizePlus ()
