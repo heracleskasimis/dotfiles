@@ -504,6 +504,8 @@ augroup END
 
 "--------------------------------------------------------------------------------------------------
 
+set guicursor=n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor
+
 if exists('g:neovide')
   set guifont=Liberation\ Mono:h11
   set linespace=1
