@@ -19,6 +19,8 @@ lua << EOF
 vim.diagnostic.config { underline = false }
 EOF
 
+set wildignore=*.class,*.o,*.meta,*.dll,*.pdb,*.exe,*.asset,*.unity,*.prefab,*.min.js,*.min.css,tags,node_modules,venv,bin,obj,build,dist
+
 "--------------------------------------------------------------------------------------------------
 
 let g:no_plugin_maps = 1
@@ -113,8 +115,6 @@ let g:ale_sql_sqlfluff_options = '--dialect postgres'
 let g:ale_python_flake8_options = '--config ~/.config/flake8'
 let g:ale_virtualtext_cursor = 'disabled'
 
-" filetype plugin indent on
-
 "--------------------------------------------------------------------------------------------------
 
 function! s:mod(n,m)
@@ -132,7 +132,7 @@ function! s:GetWorkspaceBuffers(...)
 endfunction
 
 function! s:PreviousEditedWorkspaceBuffer()
-  let buffers = filter(s:GetWorkspaceBuffers(1), {v -> v:val != bufnr() && bufname(v:val) !~ '^!' && bufname(v:val) != 'Claude Chat' && getbufvar(v:val, '&filetype') != 'fugitive'})
+  let buffers = filter(s:GetWorkspaceBuffers(1), {v -> v:val != bufnr() && bufname(v:val) !~ '^!' && bufname(v:val) !~ 'term://' && getbufvar(v:val, '&filetype') != 'fugitive'})
   if len(buffers) > 0
     execute ':buffer ' .  buffers[0]
   endif
@@ -368,9 +368,9 @@ function! VimrcShortcuts()
   imap <up> <c-o>gk
 
   imap <c-s-v> <c-r>+
-  tmap <c-s-v> <c-w>"+
+  tmap <c-s-v> <c-\><c-n>"+pi
   cmap <c-s-v> <c-r>+
-  tmap <s-insert> <c-w>"*
+  tmap <s-insert> <c-\><c-n>"*pi
   imap <s-insert> <c-r>*
   cmap <s-insert> <c-r>*
   cmap <c-g> <c-[>
@@ -386,9 +386,10 @@ function! VimrcShortcuts()
   nmap <X2Mouse> <c-i>
   nmap <c-LeftDrag> <LeftMouse><c-v>
   vmap <c-LeftDrag> <RightDrag>
+  vmap <LeftRelease> "*ygv
 
-  tmap <c-Tab> <c-w>gt
-  tmap <c-s-Tab> <c-w>gT
+  tmap <c-Tab> <c-\><c-n>gt
+  tmap <c-s-Tab> <c-\><c-n>gT
 endfunction
 
 augroup workspace
@@ -406,29 +407,20 @@ augroup termesc
   autocmd!
   autocmd TermOpen * silent tmap <buffer> <esc><esc> <c-\><c-n>
   autocmd TermOpen * silent tmap <buffer> <c-[><c-[> <c-\><c-n>
-  autocmd TermOpen * silent tmap <buffer> <c-h> <c-w>h
-  autocmd TermOpen * silent tmap <buffer> <c-j> <c-w>j
-  autocmd TermOpen * silent tmap <buffer> <c-k> <c-w>k
-  autocmd TermOpen * silent tmap <buffer> <c-l> <c-w>l
+  autocmd TermOpen * silent tmap <buffer> <c-h> <c-\><c-n><c-w>h
+  autocmd TermOpen * silent tmap <buffer> <c-j> <c-\><c-n><c-w>j
+  autocmd TermOpen * silent tmap <buffer> <c-k> <c-\><c-n><c-w>k
+  autocmd TermOpen * silent tmap <buffer> <c-l> <c-\><c-n><c-w>l
   autocmd TermOpen * silent tmap <buffer> <c-s-f> <c-\><c-n>/
-  autocmd TermOpen * silent tmap <buffer> <ScrollWheelUp> <c-\><c-n><ScrollWheelUp>
-  autocmd TermOpen * silent tmap <buffer> <ScrollWheelDown> <c-\><c-n><ScrollWheelDown>
-  autocmd TermOpen * silent tmap <buffer> <LeftMouse> <c-\><c-n><LeftMouse>
-  autocmd TermOpen * silent tmap <buffer> <c-LeftMouse> <c-\><c-n><c-LeftMouse>
-  autocmd TermOpen * silent tmap <buffer> <RightMouse> <c-\><c-n><RightMouse>
-  autocmd TermOpen * silent nmap <buffer> <MiddleMouse> i<MiddleMouse>
-  autocmd TermOpen * silent vmap <buffer> <MiddleMouse> <esc>i<MiddleMouse>
+  autocmd TermOpen * silent nnoremap <buffer> <bs> <bs>
+  autocmd TermOpen * silent nnoremap <buffer> <MiddleMouse> "*pi
+  autocmd TermOpen * silent vnoremap <buffer> <MiddleMouse> <esc>"*pi
   autocmd FileType fzf silent tunmap <buffer> <esc><esc>
   autocmd FileType fzf silent tunmap <buffer> <c-[><c-[>
   autocmd FileType fzf silent tunmap <buffer> <c-h>
   autocmd FileType fzf silent tunmap <buffer> <c-j>
   autocmd FileType fzf silent tunmap <buffer> <c-k>
   autocmd FileType fzf silent tunmap <buffer> <c-l>
-  autocmd FileType fzf silent tunmap <buffer> <ScrollWheelUp>
-  autocmd FileType fzf silent tunmap <buffer> <ScrollWheelDown>
-  autocmd FileType fzf silent tunmap <buffer> <LeftMouse>
-  autocmd FileType fzf silent tunmap <buffer> <c-LeftMouse>
-  autocmd FileType fzf silent tunmap <buffer> <RightMouse>
 augroup END
 
 "--------------------------------------------------------------------------------------------------
@@ -512,8 +504,6 @@ augroup END
 
 "--------------------------------------------------------------------------------------------------
 
-set guicursor=n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor
-
 if exists('g:neovide')
   set guifont=Liberation\ Mono:h11
   set linespace=1
@@ -524,6 +514,7 @@ if exists('g:neovide')
   let g:neovide_scale_factor = 1.0
   let g:neovide_cursor_animation_length = 0
   let g:neovide_scroll_animation_length = 0
+  let g:neovide_position_animation_length = 0
 
   let &background='light'
 
