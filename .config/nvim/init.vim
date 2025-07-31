@@ -405,6 +405,7 @@ augroup END
 
 augroup termesc
   autocmd!
+  autocmd TermOpen * startinsert
   autocmd TermOpen * silent tmap <buffer> <esc><esc> <c-\><c-n>
   autocmd TermOpen * silent tmap <buffer> <c-[><c-[> <c-\><c-n>
   autocmd TermOpen * silent tmap <buffer> <c-h> <c-\><c-n><c-w>h
