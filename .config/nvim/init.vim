@@ -8,12 +8,11 @@ set clipboard=unnamedplus
 set nonumber relativenumber
 set tagcase=match
 
-let &background=empty($BACKGROUND) ? 'light' : $BACKGROUND
 set t_Co=256
 colorscheme cyan
 
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-set autoindent nocindent nosmartindent inde=-1
+set autoindent nocindent nosmartindent inde=-1 breakindent
 
 lua << EOF
 vim.diagnostic.config { underline = false }
@@ -60,6 +59,14 @@ require('codecompanion').setup({
     gemini = function() return require('codecompanion.adapters').extend('gemini', { env = { api_key = 'cmd:cat ~/.config/genai.keys | grep GEMINI | cut -d= -f2' } }) end,
     copilot = function() return require('codecompanion.adapters').extend('copilot', { env = { api_key = 'cmd:cat ~/.config/genai.keys | grep COPILOT | cut -d= -f2' } }) end,
   },
+  display = {
+    chat = {
+      window = {
+        width = 0.333,
+        position = 'right'
+      }
+    }
+  }
 })
 require'nvim-treesitter.configs'.setup({
   highlight = { enable = true },
@@ -71,7 +78,7 @@ if executable('ag')
   let $FZF_DEFAULT_COMMAND = 'ag --vimgrep --hidden --skip-vcs-ignores --ignore .git -g ""'
   let g:ackprg = 'ag --vimgrep --hidden --ignore .git'
 endif
-let $FZF_DEFAULT_OPTS='--color=16,bg+:255,fg+:232,gutter:-1,hl:44,pointer:44,info:44,header:44,border:15 --border=none'
+let $FZF_DEFAULT_OPTS='--style minimal --color=16,bg+:255,fg+:232,gutter:-1,hl:44,pointer:44,info:44,header:44,border:15 --border=none'
 let g:fzf_layout = { 'down': '40%' }
 let g:ack_qhandler = 'copen 10'
 let g:jsx_ext_required = 0
@@ -81,7 +88,7 @@ let g:NERDTreeHijackNetrw = 0
 let g:NERDTreeAutoCenter = 0
 let g:NERDTreeHighlightCursorline = 0
 let g:NERDTreeStatusline = -1
-let g:NERDTreeWinSize = 48
+let g:NERDTreeWinSize = 40
 let g:formatprg_args_c = '--style=java'
 let g:formatprg_args_cpp = '--style=java'
 let g:formatprg_args_expr_javascript = '"-a -f - -".(&expandtab ? "s ".&shiftwidth : "t").(&textwidth ? " -w ".&textwidth : "")'
@@ -101,6 +108,7 @@ let g:ale_fixers = {
   \ 'javascript.jsx': ['eslint'],
   \ 'typescript': ['eslint'],
   \ 'typescriptreact': ['eslint'],
+  \ 'javascriptreact': ['eslint'],
   \ 'python': ['isort', 'autopep8', 'black'],
   \ 'sql': ['sqlfluff']
   \ }
@@ -481,13 +489,25 @@ set statusline=%!CreateStatusline()
 
 augroup fzf
   autocmd!
-  autocmd FileType fzf set laststatus=0 noshowmode noruler
-    \ | autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+  autocmd User FzfStatusLine :
+augroup END
+
+augroup chdir
+  autocmd!
+  autocmd BufEnter * if &ft !~ '^nerdtree$' | silent! lcd %:p:h | endif
 augroup END
 
 "--------------------------------------------------------------------------------------------------
 
 set updatetime=750
+
+function! HighlightBackground()
+  if &ft =~ '^nerdtree$'
+    setlocal winhighlight=Normal:Unfocused
+  else
+    setlocal winhighlight=Normal:Normal
+  endif
+endfunction
 
 function! HighlightWordUnderCursor()
   exec '2match' 'VisualNOS' '/\<'.expand('<cword>').'\>/'
@@ -500,33 +520,33 @@ endfunction
 augroup highlight
   autocmd!
   autocmd CursorHold,CursorHoldI * silent! call HighlightWordUnderCursor()
-  autocmd  CursorMoved,CursorMovedI,WinLeave * silent! call ClearWordHighlight()
+  autocmd CursorMoved,CursorMovedI,WinLeave * silent! call ClearWordHighlight()
+  autocmd TermOpen,BufWinEnter * silent! call HighlightBackground()
+augroup END
+
+augroup quickfix
+  autocmd!
+  autocmd Filetype qf setlocal statusline=%!CreateStatusline()
 augroup END
 
 "--------------------------------------------------------------------------------------------------
 
 set guicursor=n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor
+set guifont=Liberation\ Mono:h11
+set linespace=1
+let vim_markdown_preview_browser='Firefox'
 
-if exists('g:neovide')
-  set guifont=Liberation\ Mono:h11
-  set linespace=1
-  let vim_markdown_preview_browser='Firefox'
-
-  let g:neovide_text_gamma = 0.0
-  let g:neovide_text_contrast = 0.75
-  let g:neovide_scale_factor = 1.0
-  let g:neovide_cursor_animation_length = 0
-  let g:neovide_scroll_animation_length = 0
-  let g:neovide_position_animation_length = 0
-
+if has('gui_running')
   let &background='light'
 
   function! FontSizePlus ()
-    let g:neovide_scale_factor += 0.05
+    let l:font_size = matchstr(&guifont, '\d\+$')
+    let &guifont = substitute(&guifont, '\d\+$', l:font_size + 1, '')
   endfunction
 
   function! FontSizeMinus ()
-    let g:neovide_scale_factor -= 0.05
+    let l:font_size = matchstr(&guifont, '\d\+$')
+    let &guifont = substitute(&guifont, '\d\+$', l:font_size - 1, '')
   endfunction
 
   nmap <c-ScrollWheelUp> :call FontSizePlus()<cr>
@@ -546,4 +566,15 @@ if exists('g:neovide')
   nmap <M-7> 7gt
   nmap <M-8> 8gt
   nmap <M-9> 9gt
+endif
+
+if exists('g:neovide')
+  let g:neovide_remember_window_size = v:true
+  let g:neovide_text_gamma = 0.0
+  let g:neovide_text_contrast = 0.75
+  let g:neovide_scale_factor = 1.0
+  let g:neovide_floating_shadow = v:false
+  let g:neovide_cursor_animation_length = 0
+  let g:neovide_scroll_animation_length = 0
+  let g:neovide_position_animation_length = 0
 endif
