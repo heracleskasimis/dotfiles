@@ -14,6 +14,8 @@ colorscheme cyan
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set autoindent nocindent nosmartindent inde=-1 breakindent
 
+set fillchars+=vert:▎
+
 lua << EOF
 vim.diagnostic.config { underline = false }
 EOF

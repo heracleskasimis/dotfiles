@@ -23,11 +23,11 @@ hi CurSearch                cterm=NONE              ctermfg=NONE        ctermbg=
 hi MoreMsg                  cterm=bold              ctermfg=NONE                            gui=bold                guifg=NONE
 hi ModeMsg                  cterm=bold              ctermfg=NONE                            gui=bold                guifg=NONE
 hi Question                 cterm=standout          ctermfg=NONE                            gui=standout            guifg=NONE
-hi StatusLine               cterm=bold              ctermfg=NONE        ctermbg=255         gui=bold                guifg=#000000       guibg=#f6f6f6
-hi StatusLineNC             cterm=bold              ctermfg=NONE        ctermbg=255         gui=bold                guifg=#000000       guibg=#f6f6f6
-hi StatusLineTerm           cterm=bold              ctermfg=NONE        ctermbg=255         gui=bold                guifg=#000000       guibg=#f6f6f6
-hi StatusLineTermNC         cterm=bold              ctermfg=NONE        ctermbg=255         gui=bold                guifg=#000000       guibg=#f6f6f6
-hi VertSplit                cterm=NONE              ctermfg=231         ctermbg=231         gui=NONE                guifg=#ffffff       guibg=#ffffff
+hi StatusLine               cterm=bold              ctermfg=NONE        ctermbg=255         gui=bold                guifg=#000000       guibg=#f2f2f2
+hi StatusLineNC             cterm=bold              ctermfg=NONE        ctermbg=255         gui=bold                guifg=#000000       guibg=#f2f2f2
+hi StatusLineTerm           cterm=bold              ctermfg=NONE        ctermbg=255         gui=bold                guifg=#000000       guibg=#f2f2f2
+hi StatusLineTermNC         cterm=bold              ctermfg=NONE        ctermbg=255         gui=bold                guifg=#000000       guibg=#f2f2f2
+hi VertSplit                cterm=NONE              ctermfg=255         ctermbg=231         gui=NONE                guifg=#f8f8f8       guibg=#ffffff
 hi SignColumn               cterm=NONE              ctermfg=30          ctermbg=NONE        gui=bold                guifg=#008888       guibg=NONE
 hi Title                    cterm=bold              ctermfg=NONE                            gui=bold                guifg=NONE
 hi Visual                   cterm=NONE              ctermfg=NONE        ctermbg=123         gui=NONE                guifg=NONE          guibg=#b0ffff
@@ -116,7 +116,7 @@ if &background == 'dark'
     hi StatusLineTerm       cterm=bold              ctermfg=7           ctermbg=235         gui=bold                guifg=#dcdcdc       guibg=#202020
     hi StatusLineTermNC     cterm=NONE              ctermfg=7           ctermbg=234         gui=NONE                guifg=#cccccc       guibg=#202020
     hi Ignore               cterm=bold              ctermfg=7                               gui=bold                guifg=#aaaaaa
-    hi VertSplit            cterm=NONE              ctermfg=232         ctermbg=232         gui=NONE                guifg=#000000       guibg=#000000
+    hi VertSplit            cterm=NONE              ctermfg=234         ctermbg=232         gui=NONE                guifg=#202020       guibg=#000000
     hi TabLineFill          cterm=NONE              ctermfg=7           ctermbg=0           gui=NONE                guifg=#aaaaaa       guibg=#282828
     hi TabLine              cterm=bold,italic       ctermfg=7           ctermbg=0           gui=bold,italic         guifg=#aaaaaa       guibg=#282828
     hi TabLineSel           cterm=bold              ctermfg=7           ctermbg=0           gui=bold                guifg=#aaaaaa       guibg=#282828
