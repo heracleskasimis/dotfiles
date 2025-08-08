@@ -398,8 +398,8 @@ function! VimrcShortcuts()
   vmap <c-LeftDrag> <RightDrag>
   vmap <LeftRelease> "*ygv
 
-  tmap <c-Tab> <c-\><c-n>gt
-  tmap <c-s-Tab> <c-\><c-n>gT
+  tmap <c-Tab> <c-\><c-o>gt
+  tmap <c-s-Tab> <c-\><c-o>gT
 endfunction
 
 augroup workspace
@@ -555,19 +555,31 @@ if has('gui_running')
   nmap <c-ScrollWheelDown> :call FontSizeMinus()<cr>
 
   nmap <c-s-t> :tabe \| lcd <c-r>=FindRootDirectory()<cr> \| terminal<cr>
+  tmap <c-s-t> <c-\><c-n>:tabe \| lcd <c-r>=FindRootDirectory()<cr> \| terminal<cr>
   nmap <c-t> :tabe<cr>
-  nmap <c-s-PageUp> <c-w>gT
-  nmap <c-s-PageDown> <c-w>gt
+  nmap <c-PageUp> gT
+  tmap <c-PageUp> <c-\><c-n>gT
+  nmap <c-PageDown> gt
+  tmap <c-PageDown> <c-\><c-n>gt
 
   nmap <M-1> 1gt
+  tmap <M-1> <c-\><c-n>1gt
   nmap <M-2> 2gt
+  tmap <M-2> <c-\><c-n>2gt
   nmap <M-3> 3gt
+  tmap <M-3> <c-\><c-n>3gt
   nmap <M-4> 4gt
+  tmap <M-4> <c-\><c-n>4gt
   nmap <M-5> 5gt
+  tmap <M-5> <c-\><c-n>5gt
   nmap <M-6> 6gt
+  tmap <M-6> <c-\><c-n>6gt
   nmap <M-7> 7gt
+  tmap <M-7> <c-\><c-n>7gt
   nmap <M-8> 8gt
+  tmap <M-8> <c-\><c-n>8gt
   nmap <M-9> 9gt
+  tmap <M-9> <c-\><c-n>9gt
 endif
 
 if exists('g:neovide')
