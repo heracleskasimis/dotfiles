@@ -504,7 +504,7 @@ augroup END
 set updatetime=750
 
 function! HighlightBackground()
-  if &ft =~ '^nerdtree$'
+  if bufname('') =~ '^NERD_tree'
     setlocal winhighlight=Normal:Unfocused
   else
     setlocal winhighlight=Normal:Normal
@@ -539,7 +539,7 @@ set linespace=1
 let vim_markdown_preview_browser='Firefox'
 
 if has('gui_running')
-  let &background='light'
+  set background=light
 
   function! FontSizePlus ()
     let l:font_size = matchstr(&guifont, '\d\+$')
