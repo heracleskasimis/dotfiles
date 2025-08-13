@@ -491,10 +491,10 @@ set laststatus=2
 set statusline=%!CreateStatusline()
 
 function! GetTabLabel(n)
-  let l:buflist = tabpagebuflist(a:n)
-  let l:winnr = tabpagewinnr(a:n)
-  let l:label = substitute(bufname(l:buflist[l:winnr - 1]), '^/.*/', '','')
-  return empty(l:label) ? '[No name]' : l:label
+  let l:buffers = gettabvar(a:n, 'buffers', {})
+  let l:label = sort(map(sort(keys(l:buffers)), {v -> expand('#' . v:val . ':p')}), {a, b -> a =~ '/' ? -1 : 1})[0]
+  let l:label = pathshorten(substitute(l:label, '/[^/]*$', '',''))
+  return empty(l:label) ? a:n : l:label
 endfunction
 
 function! CreateTabline()
