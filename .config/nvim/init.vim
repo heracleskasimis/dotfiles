@@ -90,14 +90,14 @@ let g:NERDTreeHijackNetrw = 0
 let g:NERDTreeAutoCenter = 0
 let g:NERDTreeHighlightCursorline = 0
 let g:NERDTreeStatusline = -1
-let g:NERDTreeWinSize = 40
+let g:NERDTreeWinSize = 44
 let g:formatprg_args_c = '--style=java'
 let g:formatprg_args_cpp = '--style=java'
 let g:formatprg_args_expr_javascript = '"-a -f - -".(&expandtab ? "s ".&shiftwidth : "t").(&textwidth ? " -w ".&textwidth : "")'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 let g:rooter_manual_only = 1
-let g:rooter_patterns = ['.git', '.svn', 'package.json', 'requirements.txt', 'Dockerfile', 'docker-compose*.yml']
-let g:gutentags_project_root = ['.git', '.svn', 'package.json', 'requirements.txt', 'Dockerfile', 'docker-compose*.yml']
+let g:rooter_patterns = ['.git', '.svn']
+let g:gutentags_project_root = ['.git', '.svn']
 let g:gutentags_cache_dir = '~/.cache/tags'
 let g:gutentags_ctags_extra_args = ['--map-TypeScript=+.tsx']
 let g:ale_lint_on_text_changed = 'always'
@@ -488,6 +488,30 @@ endfunction
 
 set laststatus=2
 set statusline=%!CreateStatusline()
+
+function! GetTabLabel(n)
+  let l:buflist = tabpagebuflist(a:n)
+  let l:winnr = tabpagewinnr(a:n)
+  let l:label = substitute(bufname(l:buflist[l:winnr - 1]), '^/.*/', '','')
+  return empty(l:label) ? '[No name]' : l:label
+endfunction
+
+function! CreateTabline()
+  let l:tabline = ''
+  for i in range(tabpagenr('$'))
+    if i + 1 == tabpagenr()
+      let l:tabline ..= '%#TabLineSel#'
+    else
+      let l:tabline ..= '%#TabLine#'
+    endif
+    let l:tabline ..= '%' .. (i + 1) .. 'T'
+    let l:tabline ..= ' %{GetTabLabel(' .. (i + 1) .. ')} '
+  endfor
+  let l:tabline ..= '%#TabLineFill#%T'
+  return l:tabline
+endfunction
+
+set tabline=%!CreateTabline()
 
 augroup fzf
   autocmd!

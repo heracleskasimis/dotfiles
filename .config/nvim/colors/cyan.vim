@@ -67,7 +67,7 @@ hi String                   cterm=NONE              ctermfg=30                  
 hi SpellBad                 cterm=NONE              ctermfg=161         ctermbg=NONE        gui=undercurl           guisp=#ff0066
 hi SpellCap                 cterm=NONE              ctermfg=161         ctermbg=NONE        gui=undercurl           guisp=#008888
 hi SpellRare                cterm=NONE              ctermfg=161         ctermbg=NONE        gui=undercurl           guisp=#888888
-hi TabLineFill              cterm=NONE              ctermfg=249         ctermbg=255         gui=bold                guifg=#808080       guibg=#f0f0f0
+hi TabLineFill              cterm=NONE              ctermfg=249         ctermbg=255         gui=bold                guifg=#808080       guibg=#f2f2f2
 hi TabLine                  cterm=bold              ctermfg=232         ctermbg=254         gui=bold                guifg=#000000       guibg=#e8e8e8
 hi TabLineSel               cterm=bold              ctermfg=231         ctermbg=44          gui=bold                guifg=#ffffff       guibg=#00c0c0
 hi Sneak                    cterm=NONE              ctermfg=NONE        ctermbg=229         gui=NONE                guifg=NONE          guibg=#ffff88
