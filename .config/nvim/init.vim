@@ -14,7 +14,7 @@ colorscheme cyan
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set autoindent nocindent nosmartindent inde=-1 breakindent
 
-set fillchars+=vert:▎
+set fillchars+=vert:┃
 set noequalalways
 
 lua << EOF
@@ -378,12 +378,12 @@ function! VimrcShortcuts()
   imap <down> <c-o>gj
   imap <up> <c-o>gk
 
-  imap <c-s-v> <c-r>+
+  imap <c-s-v> <c-r><c-o>+
   tmap <c-s-v> <c-\><c-n>"+pi
-  cmap <c-s-v> <c-r>+
+  cmap <c-s-v> <c-r><c-o>+
   tmap <s-insert> <c-\><c-n>"*pi
-  imap <s-insert> <c-r>*
-  cmap <s-insert> <c-r>*
+  imap <s-insert> <c-r><c-o>*
+  cmap <s-insert> <c-r><c-o>*
   cmap <c-g> <c-[>
 
   map f <Plug>Sneak_f
@@ -530,9 +530,11 @@ set updatetime=750
 
 function! HighlightBackground()
   if bufname('') =~ '^NERD_tree'
-    setlocal winhighlight=Normal:Unfocused
+    setlocal winhighlight=Normal:Unfocused,VertSplit:UnfocusedInv
+    setlocal fillchars=vert:\ 
   else
-    setlocal winhighlight=Normal:Normal
+    setlocal winhighlight=Normal:Normal,VertSplit:VertSplit
+    setlocal fillchars=vert:▎
   endif
 endfunction
 
