@@ -8,6 +8,7 @@ let g:colors_name="cyan"
 
 hi Normal                   cterm=NONE              ctermfg=232         ctermbg=231         gui=NONE                guifg=#000000       guibg=#ffffff
 hi Unfocused                cterm=NONE              ctermfg=NONE        ctermbg=255         gui=NONE                guifg=NONE          guibg=#f8f8f8
+hi UnfocusedInv             cterm=NONE              ctermfg=NONE        ctermbg=255         gui=NONE                guifg=#f8f8f8       guibg=NONE
 hi Cursor                   cterm=NONE              ctermfg=231         ctermbg=161         gui=NONE                guifg=white         guibg=#ff0066
 hi Cursorline               cterm=NONE              ctermfg=NONE        ctermbg=255         gui=NONE                guifg=NONE          guibg=#f8f8f8
 hi CursorlineNr             cterm=NONE              ctermfg=219         ctermbg=NONE        gui=NONE                guifg=#ffa6ca       guibg=NONE
@@ -27,7 +28,8 @@ hi StatusLine               cterm=bold              ctermfg=NONE        ctermbg=
 hi StatusLineNC             cterm=bold              ctermfg=NONE        ctermbg=255         gui=bold                guifg=#000000       guibg=#f2f2f2
 hi StatusLineTerm           cterm=bold              ctermfg=NONE        ctermbg=255         gui=bold                guifg=#000000       guibg=#f2f2f2
 hi StatusLineTermNC         cterm=bold              ctermfg=NONE        ctermbg=255         gui=bold                guifg=#000000       guibg=#f2f2f2
-hi VertSplit                cterm=NONE              ctermfg=255         ctermbg=231         gui=NONE                guifg=#f8f8f8       guibg=#ffffff
+hi NormalFloat              cterm=bold              ctermfg=NONE        ctermbg=255         gui=NONE                guifg=NONE          guibg=#f8f8f8
+hi VertSplit                cterm=NONE              ctermfg=255         ctermbg=255         gui=NONE                guifg=#f8f8f8       guibg=#f8f8f8
 hi SignColumn               cterm=NONE              ctermfg=30          ctermbg=NONE        gui=bold                guifg=#008888       guibg=NONE
 hi Title                    cterm=bold              ctermfg=NONE                            gui=bold                guifg=NONE
 hi Visual                   cterm=NONE              ctermfg=NONE        ctermbg=123         gui=NONE                guifg=NONE          guibg=#b0ffff
@@ -116,7 +118,7 @@ if &background == 'dark'
     hi StatusLineTerm       cterm=bold              ctermfg=7           ctermbg=235         gui=bold                guifg=#dcdcdc       guibg=#202020
     hi StatusLineTermNC     cterm=NONE              ctermfg=7           ctermbg=234         gui=NONE                guifg=#cccccc       guibg=#202020
     hi Ignore               cterm=bold              ctermfg=7                               gui=bold                guifg=#aaaaaa
-    hi VertSplit            cterm=NONE              ctermfg=234         ctermbg=232         gui=NONE                guifg=#202020       guibg=#000000
+    hi VertSplit            cterm=NONE              ctermfg=234         ctermbg=234         gui=NONE                guifg=#202020       guibg=#202020
     hi TabLineFill          cterm=NONE              ctermfg=7           ctermbg=0           gui=NONE                guifg=#aaaaaa       guibg=#282828
     hi TabLine              cterm=bold,italic       ctermfg=7           ctermbg=0           gui=bold,italic         guifg=#aaaaaa       guibg=#282828
     hi TabLineSel           cterm=bold              ctermfg=7           ctermbg=0           gui=bold                guifg=#aaaaaa       guibg=#282828
@@ -141,9 +143,8 @@ if &background == 'dark'
     hi PMenuThumb           cterm=NONE              ctermfg=240         ctermbg=240         gui=NONE                guifg=#444444       guibg=#444444
 endif
 
-hi link WinBar StatusLine
-hi link NormalFloat StatusLine
-hi link FloatBorder StatusLine
+hi link WinBar NormalFloat
+hi link FloatBorder NormalFloat
 hi link WinBarNC StatusLineNC
 hi link WinSeparator VertSplit
 hi link TermCursor Cursor

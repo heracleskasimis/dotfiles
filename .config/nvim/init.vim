@@ -52,25 +52,11 @@ Plug 'junegunn/vim-peekaboo'
 Plug 'jamessan/vim-gnupg'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
-Plug 'olimorris/codecompanion.nvim'
+Plug 'folke/snacks.nvim'
+Plug 'NickvanDyke/opencode.nvim'
 call plug#end()
 
 lua << EOF
-require('codecompanion').setup({
-  adapters = {
-    anthropic = function() return require('codecompanion.adapters').extend('anthropic', { env = { api_key = 'cmd:cat ~/.config/genai.keys | grep ANTHROPIC | cut -d= -f2' } }) end,
-    gemini = function() return require('codecompanion.adapters').extend('gemini', { env = { api_key = 'cmd:cat ~/.config/genai.keys | grep GEMINI | cut -d= -f2' } }) end,
-    copilot = function() return require('codecompanion.adapters').extend('copilot', { env = { api_key = 'cmd:cat ~/.config/genai.keys | grep COPILOT | cut -d= -f2' } }) end,
-  },
-  display = {
-    chat = {
-      window = {
-        width = 0.333,
-        position = 'right'
-      }
-    }
-  }
-})
 require'nvim-treesitter.configs'.setup({
   highlight = { enable = true },
   indent = { enable = false },
