@@ -12,7 +12,7 @@ set t_Co=256
 colorscheme cyan
 
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-set autoindent nocindent nosmartindent inde=-1 breakindent
+set autoindent nocindent nosmartindent inde=-1 breakindent breakindentopt=shift:4
 
 set fillchars+=vert:┃
 set noequalalways
@@ -275,6 +275,8 @@ function! VimrcShortcuts()
     \ map <leader>cc :make<cr>
   Shortcut 'Format buffer/region'
     \ map <leader>cf :ALEFix<cr>
+  Shortcut 'Ask agent about this'
+    \ map <leader>ca <Cmd>lua require("opencode").ask("@this: ", { submit = true })<cr>
   map <leader>c<esc> <Nop>
 
   Shortcut 'Window movement'
@@ -402,7 +404,6 @@ augroup END
 
 augroup termesc
   autocmd!
-  autocmd TermOpen * startinsert
   autocmd TermOpen * silent tmap <buffer> <esc><esc> <c-\><c-n>
   autocmd TermOpen * silent tmap <buffer> <c-[><c-[> <c-\><c-n>
   autocmd TermOpen * silent tmap <buffer> <c-h> <c-\><c-n><c-w>h
@@ -516,11 +517,9 @@ set updatetime=750
 
 function! HighlightBackground()
   if bufname('') =~ '^NERD_tree'
-    setlocal winhighlight=Normal:Unfocused,VertSplit:UnfocusedInv
-    setlocal fillchars=vert:\ 
+    setlocal winhighlight=Normal:NormalFloat
   else
-    setlocal winhighlight=Normal:Normal,VertSplit:VertSplit
-    setlocal fillchars=vert:▎
+    setlocal winhighlight=Normal:Normal
   endif
 endfunction
 

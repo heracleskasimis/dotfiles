@@ -7,8 +7,6 @@ endif
 let g:colors_name="cyan"
 
 hi Normal                   cterm=NONE              ctermfg=232         ctermbg=231         gui=NONE                guifg=#000000       guibg=#ffffff
-hi Unfocused                cterm=NONE              ctermfg=NONE        ctermbg=255         gui=NONE                guifg=NONE          guibg=#f8f8f8
-hi UnfocusedInv             cterm=NONE              ctermfg=NONE        ctermbg=255         gui=NONE                guifg=#f8f8f8       guibg=NONE
 hi Cursor                   cterm=NONE              ctermfg=231         ctermbg=161         gui=NONE                guifg=white         guibg=#ff0066
 hi Cursorline               cterm=NONE              ctermfg=NONE        ctermbg=255         gui=NONE                guifg=NONE          guibg=#f8f8f8
 hi CursorlineNr             cterm=NONE              ctermfg=219         ctermbg=NONE        gui=NONE                guifg=#ffa6ca       guibg=NONE
