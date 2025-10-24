@@ -17,6 +17,9 @@ set autoindent nocindent nosmartindent inde=-1 breakindent breakindentopt=shift:
 set fillchars+=vert:┃
 set noequalalways
 
+let $EDITOR='nvr'
+let $VISUAL=$EDITOR
+
 lua << EOF
 vim.diagnostic.config { underline = false }
 EOF
@@ -277,6 +280,8 @@ function! VimrcShortcuts()
     \ map <leader>cf :ALEFix<cr>
   Shortcut 'Ask agent about this'
     \ map <leader>ca <Cmd>lua require("opencode").ask("@this: ", { submit = true })<cr>
+  Shortcut 'Interrupt agent'
+    \ map <leader>ci <Cmd>lua require("opencode").command("session_interrupt")<cr>
   map <leader>c<esc> <Nop>
 
   Shortcut 'Window movement'
@@ -516,7 +521,7 @@ augroup END
 set updatetime=750
 
 function! HighlightBackground()
-  if bufname('') =~ '^NERD_tree'
+  if bufname('') =~ '^NERD_tree' || bufname('') =~ 'opencode$'
     setlocal winhighlight=Normal:NormalFloat
   else
     setlocal winhighlight=Normal:Normal
