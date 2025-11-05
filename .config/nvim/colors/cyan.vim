@@ -141,10 +141,10 @@ if &background == 'dark'
     hi PMenuThumb           cterm=NONE              ctermfg=240         ctermbg=240         gui=NONE                guifg=#444444       guibg=#444444
 endif
 
-hi link WinBar NormalFloat
-hi link FloatBorder NormalFloat
-hi link WinBarNC StatusLineNC
-hi link WinSeparator VertSplit
+hi! link WinBar NormalFloat
+hi! link FloatBorder NormalFloat
+hi! link WinBarNC StatusLineNC
+hi! link WinSeparator VertSplit
 hi link TermCursor Cursor
 hi link SneakCurrent Sneak
 

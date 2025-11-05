@@ -57,6 +57,7 @@ Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-treesitter/nvim-treesitter'
 Plug 'folke/snacks.nvim'
 Plug 'NickvanDyke/opencode.nvim'
+Plug 'marcinjahn/gemini-cli.nvim'
 call plug#end()
 
 lua << EOF
@@ -484,7 +485,7 @@ set statusline=%!CreateStatusline()
 
 function! GetTabLabel(n)
   let l:buffers = gettabvar(a:n, 'buffers', {})
-  let l:label = sort(map(sort(keys(l:buffers)), {v -> expand('#' . v:val . ':p')}), {a, b -> a =~ '/' ? -1 : 1})[0]
+  let l:label = get(sort(map(sort(keys(l:buffers)), {v -> expand('#' . v:val . ':p')}), {a, b -> a =~ '/' ? -1 : 1}), 0, '')
   let l:label = pathshorten(substitute(l:label, '/[^/]*$', '',''))
   return empty(l:label) ? a:n : l:label
 endfunction
@@ -521,7 +522,7 @@ augroup END
 set updatetime=750
 
 function! HighlightBackground()
-  if bufname('') =~ '^NERD_tree' || bufname('') =~ 'opencode$'
+  if bufname('') =~ '^NERD_tree' || bufname('') =~ '\(opencode\|gemini\)$'
     setlocal winhighlight=Normal:NormalFloat
   else
     setlocal winhighlight=Normal:Normal
