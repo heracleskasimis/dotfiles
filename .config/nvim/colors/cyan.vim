@@ -101,7 +101,6 @@ hi fzf3                     cterm=NONE              ctermfg=NONE        ctermbg=
 
 if &background == 'dark'
     hi Normal               cterm=NONE              ctermfg=231         ctermbg=232         gui=NONE                guifg=#ffffff       guibg=#000000
-    hi Unfocused            cterm=NONE              ctermfg=NONE        ctermbg=234         gui=NONE                guifg=NONE          guibg=#202020
     hi Cursorline           cterm=NONE              ctermfg=NONE        ctermbg=233         gui=NONE                guifg=NONE          guibg=#303030
     hi ColorColumn          cterm=NONE              ctermfg=NONE        ctermbg=233         gui=NONE                guifg=NONE          guibg=#303030
     hi Visual               cterm=NONE              ctermfg=232         ctermbg=123         gui=NONE                guifg=#000000       guibg=#88ffff
@@ -115,6 +114,7 @@ if &background == 'dark'
     hi StatusLineNC         cterm=NONE              ctermfg=7           ctermbg=234         gui=NONE                guifg=#cccccc       guibg=#202020
     hi StatusLineTerm       cterm=bold              ctermfg=7           ctermbg=235         gui=bold                guifg=#dcdcdc       guibg=#202020
     hi StatusLineTermNC     cterm=NONE              ctermfg=7           ctermbg=234         gui=NONE                guifg=#cccccc       guibg=#202020
+    hi NormalFloat          cterm=NONE              ctermfg=NONE        ctermbg=234         gui=NONE                guifg=NONE          guibg=#202020
     hi Ignore               cterm=bold              ctermfg=7                               gui=bold                guifg=#aaaaaa
     hi VertSplit            cterm=NONE              ctermfg=234         ctermbg=234         gui=NONE                guifg=#202020       guibg=#202020
     hi TabLineFill          cterm=NONE              ctermfg=7           ctermbg=0           gui=NONE                guifg=#aaaaaa       guibg=#282828
