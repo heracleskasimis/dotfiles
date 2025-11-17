@@ -10,17 +10,17 @@
     "green": "#00a8a8",
     "blue": "#008080",
 
-    "fg": "#282828",
-    "bg": "#fafafa",
+    "fg": "#202020",
+    "bg": "#f8f8f8",
 
     "grey1": "#303030",
     "grey2": "#2c2c2c",
     "grey3": "#242424",
     "grey4": "#000000",
 
-    "grey5": "#ebebeb",
-    "grey6": "#f0f0f0",
-    "grey7": "#f4f4f4",
+    "grey5": "#e0e0e0",
+    "grey6": "#ededed",
+    "grey7": "#f2f2f2",
     "grey8": "#ffffff"
   },
   "theme": {
@@ -46,18 +46,18 @@
     },
     "backgroundElement": {
       "light": "grey7",
-      "dark": "grey1"
+      "dark": "grey4"
     },
     "border": {
-      "light": "grey7",
+      "light": "grey5",
       "dark": "grey3"
     },
     "borderActive": {
-      "light": "grey7",
+      "light": "grey4",
       "dark": "grey3"
     },
     "borderSubtle": {
-      "light": "grey8",
+      "light": "grey7",
       "dark": "grey4"
     },
     "diffAdded": "green",
