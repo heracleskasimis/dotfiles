@@ -4,15 +4,17 @@ set noswapfile
 set title
 set ignorecase
 set smartcase
-set clipboard=unnamedplus
 set nonumber relativenumber
 set tagcase=match
+set clipboard=unnamedplus
+set mouse=ar
+set mousemodel=extend
 
 set t_Co=256
 colorscheme cyan
 
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
-set autoindent nocindent nosmartindent inde=-1 breakindent breakindentopt=shift:4
+set autoindent nocindent nosmartindent indentexpr=-1 breakindent breakindentopt=shift:4
 
 set fillchars+=vert:┃
 set noequalalways
@@ -373,7 +375,7 @@ function! VimrcShortcuts()
   Shortcut 'Git unstage file'
     \ map <leader>gU :Git reset HEAD %<cr>
   Shortcut 'Git revert file'
-    \ map <leader>gR :Git chekout -- %<cr>
+    \ map <leader>gR :Git checkout -- %<cr>
   Shortcut 'Git fetch'
     \ map <leader>gF :Git fetch<cr>
   Shortcut 'Git remove file'
@@ -405,7 +407,7 @@ function! VimrcShortcuts()
   map t <Plug>Sneak_t
   map T <Plug>Sneak_T
 
-  map <c-]> :Tag <c-r>=expand("<cword>")<cr><cr>
+  map <c-]> :tjump <c-r>=expand("<cword>")<cr><cr>
 
   nmap <X1Mouse> <c-o>
   nmap <X2Mouse> <c-i>
