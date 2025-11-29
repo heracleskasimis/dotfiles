@@ -135,71 +135,71 @@ function! s:isEditableBuffer(bufnum)
 endfunction
 
 function! s:GetBuffers(...)
-  let sorted = get(a:, 1, 0)
-  let formatted = get(a:, 2, 0)
-  let editable = get(a:, 3, 0)
-  let buffers = reduce(getbufinfo(), { acc, v -> extend(acc, { v.bufnr: v.lastused }) }, {})
-  let bufnumbers = sort(map(keys(buffers), {v -> str2nr(v:val)}), 'n')
-  let bufnumbers = editable
-    \ ? filter(bufnumbers, {v -> s:isEditableBuffer(v:val)})
-    \ : filter(bufnumbers, {v -> bufexists(v:val)})
-  let bufnumbers = sorted ? sort(bufnumbers, {a, b -> buffers[a] < buffers[b] ? 1 : -1}) : bufnumbers
-  return formatted ? map(bufnumbers, {v -> fzf#vim#_format_buffer(v:val)}) : bufnumbers
+  let l:filtered = get(a:, 1, 0)
+  let l:sorted = get(a:, 2, 0)
+  let l:Compare = sorted
+    \ ? { a, b -> a.lastused < b.lastused ? 1 : -1 }
+    \ : { a, b -> a.bufnr < b.bufnr ? 1 : -1 }
+  let l:bufnumbers = map(sort(getbufinfo(), l:Compare), {v -> v:val.bufnr})
+  let l:bufnumbers = filtered
+    \ ? filter(l:bufnumbers, {v -> s:isEditableBuffer(v:val)})
+    \ : filter(l:bufnumbers, {v -> bufexists(v:val)})
+  return l:bufnumbers
 endfunction
 
 function! s:PreviousEditedWorkspaceBuffer(...)
-  let force = get(a:, 1, 0)
-  if !force && !(s:isEditableBuffer(bufnr()))
+  let l:force = get(a:, 1, 0)
+  if !l:force && !s:isEditableBuffer(bufnr())
     return
   endif
-  let buffers = filter(s:GetBuffers(1, 0, 1), {v -> v:val != bufnr() })
-  if len(buffers) > 0
+  let l:buffers = filter(s:GetBuffers(1, 1), {v -> v:val != bufnr() })
+  if len(l:buffers) > 0
     execute ':buffer ' .  buffers[0]
   endif
 endfunction
 command! PreviousEditedWorkspaceBuffer call s:PreviousEditedWorkspaceBuffer()
 
 function! s:NextWorkspaceBuffer()
-  let buffers = s:GetBuffers(0, 0, 1)
-  execute ':buffer ' . buffers[s:mod((index(buffers, bufnr()) + 1), len(buffers))]
+  let l:buffers = s:GetBuffers(1)
+  execute ':buffer ' . l:buffers[s:mod((index(buffers, bufnr()) + 1), len(l:buffers))]
 endfunction
 command! NextWorkspaceBuffer call s:NextWorkspaceBuffer()
 
 function! s:PreviousWorkspaceBuffer()
-  let buffers = s:GetBuffers(0, 0, 1)
-  execute ':buffer ' . buffers[s:mod((index(buffers, bufnr()) - 1), len(buffers))]
+  let l:buffers = s:GetBuffers(1)
+  execute ':buffer ' . l:buffers[s:mod((index(buffers, bufnr()) - 1), len(l:buffers))]
 endfunction
 command! PreviousWorkspaceBuffer call s:PreviousWorkspaceBuffer()
 
 function! s:PreviewBuffers(buffers)
   call fzf#vim#buffers('', {
-    \ 'source': a:buffers,
+    \ 'source': map(a:buffers, {v -> fzf#vim#_format_buffer(v:val)}),
     \ 'options': ['--preview', '[[ -f {4} ]] && bat --theme=ansi --color=always --plain {4}']
   \ })
 endfunction
 
 function! s:WorkspaceBuffers(...)
-  call s:PreviewBuffers(s:GetBuffers(1, 1, 1))
+  call s:PreviewBuffers(s:GetBuffers(1, 1))
 endfunction
 command! WorkspaceBuffers call s:WorkspaceBuffers()
 
 function! s:Buffers(...)
-  call s:PreviewBuffers(s:GetBuffers(1, 1))
+  call s:PreviewBuffers(s:GetBuffers(0, 1))
 endfunction
 command! Buffers call s:Buffers()
 
 function! s:Bclose(bang, buffer)
-  let buffernr = empty(a:buffer) ? bufnr() : str2nr(a:buffer)
-  if buffernr == bufnr()
+  let l:buffernr = empty(a:buffer) ? bufnr() : str2nr(a:buffer)
+  if l:buffernr == bufnr()
     call s:PreviousEditedWorkspaceBuffer(1)
   endif
-  execute ':bdelete'.a:bang.' '.buffernr
+  execute ':bdelete'.a:bang.' '.l:buffernr
 endfunction
 command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
 
 function! s:Tag(tag)
-  let tlist = taglist('^' . a:tag . '$')
-  if len(tlist) > 1
+  let l:tlist = taglist('^' . a:tag . '$')
+  if len(l:tlist) > 1
     call fzf#vim#tags(a:tag)
   else
     execute ':tag ' . a:tag
@@ -544,7 +544,6 @@ augroup END
 set guicursor=n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor
 set guifont=Liberation\ Mono:h11
 set linespace=1
-let vim_markdown_preview_browser='Firefox'
 
 if has('gui_running')
   set background=light
