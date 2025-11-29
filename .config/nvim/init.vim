@@ -131,22 +131,17 @@ function! s:mod(n,m)
 endfunction
 
 function! s:isEditableBuffer(bufnum)
-  return
-      \ buflisted(a:bufnum) &&
-      \ bufname(a:bufnum) !~ '^!' &&
-      \ bufname(a:bufnum) !~ 'term://' &&
-      \ getbufvar(a:bufnum, '&filetype') != 'fugitive' &&
-      \ getbufvar(a:bufnum, '&filetype') != 'qf'
+  return buflisted(a:bufnum) && !getbufvar(a:bufnum, '&readonly')
 endfunction
 
 function! s:GetBuffers(...)
   let sorted = get(a:, 1, 0)
   let formatted = get(a:, 2, 0)
-  let listed = get(a:, 3, 0)
+  let editable = get(a:, 3, 0)
   let buffers = reduce(getbufinfo(), { acc, v -> extend(acc, { v.bufnr: v.lastused }) }, {})
   let bufnumbers = sort(map(keys(buffers), {v -> str2nr(v:val)}), 'n')
-  let bufnumbers = listed
-    \ ? filter(bufnumbers, {v -> buflisted(v:val) && getbufvar(v:val, '&filetype') != 'qf'})
+  let bufnumbers = editable
+    \ ? filter(bufnumbers, {v -> s:isEditableBuffer(v:val)})
     \ : filter(bufnumbers, {v -> bufexists(v:val)})
   let bufnumbers = sorted ? sort(bufnumbers, {a, b -> buffers[a] < buffers[b] ? 1 : -1}) : bufnumbers
   return formatted ? map(bufnumbers, {v -> fzf#vim#_format_buffer(v:val)}) : bufnumbers
@@ -157,7 +152,7 @@ function! s:PreviousEditedWorkspaceBuffer(...)
   if !force && !(s:isEditableBuffer(bufnr()))
     return
   endif
-  let buffers = filter(s:GetBuffers(1, 0, 1), {v -> v:val != bufnr() && s:isEditableBuffer(v:val) })
+  let buffers = filter(s:GetBuffers(1, 0, 1), {v -> v:val != bufnr() })
   if len(buffers) > 0
     execute ':buffer ' .  buffers[0]
   endif
