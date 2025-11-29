@@ -65,6 +65,12 @@ require'nvim-treesitter.configs'.setup({
   highlight = { enable = true },
   indent = { enable = false },
 })
+if not vim.g.snacks_loaded then
+  require'snacks'.setup({
+    terminal = { enabled = true },
+  })
+  vim.g.snacks_loaded = true
+end
 EOF
 
 if executable('ag')
@@ -73,7 +79,7 @@ if executable('ag')
 endif
 let $FZF_DEFAULT_OPTS='--style minimal --color=16,bg+:255,fg+:232,gutter:-1,hl:44,pointer:44,info:44,header:44,border:15 --border=none'
 let g:fzf_layout = { 'down': '40%' }
-let g:ack_qhandler = 'copen 10'
+let g:ack_qhandler = 'belowright copen 10'
 let g:jsx_ext_required = 0
 let g:vim_markdown_folding_disabled = 1
 let g:vim_json_syntax_conceal = 0
@@ -114,6 +120,8 @@ let g:ale_linters = {
 let g:ale_sql_pgformatter_options = '--spaces 2 --function-case 1 --comma-break'
 let g:ale_sql_sqlfluff_options = '--dialect postgres'
 let g:ale_python_flake8_options = '--config ~/.config/flake8'
+let g:ale_python_auto_virtualenv = 1
+let g:ale_virtualenv_dir_names = ['venv', '.venv', 'env', '.env']
 let g:ale_virtualtext_cursor = 'disabled'
 
 "--------------------------------------------------------------------------------------------------
@@ -122,18 +130,34 @@ function! s:mod(n,m)
   return ((a:n % a:m) + a:m) % a:m
 endfunction
 
-function! s:GetWorkspaceBuffers(...)
+function! s:isEditableBuffer(bufnum)
+  return
+      \ buflisted(a:bufnum) &&
+      \ bufname(a:bufnum) !~ '^!' &&
+      \ bufname(a:bufnum) !~ 'term://' &&
+      \ getbufvar(a:bufnum, '&filetype') != 'fugitive' &&
+      \ getbufvar(a:bufnum, '&filetype') != 'qf'
+endfunction
+
+function! s:GetBuffers(...)
   let sorted = get(a:, 1, 0)
   let formatted = get(a:, 2, 0)
-  let buffers = gettabvar(tabpagenr(), 'buffers')
+  let listed = get(a:, 3, 0)
+  let buffers = reduce(getbufinfo(), { acc, v -> extend(acc, { v.bufnr: v.lastused }) }, {})
   let bufnumbers = sort(map(keys(buffers), {v -> str2nr(v:val)}), 'n')
-  let bufnumbers = filter(bufnumbers, {v -> buflisted(v:val) && getbufvar(v:val, '&filetype') != 'qf'})
+  let bufnumbers = listed
+    \ ? filter(bufnumbers, {v -> buflisted(v:val) && getbufvar(v:val, '&filetype') != 'qf'})
+    \ : filter(bufnumbers, {v -> bufexists(v:val)})
   let bufnumbers = sorted ? sort(bufnumbers, {a, b -> buffers[a] < buffers[b] ? 1 : -1}) : bufnumbers
   return formatted ? map(bufnumbers, {v -> fzf#vim#_format_buffer(v:val)}) : bufnumbers
 endfunction
 
-function! s:PreviousEditedWorkspaceBuffer()
-  let buffers = filter(s:GetWorkspaceBuffers(1), {v -> v:val != bufnr() && bufname(v:val) !~ '^!' && bufname(v:val) !~ 'term://' && getbufvar(v:val, '&filetype') != 'fugitive'})
+function! s:PreviousEditedWorkspaceBuffer(...)
+  let force = get(a:, 1, 0)
+  if !force && !(s:isEditableBuffer(bufnr()))
+    return
+  endif
+  let buffers = filter(s:GetBuffers(1, 0, 1), {v -> v:val != bufnr() && s:isEditableBuffer(v:val) })
   if len(buffers) > 0
     execute ':buffer ' .  buffers[0]
   endif
@@ -141,39 +165,38 @@ endfunction
 command! PreviousEditedWorkspaceBuffer call s:PreviousEditedWorkspaceBuffer()
 
 function! s:NextWorkspaceBuffer()
-  let buffers = s:GetWorkspaceBuffers()
+  let buffers = s:GetBuffers(0, 0, 1)
   execute ':buffer ' . buffers[s:mod((index(buffers, bufnr()) + 1), len(buffers))]
 endfunction
 command! NextWorkspaceBuffer call s:NextWorkspaceBuffer()
 
 function! s:PreviousWorkspaceBuffer()
-  let buffers = s:GetWorkspaceBuffers()
+  let buffers = s:GetBuffers(0, 0, 1)
   execute ':buffer ' . buffers[s:mod((index(buffers, bufnr()) - 1), len(buffers))]
 endfunction
 command! PreviousWorkspaceBuffer call s:PreviousWorkspaceBuffer()
 
-function! s:WorkspaceAttachBuffer(...)
-  let buffernr = a:0 == 0 ? bufnr() : str2nr(a:1)
-  let buffers = extend(gettabvar(tabpagenr(), 'buffers', {}), { buffernr: localtime() })
-  call settabvar(tabpagenr(), 'buffers', buffers)
+function! s:PreviewBuffers(buffers)
+  call fzf#vim#buffers('', {
+    \ 'source': a:buffers,
+    \ 'options': ['--preview', '[[ -f {4} ]] && bat --theme=ansi --color=always --plain {4}']
+  \ })
 endfunction
-command! -nargs=? WorkspaceAttachBuffer call s:WorkspaceAttachBuffer(<args>)
-
-function! s:WorkspaceDetachBuffer(...)
-  let buffernr = a:0 == 0 ? bufnr() : str2nr(a:1)
-  silent! call remove(gettabvar(tabpagenr(), 'buffers'), buffernr)
-endfunction
-command! -nargs=? WorkspaceDetachBuffer call s:WorkspaceDetachBuffer(<args>)
 
 function! s:WorkspaceBuffers(...)
-  call fzf#vim#buffers('', { 'source': s:GetWorkspaceBuffers(1, 1) })
+  call s:PreviewBuffers(s:GetBuffers(1, 1, 1))
 endfunction
 command! WorkspaceBuffers call s:WorkspaceBuffers()
+
+function! s:Buffers(...)
+  call s:PreviewBuffers(s:GetBuffers(1, 1))
+endfunction
+command! Buffers call s:Buffers()
 
 function! s:Bclose(bang, buffer)
   let buffernr = empty(a:buffer) ? bufnr() : str2nr(a:buffer)
   if buffernr == bufnr()
-    call s:PreviousEditedWorkspaceBuffer()
+    call s:PreviousEditedWorkspaceBuffer(1)
   endif
   execute ':bdelete'.a:bang.' '.buffernr
 endfunction
@@ -280,9 +303,11 @@ function! VimrcShortcuts()
   Shortcut 'Format buffer/region'
     \ map <leader>cf :ALEFix<cr>
   Shortcut 'Ask agent about this'
-    \ map <leader>ca <Cmd>lua require("opencode").ask("@this: ", { submit = true })<cr>
+    \ map <leader>ca :lcd <c-r>=FindRootDirectory()<cr> \| lua require("opencode").ask("@this: ", { submit = true })<cr>
   Shortcut 'Interrupt agent'
-    \ map <leader>ci <Cmd>lua require("opencode").command("session_interrupt")<cr>
+    \ map <leader>ci :lcd <c-r>=FindRootDirectory()<cr> \| lua require("opencode").command("session_interrupt")<cr>
+  Shortcut 'Toggle agent prompt'
+    \ map <leader>cp :lcd <c-r>=FindRootDirectory()<cr> \| lua require("opencode").toggle()<cr>
   map <leader>c<esc> <Nop>
 
   Shortcut 'Window movement'
@@ -397,12 +422,6 @@ function! VimrcShortcuts()
   tmap <c-s-Tab> <c-\><c-o>gT
 endfunction
 
-augroup workspace
-  autocmd!
-  autocmd BufWinEnter * WorkspaceAttachBuffer 
-  autocmd BufDelete * WorkspaceDetachBuffer expand('<abuf>') 
-augroup END
-
 augroup shortcuts
   autocmd!
   autocmd VimEnter * call VimrcShortcuts()
@@ -482,30 +501,6 @@ endfunction
 
 set laststatus=2
 set statusline=%!CreateStatusline()
-
-function! GetTabLabel(n)
-  let l:buffers = gettabvar(a:n, 'buffers', {})
-  let l:label = get(sort(map(sort(keys(l:buffers)), {v -> expand('#' . v:val . ':p')}), {a, b -> a =~ '/' ? -1 : 1}), 0, '')
-  let l:label = pathshorten(substitute(l:label, '/[^/]*$', '',''))
-  return empty(l:label) ? a:n : l:label
-endfunction
-
-function! CreateTabline()
-  let l:tabline = ''
-  for i in range(tabpagenr('$'))
-    if i + 1 == tabpagenr()
-      let l:tabline ..= '%#TabLineSel#'
-    else
-      let l:tabline ..= '%#TabLine#'
-    endif
-    let l:tabline ..= '%' .. (i + 1) .. 'T'
-    let l:tabline ..= ' %{GetTabLabel(' .. (i + 1) .. ')} '
-  endfor
-  let l:tabline ..= '%#TabLineFill#%T'
-  return l:tabline
-endfunction
-
-set tabline=%!CreateTabline()
 
 augroup fzf
   autocmd!
