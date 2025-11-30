@@ -455,6 +455,15 @@ function! VimrcShortcuts()
   tmap <M-8> <c-\><c-n>8gt
   nmap <M-9> 9gt
   tmap <M-9> <c-\><c-n>9gt
+
+  nmap <M-h> <c-h>
+  tmap <M-h> <c-h>
+  nmap <M-j> <c-j>
+  tmap <M-j> <c-j>
+  nmap <M-k> <c-k>
+  tmap <M-k> <c-k>
+  nmap <M-l> <c-l>
+  tmap <M-l> <c-l>
 endfunction
 
 augroup shortcuts
