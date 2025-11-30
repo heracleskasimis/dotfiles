@@ -424,9 +424,9 @@ function! VimrcShortcuts()
 
   nmap <X1Mouse> <c-o>
   nmap <X2Mouse> <c-i>
+  nmap <c-LeftMouse> <cmd><cr>
   nmap <c-LeftDrag> <LeftMouse><c-v>
   vmap <c-LeftDrag> <RightDrag>
-  vmap <LeftRelease> "*ygv
 
   tmap <c-Tab> <c-\><c-o>gt
   tmap <c-s-Tab> <c-\><c-o>gT
@@ -566,6 +566,36 @@ augroup quickfix
   autocmd!
   autocmd Filetype qf setlocal statusline=%!CreateStatusline()
 augroup END
+
+"--------------------------------------------------------------------------------------------------
+
+lua << EOF
+local timer = nil
+
+local function sync_selection()
+    local mode = vim.fn.mode()
+    if mode == "v" or mode == "V" or mode == "\22" then
+        local start_pos = vim.fn.getpos("v")
+        local end_pos = vim.fn.getpos(".")
+        local lines = vim.fn.getregion(start_pos, end_pos, {type = mode})
+        vim.fn.setreg("*", table.concat(lines, "\n"))
+    end
+end
+
+vim.api.nvim_create_autocmd("CursorMoved", {
+    desc = "Keep * register synced with visual selection (debounced)",
+    callback = function()
+        local mode = vim.fn.mode()
+        if mode == "v" or mode == "V" or mode == "\22" then
+            if timer then
+                vim.fn.timer_stop(timer)
+            end
+            -- Sync after 100ms of no cursor movement
+            timer = vim.fn.timer_start(100, sync_selection)
+        end
+    end,
+})
+EOF
 
 "--------------------------------------------------------------------------------------------------
 
