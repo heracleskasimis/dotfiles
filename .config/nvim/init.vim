@@ -345,7 +345,7 @@ function! VimrcShortcuts()
   Shortcut 'Recent files'
     \ map <leader>fr :History<cr>
   Shortcut 'Find file in private configuration'
-    \ map <leader>fp :Files <c-r>=expand('$HOME')<cr>/.vim/<cr>
+    \ map <leader>fp :Files <c-r>=fnamemodify($MYVIMRC, ':h')<cr>
   Shortcut 'Yank filename'
     \ map <leader>fy :let @+ = expand('%:p')<cr>
   map <leader>f<esc> <Nop>
