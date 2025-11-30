@@ -21,6 +21,7 @@ set noequalalways
 
 let $EDITOR='nvr'
 let $VISUAL=$EDITOR
+let $PAGER='cat'
 
 lua << EOF
 vim.diagnostic.config { underline = false }
@@ -132,8 +133,8 @@ function! s:mod(n,m)
   return ((a:n % a:m) + a:m) % a:m
 endfunction
 
-function! s:isEditableBuffer(bufnum)
-  return buflisted(a:bufnum) && !getbufvar(a:bufnum, '&readonly')
+function! s:IsEditableBuffer(bufnum)
+  return buflisted(a:bufnum) && getbufvar(a:bufnum, '&modifiable')
 endfunction
 
 function! s:GetBuffers(...)
@@ -144,14 +145,14 @@ function! s:GetBuffers(...)
     \ : { a, b -> a.bufnr < b.bufnr ? 1 : -1 }
   let l:bufnumbers = map(sort(getbufinfo(), l:Compare), {v -> v:val.bufnr})
   let l:bufnumbers = filtered
-    \ ? filter(l:bufnumbers, {v -> s:isEditableBuffer(v:val)})
-    \ : filter(l:bufnumbers, {v -> bufexists(v:val)})
+    \ ? filter(l:bufnumbers, {v -> s:IsEditableBuffer(v:val)})
+    \ : filter(l:bufnumbers, {v -> bufloaded(v:val)})
   return l:bufnumbers
 endfunction
 
-function! s:PreviousEditedWorkspaceBuffer(...)
+function! s:LastVisitedWorkspaceBuffer(...)
   let l:force = get(a:, 1, 0)
-  if !l:force && !s:isEditableBuffer(bufnr())
+  if !l:force && !s:IsEditableBuffer(bufnr())
     return
   endif
   let l:buffers = filter(s:GetBuffers(1, 1), {v -> v:val != bufnr() })
@@ -159,7 +160,15 @@ function! s:PreviousEditedWorkspaceBuffer(...)
     execute ':buffer ' .  buffers[0]
   endif
 endfunction
-command! PreviousEditedWorkspaceBuffer call s:PreviousEditedWorkspaceBuffer()
+command! LastVisitedWorkspaceBuffer call s:LastVisitedWorkspaceBuffer()
+
+function! s:LastVisitedBuffer(...)
+  let l:buffers = filter(s:GetBuffers(0, 1), {v -> v:val != bufnr() })
+  if len(l:buffers) > 0
+    execute ':buffer ' .  buffers[0]
+  endif
+endfunction
+command! LastVisitedBuffer call s:LastVisitedBuffer()
 
 function! s:NextWorkspaceBuffer()
   let l:buffers = s:GetBuffers(1)
@@ -193,7 +202,7 @@ command! Buffers call s:Buffers()
 function! s:Bclose(bang, buffer)
   let l:buffernr = empty(a:buffer) ? bufnr() : str2nr(a:buffer)
   if l:buffernr == bufnr()
-    call s:PreviousEditedWorkspaceBuffer(1)
+    call s:LastVisitedWorkspaceBuffer(1)
   endif
   execute ':bdelete'.a:bang.' '.l:buffernr
 endfunction
@@ -263,13 +272,15 @@ function! VimrcShortcuts()
     \ map <leader>bB :Buffers<cr>
   Shortcut 'Switch workspace buffer'
     \ map <leader>b, :WorkspaceBuffers<cr>
-  Shortcut 'Next buffer'
+  Shortcut 'Switch buffer'
+    \ map <leader>b< :Buffers<cr>
+  Shortcut 'Next workspace buffer'
     \ map <leader>b] :NextWorkspaceBuffer<cr>
-  Shortcut 'Next buffer'
+  Shortcut 'Next workspace buffer'
     \ map <leader>bn :NextWorkspaceBuffer<cr>
-  Shortcut 'Previous buffer'
+  Shortcut 'Previous workspace buffer'
     \ map <leader>b[ :PreviousWorkspaceBuffer<cr>
-  Shortcut 'Previous buffer'
+  Shortcut 'Previous workspace buffer'
     \ map <leader>bp :PreviousWorkspaceBuffer<cr>
   Shortcut 'Kill buffer'
     \ map <leader>bk :Bclose<cr>
@@ -284,7 +295,9 @@ function! VimrcShortcuts()
   map <leader>b<esc> <Nop>
 
   Shortcut 'Previously edited buffer'
-    \ map <bs> :PreviousEditedWorkspaceBuffer<cr>
+    \ map <bs> :LastVisitedWorkspaceBuffer<cr>
+  Shortcut 'Previous buffer'
+    \ map <s-bs> :LastVisitedBuffer<cr>
 
   Shortcut 'Pop up scratch buffer'
     \ map <leader>bx :Scratch<cr>
@@ -498,6 +511,25 @@ endfunction
 
 set laststatus=2
 set statusline=%!CreateStatusline()
+
+function! GetTabLabel(n)
+  let l:buflist = tabpagebuflist(a:n)
+  let l:winnr = tabpagewinnr(a:n)
+  return pathshorten(expand('#' .. l:buflist[l:winnr - 1] .. ':p')) ?? '[No Name]'
+endfunction
+
+function! CreateTabline()
+  let l:tabline = ''
+  for i in range(tabpagenr('$'))
+    let l:tabline ..= i + 1 == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#'
+    let l:tabline ..= '%' .. (i + 1) .. 'T'
+    let l:tabline ..= ' %{GetTabLabel(' .. (i + 1) .. ')} '
+  endfor
+  let l:tabline ..= '%#TabLineFill#%T'
+  return l:tabline
+endfunction
+
+set tabline=%!CreateTabline()
 
 augroup fzf
   autocmd!
