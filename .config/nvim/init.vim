@@ -484,15 +484,9 @@ function! CreateStatuslineColorLabel(label) abort
   return l:label
 endfunction
 
-function! GetBufferLabel() abort
-  let l:label = expand('%:t')
-  if l:label == ''
-    let l:label = &buftype
-  endif
-  if l:label == ''
-    let l:label = bufnr('%')
-  endif
-  return l:label
+function! GetBufferLabel(...) abort
+  let l:bufnum = get(a:, 1, bufnr())
+  return expand('#' .. l:bufnum .. ':t') ?? getbufvar(l:bufnum, '&buftype') ?? l:bufnum
 endfunction
 
 function! CreateStatusline() abort
@@ -512,13 +506,13 @@ endfunction
 set laststatus=2
 set statusline=%!CreateStatusline()
 
-function! GetTabLabel(n)
+function! GetTabLabel(n) abort
   let l:buflist = tabpagebuflist(a:n)
   let l:winnr = tabpagewinnr(a:n)
-  return pathshorten(expand('#' .. l:buflist[l:winnr - 1] .. ':p')) ?? '[No Name]'
+  return GetBufferLabel(l:buflist[l:winnr - 1])
 endfunction
 
-function! CreateTabline()
+function! CreateTabline() abort
   let l:tabline = ''
   for i in range(tabpagenr('$'))
     let l:tabline ..= i + 1 == tabpagenr() ? '%#TabLineSel#' : '%#TabLine#'
