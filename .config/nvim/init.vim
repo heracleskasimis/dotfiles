@@ -19,7 +19,7 @@ set autoindent nocindent nosmartindent indentexpr=-1 breakindent breakindentopt=
 set fillchars+=vert:┃
 set noequalalways
 
-let $EDITOR='nvr'
+let $EDITOR='nvr --remote-wait'
 let $VISUAL=$EDITOR
 let $PAGER='cat'
 
@@ -95,6 +95,7 @@ let g:formatprg_args_c = '--style=java'
 let g:formatprg_args_cpp = '--style=java'
 let g:formatprg_args_expr_javascript = '"-a -f - -".(&expandtab ? "s ".&shiftwidth : "t").(&textwidth ? " -w ".&textwidth : "")'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
+let g:fugitive_dynamic_colors = 0
 let g:rooter_manual_only = 1
 let g:rooter_patterns = ['.git', '.svn']
 let g:gutentags_project_root = ['.git', '.svn']
@@ -345,7 +346,7 @@ function! VimrcShortcuts()
   Shortcut 'Recent files'
     \ map <leader>fr :History<cr>
   Shortcut 'Find file in private configuration'
-    \ map <leader>fp :Files <c-r>=fnamemodify($MYVIMRC, ':h')<cr>
+    \ map <leader>fp :Files <c-r>=fnamemodify($MYVIMRC, ':h')<cr><cr>
   Shortcut 'Yank filename'
     \ map <leader>fy :let @+ = expand('%:p')<cr>
   map <leader>f<esc> <Nop>
@@ -464,6 +465,7 @@ function! VimrcShortcuts()
   tmap <M-k> <c-k>
   nmap <M-l> <c-l>
   tmap <M-l> <c-l>
+  nmap <M-tab> <c-w>w
 endfunction
 
 augroup shortcuts
