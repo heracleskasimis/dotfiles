@@ -43,7 +43,6 @@ Plug 'editorconfig/editorconfig-vim'
 Plug 'gerw/vim-HiLinkTrace'
 Plug 'mileszs/ack.vim'
 Plug 'airblade/vim-rooter'
-Plug 'ludovicchabant/vim-gutentags'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'tpope/vim-dadbod'
 Plug 'mtth/scratch.vim'
@@ -79,9 +78,6 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 let g:fugitive_dynamic_colors = 0
 let g:rooter_manual_only = 1
 let g:rooter_patterns = ['.git', '.svn']
-let g:gutentags_project_root = ['.git', '.svn']
-let g:gutentags_cache_dir = '~/.cache/tags'
-let g:gutentags_ctags_extra_args = ['--map-TypeScript=+.tsx']
 
 lua << EOF
 if not vim.g.snacks_loaded then
@@ -113,7 +109,6 @@ vim.api.nvim_create_autocmd('DiagnosticChanged', {
 vim.lsp.enable('pyright')
 vim.lsp.enable('eslint')
 vim.lsp.enable('ts_ls')
-vim.lsp.enable('sqls')
 
 local null_ls = require("null-ls")
 null_ls.setup({
@@ -216,16 +211,6 @@ function! s:Bclose(bang, buffer)
 endfunction
 command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
 
-function! s:Tag(tag)
-  let l:tlist = taglist('^' . a:tag . '$')
-  if len(l:tlist) > 1
-    call fzf#vim#tags(a:tag)
-  else
-    execute ':tag ' . a:tag
-  endif
-endfunction
-command! -complete=buffer -nargs=? Tag call s:Tag('<args>')
-    
 function! VimrcShortcuts()
   map <space> <leader>
   map <space>m <localleader>
@@ -319,13 +304,11 @@ function! VimrcShortcuts()
   Shortcut 'Compile'
     \ map <leader>cc :make<cr>
   Shortcut 'Format buffer/region'
-    \ map <leader>cf :lua vim.lsp.buf.format({ timeout_ms = 8000 })<cr>
-  Shortcut 'Ask agent about this'
-    \ map <leader>ca :lcd <c-r>=FindRootDirectory()<cr> \| lua require("opencode").ask("@this: ", { submit = true })<cr>
-  Shortcut 'Interrupt agent'
-    \ map <leader>ci :lcd <c-r>=FindRootDirectory()<cr> \| lua require("opencode").command("session_interrupt")<cr>
+    \ map <leader>cf :lua vim.lsp.buf.format({ async = true, timeout_ms = 8000 })<cr>
   Shortcut 'Toggle agent prompt'
     \ map <leader>cp :lcd <c-r>=FindRootDirectory()<cr> \| lua require("opencode").toggle()<cr>
+  Shortcut 'Ask agent about this'
+    \ map <leader>cP :lcd <c-r>=FindRootDirectory()<cr> \| lua require("opencode").ask("@this: ", { submit = true })<cr>
   map <leader>c<esc> <Nop>
 
   Shortcut 'Window movement'
@@ -498,6 +481,22 @@ augroup termesc
   autocmd FileType fzf silent tunmap <buffer> <c-j>
   autocmd FileType fzf silent tunmap <buffer> <c-k>
   autocmd FileType fzf silent tunmap <buffer> <c-l>
+augroup END
+
+function! s:OnLspAttach()
+  nnoremap <silent> <buffer> gD <cmd>lua vim.lsp.buf.declaration()<CR>
+  nnoremap <silent> <buffer> gd <cmd>lua vim.lsp.buf.definition()<CR>
+  nnoremap <silent> <buffer> K <cmd>lua vim.lsp.buf.hover()<CR>
+  nnoremap <silent> <buffer> gi <cmd>lua vim.lsp.buf.implementation()<CR>
+  nnoremap <silent> <buffer> <leader>ca <cmd>lua vim.lsp.buf.code_action()<CR>
+  nnoremap <silent> <buffer> gr <cmd>lua vim.lsp.buf.references()<CR>
+  nnoremap <silent> <buffer> <leader>crn <cmd>lua vim.lsp.buf.rename()<CR>
+  setlocal omnifunc=v:lua.vim.lsp.omnifunc
+endfunction
+
+augroup lsp_attach_keymaps
+  autocmd!
+  autocmd LspAttach * call s:OnLspAttach()
 augroup END
 
 "--------------------------------------------------------------------------------------------------
