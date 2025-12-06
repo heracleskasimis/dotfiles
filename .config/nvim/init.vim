@@ -142,8 +142,13 @@ function! s:GetBuffers(...)
   let l:filtered = get(a:, 1, 0)
   let l:sorted = get(a:, 2, 0)
   let l:Compare = sorted
-    \ ? { a, b -> a.lastused < b.lastused ? 1 : -1 }
-    \ : { a, b -> a.bufnr < b.bufnr ? 1 : -1 }
+    \ ? {
+      \ a, b ->
+      \ (b.bufnr == bufnr()) - (a.bufnr == bufnr()) ??
+      \ (b.hidden && !a.hidden) - (a.hidden && !b.hidden) ??
+      \ (b.lastused - a.lastused)
+    \ }
+    \ : { a, b -> a.bufnr - b.bufnr }
   let l:bufnumbers = map(sort(getbufinfo(), l:Compare), {v -> v:val.bufnr})
   let l:bufnumbers = filtered
     \ ? filter(l:bufnumbers, {v -> s:IsEditableBuffer(v:val)})
