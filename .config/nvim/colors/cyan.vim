@@ -145,6 +145,7 @@ hi! link WinBar NormalFloat
 hi! link FloatBorder NormalFloat
 hi! link WinBarNC StatusLineNC
 hi! link WinSeparator VertSplit
+
 hi link TermCursor Cursor
 hi link SneakCurrent Sneak
 
@@ -164,22 +165,12 @@ hi link EasyMotionTarget2Second Search
 hi link EasyMotionMoveHL Search
 hi link EasyMotionIncSearch Search
 
-hi link DiagnosticError DiffDelete
-hi link DiagnosticSignError DiffDelete
-hi link ALEErrorSign DiffDelete
-hi link ALEErrorSignLineNr DiffDelete
-hi link ALEError DiffDelete
-hi link DiagnosticWarn DiffRemoved
-hi link DiagnosticSignWarn DiffRemoved
-hi link ALEWarningSign DiffRemoved
-hi link ALEWarningSignLineNr DiffRemoved
-hi link ALEWarning DiffRemoved
-hi link DiagnosticInfo DiffAdd
-hi link DiagnosticSignInfo DiffAdd
-hi link ALEInfoSign DiffAdd
-hi link ALEInfoSignLineNr DiffAdd
-hi link ALEInfo DiffAdd
-hi link ALEStyleErrorSign DiffDelete
+hi! link DiagnosticError ErrorMsg
+hi! link DiagnosticSignError ErrorMsg
+hi! link DiagnosticWarn DiffRemoved
+hi! link DiagnosticSignWarn DiffRemoved
+hi! link DiagnosticInfo DiffAdd
+hi! link DiagnosticSignInfo DiffAdd
 
 let g:terminal_color_0 = '#404040'
 let g:terminal_color_1 = '#ff70a4'

@@ -23,10 +23,6 @@ let $EDITOR='nvr --remote-tab-wait'
 let $VISUAL=$EDITOR
 let $PAGER='cat'
 
-lua << EOF
-vim.diagnostic.config { underline = false }
-EOF
-
 set wildignore=*.class,*.o,*.meta,*.dll,*.pdb,*.exe,*.asset,*.unity,*.prefab,*.min.js,*.min.css,tags,node_modules,venv,bin,obj,build,dist
 
 "--------------------------------------------------------------------------------------------------
@@ -35,7 +31,8 @@ let g:no_plugin_maps = 1
 
 call plug#begin()
 Plug 'justinmk/vim-sneak'
-Plug 'w0rp/ale'
+Plug 'neovim/nvim-lspconfig'
+Plug 'nvimtools/none-ls.nvim'
 Plug 'scrooloose/nerdtree'
 Plug 'sbl/scvim'
 Plug 'tpope/vim-fugitive'
@@ -63,19 +60,6 @@ Plug 'NickvanDyke/opencode.nvim'
 Plug 'marcinjahn/gemini-cli.nvim'
 call plug#end()
 
-lua << EOF
-require'nvim-treesitter.configs'.setup({
-  highlight = { enable = true },
-  indent = { enable = false },
-})
-if not vim.g.snacks_loaded then
-  require'snacks'.setup({
-    terminal = { enabled = true },
-  })
-  vim.g.snacks_loaded = true
-end
-EOF
-
 if executable('ag')
   let $FZF_DEFAULT_COMMAND = 'ag --vimgrep --hidden --skip-vcs-ignores --ignore .git -g ""'
   let g:ackprg = 'ag --vimgrep --hidden --ignore .git'
@@ -91,9 +75,6 @@ let g:NERDTreeAutoCenter = 0
 let g:NERDTreeHighlightCursorline = 0
 let g:NERDTreeStatusline = -1
 let g:NERDTreeWinSize = 44
-let g:formatprg_args_c = '--style=java'
-let g:formatprg_args_cpp = '--style=java'
-let g:formatprg_args_expr_javascript = '"-a -f - -".(&expandtab ? "s ".&shiftwidth : "t").(&textwidth ? " -w ".&textwidth : "")'
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 let g:fugitive_dynamic_colors = 0
 let g:rooter_manual_only = 1
@@ -101,32 +82,53 @@ let g:rooter_patterns = ['.git', '.svn']
 let g:gutentags_project_root = ['.git', '.svn']
 let g:gutentags_cache_dir = '~/.cache/tags'
 let g:gutentags_ctags_extra_args = ['--map-TypeScript=+.tsx']
-let g:ale_lint_on_text_changed = 'always'
-let g:ale_set_highlights = 0
-let g:ale_use_neovim_diagnostics_api = 1
-let g:ale_lint_delay = 750
-let g:ale_fixers = {
-  \ '*': ['remove_trailing_lines', 'trim_whitespace'],
-  \ 'javascript': ['eslint'],
-  \ 'javascript.jsx': ['eslint'],
-  \ 'typescript': ['eslint'],
-  \ 'typescriptreact': ['eslint'],
-  \ 'javascriptreact': ['eslint'],
-  \ 'python': ['isort', 'autopep8', 'black'],
-  \ 'sql': ['sqlfluff']
-  \ }
-let g:ale_linters = {
-  \ 'javascript': ['eslint'],
-  \ 'javascript.jsx': ['eslint'],
-  \ 'python': ['pylint', 'flake8'],
-  \ 'sql': ['sqlfluff']
-  \ }
-let g:ale_sql_pgformatter_options = '--spaces 2 --function-case 1 --comma-break'
-let g:ale_sql_sqlfluff_options = '--dialect postgres'
-let g:ale_python_flake8_options = '--config ~/.config/flake8'
-let g:ale_python_auto_virtualenv = 1
-let g:ale_virtualenv_dir_names = ['venv', '.venv', 'env', '.env']
-let g:ale_virtualtext_cursor = 'disabled'
+
+lua << EOF
+if not vim.g.snacks_loaded then
+  require('snacks').setup({
+    terminal = { enabled = true },
+  })
+  vim.g.snacks_loaded = true
+end
+
+require('nvim-treesitter.configs').setup({
+  highlight = { enable = true },
+  indent = { enable = false },
+})
+
+vim.diagnostic.config({
+  virtual_text = false,
+  virtual_lines = true,
+  signs = true,
+  underline = false,
+  update_in_insert = false,
+})
+
+vim.api.nvim_create_autocmd('DiagnosticChanged', {
+  callback = function(args)
+    vim.diagnostic.setloclist({open = false})
+  end,
+})
+
+vim.lsp.enable('pyright')
+vim.lsp.enable('eslint')
+vim.lsp.enable('ts_ls')
+vim.lsp.enable('sqls')
+
+local null_ls = require("null-ls")
+null_ls.setup({
+  sources = {
+    null_ls.builtins.formatting.black,
+    null_ls.builtins.formatting.isort,
+    null_ls.builtins.diagnostics.sqlfluff.with({
+      extra_args = {"--dialect", "postgres"},
+    }),
+    null_ls.builtins.formatting.sqlfluff.with({
+      extra_args = {"--dialect", "postgres"},
+    }),
+  },
+})
+EOF
 
 "--------------------------------------------------------------------------------------------------
 
@@ -317,7 +319,7 @@ function! VimrcShortcuts()
   Shortcut 'Compile'
     \ map <leader>cc :make<cr>
   Shortcut 'Format buffer/region'
-    \ map <leader>cf :ALEFix<cr>
+    \ map <leader>cf :lua vim.lsp.buf.format({ timeout_ms = 8000 })<cr>
   Shortcut 'Ask agent about this'
     \ map <leader>ca :lcd <c-r>=FindRootDirectory()<cr> \| lua require("opencode").ask("@this: ", { submit = true })<cr>
   Shortcut 'Interrupt agent'
