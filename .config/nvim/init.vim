@@ -19,7 +19,7 @@ set autoindent nocindent nosmartindent indentexpr=-1 breakindent breakindentopt=
 set fillchars+=vert:┃
 set noequalalways
 
-let $EDITOR='nvr --remote-wait'
+let $EDITOR='nvr --remote-tab-wait'
 let $VISUAL=$EDITOR
 let $PAGER='cat'
 
