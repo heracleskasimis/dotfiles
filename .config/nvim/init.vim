@@ -204,7 +204,7 @@ command! Buffers call s:Buffers()
 
 function! s:Bclose(bang, buffer)
   let l:buffernr = empty(a:buffer) ? bufnr() : str2nr(a:buffer)
-  if l:buffernr == bufnr()
+  if l:buffernr == bufnr() && (tabpagenr('$') == 1 || len(tabpagebuflist()) > 1)
     call s:LastVisitedWorkspaceBuffer(1)
   endif
   execute 'silent! bdelete'.a:bang.' '.l:buffernr
