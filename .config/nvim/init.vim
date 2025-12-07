@@ -218,19 +218,19 @@ function! VimrcShortcuts()
   map <leader><esc> <Nop>
 
   Shortcut 'Run shortcut'
-    \ map <leader> :Shortcuts<cr><leader>
+    \ map <leader> <cmd>Shortcuts<cr><leader>
 
   Shortcut 'Commands'
-    \ map <leader>: :Commands<cr>
+    \ map <leader>: <cmd>Commands<cr>
 
   Shortcut 'New tab'
-    \ map <leader><Tab>n :tabe<cr>
+    \ map <leader><Tab>n <cmd>tabe<cr>
   Shortcut 'Delete tab'
-    \ map <leader><Tab>d :tabclose<cr>
+    \ map <leader><Tab>d <cmd>tabclose<cr>
   Shortcut 'Previous tab'
-    \ map <leader><Tab>[ :tabprevious<cr>
+    \ map <leader><Tab>[ <cmd>tabprevious<cr>
   Shortcut 'Next tab'
-    \ map <leader><Tab>] :tabnext<cr>
+    \ map <leader><Tab>] <cmd>tabnext<cr>
   Shortcut 'Switch to tab 1'
     \ map <leader><Tab>1 1gt<cr>
   Shortcut 'Switch to tab 2'
@@ -248,69 +248,79 @@ function! VimrcShortcuts()
   map <leader><Tab><esc> <Nop>
 
   Shortcut 'Project sidebar'
-    \ map <leader>op :NERDTreeToggle <c-r>=FindRootDirectory()<cr><cr>
+    \ map <leader>op <cmd>execute 'NERDTreeToggle ' . FindRootDirectory()<cr>
   Shortcut 'Find file in project sidebar'
-    \ map <leader>oP :NERDTreeFind<cr>
+    \ map <leader>oP <cmd>NERDTreeFind<cr>
   Shortcut 'Terminal'
-    \ map <leader>ot :belowright 10split \| lcd <c-r>=FindRootDirectory()<cr> \| terminal<cr>
+    \ nmap <leader>ot <cmd>call execute([ 'belowright 10split', 'lcd ' . FindRootDirectory(), 'terminal' ])<cr>
   Shortcut 'Terminal here'
-    \ map <leader>oT :belowright 10split \| lcd <c-r>=expand('%:p:h')<cr> \| terminal<cr>
+    \ map <leader>oT <cmd>call execute([ 'belowright 10split', 'lcd ' . expand('%:p:h'), 'terminal' ])<cr>
   Shortcut 'Agent prompt'
-    \ map <leader>oa :lcd <c-r>=FindRootDirectory()<cr> \| lua require("opencode").toggle()<cr>
+    \ map <leader>oa <cmd>call execute([ 'lcd ' . FindRootDirectory(), 'lua require("opencode").toggle()' ])<cr>
   Shortcut 'Ask agent about this'
-    \ map <leader>oA :lcd <c-r>=FindRootDirectory()<cr> \| lua require("opencode").ask("@this: ", { submit = true })<cr>
+    \ map <leader>oA <cmd>call execute([ 'lcd ' . FindRootDirectory(), 'lua require("opencode").ask("@this: ", { submit = true })' ])<cr>
   map <leader>o<esc> <Nop>
 
   Shortcut 'Switch workspace buffer'
-    \ map <leader>, :WorkspaceBuffers<cr>
+    \ map <leader>, <cmd>WorkspaceBuffers<cr>
   Shortcut 'Switch workspace buffer'
-    \ map <leader>bb :WorkspaceBuffers<cr>
+    \ map <leader>bb <cmd>WorkspaceBuffers<cr>
   Shortcut 'Switch buffer'
-    \ map <leader>bB :Buffers<cr>
+    \ map <leader>bB <cmd>Buffers<cr>
   Shortcut 'Switch workspace buffer'
-    \ map <leader>b, :WorkspaceBuffers<cr>
+    \ map <leader>b, <cmd>WorkspaceBuffers<cr>
   Shortcut 'Switch buffer'
-    \ map <leader>b< :Buffers<cr>
+    \ map <leader>b< <cmd>Buffers<cr>
   Shortcut 'Next workspace buffer'
-    \ map <leader>b] :NextWorkspaceBuffer<cr>
+    \ map <leader>b] <cmd>NextWorkspaceBuffer<cr>
   Shortcut 'Next workspace buffer'
-    \ map <leader>bn :NextWorkspaceBuffer<cr>
+    \ map <leader>bn <cmd>NextWorkspaceBuffer<cr>
   Shortcut 'Previous workspace buffer'
-    \ map <leader>b[ :PreviousWorkspaceBuffer<cr>
+    \ map <leader>b[ <cmd>PreviousWorkspaceBuffer<cr>
   Shortcut 'Previous workspace buffer'
-    \ map <leader>bp :PreviousWorkspaceBuffer<cr>
+    \ map <leader>bp <cmd>PreviousWorkspaceBuffer<cr>
   Shortcut 'Kill buffer'
-    \ map <leader>bk :Bclose<cr>
+    \ map <leader>bk <cmd>Bclose<cr>
   Shortcut 'Kill unsaved buffer'
-    \ map <leader>bK :Bclose!<cr>
+    \ map <leader>bK <cmd>Bclose!<cr>
   Shortcut 'New empty buffer'
-    \ map <leader>bN :vnew<cr>
+    \ map <leader>bN <cmd>vnew<cr>
   Shortcut 'Kill other buffers'
-    \ map <leader>bo :%bd\|e#\|bd#<cr>
+    \ map <leader>bo <cmd>%bd\|e#\|bd#<cr>
   Shortcut 'Switch buffer'
-    \ map <leader>< :Buffers<cr>
+    \ map <leader>< <cmd>Buffers<cr>
   map <leader>b<esc> <Nop>
 
   Shortcut 'Previously edited buffer'
-    \ map <bs> :LastVisitedWorkspaceBuffer<cr>
+    \ map <bs> <cmd>LastVisitedWorkspaceBuffer<cr>
   Shortcut 'Previous buffer'
-    \ map <s-bs> :LastVisitedBuffer<cr>
+    \ map <s-bs> <cmd>LastVisitedBuffer<cr>
 
   Shortcut 'Pop up scratch buffer'
-    \ map <leader>bx :Scratch<cr>
+    \ map <leader>bx <cmd>Scratch<cr>
   Shortcut 'Pop up scratch buffer'
-    \ map <leader>x :Scratch<cr>
+    \ map <leader>x <cmd>Scratch<cr>
 
-  Shortcut 'List errors'
-    \ map <leader>cx :lopen<cr>
-  Shortcut 'Compile'
-    \ map <leader>cc :make<cr>
-  Shortcut 'Format buffer/region'
-    \ map <leader>cf :lua vim.lsp.buf.format({ async = true, timeout_ms = 8000 })<cr>
-  Shortcut 'List LSP code actions'
-    \ map <leader>ca :lua vim.lsp.buf.code_action()<cr>
+  Shortcut 'Go to definition'
+    \ map <leader>cd <cmd>lua vim.lsp.buf.definition()<cr>
+  Shortcut 'Go to declaration'
+    \ map <leader>cD <cmd>lua vim.lsp.buf.declaration()<cr>
+  Shortcut 'Display symbol information'
+    \ map <leader>cK <cmd>lua vim.lsp.buf.hover()<cr>
+  Shortcut 'Go to implementation'
+    \ map <leader>ci <cmd>lua vim.lsp.buf.implementation()<cr>
   Shortcut 'Rename symbol'
-    \ map <leader>cr :lua vim.lsp.buf.rename()<cr>
+    \ map <leader>cr <cmd>lua vim.lsp.buf.references()<cr>
+  Shortcut 'List errors'
+    \ map <leader>cx <cmd>lopen<cr>
+  Shortcut 'Compile'
+    \ map <leader>cc <cmd>make<cr>
+  Shortcut 'Format buffer/region'
+    \ map <leader>cf <cmd>lua vim.lsp.buf.format({ async = true, timeout_ms = 8000 })<cr>
+  Shortcut 'List LSP code actions'
+    \ map <leader>ca <cmd>lua vim.lsp.buf.code_action()<cr>
+  Shortcut 'Rename symbol'
+    \ map <leader>cr <cmd>lua vim.lsp.buf.rename()<cr>
   map <leader>c<esc> <Nop>
 
   Shortcut 'Window movement'
@@ -321,45 +331,42 @@ function! VimrcShortcuts()
     \ map <c-s-Tab> gT
 
   Shortcut 'Find file'
-    \ map <leader>. :Files <c-r>=FindRootDirectory()<cr>/<cr>
+    \ map <leader>. <cmd>execute 'Files ' . FindRootDirectory() . '/'<cr>
 
   Shortcut 'Find file from here'
-    \ map <leader>f/ :Files <c-r>=expand('%:p:h')<cr>/<cr>
+    \ map <leader>f/ <cmd>execute 'Files ' . expand('%:p:h')/<cr>
   Shortcut 'Find file from here'
-    \ map <leader>ff :Files <c-r>=expand('%:p:h')<cr>/<cr>
+    \ map <leader>f/ <cmd>execute 'Files ' . expand('%:p:h')/<cr>
   Shortcut 'Find file'
-    \ map <leader>f. :Files <c-r>=FindRootDirectory()<cr><cr>
+    \ map <leader>f. <cmd>execute 'Files ' . FindRootDirectory()<cr>
   Shortcut 'Delete this file'
-    \ map <leader>fX :Remove<cr>
+    \ map <leader>fX <cmd>Remove<cr>
   Shortcut 'Move file'
-    \ map <leader>fm :Move <c-r>=expand('%:p')<cr>
+    \ map <leader>fm <cmd>execute 'Move ' . expand('%:p')<cr>
   Shortcut 'Open project editorconfig'
-    \ map <leader>fc :e <c-r>=FindRootDirectory()<cr>/.editorconfig<cr>
+    \ map <leader>fc <cmd>execute 'e ' . FindRootDirectory() . '/.editorconfig'<cr>
   Shortcut 'Recent files'
-    \ map <leader>fr :History<cr>
+    \ map <leader>fr <cmd>History<cr>
   Shortcut 'Find file in private configuration'
-    \ map <leader>fp :Files <c-r>=fnamemodify($MYVIMRC, ':h')<cr><cr>
+    \ map <leader>fp <cmd>execute 'Files ' . fnamemodify($MYVIMRC, ':h')<cr>
   Shortcut 'Yank filename'
-    \ map <leader>fy :let @+ = expand('%:p')<cr>
+    \ map <leader>fy <cmd>let @+ = expand('%:p')<cr>
   map <leader>f<esc> <Nop>
 
   Shortcut 'Find file in project'
-    \ map <leader>p/ :GFiles <c-r>=FindRootDirectory()<cr><cr>
+    \ map <leader>p/ <cmd>execute 'GFiles ' . FindRootDirectory()<cr>
   map <leader>p<esc> <Nop>
-
   Shortcut 'Find file in project'
-    \ map <leader><leader> :GFiles <c-r>=FindRootDirectory()<cr><cr>
+    \ map <leader><leader> <cmd>execute 'GFiles ' . FindRootDirectory()<cr>
 
   Shortcut 'Search for symbol in project'
-    \ map <leader>* :Ack! -- <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><cr>
+    \ map <leader>* <cmd>execute 'Ack! -- ' . expand("<cword>") . ' ' . FindRootDirectory()<cr>
   Shortcut 'Search project'
     \ map <leader>/p :Ack! -- <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><c-b><s-right><s-right><s-right>
   Shortcut 'Search current directory'
     \ map <leader>/d :Ack! -- <c-r>=expand("<cword>")<cr> %:h<c-b><s-right><s-right><s-right>
   Shortcut 'Search buffer'
     \ map <leader>/b :Ack! -- <c-r>=expand("<cword>")<cr> %<c-b><s-right><s-right><s-right>
-  Shortcut 'Search symbol'
-    \ map <leader>/i :Ctags <c-r>=expand("<cword>")<cr>
   Shortcut 'Search git commits'
     \ map <leader>/g :Gclog! -S<c-r>=expand("<cword>")<cr> -- \| copen<s-left><s-left><s-left><left>
   Shortcut 'Search git file commits'
@@ -369,32 +376,32 @@ function! VimrcShortcuts()
   map <leader>/<esc> <Nop>
 
   Shortcut 'Git status'
-    \ map <leader>gg :aboveleft Git<cr>
+    \ map <leader>gg <cmd>aboveleft Git<cr>
   Shortcut 'Git blame'
-    \ map <leader>gB :Git blame<cr>
+    \ map <leader>gB <cmd>Git blame<cr>
   Shortcut 'List git commits'
-    \ map <leader>gl :Commits<cr>
+    \ map <leader>gl <cmd>Commits<cr>
   Shortcut 'List git file commits'
-    \ map <leader>gL :BCommits<cr>
+    \ map <leader>gL <cmd>BCommits<cr>
   Shortcut 'Git stage file'
-    \ map <leader>gS :Git add %<cr>
+    \ map <leader>gS <cmd>Git add %<cr>
   Shortcut 'Git unstage file'
-    \ map <leader>gU :Git reset HEAD %<cr>
+    \ map <leader>gU <cmd>Git reset HEAD %<cr>
   Shortcut 'Git revert file'
-    \ map <leader>gR :Git checkout -- %<cr>
+    \ map <leader>gR <cmd>Git checkout -- %<cr>
   Shortcut 'Git fetch'
-    \ map <leader>gF :Git fetch<cr>
+    \ map <leader>gF <cmd>Git fetch<cr>
   Shortcut 'Git remove file'
-    \ map <leader>gx :Gremove %<cr>
+    \ map <leader>gx <cmd>Gremove %<cr>
   map <leader>g<esc> <Nop>
 
   Shortcut 'List commands'
-    \ map <leader>hf :Helptags<cr>
+    \ map <leader>hf <cmd>Helptags<cr>
   Shortcut 'Vim info'
-    \ map <leader>hi :help<cr>
+    \ map <leader>hi <cmd>help<cr>
   map <leader>h<esc> <Nop>
 
-  nmap <esc> :noh<cr>
+  nmap <esc> <cmd>noh<cr>
   map <down> gj
   map <up> gk
   imap <down> <c-o>gj
@@ -421,7 +428,7 @@ function! VimrcShortcuts()
   tmap <c-Tab> <c-\><c-o>gt
   tmap <c-s-Tab> <c-\><c-o>gT
 
-  nmap <c-t> :tabe<cr>
+  nmap <c-t> <cmd>tabe<cr>
   nmap <c-PageUp> gT
   tmap <c-PageUp> <c-\><c-n>gT
   nmap <c-PageDown> gt
@@ -655,11 +662,11 @@ if has('gui_running')
     let &guifont = substitute(&guifont, '\d\+$', l:font_size - 1, '')
   endfunction
 
-  nmap <c-ScrollWheelUp> :call FontSizePlus()<cr>
-  nmap <c-ScrollWheelDown> :call FontSizeMinus()<cr>
+  nmap <c-ScrollWheelUp> <cmd>call FontSizePlus()<cr>
+  nmap <c-ScrollWheelDown> <cmd>call FontSizeMinus()<cr>
 
-  nmap <c-s-t> :tabe \| lcd <c-r>=FindRootDirectory()<cr> \| terminal<cr>
-  tmap <c-s-t> <c-\><c-n>:tabe \| lcd <c-r>=FindRootDirectory()<cr> \| terminal<cr>
+  map <c-s-t> <cmd>execute 'tabe | lcd ' . FindRootDirectory() . ' | terminal'<cr>
+  tmap <c-s-t> <cmd>execute 'tabe | lcd ' . FindRootDirectory() . ' | terminal'<cr>
 endif
 
 if exists('g:neovide')
