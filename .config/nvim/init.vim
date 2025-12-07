@@ -160,7 +160,7 @@ function! s:LastVisitedWorkspaceBuffer(...)
   endif
   let l:buffers = filter(s:GetBuffers(1, 1), {v -> v:val != bufnr() })
   if len(l:buffers) > 0
-    execute ':buffer ' .  buffers[0]
+    execute 'buffer ' .  buffers[0]
   endif
 endfunction
 command! LastVisitedWorkspaceBuffer call s:LastVisitedWorkspaceBuffer()
@@ -168,20 +168,20 @@ command! LastVisitedWorkspaceBuffer call s:LastVisitedWorkspaceBuffer()
 function! s:LastVisitedBuffer(...)
   let l:buffers = filter(s:GetBuffers(0, 1), {v -> v:val != bufnr() })
   if len(l:buffers) > 0
-    execute ':buffer ' .  buffers[0]
+    execute 'buffer ' .  buffers[0]
   endif
 endfunction
 command! LastVisitedBuffer call s:LastVisitedBuffer()
 
 function! s:NextWorkspaceBuffer()
   let l:buffers = s:GetBuffers(1)
-  execute ':buffer ' . l:buffers[s:mod((index(buffers, bufnr()) + 1), len(l:buffers))]
+  execute 'buffer ' . l:buffers[s:mod((index(buffers, bufnr()) + 1), len(l:buffers))]
 endfunction
 command! NextWorkspaceBuffer call s:NextWorkspaceBuffer()
 
 function! s:PreviousWorkspaceBuffer()
   let l:buffers = s:GetBuffers(1)
-  execute ':buffer ' . l:buffers[s:mod((index(buffers, bufnr()) - 1), len(l:buffers))]
+  execute 'buffer ' . l:buffers[s:mod((index(buffers, bufnr()) - 1), len(l:buffers))]
 endfunction
 command! PreviousWorkspaceBuffer call s:PreviousWorkspaceBuffer()
 
@@ -207,7 +207,7 @@ function! s:Bclose(bang, buffer)
   if l:buffernr == bufnr()
     call s:LastVisitedWorkspaceBuffer(1)
   endif
-  execute ':silent! bdelete'.a:bang.' '.l:buffernr
+  execute 'silent! bdelete'.a:bang.' '.l:buffernr
 endfunction
 command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
 
