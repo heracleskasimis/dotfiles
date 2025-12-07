@@ -204,10 +204,14 @@ command! Buffers call s:Buffers()
 
 function! s:Bclose(bang, buffer)
   let l:buffernr = empty(a:buffer) ? bufnr() : str2nr(a:buffer)
-  if l:buffernr == bufnr() && (tabpagenr('$') == 1 || len(tabpagebuflist()) > 1)
+  if l:buffernr == bufnr() 
+      \ && (a:bang || (!getbufvar(l:buffernr, '&modified') && !getbufvar(l:buffernr, 'terminal_job_id'))) 
+      \ && (tabpagenr('$') == 1 || len(tabpagebuflist()) > 1)
     call s:LastVisitedWorkspaceBuffer(1)
   endif
-  execute 'silent! bdelete'.a:bang.' '.l:buffernr
+  if bufloaded(l:buffernr)
+    execute 'bdelete' . a:bang . ' ' . l:buffernr
+  endif
 endfunction
 command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
 
