@@ -291,9 +291,9 @@ function! VimrcShortcuts()
     \ map <leader>< <cmd>Buffers<cr>
   map <leader>b<esc> <Nop>
 
-  Shortcut 'Previously edited buffer'
+  Shortcut 'Previously visited workspace buffer'
     \ map <bs> <cmd>LastVisitedWorkspaceBuffer<cr>
-  Shortcut 'Previous buffer'
+  Shortcut 'Previously visited buffer'
     \ map <s-bs> <cmd>LastVisitedBuffer<cr>
 
   Shortcut 'Pop up scratch buffer'
