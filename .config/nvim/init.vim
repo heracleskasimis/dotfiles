@@ -207,7 +207,7 @@ function! s:Bclose(bang, buffer)
   if l:buffernr == bufnr()
     call s:LastVisitedWorkspaceBuffer(1)
   endif
-  execute ':bdelete'.a:bang.' '.l:buffernr
+  execute ':silent! bdelete'.a:bang.' '.l:buffernr
 endfunction
 command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
 
