@@ -255,6 +255,10 @@ function! VimrcShortcuts()
     \ map <leader>ot :belowright 10split \| lcd <c-r>=FindRootDirectory()<cr> \| terminal<cr>
   Shortcut 'Terminal here'
     \ map <leader>oT :belowright 10split \| lcd <c-r>=expand('%:p:h')<cr> \| terminal<cr>
+  Shortcut 'Agent prompt'
+    \ map <leader>oa :lcd <c-r>=FindRootDirectory()<cr> \| lua require("opencode").toggle()<cr>
+  Shortcut 'Ask agent about this'
+    \ map <leader>oA :lcd <c-r>=FindRootDirectory()<cr> \| lua require("opencode").ask("@this: ", { submit = true })<cr>
   map <leader>o<esc> <Nop>
 
   Shortcut 'Switch workspace buffer'
@@ -297,18 +301,16 @@ function! VimrcShortcuts()
   Shortcut 'Pop up scratch buffer'
     \ map <leader>x :Scratch<cr>
 
-  Shortcut 'Jump to definition'
-    \ map <leader>cd :Tags <c-r>=expand("<cword>")<cr><cr>
   Shortcut 'List errors'
     \ map <leader>cx :lopen<cr>
   Shortcut 'Compile'
     \ map <leader>cc :make<cr>
   Shortcut 'Format buffer/region'
     \ map <leader>cf :lua vim.lsp.buf.format({ async = true, timeout_ms = 8000 })<cr>
-  Shortcut 'Toggle agent prompt'
-    \ map <leader>cp :lcd <c-r>=FindRootDirectory()<cr> \| lua require("opencode").toggle()<cr>
-  Shortcut 'Ask agent about this'
-    \ map <leader>cP :lcd <c-r>=FindRootDirectory()<cr> \| lua require("opencode").ask("@this: ", { submit = true })<cr>
+  Shortcut 'List LSP code actions'
+    \ map <leader>ca :lua vim.lsp.buf.code_action()<cr>
+  Shortcut 'Rename symbol'
+    \ map <leader>cr :lua vim.lsp.buf.rename()<cr>
   map <leader>c<esc> <Nop>
 
   Shortcut 'Window movement'
@@ -404,14 +406,11 @@ function! VimrcShortcuts()
   tmap <s-insert> <c-\><c-n>"*pi
   imap <s-insert> <c-r><c-o>*
   cmap <s-insert> <c-r><c-o>*
-  cmap <c-g> <c-[>
 
   map f <Plug>Sneak_f
   map F <Plug>Sneak_F
   map t <Plug>Sneak_t
   map T <Plug>Sneak_T
-
-  map <c-]> :tjump <c-r>=expand("<cword>")<cr><cr>
 
   nmap <X1Mouse> <c-o>
   nmap <X2Mouse> <c-i>
@@ -488,9 +487,7 @@ function! s:OnLspAttach()
   nnoremap <silent> <buffer> gd <cmd>lua vim.lsp.buf.definition()<CR>
   nnoremap <silent> <buffer> K <cmd>lua vim.lsp.buf.hover()<CR>
   nnoremap <silent> <buffer> gi <cmd>lua vim.lsp.buf.implementation()<CR>
-  nnoremap <silent> <buffer> <leader>ca <cmd>lua vim.lsp.buf.code_action()<CR>
   nnoremap <silent> <buffer> gr <cmd>lua vim.lsp.buf.references()<CR>
-  nnoremap <silent> <buffer> <leader>crn <cmd>lua vim.lsp.buf.rename()<CR>
   setlocal omnifunc=v:lua.vim.lsp.omnifunc
 endfunction
 
