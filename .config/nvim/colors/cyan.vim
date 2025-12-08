@@ -15,7 +15,8 @@ hi LineNr                   cterm=NONE              ctermfg=250         ctermbg=
 hi SpecialKey               cterm=bold              ctermfg=NONE                            gui=bold                guifg=NONE
 hi NonText                  cterm=bold              ctermfg=255                             gui=bold                guifg=#e0e0e0       guibg=NONE
 hi Directory                cterm=bold,italic       ctermfg=NONE                            gui=bold,italic         guifg=NONE
-hi ErrorMsg                 cterm=NONE              ctermfg=231         ctermbg=161         gui=NONE                guifg=#ff0066       guibg=#ffffff
+hi ErrorMsg                 cterm=NONE              ctermfg=161         ctermbg=NONE        gui=NONE                guifg=#ff0066       guibg=NONE
+hi WarningMsg               cterm=NONE              ctermfg=211                             gui=NONE                guifg=#ff80b3
 hi IncSearch                cterm=NONE              ctermfg=231         ctermbg=0           gui=NONE                guifg=#ffffff       guibg=#000000
 hi Search                   cterm=NONE              ctermfg=NONE        ctermbg=159         gui=NONE                guifg=#000000       guibg=#d7ffff
 hi CurSearch                cterm=NONE              ctermfg=NONE        ctermbg=159         gui=NONE                guifg=#000000       guibg=#d7ffff
@@ -33,7 +34,6 @@ hi Title                    cterm=bold              ctermfg=NONE                
 hi Visual                   cterm=NONE              ctermfg=NONE        ctermbg=123         gui=NONE                guifg=NONE          guibg=#b0ffff
 hi VisualNOS                cterm=NONE              ctermfg=NONE        ctermbg=230         gui=NONE                guifg=NONE          guibg=#ffffcc
 hi Underlined               cterm=underline         ctermfg=NONE                            gui=bold,underline      guifg=NONE
-hi WarningMsg               cterm=standout          ctermfg=NONE                            gui=standout            guifg=NONE
 hi WildMenu                 cterm=bold              ctermfg=231         ctermbg=37          gui=bold                guifg=#ffffff       guibg=#00b0b0
 hi PMenu                    cterm=NONE              ctermfg=16          ctermbg=254         gui=NONE                guifg=#000000       guibg=#e8e8e8
 hi PMenuSel                 cterm=NONE              ctermfg=231         ctermbg=16          gui=NONE                guifg=#ffffff       guibg=#000000
@@ -134,7 +134,6 @@ if &background == 'dark'
     hi Matchparen           cterm=NONE              ctermfg=NONE        ctermbg=NONE        gui=bold                guifg=NONE          guibg=#008888
     hi Sneak                cterm=NONE              ctermfg=232         ctermbg=229         gui=NONE                guifg=#444444       guibg=#ffff88
     hi SneakLabel           cterm=underline         ctermfg=232         ctermbg=227         gui=underline           guifg=#444444       guibg=#ffff60
-    hi ErrorMsg             cterm=NONE              ctermfg=NONE        ctermbg=NONE        gui=NONE                guifg=#ffffff       guibg=#ff0066
     hi PMenu                cterm=NONE              ctermfg=NONE        ctermbg=236         gui=NONE                guifg=NONE          guibg=#202020
     hi PMenuSel             cterm=NONE              ctermfg=NONE        ctermbg=238         gui=NONE                guifg=NONE          guibg=#303030
     hi PMenuSbar            cterm=NONE              ctermfg=NONE        ctermbg=238         gui=NONE                guifg=NONE          guibg=#303030
@@ -167,8 +166,8 @@ hi link EasyMotionIncSearch Search
 
 hi! link DiagnosticError ErrorMsg
 hi! link DiagnosticSignError ErrorMsg
-hi! link DiagnosticWarn ErrorMsg
-hi! link DiagnosticSignWarn ErrorMsg
+hi! link DiagnosticWarn WarningMsg
+hi! link DiagnosticSignWarn WarningMsg
 hi! link DiagnosticInfo LineNr
 hi! link DiagnosticSignInfo LineNr
 hi! link DiagnosticHint LineNr
