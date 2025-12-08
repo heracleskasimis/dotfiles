@@ -167,10 +167,12 @@ hi link EasyMotionIncSearch Search
 
 hi! link DiagnosticError ErrorMsg
 hi! link DiagnosticSignError ErrorMsg
-hi! link DiagnosticWarn DiffRemoved
-hi! link DiagnosticSignWarn DiffRemoved
-hi! link DiagnosticInfo DiffAdd
-hi! link DiagnosticSignInfo DiffAdd
+hi! link DiagnosticWarn ErrorMsg
+hi! link DiagnosticSignWarn ErrorMsg
+hi! link DiagnosticInfo LineNr
+hi! link DiagnosticSignInfo LineNr
+hi! link DiagnosticHint LineNr
+hi! link DiagnosticSignHint LineNr
 
 let g:terminal_color_0 = '#404040'
 let g:terminal_color_1 = '#ff70a4'
