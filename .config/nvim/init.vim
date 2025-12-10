@@ -313,8 +313,8 @@ function! VimrcShortcuts()
     \ map <leader>cK <cmd>lua vim.lsp.buf.hover()<cr>
   Shortcut 'Go to implementation'
     \ map <leader>ci <cmd>lua vim.lsp.buf.implementation()<cr>
-  Shortcut 'Rename symbol'
-    \ map <leader>cr <cmd>lua vim.lsp.buf.references()<cr>
+  Shortcut 'List symbol references'
+    \ map <leader>cl <cmd>lua vim.lsp.buf.references()<cr>
   Shortcut 'List errors'
     \ map <leader>cx <cmd>lopen<cr>
   Shortcut 'Compile'
