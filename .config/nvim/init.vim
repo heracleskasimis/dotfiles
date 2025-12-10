@@ -494,11 +494,8 @@ augroup termesc
 augroup END
 
 function! s:OnLspAttach()
-  nnoremap <silent> <buffer> gD <cmd>lua vim.lsp.buf.declaration()<CR>
-  nnoremap <silent> <buffer> gd <cmd>lua vim.lsp.buf.definition()<CR>
+  nnoremap <silent> <buffer> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
   nnoremap <silent> <buffer> K <cmd>lua vim.lsp.buf.hover()<CR>
-  nnoremap <silent> <buffer> gi <cmd>lua vim.lsp.buf.implementation()<CR>
-  nnoremap <silent> <buffer> gr <cmd>lua vim.lsp.buf.references()<CR>
   setlocal omnifunc=v:lua.vim.lsp.omnifunc
 endfunction
 
