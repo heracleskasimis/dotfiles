@@ -310,7 +310,7 @@ function! VimrcShortcuts()
   Shortcut 'Go to declaration'
     \ map <leader>cD <cmd>lua vim.lsp.buf.declaration()<cr>
   Shortcut 'Display symbol information'
-    \ map <leader>cK <cmd>lua vim.lsp.buf.hover()<cr>
+    \ map <leader>cK <cmd>lua vim.lsp.buf.hover({ border = 'solid' })<cr>
   Shortcut 'Go to implementation'
     \ map <leader>ci <cmd>lua vim.lsp.buf.implementation()<cr>
   Shortcut 'List symbol references'
@@ -495,7 +495,7 @@ augroup END
 
 function! s:OnLspAttach()
   nnoremap <silent> <buffer> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-  nnoremap <silent> <buffer> K <cmd>lua vim.lsp.buf.hover()<CR>
+  nnoremap <silent> <buffer> K <cmd>lua vim.lsp.buf.hover({ border = 'solid' })<CR>
   setlocal omnifunc=v:lua.vim.lsp.omnifunc
 endfunction
 
@@ -587,7 +587,9 @@ augroup END
 set updatetime=750
 
 function! HighlightBackground()
-  if bufname('') =~ '^NERD_tree' || bufname('') =~ '\(opencode\|gemini\)$'
+  if bufname('') =~ '^NERD_tree'
+      \ || bufname('') =~ '\(opencode\|gemini\)$'
+      \ || get(nvim_win_get_config(win_getid()), 'zindex', 0) > 0
     setlocal winhighlight=Normal:NormalFloat
   else
     setlocal winhighlight=Normal:Normal
