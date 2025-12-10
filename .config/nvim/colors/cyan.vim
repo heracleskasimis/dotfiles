@@ -27,7 +27,7 @@ hi StatusLine               cterm=bold              ctermfg=NONE        ctermbg=
 hi StatusLineNC             cterm=bold              ctermfg=NONE        ctermbg=255         gui=bold                guifg=#000000       guibg=#f2f2f2
 hi StatusLineTerm           cterm=bold              ctermfg=NONE        ctermbg=255         gui=bold                guifg=#000000       guibg=#f2f2f2
 hi StatusLineTermNC         cterm=bold              ctermfg=NONE        ctermbg=255         gui=bold                guifg=#000000       guibg=#f2f2f2
-hi NormalFloat              cterm=NONE              ctermfg=NONE        ctermbg=255         gui=NONE                guifg=NONE          guibg=#f8f8f8
+hi NormalFloat              cterm=NONE              ctermfg=NONE        ctermbg=255         gui=NONE                guifg=NONE          guibg=#f2f2f2
 hi VertSplit                cterm=NONE              ctermfg=255         ctermbg=255         gui=NONE                guifg=#f8f8f8       guibg=#f8f8f8
 hi SignColumn               cterm=NONE              ctermfg=30          ctermbg=NONE        gui=bold                guifg=#008888       guibg=NONE
 hi Title                    cterm=bold              ctermfg=NONE                            gui=bold                guifg=NONE
