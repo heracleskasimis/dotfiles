@@ -64,7 +64,7 @@ if executable('ag')
   let $FZF_DEFAULT_COMMAND = 'ag --vimgrep --hidden --skip-vcs-ignores --ignore .git -g ""'
   let g:ackprg = 'ag --vimgrep --hidden --ignore .git'
 endif
-let $FZF_DEFAULT_OPTS='--style minimal --color=16,bg+:255,fg+:232,gutter:-1,hl:44,pointer:44,info:44,header:44,border:15 --border=none'
+let $FZF_DEFAULT_OPTS='--style minimal --color=16,bg+:255,fg+:232,gutter:255,hl:44,pointer:44,info:44,header:44,border:15 --border=none'
 let g:fzf_layout = { 'down': '40%' }
 let g:ack_qhandler = 'belowright copen 10'
 let g:jsx_ext_required = 0
