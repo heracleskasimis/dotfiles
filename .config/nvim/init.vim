@@ -116,10 +116,10 @@ null_ls.setup({
   sources = {
     null_ls.builtins.formatting.black,
     null_ls.builtins.formatting.isort,
-    null_ls.builtins.diagnostics.sqlfluff.with({
+    null_ls.builtins.formatting.sqlfluff.with({
       extra_args = {"--dialect", "postgres"},
     }),
-    null_ls.builtins.formatting.sqlfluff.with({
+    null_ls.builtins.diagnostics.sqlfluff.with({
       extra_args = {"--dialect", "postgres"},
     }),
   },
