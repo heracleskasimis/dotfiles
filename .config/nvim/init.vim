@@ -93,7 +93,9 @@ require('nvim-treesitter').setup({
   indent = { enable = false },
 })
 
-require('nvim-treesitter').install({ 'javascript', 'ecma', 'jsx', 'python', 'markdown', 'sql' })
+require('nvim-treesitter').install({
+  'javascript', 'ecma', 'jsx', 'typescript', 'python', 'markdown', 'markdown_inline', 'sql', 'bash', 'dockerfile', 'css', 'html', 'html_tags', 'json', 'lua'
+})
 
 vim.diagnostic.config({
   virtual_text = true,
@@ -417,6 +419,9 @@ function! VimrcShortcuts()
   imap <c-s-v> <c-r><c-o>+
   tmap <c-s-v> <c-\><c-n>"+pi
   cmap <c-s-v> <c-r><c-o>+
+  imap <d-v> <c-r><c-o>+
+  tmap <d-v> <c-\><c-n>"+pi
+  cmap <d-v> <c-r><c-o>+
   tmap <s-insert> <c-\><c-n>"*pi
   imap <s-insert> <c-r><c-o>*
   cmap <s-insert> <c-r><c-o>*
@@ -459,6 +464,26 @@ function! VimrcShortcuts()
   tmap <M-8> <c-\><c-n>8gt
   nmap <M-9> 9gt
   tmap <M-9> <c-\><c-n>9gt
+  
+  nmap <D-1> 1gt
+  tmap <D-1> <c-\><c-n>1gt
+  nmap <D-2> 2gt
+  tmap <D-2> <c-\><c-n>2gt
+  nmap <D-3> 3gt
+  tmap <D-3> <c-\><c-n>3gt
+  nmap <D-4> 4gt
+  tmap <D-4> <c-\><c-n>4gt
+  nmap <D-5> 5gt
+  tmap <D-5> <c-\><c-n>5gt
+  nmap <D-6> 6gt
+  tmap <D-6> <c-\><c-n>6gt
+  nmap <D-7> 7gt
+  tmap <D-7> <c-\><c-n>7gt
+  nmap <D-8> 8gt
+  tmap <D-8> <c-\><c-n>8gt
+  nmap <D-9> 9gt
+  tmap <D-9> <c-\><c-n>9gt
+
 
   nmap <M-h> <c-h>
   tmap <M-h> <c-h>
@@ -652,7 +677,7 @@ EOF
 "--------------------------------------------------------------------------------------------------
 
 set guicursor=n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor
-set guifont=Liberation\ Mono:h11
+set guifont=Liberation\ Mono:h12
 set linespace=1
 
 if has('gui_running')
@@ -673,7 +698,7 @@ if has('gui_running')
 endif
 
 if exists('g:neovide')
-  let g:neovide_remember_window_size = v:true
+  let g:neovide_remember_window_size = v:false
   let g:neovide_text_gamma = 0.0
   let g:neovide_text_contrast = 0.75
   let g:neovide_scale_factor = 1.0
