@@ -26,6 +26,8 @@ let $PAGER='cat'
 
 set wildignore=*.class,*.o,*.meta,*.dll,*.pdb,*.exe,*.asset,*.unity,*.prefab,*.min.js,*.min.css,tags,node_modules,venv,bin,obj,build,dist
 
+set rtp+=/opt/homebrew/opt/fzf
+
 "--------------------------------------------------------------------------------------------------
 
 let g:no_plugin_maps = 1
@@ -52,7 +54,7 @@ Plug 'tpope/vim-dotenv'
 Plug 'junegunn/vim-peekaboo'
 Plug 'jamessan/vim-gnupg'
 Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'folke/snacks.nvim'
 Plug 'NickvanDyke/opencode.nvim'
 Plug 'marcinjahn/gemini-cli.nvim'
@@ -86,10 +88,12 @@ if not vim.g.snacks_loaded then
   vim.g.snacks_loaded = true
 end
 
-require('nvim-treesitter.configs').setup({
+require('nvim-treesitter').setup({
   highlight = { enable = true },
   indent = { enable = false },
 })
+
+require('nvim-treesitter').install({ 'javascript', 'ecma', 'jsx', 'python', 'markdown', 'sql' })
 
 vim.diagnostic.config({
   virtual_text = true,
@@ -666,9 +670,6 @@ if has('gui_running')
 
   nmap <c-ScrollWheelUp> <cmd>call FontSizePlus()<cr>
   nmap <c-ScrollWheelDown> <cmd>call FontSizeMinus()<cr>
-
-  map <c-s-t> <cmd>execute 'tabe | lcd ' . FindRootDirectory() . ' | terminal'<cr>
-  tmap <c-s-t> <cmd>execute 'tabe | lcd ' . FindRootDirectory() . ' | terminal'<cr>
 endif
 
 if exists('g:neovide')
