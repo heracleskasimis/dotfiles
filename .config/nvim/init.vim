@@ -9,6 +9,7 @@ set tagcase=match
 set clipboard=unnamedplus
 set mouse=ar
 set mousemodel=extend
+set mousescroll=ver:1
 set winborder=solid
 
 set t_Co=256
@@ -38,7 +39,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'nvimtools/none-ls.nvim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
-Plug 'christoomey/vim-tmux-navigator'
+Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'}
 Plug 'fidian/hexmode'
 Plug 'tpope/vim-vinegar'
 Plug 'editorconfig/editorconfig-vim'
@@ -233,13 +234,17 @@ function! VimrcShortcuts()
     \ map <leader>: <cmd>Commands<cr>
 
   Shortcut 'New tab'
-    \ map <leader><Tab>n <cmd>tabe<cr>
+    \ map <leader><Tab>N <cmd>tabe<cr>
   Shortcut 'Delete tab'
     \ map <leader><Tab>d <cmd>tabclose<cr>
   Shortcut 'Previous tab'
     \ map <leader><Tab>[ <cmd>tabprevious<cr>
+  Shortcut 'Previous tab'
+    \ map <leader><Tab>p <cmd>tabprevious<cr>
   Shortcut 'Next tab'
     \ map <leader><Tab>] <cmd>tabnext<cr>
+  Shortcut 'Next tab'
+    \ map <leader><Tab>n <cmd>tabnext<cr>
   Shortcut 'Switch to tab 1'
     \ map <leader><Tab>1 1gt<cr>
   Shortcut 'Switch to tab 2'
@@ -254,6 +259,20 @@ function! VimrcShortcuts()
     \ map <leader><Tab>6 6gt<cr>
   Shortcut 'Switch to tab 7'
     \ map <leader><Tab>7 7gt<cr>
+  Shortcut 'Switch to tab 1'
+    \ map <leader>1 1gt<cr>
+  Shortcut 'Switch to tab 2'
+    \ map <leader>2 2gt<cr>
+  Shortcut 'Switch to tab 3'
+    \ map <leader>3 3gt<cr>
+  Shortcut 'Switch to tab 4'
+    \ map <leader>4 4gt<cr>
+  Shortcut 'Switch to tab 5'
+    \ map <leader>5 5gt<cr>
+  Shortcut 'Switch to tab 6'
+    \ map <leader>6 6gt<cr>
+  Shortcut 'Switch to tab 7'
+    \ map <leader>7 7gt<cr>
   map <leader><Tab><esc> <Nop>
 
   Shortcut 'Project sidebar'
@@ -334,10 +353,6 @@ function! VimrcShortcuts()
 
   Shortcut 'Window movement'
     \ map <leader>w <c-w>
-  Shortcut 'Next tab'
-    \ map <c-Tab> gt
-  Shortcut 'Previous tab'
-    \ map <c-s-Tab> gT
 
   Shortcut 'Find file'
     \ map <leader>. <cmd>execute 'Files ' . FindRootDirectory() . '/'<cr>
@@ -425,6 +440,7 @@ function! VimrcShortcuts()
   tmap <s-insert> <c-\><c-n>"*pi
   imap <s-insert> <c-r><c-o>*
   cmap <s-insert> <c-r><c-o>*
+  vmap <d-c> y
 
   map f <Plug>Sneak_f
   map F <Plug>Sneak_F
@@ -436,64 +452,6 @@ function! VimrcShortcuts()
   nmap <c-LeftMouse> <cmd><cr>
   nmap <c-LeftDrag> <LeftMouse><c-v>
   vmap <c-LeftDrag> <RightDrag>
-
-  tmap <c-Tab> <c-\><c-o>gt
-  tmap <c-s-Tab> <c-\><c-o>gT
-
-  nmap <c-t> <cmd>tabe<cr>
-  nmap <c-PageUp> gT
-  tmap <c-PageUp> <c-\><c-n>gT
-  nmap <c-PageDown> gt
-  tmap <c-PageDown> <c-\><c-n>gt
-
-  nmap <M-1> 1gt
-  tmap <M-1> <c-\><c-n>1gt
-  nmap <M-2> 2gt
-  tmap <M-2> <c-\><c-n>2gt
-  nmap <M-3> 3gt
-  tmap <M-3> <c-\><c-n>3gt
-  nmap <M-4> 4gt
-  tmap <M-4> <c-\><c-n>4gt
-  nmap <M-5> 5gt
-  tmap <M-5> <c-\><c-n>5gt
-  nmap <M-6> 6gt
-  tmap <M-6> <c-\><c-n>6gt
-  nmap <M-7> 7gt
-  tmap <M-7> <c-\><c-n>7gt
-  nmap <M-8> 8gt
-  tmap <M-8> <c-\><c-n>8gt
-  nmap <M-9> 9gt
-  tmap <M-9> <c-\><c-n>9gt
-  
-  nmap <D-1> 1gt
-  tmap <D-1> <c-\><c-n>1gt
-  nmap <D-2> 2gt
-  tmap <D-2> <c-\><c-n>2gt
-  nmap <D-3> 3gt
-  tmap <D-3> <c-\><c-n>3gt
-  nmap <D-4> 4gt
-  tmap <D-4> <c-\><c-n>4gt
-  nmap <D-5> 5gt
-  tmap <D-5> <c-\><c-n>5gt
-  nmap <D-6> 6gt
-  tmap <D-6> <c-\><c-n>6gt
-  nmap <D-7> 7gt
-  tmap <D-7> <c-\><c-n>7gt
-  nmap <D-8> 8gt
-  tmap <D-8> <c-\><c-n>8gt
-  nmap <D-9> 9gt
-  tmap <D-9> <c-\><c-n>9gt
-
-
-  nmap <M-h> <c-h>
-  tmap <M-h> <c-h>
-  nmap <M-j> <c-j>
-  tmap <M-j> <c-j>
-  nmap <M-k> <c-k>
-  tmap <M-k> <c-k>
-  nmap <M-l> <c-l>
-  tmap <M-l> <c-l>
-  nmap <M-tab> <c-w>w
 endfunction
 
 augroup shortcuts
@@ -509,7 +467,6 @@ augroup termesc
   autocmd TermOpen * silent tmap <buffer> <c-j> <c-\><c-n><c-w>j
   autocmd TermOpen * silent tmap <buffer> <c-k> <c-\><c-n><c-w>k
   autocmd TermOpen * silent tmap <buffer> <c-l> <c-\><c-n><c-w>l
-  autocmd TermOpen * silent tmap <buffer> <c-s-f> <c-\><c-n>/
   autocmd TermOpen * silent nnoremap <buffer> <bs> <bs>
   autocmd TermOpen * silent nnoremap <buffer> <MiddleMouse> "*pi
   autocmd TermOpen * silent vnoremap <buffer> <MiddleMouse> <esc>"*pi
@@ -677,7 +634,7 @@ EOF
 "--------------------------------------------------------------------------------------------------
 
 set guicursor=n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor
-set guifont=Liberation\ Mono:h12
+set guifont=Liberation\ Mono:h11
 set linespace=1
 
 if has('gui_running')
@@ -695,15 +652,4 @@ if has('gui_running')
 
   nmap <c-ScrollWheelUp> <cmd>call FontSizePlus()<cr>
   nmap <c-ScrollWheelDown> <cmd>call FontSizeMinus()<cr>
-endif
-
-if exists('g:neovide')
-  let g:neovide_remember_window_size = v:false
-  let g:neovide_text_gamma = 0.0
-  let g:neovide_text_contrast = 0.75
-  let g:neovide_scale_factor = 1.0
-  let g:neovide_floating_shadow = v:false
-  let g:neovide_cursor_animation_length = 0
-  let g:neovide_scroll_animation_length = 0
-  let g:neovide_position_animation_length = 0
 endif
