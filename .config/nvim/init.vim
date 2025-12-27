@@ -12,7 +12,6 @@ set mousemodel=extend
 set mousescroll=ver:1
 set winborder=solid
 
-set t_Co=256
 colorscheme cyan
 
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
