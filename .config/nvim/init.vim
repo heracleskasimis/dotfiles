@@ -9,7 +9,7 @@ set tagcase=match
 set clipboard=unnamedplus
 set mouse=ar
 set mousemodel=extend
-set mousescroll=ver:1
+set mousescroll=ver:1,hor:1
 set winborder=solid
 
 colorscheme cyan

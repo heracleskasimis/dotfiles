@@ -1,0 +1,56 @@
+{
+  "security": {
+    "auth": {
+      "selectedType": "oauth-personal"
+    }
+  },
+  "ui": {
+    "customThemes": {
+      "Cyan Light": {
+        "name": "Cyan Light",
+        "type": "custom",
+        "Background": "#FFFFFF",
+        "Foreground": "#222222",
+        "LightBlue": "#006666",
+        "AccentBlue": "#009999",
+        "AccentPurple": "#CC99FF",
+        "AccentCyan": "#00EEEE",
+        "AccentGreen": "#00CCCC",
+        "AccentYellow": "#888800",
+        "AccentRed": "#FF0066",
+        "Comment": "#BBBBBB",
+        "Gray": "#888888",
+        "DiffAdded": "#ECFFFF",
+        "DiffRemoved": "#FFF7F9",
+        "GradientColors": [
+          "#006666",
+          "#009999",
+          "#00CCCC"
+        ]
+      },
+      "Cyan Dark": {
+        "name": "Cyan Dark",
+        "type": "custom",
+        "Background": "#000000",
+        "Foreground": "#DDDDDD",
+        "LightBlue": "#006666",
+        "AccentBlue": "#009999",
+        "AccentPurple": "#CC99FF",
+        "AccentCyan": "#00EEEE",
+        "AccentGreen": "#00CCCC",
+        "AccentYellow": "#888800",
+        "AccentRed": "#FF0066",
+        "Comment": "#BBBBBB",
+        "Gray": "#888888",
+        "DiffAdded": "#ECFFFF",
+        "DiffRemoved": "#FFF7F9",
+        "GradientColors": [
+          "#006666",
+          "#009999",
+          "#00CCCC"
+        ]
+      }
+    },
+    "theme": "Cyan Light"
+  }
+}
