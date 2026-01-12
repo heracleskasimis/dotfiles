@@ -60,6 +60,10 @@ Plug 'NickvanDyke/opencode.nvim'
 Plug 'marcinjahn/gemini-cli.nvim'
 call plug#end()
 
+if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+  PlugInstall --sync
+endif
+
 if executable('ag')
   let $FZF_DEFAULT_COMMAND = 'ag --vimgrep --hidden --skip-vcs-ignores --ignore .git -g ""'
   let g:ackprg = 'ag --vimgrep --hidden --ignore .git'
