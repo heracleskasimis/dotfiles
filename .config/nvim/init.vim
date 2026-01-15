@@ -53,6 +53,7 @@ Plug 'sunaku/vim-shortcut'
 Plug 'tpope/vim-dotenv'
 Plug 'junegunn/vim-peekaboo'
 Plug 'jamessan/vim-gnupg'
+Plug 'lucidph3nx/nvim-sops'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'folke/snacks.nvim'
