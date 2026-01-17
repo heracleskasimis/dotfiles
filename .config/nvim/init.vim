@@ -56,6 +56,7 @@ Plug 'jamessan/vim-gnupg'
 Plug 'lucidph3nx/nvim-sops'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+Plug 'linux-cultist/venv-selector.nvim'
 Plug 'folke/snacks.nvim'
 Plug 'NickvanDyke/opencode.nvim'
 Plug 'marcinjahn/gemini-cli.nvim'
@@ -100,6 +101,21 @@ require('nvim-treesitter').setup({
 
 require('nvim-treesitter').install({
   'javascript', 'ecma', 'jsx', 'typescript', 'python', 'markdown', 'markdown_inline', 'sql', 'bash', 'dockerfile', 'css', 'html', 'html_tags', 'json', 'lua'
+})
+
+require('venv-selector').setup({
+  ft = 'python',
+  options = {
+    picker = 'snacks',
+    selected_venv_marker_icon = '%',
+    selected_venv_marker_color = '#00dddd',
+    picker_icons = {
+      poetry = '',
+      hatch = '', 
+      conda = '',
+      default = ''
+    }
+  }
 })
 
 vim.diagnostic.config({
@@ -465,8 +481,7 @@ augroup END
 
 augroup termesc
   autocmd!
-  autocmd TermOpen * silent tmap <buffer> <esc><esc> <c-\><c-n>
-  autocmd TermOpen * silent tmap <buffer> <c-[><c-[> <c-\><c-n>
+  autocmd TermOpen * silent tmap <buffer> <c-g> <c-\><c-n>
   autocmd TermOpen * silent tmap <buffer> <c-h> <c-\><c-n><c-w>h
   autocmd TermOpen * silent tmap <buffer> <c-j> <c-\><c-n><c-w>j
   autocmd TermOpen * silent tmap <buffer> <c-k> <c-\><c-n><c-w>k
@@ -474,8 +489,6 @@ augroup termesc
   autocmd TermOpen * silent nnoremap <buffer> <bs> <bs>
   autocmd TermOpen * silent nnoremap <buffer> <MiddleMouse> "*pi
   autocmd TermOpen * silent vnoremap <buffer> <MiddleMouse> <esc>"*pi
-  autocmd FileType fzf silent tunmap <buffer> <esc><esc>
-  autocmd FileType fzf silent tunmap <buffer> <c-[><c-[>
   autocmd FileType fzf silent tunmap <buffer> <c-h>
   autocmd FileType fzf silent tunmap <buffer> <c-j>
   autocmd FileType fzf silent tunmap <buffer> <c-k>
