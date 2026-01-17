@@ -450,6 +450,9 @@ function! VimrcShortcuts()
   map <up> gk
   imap <down> <c-o>gj
   imap <up> <c-o>gk
+  nmap <c-g> <esc>
+  imap <c-g> <esc>
+  tmap <c-g> <c-\><c-n>
 
   imap <c-s-v> <c-r><c-o>+
   tmap <c-s-v> <c-\><c-n>"+pi
@@ -481,7 +484,6 @@ augroup END
 
 augroup termesc
   autocmd!
-  autocmd TermOpen * silent tmap <buffer> <c-g> <c-\><c-n>
   autocmd TermOpen * silent tmap <buffer> <c-h> <c-\><c-n><c-w>h
   autocmd TermOpen * silent tmap <buffer> <c-j> <c-\><c-n><c-w>j
   autocmd TermOpen * silent tmap <buffer> <c-k> <c-\><c-n><c-w>k
