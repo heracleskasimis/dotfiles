@@ -27,11 +27,11 @@ hi StatusLine               cterm=bold              ctermfg=NONE        ctermbg=
 hi StatusLineNC             cterm=bold              ctermfg=NONE        ctermbg=255         gui=bold                guifg=#000000       guibg=#f2f2f2
 hi StatusLineTerm           cterm=bold              ctermfg=NONE        ctermbg=255         gui=bold                guifg=#000000       guibg=#f2f2f2
 hi StatusLineTermNC         cterm=bold              ctermfg=NONE        ctermbg=255         gui=bold                guifg=#000000       guibg=#f2f2f2
-hi NormalFloat              cterm=NONE              ctermfg=NONE        ctermbg=255         gui=NONE                guifg=NONE          guibg=#f2f2f2
+hi NormalFloat              cterm=NONE              ctermfg=NONE        ctermbg=255         gui=NONE                guifg=#666666       guibg=#e8e8e8
 hi VertSplit                cterm=NONE              ctermfg=255         ctermbg=255         gui=NONE                guifg=#f8f8f8       guibg=#f8f8f8
 hi SignColumn               cterm=NONE              ctermfg=30          ctermbg=NONE        gui=bold                guifg=#008888       guibg=NONE
 hi Title                    cterm=bold              ctermfg=NONE                            gui=bold                guifg=NONE
-hi Visual                   cterm=NONE              ctermfg=NONE        ctermbg=123         gui=NONE                guifg=NONE          guibg=#b0ffff
+hi Visual                   cterm=NONE              ctermfg=231         ctermbg=232         gui=NONE                guifg=#ffffff       guibg=#000000
 hi VisualNOS                cterm=NONE              ctermfg=NONE        ctermbg=230         gui=NONE                guifg=NONE          guibg=#ffffcc
 hi Underlined               cterm=underline         ctermfg=NONE                            gui=bold,underline      guifg=NONE
 hi WildMenu                 cterm=bold              ctermfg=231         ctermbg=37          gui=bold                guifg=#ffffff       guibg=#00b0b0
@@ -102,7 +102,7 @@ hi fzf3                     cterm=NONE              ctermfg=NONE        ctermbg=
 if &background == 'dark'
     hi Normal               cterm=NONE              ctermfg=231         ctermbg=232         gui=NONE                guifg=#ffffff       guibg=#000000
     hi Cursorline           cterm=NONE              ctermfg=NONE        ctermbg=233         gui=NONE                guifg=NONE          guibg=#303030
-    hi ColorColumn          cterm=NONE              ctermfg=NONE        ctermbg=233         gui=NONE                guifg=NONE          guibg=#303030
+    hi ColorColumn          cterm=NONE              ctermfg=NONE        ctermbg=233         gui=NONE                guifg=NONE          guibg=#202020
     hi Visual               cterm=NONE              ctermfg=232         ctermbg=123         gui=NONE                guifg=#000000       guibg=#88ffff
     hi VisualNOS            cterm=NONE              ctermfg=NONE        ctermbg=58          gui=NONE                guifg=NONE          guibg=#606000
     hi NonText              cterm=bold              ctermfg=0                               gui=bold                guifg=#303030
@@ -114,7 +114,7 @@ if &background == 'dark'
     hi StatusLineNC         cterm=NONE              ctermfg=7           ctermbg=234         gui=NONE                guifg=#cccccc       guibg=#202020
     hi StatusLineTerm       cterm=bold              ctermfg=7           ctermbg=235         gui=bold                guifg=#dcdcdc       guibg=#202020
     hi StatusLineTermNC     cterm=NONE              ctermfg=7           ctermbg=234         gui=NONE                guifg=#cccccc       guibg=#202020
-    hi NormalFloat          cterm=NONE              ctermfg=NONE        ctermbg=234         gui=NONE                guifg=NONE          guibg=#202020
+    hi NormalFloat          cterm=NONE              ctermfg=NONE        ctermbg=234         gui=NONE                guifg=NONE          guibg=#303030
     hi Ignore               cterm=bold              ctermfg=7                               gui=bold                guifg=#aaaaaa
     hi VertSplit            cterm=NONE              ctermfg=234         ctermbg=234         gui=NONE                guifg=#202020       guibg=#202020
     hi TabLineFill          cterm=NONE              ctermfg=7           ctermbg=0           gui=NONE                guifg=#aaaaaa       guibg=#282828
@@ -208,5 +208,3 @@ let g:terminal_ansi_colors = [
   \terminal_color_14,
   \terminal_color_15
 \]
-
-let $BAT_THEME='ansi'
