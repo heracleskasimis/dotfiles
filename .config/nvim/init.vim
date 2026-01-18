@@ -28,7 +28,7 @@ set wildignore=*.class,*.o,*.meta,*.dll,*.pdb,*.exe,*.asset,*.unity,*.prefab,*.m
 
 set rtp+=/opt/homebrew/opt/fzf
 
-"--------------------------------------------------------------------------------------------------
+"-------------------------------------------------------------------------------
 
 let g:no_plugin_maps = 1
 
@@ -97,10 +97,7 @@ end
 require('nvim-treesitter').setup({
   highlight = { enable = true },
   indent = { enable = false },
-})
-
-require('nvim-treesitter').install({
-  'javascript', 'ecma', 'jsx', 'typescript', 'python', 'markdown', 'markdown_inline', 'sql', 'bash', 'dockerfile', 'css', 'html', 'html_tags', 'json', 'lua'
+  auto_install = true
 })
 
 require('venv-selector').setup({
@@ -151,7 +148,7 @@ null_ls.setup({
 })
 EOF
 
-"--------------------------------------------------------------------------------------------------
+"-------------------------------------------------------------------------------
 
 function! s:mod(n,m)
   return ((a:n % a:m) + a:m) % a:m
@@ -497,18 +494,7 @@ augroup termesc
   autocmd FileType fzf silent tunmap <buffer> <c-l>
 augroup END
 
-function! s:OnLspAttach()
-  nnoremap <silent> <buffer> <c-]> <cmd>lua vim.lsp.buf.definition()<CR>
-  nnoremap <silent> <buffer> K <cmd>lua vim.lsp.buf.hover()<CR>
-  setlocal omnifunc=v:lua.vim.lsp.omnifunc
-endfunction
-
-augroup lsp_attach_keymaps
-  autocmd!
-  autocmd LspAttach * call s:OnLspAttach()
-augroup END
-
-"--------------------------------------------------------------------------------------------------
+"-------------------------------------------------------------------------------
 
 function! HumanSize(bytes) abort
   let l:bytes = a:bytes
@@ -586,7 +572,7 @@ augroup chdir
   autocmd BufEnter * if &ft !~ '^nerdtree$' | silent! lcd %:p:h | endif
 augroup END
 
-"--------------------------------------------------------------------------------------------------
+"-------------------------------------------------------------------------------
 
 set updatetime=750
 
@@ -620,55 +606,6 @@ augroup quickfix
   autocmd Filetype qf setlocal statusline=%!CreateStatusline()
 augroup END
 
-"--------------------------------------------------------------------------------------------------
-
-lua << EOF
-local timer = nil
-
-local function sync_selection()
-    local mode = vim.fn.mode()
-    if mode == "v" or mode == "V" or mode == "\22" then
-        local start_pos = vim.fn.getpos("v")
-        local end_pos = vim.fn.getpos(".")
-        local lines = vim.fn.getregion(start_pos, end_pos, {type = mode})
-        vim.fn.setreg("*", table.concat(lines, "\n"))
-    end
-end
-
-vim.api.nvim_create_autocmd("CursorMoved", {
-    desc = "Keep * register synced with visual selection (debounced)",
-    callback = function()
-        local mode = vim.fn.mode()
-        if mode == "v" or mode == "V" or mode == "\22" then
-            if timer then
-                vim.fn.timer_stop(timer)
-            end
-            -- Sync after 100ms of no cursor movement
-            timer = vim.fn.timer_start(100, sync_selection)
-        end
-    end,
-})
-EOF
-
-"--------------------------------------------------------------------------------------------------
+"-------------------------------------------------------------------------------
 
 set guicursor=n-v-c-sm:block-Cursor,i-ci-ve:ver25-Cursor,r-cr-o:hor20-Cursor
-set guifont=Liberation\ Mono:h11
-set linespace=1
-
-if has('gui_running')
-  set background=light
-
-  function! FontSizePlus ()
-    let l:font_size = matchstr(&guifont, '\d\+$')
-    let &guifont = substitute(&guifont, '\d\+$', l:font_size + 1, '')
-  endfunction
-
-  function! FontSizeMinus ()
-    let l:font_size = matchstr(&guifont, '\d\+$')
-    let &guifont = substitute(&guifont, '\d\+$', l:font_size - 1, '')
-  endfunction
-
-  nmap <c-ScrollWheelUp> <cmd>call FontSizePlus()<cr>
-  nmap <c-ScrollWheelDown> <cmd>call FontSizeMinus()<cr>
-endif
