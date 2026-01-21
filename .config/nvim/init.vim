@@ -36,7 +36,7 @@ let g:slime_no_mappings = 1
 call plug#begin()
 Plug 'justinmk/vim-sneak'
 Plug 'neovim/nvim-lspconfig'
-Plug 'nvimtools/none-ls.nvim'
+Plug 'creativenull/efmls-configs-nvim'
 Plug 'scrooloose/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'}
@@ -133,19 +133,28 @@ vim.api.nvim_create_autocmd('DiagnosticChanged', {
   end,
 })
 
-vim.lsp.enable('pyright')
-vim.lsp.enable('eslint')
-vim.lsp.enable('ts_ls')
-
-local null_ls = require("null-ls")
-null_ls.setup({
-  sources = {
-    null_ls.builtins.formatting.black,
-    null_ls.builtins.formatting.isort,
-    null_ls.builtins.formatting.sqlfluff,
-    null_ls.builtins.diagnostics.sqlfluff,
+local languages = require('efmls-configs.defaults').languages()
+languages = vim.tbl_extend('force', languages, {
+  python = {
+    require('efmls-configs.formatters.isort'),
+    require('efmls-configs.formatters.black'),
   },
 })
+
+vim.lsp.config('efm', {
+  filetypes = vim.tbl_keys(languages),
+  settings = {
+    rootMarkers = { '.git/' },
+    languages = languages,
+  },
+  init_options = {
+    documentFormatting = true,
+    documentRangeFormatting = true,
+  },
+});
+
+vim.lsp.enable({ 'pyright', 'eslint', 'ts_ls', 'sqruff', 'efm', 'bashls' })
+
 EOF
 
 "-------------------------------------------------------------------------------
