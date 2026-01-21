@@ -31,6 +31,7 @@ set rtp+=/opt/homebrew/opt/fzf
 "-------------------------------------------------------------------------------
 
 let g:no_plugin_maps = 1
+let g:slime_no_mappings = 1
 
 call plug#begin()
 Plug 'justinmk/vim-sneak'
@@ -60,6 +61,7 @@ Plug 'linux-cultist/venv-selector.nvim'
 Plug 'folke/snacks.nvim'
 Plug 'NickvanDyke/opencode.nvim'
 Plug 'marcinjahn/gemini-cli.nvim'
+Plug 'jpalardy/vim-slime'
 call plug#end()
 
 if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
@@ -85,6 +87,8 @@ let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 let g:fugitive_dynamic_colors = 0
 let g:rooter_manual_only = 1
 let g:rooter_patterns = ['.git', '.svn']
+let g:slime_target = 'kitty'
+let g:slime_bracketed_paste = 1
 
 lua << EOF
 if not vim.g.snacks_loaded then
@@ -138,12 +142,8 @@ null_ls.setup({
   sources = {
     null_ls.builtins.formatting.black,
     null_ls.builtins.formatting.isort,
-    null_ls.builtins.formatting.sqlfluff.with({
-      extra_args = {"--dialect", "postgres"},
-    }),
-    null_ls.builtins.diagnostics.sqlfluff.with({
-      extra_args = {"--dialect", "postgres"},
-    }),
+    null_ls.builtins.formatting.sqlfluff,
+    null_ls.builtins.diagnostics.sqlfluff,
   },
 })
 EOF
@@ -237,6 +237,20 @@ function! s:Bclose(bang, buffer)
   endif
 endfunction
 command! -bang -complete=buffer -nargs=? Bclose call s:Bclose('<bang>', '<args>')
+
+function! s:SetREPLWindow(kitty_win)
+  let l:win = matchstr(a:kitty_win, '\d\+')
+  let b:slime_config = {"window_id": l:win, "listen_on": $KITTY_LISTEN_ON}
+endfunction
+
+function! s:REPLSelect()
+  let l:win = exists('b:slime_config') ? get(b:slime_config, 'window_id', -1) : -1
+  call fzf#run(extend(g:fzf_layout, {
+    \ 'source': 'kitty @ ls --output-format json | jq -r ".[] | .tabs[] | .windows[] | select(.is_self | not) | if .id==' . l:win . ' then \"% \(.id) \t\(.title)\" else \"  \(.id) \t\(.title)\" end"',
+    \ 'sink': function('s:SetREPLWindow'),
+  \ }))
+endfunction
+command! REPLSelect call s:REPLSelect()
 
 function! VimrcShortcuts()
   map <space> <leader>
@@ -366,6 +380,8 @@ function! VimrcShortcuts()
     \ map <leader>ca <cmd>lua vim.lsp.buf.code_action()<cr>
   Shortcut 'Rename symbol'
     \ map <leader>cr <cmd>lua vim.lsp.buf.rename()<cr>
+  Shortcut 'Evaluate line/region'
+    \ map <leader>ce :SlimeSend<cr>
   map <leader>c<esc> <Nop>
 
   Shortcut 'Window movement'
