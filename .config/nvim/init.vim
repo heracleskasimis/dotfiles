@@ -278,6 +278,14 @@ function! VimrcShortcuts()
     \ map <leader><Tab>6 6gt<cr>
   Shortcut 'Switch to tab 7'
     \ map <leader><Tab>7 7gt<cr>
+  Shortcut 'Switch to tab 8'
+    \ map <leader><Tab>8 8gt<cr>
+  Shortcut 'Switch to last tab'
+    \ map <leader><Tab>9 $gt<cr>
+  Shortcut 'Previous tab'
+    \ map <leader>[ <cmd>tabprevious<cr>
+  Shortcut 'Next tab'
+    \ map <leader>] <cmd>tabnext<cr>
   Shortcut 'Switch to tab 1'
     \ map <leader>1 1gt<cr>
   Shortcut 'Switch to tab 2'
@@ -292,6 +300,10 @@ function! VimrcShortcuts()
     \ map <leader>6 6gt<cr>
   Shortcut 'Switch to tab 7'
     \ map <leader>7 7gt<cr>
+  Shortcut 'Switch to tab 8'
+    \ map <leader>8 8gt<cr>
+  Shortcut 'Switch to last tab'
+    \ map <leader>9 $gt<cr>
   map <leader><Tab> <cmd>Shortcuts<cr><leader><lt>Tab>
   map <leader><Tab><esc> <Nop>
 
@@ -383,9 +395,7 @@ function! VimrcShortcuts()
     \ map <leader>. <cmd>execute 'Files ' . FindRootDirectory() . '/'<cr>
 
   Shortcut 'Find file from here'
-    \ map <leader>f/ <cmd>execute 'Files ' . expand('%:p:h')/<cr>
-  Shortcut 'Find file from here'
-    \ map <leader>f/ <cmd>execute 'Files ' . expand('%:p:h')/<cr>
+    \ map <leader>f/ <cmd>execute 'Files ' . expand('%:p:h') . '/'<cr>
   Shortcut 'Find file'
     \ map <leader>f. <cmd>execute 'Files ' . FindRootDirectory()<cr>
   Shortcut 'Delete this file'
