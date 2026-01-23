@@ -292,6 +292,7 @@ function! VimrcShortcuts()
     \ map <leader>6 6gt<cr>
   Shortcut 'Switch to tab 7'
     \ map <leader>7 7gt<cr>
+  map <leader><Tab> <cmd>Shortcuts<cr><leader><lt>Tab>
   map <leader><Tab><esc> <Nop>
 
   Shortcut 'Project sidebar'
@@ -306,6 +307,7 @@ function! VimrcShortcuts()
     \ map <leader>oa <cmd>call execute([ 'lcd ' . FindRootDirectory(), 'lua require("opencode").toggle()' ])<cr>
   Shortcut 'Ask agent about this'
     \ map <leader>oA <cmd>call execute([ 'lcd ' . FindRootDirectory(), 'lua require("opencode").ask("@this: ", { submit = true })' ])<cr>
+  map <leader>o <cmd>Shortcuts<cr><leader>o
   map <leader>o<esc> <Nop>
 
   Shortcut 'Switch workspace buffer'
@@ -336,6 +338,7 @@ function! VimrcShortcuts()
     \ map <leader>bo <cmd>%bd\|e#\|bd#<cr>
   Shortcut 'Switch buffer'
     \ map <leader>< <cmd>Buffers<cr>
+  map <leader>b <cmd>Shortcuts<cr><leader>b
   map <leader>b<esc> <Nop>
 
   Shortcut 'Previously visited workspace buffer'
@@ -370,6 +373,7 @@ function! VimrcShortcuts()
     \ map <leader>cr <cmd>lua vim.lsp.buf.rename()<cr>
   Shortcut 'Evaluate line/region'
     \ map <leader>ce :SlimeSend<cr>
+  map <leader>c <cmd>Shortcuts<cr><leader>c
   map <leader>c<esc> <Nop>
 
   Shortcut 'Window movement'
@@ -396,10 +400,12 @@ function! VimrcShortcuts()
     \ map <leader>fp <cmd>execute 'Files ' . fnamemodify($MYVIMRC, ':h')<cr>
   Shortcut 'Yank filename'
     \ map <leader>fy <cmd>let @+ = expand('%:p')<cr>
+  map <leader>f <cmd>Shortcuts<cr><leader>f
   map <leader>f<esc> <Nop>
 
   Shortcut 'Find file in project'
     \ map <leader>p/ <cmd>execute 'GFiles ' . FindRootDirectory()<cr>
+  map <leader>p <cmd>Shortcuts<cr><leader>p
   map <leader>p<esc> <Nop>
   Shortcut 'Find file in project'
     \ map <leader><leader> <cmd>execute 'GFiles ' . FindRootDirectory()<cr>
@@ -418,6 +424,7 @@ function! VimrcShortcuts()
     \ map <leader>/G :0Gclog! -S<c-r>=expand("<cword>")<cr> -- \| copen<s-left><s-left><s-left><left>
   Shortcut 'Quicklist replace'
     \ map <leader>/: :cdo s/\(\<<c-r>=expand("<cword>")<cr>\>\)//g \| update<s-left><s-left><left><left><left>
+  map <leader>/ <cmd>Shortcuts<cr><leader>/
   map <leader>/<esc> <Nop>
 
   Shortcut 'Git status'
@@ -438,12 +445,14 @@ function! VimrcShortcuts()
     \ map <leader>gF <cmd>Git fetch<cr>
   Shortcut 'Git remove file'
     \ map <leader>gx <cmd>Gremove %<cr>
+  map <leader>g <cmd>Shortcuts<cr><leader>g
   map <leader>g<esc> <Nop>
 
   Shortcut 'List commands'
     \ map <leader>hf <cmd>Helptags<cr>
   Shortcut 'Vim info'
     \ map <leader>hi <cmd>help<cr>
+  map <leader>h <cmd>Shortcuts<cr><leader>h
   map <leader>h<esc> <Nop>
 
   nmap <esc> <cmd>noh<cr>
