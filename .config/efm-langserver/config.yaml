@@ -1,0 +1,35 @@
+version: 2
+root-markers:
+  - .git/
+lint-debounce: 1s
+
+tools:
+  python-black: &python-black
+    format-command: 'black --quiet -'
+    format-stdin: true
+
+  python-isort: &python-isort
+    format-command: 'isort --quiet -'
+    format-stdin: true
+
+  sql-sqlfluff: &sql-sqlfluff
+    root-markers:
+      - .sqlfluff
+    format-command: 'sqlfluff format -'
+    format-stdin: true
+    lint-command: 'sqlfluff lint --format github-annotation-native --annotation-level warning --nocolor --disable-progress-bar -'
+    lint-stdin: true
+    lint-after-open: true
+    lint-ignore-exit-code: true
+    lint-formats:
+      - "::%totice title=SQLFluff,file=%f,line=%l,col=%c,endLine=%e,endColumn=%k::%m"
+      - "::%tarning title=SQLFluff,file=%f,line=%l,col=%c,endLine=%e,endColumn=%k::%m"
+      - "::%trror title=SQLFluff,file=%f,line=%l,col=%c,endLine=%e,endColumn=%k::%m"
+
+languages:
+  python:
+    - <<: *python-black
+    - <<: *python-isort
+
+  sql:
+    - <<: *sql-sqlfluff
