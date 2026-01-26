@@ -28,8 +28,8 @@ tools:
 
 languages:
   python:
-    - <<: *python-black
     - <<: *python-isort
+    - <<: *python-black
 
   sql:
     - <<: *sql-sqlfluff
