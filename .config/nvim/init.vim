@@ -132,7 +132,17 @@ vim.api.nvim_create_autocmd('DiagnosticChanged', {
   end,
 })
 
-vim.lsp.enable({ 'pyright', 'eslint', 'ts_ls', 'bashls', 'efm' })
+local excluded_servers = { 'systemd_ls', 'volar', 'vscoqtop' }
+local lsp_servers = vim.api.nvim_get_runtime_file('lsp/*.lua', true) 
+for server in vim.iter(lsp_servers) do
+  local server_name = server:gsub('^.*/', ''):gsub('.lua$', '')
+  if not vim.tbl_contains(excluded_servers, server_name) then
+    local client = vim.lsp.config[server_name]
+    if type(client.cmd) == 'table' and client.cmd[1] and vim.fn.executable(client.cmd[1]) == 1 then
+      vim.lsp.enable(client.name)
+    end
+  end
+end
 
 EOF
 
