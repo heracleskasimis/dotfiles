@@ -126,12 +126,6 @@ vim.diagnostic.config({
   update_in_insert = false,
 })
 
-vim.api.nvim_create_autocmd('DiagnosticChanged', {
-  callback = function(args)
-    vim.diagnostic.setloclist({open = false})
-  end,
-})
-
 local excluded_servers = { 'systemd_ls', 'volar', 'vscoqtop' }
 local lsp_servers = vim.api.nvim_get_runtime_file('lsp/*.lua', true) 
 for server in vim.iter(lsp_servers) do
@@ -383,8 +377,10 @@ function! VimrcShortcuts()
     \ map <leader>ci <cmd>lua vim.lsp.buf.implementation()<cr>
   Shortcut 'List symbol references'
     \ map <leader>cl <cmd>lua vim.lsp.buf.references()<cr>
+  Shortcut 'List buffer symbols'
+    \ map <leader>cb <cmd>lua vim.lsp.buf.document_symbol()<cr>
   Shortcut 'List errors'
-    \ map <leader>cx <cmd>lopen<cr>
+    \ map <leader>cx <cmd>lua vim.diagnostic.setloclist({open = true})<cr>
   Shortcut 'Compile'
     \ map <leader>cc <cmd>make<cr>
   Shortcut 'Format buffer/region'
@@ -395,6 +391,8 @@ function! VimrcShortcuts()
     \ map <leader>cr <cmd>lua vim.lsp.buf.rename()<cr>
   Shortcut 'Evaluate line/region'
     \ map <leader>ce :SlimeSend<cr>
+  Shortcut 'Send to REPL'
+    \ map <leader>cs :SlimeSend<cr>
   map <leader>c <cmd>Shortcuts<cr><leader>c
   map <leader>c<esc> <Nop>
 
