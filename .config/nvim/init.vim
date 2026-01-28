@@ -126,7 +126,7 @@ vim.diagnostic.config({
   update_in_insert = false,
 })
 
-local excluded_servers = { 'systemd_ls', 'volar', 'vscoqtop' }
+local excluded_servers = { 'systemd_ls', 'volar', 'vscoqtop', 'gitlab_duo', 'tvm_ffi_navigator' }
 local lsp_servers = vim.api.nvim_get_runtime_file('lsp/*.lua', true) 
 for server in vim.iter(lsp_servers) do
   local server_name = server:gsub('^.*/', ''):gsub('.lua$', '')
@@ -492,6 +492,10 @@ function! VimrcShortcuts()
   imap <s-insert> <c-r><c-o>*
   cmap <s-insert> <c-r><c-o>*
   vmap <d-c> y
+  cmap <d-left> <home>
+  cmap <d-right> <end>
+  cmap <m-left> <s-left>
+  cmap <m-right> <s-right>
 
   map f <Plug>Sneak_f
   map F <Plug>Sneak_F
