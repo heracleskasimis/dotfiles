@@ -13,7 +13,7 @@
         "Foreground": "#222222",
         "LightBlue": "#006666",
         "AccentBlue": "#009999",
-        "AccentPurple": "#CC99FF",
+        "AccentPurple": "#AC80A6",
         "AccentCyan": "#00EEEE",
         "AccentGreen": "#00CCCC",
         "AccentYellow": "#888800",
@@ -35,7 +35,7 @@
         "Foreground": "#DDDDDD",
         "LightBlue": "#006666",
         "AccentBlue": "#009999",
-        "AccentPurple": "#CC99FF",
+        "AccentPurple": "#AC80A6",
         "AccentCyan": "#00EEEE",
         "AccentGreen": "#00CCCC",
         "AccentYellow": "#888800",
@@ -52,5 +52,8 @@
       }
     },
     "theme": "Cyan Light"
+  },
+  "general": {
+    "previewFeatures": true
   }
 }
