@@ -126,7 +126,7 @@ vim.diagnostic.config({
   update_in_insert = false,
 })
 
-local excluded_servers = { 'systemd_ls', 'volar', 'vscoqtop', 'gitlab_duo', 'tvm_ffi_navigator' }
+local excluded_servers = { 'systemd_ls', 'volar', 'vscoqtop', 'gitlab_duo', 'tvm_ffi_navigator', 'dockerls', 'docker_language_server' }
 local lsp_servers = vim.api.nvim_get_runtime_file('lsp/*.lua', true) 
 for server in vim.iter(lsp_servers) do
   local server_name = server:gsub('^.*/', ''):gsub('.lua$', '')
@@ -507,6 +507,13 @@ function! VimrcShortcuts()
   nmap <c-LeftMouse> <cmd><cr>
   nmap <c-LeftDrag> <LeftMouse><c-v>
   vmap <c-LeftDrag> <RightDrag>
+
+  inoremap <expr> <tab> pumvisible()
+    \ ? "<c-n>"
+    \ : (getline('.')[col('.') - 2] =~ '\w' \|\| getline('.')[col('.') - 2] =~ '\.'
+      \ ? "<c-x><c-o>" 
+      \ : "<tab>")
+  inoremap <expr> <s-tab> pumvisible() ? "<c-p>" : "<s-tab>"
 endfunction
 
 augroup shortcuts
