@@ -10,7 +10,7 @@
         "name": "Cyan Light",
         "type": "custom",
         "Background": "#FFFFFF",
-        "Foreground": "#222222",
+        "Foreground": "#000000",
         "LightBlue": "#006666",
         "AccentBlue": "#009999",
         "AccentPurple": "#AC80A6",

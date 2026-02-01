@@ -100,26 +100,26 @@ hi fzf2                     cterm=NONE              ctermfg=NONE        ctermbg=
 hi fzf3                     cterm=NONE              ctermfg=NONE        ctermbg=NONE        gui=NONE                guifg=NONE          guibg=NONE
 
 if &background == 'dark'
-    hi Normal               cterm=NONE              ctermfg=231         ctermbg=232         gui=NONE                guifg=#ffffff       guibg=#000000
+    hi Normal               cterm=NONE              ctermfg=231         ctermbg=232         gui=NONE                guifg=e0e0e0       guibg=#000000
     hi Cursorline           cterm=NONE              ctermfg=NONE        ctermbg=233         gui=NONE                guifg=NONE          guibg=#303030
     hi ColorColumn          cterm=NONE              ctermfg=NONE        ctermbg=233         gui=NONE                guifg=NONE          guibg=#202020
-    hi Visual               cterm=NONE              ctermfg=232         ctermbg=123         gui=NONE                guifg=#000000       guibg=#88ffff
-    hi VisualNOS            cterm=NONE              ctermfg=NONE        ctermbg=58          gui=NONE                guifg=NONE          guibg=#606000
+    hi Visual               cterm=NONE              ctermfg=231         ctermbg=238         gui=NONE                guifg=#ffffff       guibg=#404040
+    hi VisualNOS            cterm=NONE              ctermfg=232         ctermbg=159         gui=NONE                guifg=#000000       guibg=#aaffff
     hi NonText              cterm=bold              ctermfg=0                               gui=bold                guifg=#303030
-    hi Search               cterm=NONE              ctermfg=232         ctermbg=6           gui=NONE                guifg=#444444       guibg=#ccffff
-    hi CurSearch            cterm=NONE              ctermfg=232         ctermbg=6           gui=NONE                guifg=#444444       guibg=#ccffff
-    hi IncSearch            cterm=NONE              ctermfg=0           ctermbg=14          gui=NONE                guifg=#444444       guibg=#00ffff
-    hi LineNr               cterm=NONE              ctermfg=7           ctermbg=NONE        gui=NONE                guifg=#bbbbbb       guibg=NONE
-    hi StatusLine           cterm=bold              ctermfg=7           ctermbg=235         gui=bold                guifg=#dcdcdc       guibg=#202020
-    hi StatusLineNC         cterm=NONE              ctermfg=7           ctermbg=234         gui=NONE                guifg=#cccccc       guibg=#202020
-    hi StatusLineTerm       cterm=bold              ctermfg=7           ctermbg=235         gui=bold                guifg=#dcdcdc       guibg=#202020
-    hi StatusLineTermNC     cterm=NONE              ctermfg=7           ctermbg=234         gui=NONE                guifg=#cccccc       guibg=#202020
+    hi Search               cterm=NONE              ctermfg=232         ctermbg=51          gui=NONE                guifg=#000000       guibg=#00ffff
+    hi CurSearch            cterm=NONE              ctermfg=232         ctermbg=51          gui=NONE                guifg=#000000       guibg=#00ffff
+    hi IncSearch            cterm=NONE              ctermfg=0           ctermbg=159         gui=NONE                guifg=#444444       guibg=#aaffff
+    hi LineNr               cterm=NONE              ctermfg=249         ctermbg=NONE        gui=NONE                guifg=#bbbbbb       guibg=NONE
+    hi StatusLine           cterm=bold              ctermfg=249         ctermbg=235         gui=bold                guifg=#dcdcdc       guibg=#404040
+    hi StatusLineNC         cterm=NONE              ctermfg=249         ctermbg=234         gui=NONE                guifg=#cccccc       guibg=#404040
+    hi StatusLineTerm       cterm=bold              ctermfg=249         ctermbg=235         gui=bold                guifg=#dcdcdc       guibg=#404040
+    hi StatusLineTermNC     cterm=NONE              ctermfg=249         ctermbg=234         gui=NONE                guifg=#cccccc       guibg=#404040
     hi NormalFloat          cterm=NONE              ctermfg=NONE        ctermbg=234         gui=NONE                guifg=NONE          guibg=#303030
-    hi Ignore               cterm=bold              ctermfg=7                               gui=bold                guifg=#aaaaaa
+    hi Ignore               cterm=bold              ctermfg=249                             gui=bold                guifg=#aaaaaa
     hi VertSplit            cterm=NONE              ctermfg=234         ctermbg=234         gui=NONE                guifg=#202020       guibg=#202020
-    hi TabLineFill          cterm=NONE              ctermfg=7           ctermbg=0           gui=NONE                guifg=#aaaaaa       guibg=#282828
-    hi TabLine              cterm=bold,italic       ctermfg=7           ctermbg=0           gui=bold,italic         guifg=#aaaaaa       guibg=#282828
-    hi TabLineSel           cterm=bold              ctermfg=7           ctermbg=0           gui=bold                guifg=#aaaaaa       guibg=#282828
+    hi TabLineFill          cterm=NONE              ctermfg=249         ctermbg=0           gui=NONE                guifg=#aaaaaa       guibg=#282828
+    hi TabLine              cterm=bold,italic       ctermfg=249         ctermbg=0           gui=bold,italic         guifg=#aaaaaa       guibg=#282828
+    hi TabLineSel           cterm=bold              ctermfg=249         ctermbg=0           gui=bold                guifg=#aaaaaa       guibg=#282828
     hi User1                cterm=bold              ctermfg=NONE        ctermbg=238         gui=bold                guifg=NONE          guibg=#202020
     hi User9                cterm=bold              ctermfg=NONE        ctermbg=236         gui=bold                guifg=NONE          guibg=#303030
     hi DiffAdd              cterm=NONE              ctermfg=123         ctermbg=NONE        gui=NONE                guifg=#008080       guibg=#202020
@@ -130,12 +130,12 @@ if &background == 'dark'
     hi DiffText             cterm=bold              ctermfg=184         ctermbg=NONE        gui=bold                guifg=#ffffbb       guibg=NONE
     hi Folded               cterm=bold,italic       ctermfg=249         ctermbg=234         gui=bold,italic         guifg=#b0b0b0       guibg=#202020
     hi FoldColumn           cterm=italic            ctermfg=249         ctermbg=234         gui=italic              guifg=#b0b0b0       guibg=#202020
-    hi String               cterm=NONE              ctermfg=37                              gui=NONE                guifg=#00c0c0
+    hi String               cterm=NONE              ctermfg=37                              gui=NONE                guifg=#00cccc
     hi Matchparen           cterm=NONE              ctermfg=NONE        ctermbg=NONE        gui=bold                guifg=NONE          guibg=#008888
     hi Sneak                cterm=NONE              ctermfg=232         ctermbg=229         gui=NONE                guifg=#444444       guibg=#ffff88
     hi SneakLabel           cterm=underline         ctermfg=232         ctermbg=227         gui=underline           guifg=#444444       guibg=#ffff60
-    hi PMenu                cterm=NONE              ctermfg=NONE        ctermbg=236         gui=NONE                guifg=NONE          guibg=#202020
-    hi PMenuSel             cterm=NONE              ctermfg=NONE        ctermbg=238         gui=NONE                guifg=NONE          guibg=#303030
+    hi PMenu                cterm=NONE              ctermfg=NONE        ctermbg=236         gui=NONE                guifg=NONE          guibg=#282828
+    hi PMenuSel             cterm=NONE              ctermfg=NONE        ctermbg=238         gui=NONE                guifg=NONE          guibg=#404040
     hi PMenuSbar            cterm=NONE              ctermfg=NONE        ctermbg=238         gui=NONE                guifg=NONE          guibg=#303030
     hi PMenuThumb           cterm=NONE              ctermfg=240         ctermbg=240         gui=NONE                guifg=#444444       guibg=#444444
 endif
