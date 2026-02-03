@@ -100,7 +100,7 @@ hi fzf2                     cterm=NONE              ctermfg=NONE        ctermbg=
 hi fzf3                     cterm=NONE              ctermfg=NONE        ctermbg=NONE        gui=NONE                guifg=NONE          guibg=NONE
 
 if &background == 'dark'
-    hi Normal               cterm=NONE              ctermfg=231         ctermbg=232         gui=NONE                guifg=e0e0e0       guibg=#000000
+    hi Normal               cterm=NONE              ctermfg=231         ctermbg=232         gui=NONE                guifg=#e0e0e0       guibg=#000000
     hi Cursorline           cterm=NONE              ctermfg=NONE        ctermbg=233         gui=NONE                guifg=NONE          guibg=#303030
     hi ColorColumn          cterm=NONE              ctermfg=NONE        ctermbg=233         gui=NONE                guifg=NONE          guibg=#202020
     hi Visual               cterm=NONE              ctermfg=231         ctermbg=238         gui=NONE                guifg=#ffffff       guibg=#404040
