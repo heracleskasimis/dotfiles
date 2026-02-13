@@ -144,6 +144,14 @@ hi! link WinBar NormalFloat
 hi! link FloatBorder NormalFloat
 hi! link WinBarNC StatusLineNC
 hi! link WinSeparator VertSplit
+hi! link NvimTreeNormal ColorColumn
+hi! link NvimTreeFolderIcon Directory
+hi! link NvimTreeGitDeletedIcon LineNr
+hi! link NvimTreeGitDirtyIcon LineNr
+hi! link NvimTreeGitMergeIcon LineNr
+hi! link NvimTreeGitNewIcon LineNr
+hi! link NvimTreeGitRenamedIcon LineNr
+hi! link NvimTreeGitStagedIcon LineNr
 
 hi link TermCursor Cursor
 hi link SneakCurrent Sneak

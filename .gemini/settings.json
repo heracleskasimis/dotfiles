@@ -10,13 +10,13 @@
         "name": "Cyan Light",
         "type": "custom",
         "Background": "#FFFFFF",
-        "Foreground": "#000000",
+        "Foreground": "#222222",
         "LightBlue": "#006666",
         "AccentBlue": "#009999",
         "AccentPurple": "#AC80A6",
         "AccentCyan": "#00EEEE",
         "AccentGreen": "#00CCCC",
-        "AccentYellow": "#888800",
+        "AccentYellow": "#00BBBB",
         "AccentRed": "#FF0066",
         "Comment": "#BBBBBB",
         "Gray": "#888888",
@@ -38,7 +38,7 @@
         "AccentPurple": "#AC80A6",
         "AccentCyan": "#00EEEE",
         "AccentGreen": "#00CCCC",
-        "AccentYellow": "#888800",
+        "AccentYellow": "#00BBBB",
         "AccentRed": "#FF0066",
         "Comment": "#BBBBBB",
         "Gray": "#888888",
@@ -51,9 +51,14 @@
         ]
       }
     },
-    "theme": "Cyan Light"
+    "theme": "Cyan Light",
+    "showLineNumbers": false
   },
   "general": {
-    "previewFeatures": true
+    "previewFeatures": true,
+    "vimMode": true
+  },
+  "experimental": {
+    "plan": true
   }
 }
