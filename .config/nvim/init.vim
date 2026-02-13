@@ -16,6 +16,7 @@ colorscheme cyan
 
 set tabstop=2 softtabstop=2 shiftwidth=2 expandtab
 set autoindent nocindent nosmartindent indentexpr=-1 breakindent breakindentopt=shift:4
+set colorcolumn=
 
 set fillchars+=vert:┃
 set noequalalways
@@ -32,15 +33,17 @@ set rtp+=/opt/homebrew/opt/fzf
 
 let g:no_plugin_maps = 1
 let g:slime_no_mappings = 1
+let g:loaded_netrw = 1
+let g:loaded_netrwPlugin = 1
 
 call plug#begin()
 Plug 'justinmk/vim-sneak'
 Plug 'neovim/nvim-lspconfig'
-Plug 'scrooloose/nerdtree'
+Plug 'nvim-tree/nvim-tree.lua'
 Plug 'tpope/vim-fugitive'
 Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'}
 Plug 'fidian/hexmode'
-Plug 'tpope/vim-vinegar'
+Plug 'stevearc/oil.nvim'
 Plug 'editorconfig/editorconfig-vim'
 Plug 'mileszs/ack.vim'
 Plug 'airblade/vim-rooter'
@@ -71,17 +74,9 @@ if executable('ag')
   let $FZF_DEFAULT_COMMAND = 'ag --vimgrep --hidden --skip-vcs-ignores --ignore .git -g ""'
   let g:ackprg = 'ag --vimgrep --hidden --ignore .git'
 endif
-let $FZF_DEFAULT_OPTS='--style minimal --color=16,bg+:255,fg+:232,gutter:255,hl:44,pointer:44,info:44,header:44,border:15 --border=none'
 let g:fzf_layout = { 'down': '40%' }
 let g:ack_qhandler = 'belowright copen 10'
-let g:jsx_ext_required = 0
 let g:vim_markdown_folding_disabled = 1
-let g:vim_json_syntax_conceal = 0
-let g:NERDTreeHijackNetrw = 0
-let g:NERDTreeAutoCenter = 0
-let g:NERDTreeHighlightCursorline = 0
-let g:NERDTreeStatusline = -1
-let g:NERDTreeWinSize = 44
 let g:EditorConfig_exclude_patterns = ['fugitive://.*', 'scp://.*']
 let g:fugitive_dynamic_colors = 0
 let g:rooter_manual_only = 1
@@ -96,6 +91,39 @@ if not vim.g.snacks_loaded then
   })
   vim.g.snacks_loaded = true
 end
+
+require("nvim-tree").setup({
+  renderer = { icons = { show = {
+    file = false,
+    folder = false,
+  } } },
+  disable_netrw = false,
+  hijack_netrw = false
+})
+
+require("oil").setup({
+  columns = { "permissions" },
+  keymaps = {
+    ["g?"] = { "actions.show_help", mode = "n" },
+    ["<CR>"] = "actions.select",
+    ["<localleader>s"] = { "actions.select", opts = { vertical = true } },
+    ["<localleader>h"] = { "actions.select", opts = { horizontal = true } },
+    ["<localleader>t"] = { "actions.select", opts = { tab = true } },
+    ["<localleader>p"] = "actions.preview",
+    ["<C-c>"] = { "actions.close", mode = "n" },
+    ["<localleader>l"] = "actions.refresh",
+    ["-"] = { "actions.parent", mode = "n" },
+    ["_"] = { "actions.open_cwd", mode = "n" },
+    ["`"] = { "actions.cd", mode = "n" },
+    ["g~"] = { "actions.cd", opts = { scope = "tab" }, mode = "n" },
+    ["gs"] = { "actions.change_sort", mode = "n" },
+    ["gx"] = "actions.open_external",
+    ["g."] = { "actions.toggle_hidden", mode = "n" },
+    ["g\\"] = { "actions.toggle_trash", mode = "n" },
+  },
+  use_default_keymaps = false,
+  view_options = { show_hidden = true },
+})
 
 require('nvim-treesitter').setup({
   highlight = { enable = true },
@@ -137,7 +165,6 @@ for server in vim.iter(lsp_servers) do
     end
   end
 end
-
 EOF
 
 "-------------------------------------------------------------------------------
@@ -236,8 +263,8 @@ function! s:SetREPLWindow(kitty_win)
 endfunction
 
 function! s:REPLSelect()
-  let l:win = exists('b:slime_config') ? get(b:slime_config, 'window_id', -1) : -1
-  call fzf#run(extend(g:fzf_layout, {
+  let l:win = (exists('b:slime_config') ? get(b:slime_config, 'window_id') : -1) ?? -1
+  call fzf#run(extendnew(g:fzf_layout, {
     \ 'source': 'kitty @ ls --output-format json | jq -r ".[] | .tabs[] | .windows[] | select(.is_self | not) | if .id==' . l:win . ' then \"% \(.id) \t\(.title)\" else \"  \(.id) \t\(.title)\" end"',
     \ 'sink': function('s:SetREPLWindow'),
   \ }))
@@ -312,9 +339,9 @@ function! VimrcShortcuts()
   map <leader><Tab><esc> <Nop>
 
   Shortcut 'Project sidebar'
-    \ map <leader>op <cmd>execute 'NERDTreeToggle ' . FindRootDirectory()<cr>
+    \ map <leader>op <cmd>execute 'NvimTreeToggle ' . FindRootDirectory()<cr>
   Shortcut 'Find file in project sidebar'
-    \ map <leader>oP <cmd>NERDTreeFind<cr>
+    \ map <leader>oP <cmd>NvimTreeFindFile<cr>
   Shortcut 'Terminal'
     \ nmap <leader>ot <cmd>call execute([ 'belowright 10split', 'lcd ' . FindRootDirectory(), 'terminal' ])<cr>
   Shortcut 'Terminal here'
@@ -323,6 +350,10 @@ function! VimrcShortcuts()
     \ map <leader>oa <cmd>call execute([ 'lcd ' . FindRootDirectory(), 'lua require("opencode").toggle()' ])<cr>
   Shortcut 'Ask agent about this'
     \ map <leader>oA <cmd>call execute([ 'lcd ' . FindRootDirectory(), 'lua require("opencode").ask("@this: ", { submit = true })' ])<cr>
+  Shortcut 'Agent prompt'
+    \ map <leader>oo <cmd>call execute([ 'lcd ' . FindRootDirectory(), 'lua require("opencode").toggle()' ])<cr>
+  Shortcut 'Ask agent about this'
+    \ map <leader>oO <cmd>call execute([ 'lcd ' . FindRootDirectory(), 'lua require("opencode").ask("@this: ", { submit = true })' ])<cr>
   map <leader>o <cmd>Shortcuts<cr><leader>o
   map <leader>o<esc> <Nop>
 
@@ -399,9 +430,12 @@ function! VimrcShortcuts()
   Shortcut 'Window movement'
     \ map <leader>w <c-w>
 
+  Shortcut 'Open parent directory'
+    \ map - <cmd>Oil<cr>
+  Shortcut 'Open parent directory'
+    \ map <leader>f- <cmd>Oil<cr>
   Shortcut 'Find file'
     \ map <leader>. <cmd>execute 'Files ' . FindRootDirectory() . '/'<cr>
-
   Shortcut 'Find file from here'
     \ map <leader>f/ <cmd>execute 'Files ' . expand('%:p:h') . '/'<cr>
   Shortcut 'Find file'
@@ -421,6 +455,10 @@ function! VimrcShortcuts()
   map <leader>f <cmd>Shortcuts<cr><leader>f
   map <leader>f<esc> <Nop>
 
+  Shortcut 'Open project directory'
+    \ map _ <cmd>execute 'Oil ' . FindRootDirectory()<cr>
+  Shortcut 'Open project directory'
+    \ map <leader>p- <cmd>execute 'Oil ' . FindRootDirectory()<cr>
   Shortcut 'Find file in project'
     \ map <leader>p/ <cmd>execute 'GFiles ' . FindRootDirectory()<cr>
   map <leader>p <cmd>Shortcuts<cr><leader>p
@@ -571,8 +609,7 @@ endfunction
 function! CreateStatusline() abort
   let l:statusline = ''
   let l:statusline .= CreateStatuslineColorLabel('" ".GetBufferLabel().(&modified?"+":"")')
-  let l:statusline .= '%0* %Y '
-  let l:statusline .= '%<%{exists("w:quickfix_title")?w:quickfix_title:expand("%:p")} '
+  let l:statusline .= '%0* %Y %F'
   let l:statusline .= '%= '
   let l:statusline .= '%{&fileencoding ? &fileencoding : &encoding} | '
   let l:statusline .= '%{&fileformat} | '
@@ -611,22 +648,12 @@ augroup END
 
 augroup chdir
   autocmd!
-  autocmd BufEnter * if &ft !~ '^nerdtree$' | silent! lcd %:p:h | endif
+  autocmd BufEnter * silent! lcd %:p:h
 augroup END
 
 "-------------------------------------------------------------------------------
 
 set updatetime=750
-
-function! HighlightBackground()
-  if bufname('') =~ '^NERD_tree' || bufname('') =~ '\(opencode\|gemini\)$'
-    setlocal winhighlight=Normal:ColorColumn
-  elseif get(nvim_win_get_config(win_getid()), 'zindex', 0) > 0
-    setlocal winhighlight=Normal:NormalFloat
-  else
-    setlocal winhighlight=Normal:Normal
-  endif
-endfunction
 
 function! HighlightWordUnderCursor()
   exec '2match' 'VisualNOS' '/\<'.expand('<cword>').'\>/'
@@ -640,7 +667,6 @@ augroup highlight
   autocmd!
   autocmd CursorHold,CursorHoldI * silent! call HighlightWordUnderCursor()
   autocmd CursorMoved,CursorMovedI,WinLeave * silent! call ClearWordHighlight()
-  autocmd TermOpen,BufWinEnter * silent! call HighlightBackground()
 augroup END
 
 augroup quickfix
