@@ -27,8 +27,6 @@ let $PAGER='cat'
 
 set wildignore=*.class,*.o,*.meta,*.dll,*.pdb,*.exe,*.asset,*.unity,*.prefab,*.min.js,*.min.css,tags,node_modules,venv,bin,obj,build,dist
 
-set rtp+=/opt/homebrew/opt/fzf
-
 "-------------------------------------------------------------------------------
 
 let g:no_plugin_maps = 1
@@ -50,6 +48,7 @@ Plug 'airblade/vim-rooter'
 Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install() } }
 Plug 'tpope/vim-dadbod'
 Plug 'mtth/scratch.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'tpope/vim-eunuch'
 Plug 'sunaku/vim-shortcut'
@@ -124,6 +123,8 @@ require("oil").setup({
   use_default_keymaps = false,
   view_options = { show_hidden = true },
 })
+
+require('gemini_cli').setup({ win = { wo = { winbar = '' } } })
 
 require('nvim-treesitter').setup({
   highlight = { enable = true },
@@ -468,6 +469,13 @@ function! VimrcShortcuts()
 
   Shortcut 'Search for symbol in project'
     \ map <leader>* <cmd>execute 'Ack! -- ' . expand("<cword>") . ' ' . FindRootDirectory()<cr>
+  Shortcut 'Search for symbol in project'
+    \ map <leader>p* <cmd>execute 'Ack! -- ' . expand("<cword>") . ' ' . FindRootDirectory()<cr>
+  Shortcut 'Search for symbol in buffer'
+    \ map <leader>b* <cmd>execute 'Ack! -- ' . expand("<cword>") . ' %'<cr>
+  Shortcut 'Search for symbol in commits'
+    \ map <leader>g* <cmd>execute 'Gclog! -S' . expand("<cword>")<cr>
+
   Shortcut 'Search project'
     \ map <leader>/p :Ack! -- <c-r>=expand("<cword>")<cr> <c-r>=FindRootDirectory()<cr><c-b><s-right><s-right><s-right>
   Shortcut 'Search current directory'
