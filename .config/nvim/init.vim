@@ -155,17 +155,7 @@ vim.diagnostic.config({
   update_in_insert = false,
 })
 
-local excluded_servers = { 'systemd_ls', 'volar', 'vscoqtop', 'gitlab_duo', 'tvm_ffi_navigator', 'dockerls', 'docker_language_server' }
-local lsp_servers = vim.api.nvim_get_runtime_file('lsp/*.lua', true) 
-for server in vim.iter(lsp_servers) do
-  local server_name = server:gsub('^.*/', ''):gsub('.lua$', '')
-  if not vim.tbl_contains(excluded_servers, server_name) then
-    local client = vim.lsp.config[server_name]
-    if type(client.cmd) == 'table' and client.cmd[1] and vim.fn.executable(client.cmd[1]) == 1 then
-      vim.lsp.enable(client.name)
-    end
-  end
-end
+vim.lsp.enable({ 'efm', 'eslint', 'ts_ls', 'marksman', 'bashls', 'clangd', 'lua_ls', 'pyright', 'html', 'jsonls', 'cssls' })
 EOF
 
 "-------------------------------------------------------------------------------
