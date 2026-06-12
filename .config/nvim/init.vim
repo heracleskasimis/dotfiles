@@ -37,6 +37,8 @@ let g:loaded_netrwPlugin = 1
 call plug#begin()
 Plug 'justinmk/vim-sneak'
 Plug 'neovim/nvim-lspconfig'
+Plug 'mason-org/mason.nvim'
+Plug 'mason-org/mason-lspconfig.nvim'
 Plug 'nvim-tree/nvim-tree.lua'
 Plug 'tpope/vim-fugitive'
 Plug 'knubie/vim-kitty-navigator', {'do': 'cp ./*.py ~/.config/kitty/'}
@@ -155,7 +157,24 @@ vim.diagnostic.config({
   update_in_insert = false,
 })
 
-vim.lsp.enable({ 'efm', 'eslint', 'ts_ls', 'marksman', 'bashls', 'clangd', 'lua_ls', 'pyright', 'html', 'jsonls', 'cssls' })
+require("mason").setup()
+require("mason-lspconfig").setup({
+  ensure_installed = {
+    'efm',
+    'eslint',
+    'ts_ls',
+    'marksman',
+    'bashls',
+    'clangd',
+    'lua_ls',
+    'pyright',
+    'html',
+    'jsonls',
+    'cssls',
+    'vimls'
+  },
+  automatic_enable = true
+})
 EOF
 
 "-------------------------------------------------------------------------------
@@ -220,8 +239,7 @@ command! PreviousWorkspaceBuffer call s:PreviousWorkspaceBuffer()
 
 function! s:PreviewBuffers(buffers)
   call fzf#vim#buffers('', {
-    \ 'source': map(a:buffers, {v -> fzf#vim#_format_buffer(v:val)}),
-    \ 'options': ['--preview', '[[ -f {4} ]] && bat --theme=ansi --color=always --plain {4}']
+    \ 'source': map(a:buffers, {v -> fzf#vim#_format_buffer(v:val)})
   \ })
 endfunction
 
