@@ -175,6 +175,12 @@ require("mason-lspconfig").setup({
   },
   automatic_enable = true
 })
+vim.lsp.config('ts_ls', {
+  on_attach = function(client, bufnr)
+    client.server_capabilities.documentFormattingProvider = false
+    client.server_capabilities.documentRangeFormattingProvider = false
+  end
+})
 EOF
 
 "-------------------------------------------------------------------------------
