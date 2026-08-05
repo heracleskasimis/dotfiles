@@ -583,6 +583,9 @@ augroup END
 
 augroup termesc
   autocmd!
+  autocmd TermOpen,BufEnter,FocusGained * if &buftype == 'terminal'
+    \ | call timer_start(0, {-> execute('if &buftype == "terminal" | startinsert | endif')})
+    \ | endif
   autocmd TermOpen * silent tmap <buffer> <c-h> <c-\><c-n><c-w>h
   autocmd TermOpen * silent tmap <buffer> <c-j> <c-\><c-n><c-w>j
   autocmd TermOpen * silent tmap <buffer> <c-k> <c-\><c-n><c-w>k
